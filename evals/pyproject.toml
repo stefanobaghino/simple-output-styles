@@ -25,6 +25,7 @@ style-rank = "rank.cli:main"
 style-drift = "drift.cli:main"
 style-compare = "compare.cli:main"
 style-campaign = "campaign.cli:main"
+style-targets = "targets.cli:main"
 
 [dependency-groups]
 dev = [
@@ -51,6 +52,7 @@ packages = [
     "src/drift",
     "src/compare",
     "src/campaign",
+    "src/targets",
 ]
 
 [tool.pytest.ini_options]

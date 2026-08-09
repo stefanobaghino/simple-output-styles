@@ -5,7 +5,7 @@ This directory holds the evaluation harness for the output styles in
 the marketplace serves only the `plugin/` directory, so installers never
 receive the harness.
 
-The harness has ten components. The first is a deterministic linter.
+The harness has eleven components. The first is a deterministic linter.
 It checks a Markdown text against the writing rules of a style and
 reports each violation, plus a rate per 100 sentences. The second is a
 pair runner. It produces, per prompt, one answer per style and one
@@ -40,7 +40,12 @@ time, the judge stages overlap, the value pass splits around the
 loss pass, and one worker gate meters every CLI call against one
 worker budget. The campaign driver also has a screening mode: one
 reduced run over a fixed prompt subset, for a cheap first verdict
-on a candidate style. See the tracking issue in this repository for
+on a candidate style. The eleventh is a regression-targets check.
+It compares the stored artifacts of one run against pre-committed
+targets per axis and per style, so a style change fails loudly on a
+regression. The token axis is a bound there, not a target: a ratio
+past the bound blocks, and savings under the bound earn nothing.
+See the tracking issue in this repository for
 the other planned components.
 
 ## Rule files
@@ -56,6 +61,18 @@ A threshold edit changes only the pass mark, never the measured rate,
 so the policy must not change the rule-file hashes in the provenance.
 The thresholds differ per style, because the rule counts differ and
 thus the rates are not comparable across styles.
+
+The regression targets live apart as well, in `rules/targets.yaml`:
+the numbers a style version must hold, per axis and per style, with
+the derivation of each number in the header comment. The same hash
+rule applies: a target edit changes only the pass marks, so it must
+not change the rule-file hashes in the provenance. The token axis
+is a bound, not a target — the style-design loop optimizes
+readability alone, so the bound is what pushes back on verbosity,
+and no bonus exists for savings under it. Two axes stay out on
+purpose: the reader-value net wins move too much across identical
+runs for a target, and the violation rate belongs to the gate
+policy above.
 
 ## The style field
 
@@ -105,13 +122,18 @@ harness measures the style. Add both parts:
    the first run, as the header comment of `rules/gate.yaml` describes.
    The calibration run carries a one-time asterisk, because the same
    data sets the threshold and takes the test.
-5. Produce a new pair run with `uv run style-pairs`, then gate the run,
+5. Leave `rules/targets.yaml` alone for now. A candidate without a
+   calibrated row runs under `defaults.max_token_ratio`, and its
+   other axes stay unchecked until acceptance. Acceptance adds the
+   calibrated row from the confirmation campaign, as the header
+   comment of `rules/targets.yaml` describes.
+6. Produce a new pair run with `uv run style-pairs`, then gate the run,
    then produce the reports. Do not extend an old run, because the
    provenance of a run records the styles of the run. To avoid a
    full re-measurement, pass `--reuse-from` with a stored run of the
    current era: the new run imports the unchanged arms and their
    judge rows, and only the new style runs live.
-6. Run the drift sessions with `uv run style-drift --generate`.
+7. Run the drift sessions with `uv run style-drift --generate`.
 
 The CLI tests need no change for a new style, because they use
 synthetic rules. The linter acceptance tests are per style: a new
@@ -191,6 +213,7 @@ uv run style-rank runs/<date> [--judge] [--parallel N] [--reuse-from RUN]
 uv run style-campaign [--runs N] [--budget W] [--probe-repeats N] [--screening] [--holdout] [--reuse-from RUN]
 uv run style-drift [--generate] [--scripts prompts/sessions/*.yaml] [--out runs/<date>-drift]
 uv run style-compare runs/<a> runs/<b> [...] [--out runs/<date>-compare]
+uv run style-targets runs/<date> [--targets rules/targets.yaml] [--drift runs/<date>-drift]
 ```
 
 The linter exits with code 1 when it finds a violation.
@@ -523,6 +546,23 @@ for that run, and n states the run count per axis. Exit codes: 0
 when no warnings exist, 1 when warnings exist, 2 when the
 comparison cannot run.
 
+The regression-targets check reads the stored artifacts of one run
+and writes `targets.json` and `targets.md` into the run directory.
+Per style and axis, it compares the observed value against the
+limit in `rules/targets.yaml`: a max limit is a cap, a min limit a
+floor, and every boundary is inclusive, like the gate threshold.
+The drift-slope axis reads a separate drift run through `--drift`;
+without the flag, the slope caps stay unchecked, and the check
+warns, because an unchecked bound is exactly the silent-regression
+channel this check closes. A style without a calibrated row — a
+candidate before acceptance — is checked against
+`defaults.max_token_ratio` only. A screening run is rejected, like
+in the comparison, because its numbers cannot demonstrate that a
+target holds. The check is offline and makes no judge calls. Exit
+codes: 0 when every checked axis passes and no warnings exist, 1
+when an axis fails or warnings exist, 2 when the run cannot be
+checked.
+
 ### Reuse across runs
 
 A campaign re-judges every style in every run, but with a fixed
@@ -733,6 +773,8 @@ runs/<YYYY-MM-DD>/
   rank.json         # matchups, win matrix, and strengths, machine-readable
   rank.md           # the clarity-ranking report for a human
   spot-check.md     # the human spot-check record and the agreement rate (manual)
+  targets.json      # the regression-targets verdicts per style and axis, machine-readable
+  targets.md        # the regression-targets report for a human
 
 runs/<YYYY-MM-DD>-screening/
   # the same files as a pair run, over the fixed prompt subset; the

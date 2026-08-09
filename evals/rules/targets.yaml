@@ -1,0 +1,120 @@
+# The regression targets: the numbers a style version must hold.
+#
+# The targets live in their own file, next to the gate policy, and
+# apart from the rule files on purpose: a target edit changes only
+# the pass marks, never a measured number, and thus must not change
+# the rule-file hashes in the provenance.
+#
+# Five axes exist per style. A "max" key is a cap: the observed value
+# passes at or below the limit. A "min" key is a floor: the observed
+# value passes at or above the limit. Two axes stay out on purpose.
+# The reader-value net wins move too much across identical runs (a
+# sample standard deviation up to 7 net wins in the baseline), so a
+# target on them would trigger on noise. The violation rate belongs
+# to the gate policy in gate.yaml, which pre-commits its own
+# thresholds; a second copy here would drift from the first.
+#
+# The token axis is a bound, not a target. The style-design loop of
+# #83 optimizes readability alone, and a readability-only objective
+# can buy its wins with more output. The bound blocks that trade: a
+# ratio past the bound blocks acceptance of a style change, and no
+# bonus exists for savings under the bound.
+#
+# Calibrated against the baseline of #85: the three runs
+# runs/2026-08-07, runs/2026-08-08, and runs/2026-08-08b, plus the
+# drift run runs/2026-08-08-drift. The pass marks of those runs
+# carry a one-time asterisk: the same data set the targets and takes
+# the test. Later runs are checked by these pre-committed values.
+#
+# The derivation per axis, from the observed values of the three
+# runs (in run order):
+#
+# max_token_ratio: the largest observed ratio_of_totals plus 0.05,
+#   rounded up to the nearest 0.05. The check reads one run, and the
+#   single-run ratios swing wide (clarity-flow spans 0.60 to 1.04),
+#   so the cap must tolerate single-run noise; a cap on the mean
+#   would fail stored runs.
+#     clarity-flow 1.04, 0.60, 0.86 -> 1.10
+#     classic-concise 0.88, 0.69, 0.61 -> 0.95
+#     developer-docs 1.02, 0.92, 0.95 -> 1.10
+#     plain-language 0.93, 0.82, 0.95 -> 1.00
+#     technical-simplified 1.00, 1.09, 0.71 -> 1.15
+#
+# min_fact_survival and min_hedge_survival: the smallest observed
+#   median minus one cross-run sample standard deviation, rounded
+#   down to 0.01. The margin self-calibrates: a noisier axis gets a
+#   wider one.
+#     fact: clarity-flow 0.771, 0.759, 0.774 (sd 0.008) -> 0.75
+#       classic-concise 0.769, 0.843, 0.742 (sd 0.052) -> 0.68
+#       developer-docs 0.780, 0.750, 0.764 (sd 0.015) -> 0.73
+#       plain-language 0.735, 0.737, 0.692 (sd 0.025) -> 0.66
+#       technical-simplified 0.661, 0.720, 0.636 (sd 0.043) -> 0.59
+#     hedge: clarity-flow 0.800, 0.833, 0.683 (sd 0.079) -> 0.60
+#       classic-concise 0.667, 0.691, 0.834 (sd 0.090) -> 0.57
+#       developer-docs 0.771, 1.000, 0.667 (sd 0.170) -> 0.49
+#       plain-language 0.950, 0.833, 1.000 (sd 0.086) -> 0.74
+#       technical-simplified 0.500, 0.667, 0.678 (sd 0.100) -> 0.40
+#
+# min_rank_strength: the same rule, rounded down to 0.05, because
+#   the axis is coarser (a sample standard deviation up to 0.29).
+#   These floors catch a collapse, not a small regression; that is
+#   the honest limit of a 3-run sample.
+#     clarity-flow 0.884, 0.958, 0.946 (sd 0.040) -> 0.80
+#     classic-concise 1.117, 1.000, 0.597 (sd 0.273) -> 0.30
+#     developer-docs 1.600, 1.329, 1.196 (sd 0.206) -> 0.95
+#     plain-language 1.695, 1.115, 1.471 (sd 0.292) -> 0.80
+#     technical-simplified 0.554, 0.444, 0.460 (sd 0.059) -> 0.35
+#
+# max_drift_slope: the observed slope of the one drift run times
+#   1.25, rounded up to 0.01, with a floor of 0.05. One run gives no
+#   spread, so the margin is a judgment call, not a variance. The
+#   two nonzero caps codify baseline reality: developer-docs (slope
+#   0.094) and technical-simplified (slope 0.663) already carry a
+#   "growing" drift verdict, and their caps only prevent worsening;
+#   the drift tool's own verdict still reports the growth.
+#     clarity-flow 0.000 -> 0.05
+#     classic-concise 0.000 -> 0.05
+#     developer-docs 0.094 -> 0.12
+#     plain-language 0.000 -> 0.05
+#     technical-simplified 0.663 -> 0.83
+#
+# defaults.max_token_ratio covers a style that is not listed under
+# styles, that is, a candidate before acceptance. The value 1.10 is
+# the field envelope: the worst single-run ratio observed in the
+# frozen field. A candidate thus meets the same standard as the
+# incumbents, and acceptance replaces the default with a calibrated
+# row from the confirmation campaign. The other axes of an unlisted
+# style stay unchecked until that row exists.
+defaults:
+  max_token_ratio: 1.10
+styles:
+  clarity-flow:
+    max_token_ratio: 1.10
+    min_fact_survival: 0.75
+    min_hedge_survival: 0.60
+    min_rank_strength: 0.80
+    max_drift_slope: 0.05
+  classic-concise:
+    max_token_ratio: 0.95
+    min_fact_survival: 0.68
+    min_hedge_survival: 0.57
+    min_rank_strength: 0.30
+    max_drift_slope: 0.05
+  developer-docs:
+    max_token_ratio: 1.10
+    min_fact_survival: 0.73
+    min_hedge_survival: 0.49
+    min_rank_strength: 0.95
+    max_drift_slope: 0.12
+  plain-language:
+    max_token_ratio: 1.00
+    min_fact_survival: 0.66
+    min_hedge_survival: 0.74
+    min_rank_strength: 0.80
+    max_drift_slope: 0.05
+  technical-simplified:
+    max_token_ratio: 1.15
+    min_fact_survival: 0.59
+    min_hedge_survival: 0.40
+    min_rank_strength: 0.35
+    max_drift_slope: 0.83
