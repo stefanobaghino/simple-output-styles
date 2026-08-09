@@ -15,6 +15,7 @@ from drift import (
     deep_script,
     generate_turn,
     load_session_script,
+    project_script,
     run_session,
     score_sessions,
     session_script,
@@ -44,6 +45,7 @@ def stream_output(
     is_error=False,
     plugins=("test-plugin",),
     cache_creation=None,
+    usage=None,
 ):
     init = {
         "type": "system",
@@ -59,7 +61,8 @@ def stream_output(
         "type": "result",
         "is_error": is_error,
         "result": answer,
-        "usage": {
+        "usage": usage
+        or {
             "output_tokens": 7,
             "input_tokens": 3,
             "cache_creation_input_tokens": 2,
@@ -87,10 +90,11 @@ class FakeSessionRunner:
     """Emits a fresh session id per call and tracks the turn number
     inside the current session, so the answer can vary per turn."""
 
-    def __init__(self, answer_for=lambda turn: CLEAN, cache_creation=None):
+    def __init__(self, answer_for=lambda turn: CLEAN, cache_creation=None, usage_for=None):
         self.calls = []
         self.answer_for = answer_for
         self.cache_creation = cache_creation
+        self.usage_for = usage_for
         self.count = 0
         self.turn = 0
 
@@ -102,6 +106,7 @@ class FakeSessionRunner:
             output_style=style_of(argv),
             answer=self.answer_for(self.turn),
             cache_creation=self.cache_creation,
+            usage=self.usage_for(self.turn) if self.usage_for else None,
             session_id=f"sid-{self.count}",
         )
 
@@ -403,7 +408,7 @@ def test_report_md_holds_the_turn_table_and_verdict(project):
     run_cli(project, FakeSessionRunner())
     report = (project / "run" / "drift.md").read_text()
     assert "# Drift report" in report
-    assert "| Turn | Pooled rate | Repeat 1 | Repeat 2 |" in report
+    assert "| Turn | Pooled rate | Mean depth | Repeat 1 | Repeat 2 |" in report
     assert "- Slope threshold: 0.0 (the 0.95 quantile of 10000 shuffled slopes, seed 0)" in report
     assert "- Verdict: flat" in report
     assert "## Harness spend" in report
@@ -411,7 +416,7 @@ def test_report_md_holds_the_turn_table_and_verdict(project):
     assert "- none" in report
 
 
-def score_answers(project, answers, turns=3, repeats=2):
+def score_answers(project, answers, turns=3, repeats=2, **kwargs):
     """Score hand-built rows: answers maps (repeat, turn) to a text."""
     rows = {
         ("alpha", repeat, turn): {
@@ -424,7 +429,9 @@ def score_answers(project, answers, turns=3, repeats=2):
         for (repeat, turn), answer in answers.items()
     }
     linter = Linter(load_rules(project / "rules" / "alpha.rules.yaml"))
-    return score_sessions(rows=rows, linters={"alpha": linter}, turns=turns, repeats=repeats)
+    return score_sessions(
+        rows=rows, linters={"alpha": linter}, turns=turns, repeats=repeats, **kwargs
+    )
 
 
 def test_pooling_weights_the_turns_by_sentence_count(project):
@@ -587,9 +594,11 @@ def test_deep_script_cycles_over_the_scripts_and_composes_ids(tmp_path):
 
 
 def deep_args(project):
+    # The fake usage sums to 6 context tokens per turn, so a tiny
+    # window keeps the deep depth target satisfied: 6 >= 0.6 * 10.
     one = make_script(project / "one.yaml", "one")
     two = make_script(project / "two.yaml", "two")
-    return ("--scripts", str(one), str(two))
+    return ("--scripts", str(one), str(two), "--context-window", "10")
 
 
 def test_cli_deep_generates_sessions_with_composed_ids(project):
@@ -764,3 +773,165 @@ def test_the_authored_scripts_obey_the_contract():
         for turn in script["turns"]:
             size = len(turn["text"].encode("utf-8"))
             assert size >= 20_000, f"{script['id']}/{turn['id']}: {size} bytes is too short"
+
+
+def test_a_turn_row_states_its_context_tokens(project):
+    run_cli(project, FakeSessionRunner())
+    summary = json.loads((project / "run" / "drift.json").read_text())
+    assert summary["context_window"] == 200_000
+    details = summary["styles"]["alpha"]["turns"]
+    assert details and all(detail["context_tokens"] == 6 for detail in details)
+
+
+def test_the_depth_block_states_the_final_depth_per_repeat(project):
+    def usage_for(turn):
+        return {
+            "output_tokens": 7,
+            "input_tokens": 3,
+            "cache_creation_input_tokens": 2,
+            "cache_read_input_tokens": turn * 100,
+        }
+
+    run_cli(project, FakeSessionRunner(usage_for=usage_for))
+    summary = json.loads((project / "run" / "drift.json").read_text())
+    depth = summary["styles"]["alpha"]["depth"]
+    assert depth == {
+        "final": {"1": 305, "2": 305},
+        "mean_final": 305,
+        "window_fraction": 0.002,
+    }
+
+
+def test_a_shallow_run_has_no_depth_target_by_default(project):
+    # The fake depth is 6 tokens of a 200,000-token window, so any
+    # default shallow target would warn here.
+    assert run_cli(project, FakeSessionRunner()) == 0
+    summary = json.loads((project / "run" / "drift.json").read_text())
+    assert "depth_target" not in summary
+    assert summary["warnings"] == []
+
+
+def test_an_explicit_depth_target_applies_to_a_shallow_run(project):
+    runner = FakeSessionRunner()
+    exit_code = run_cli(project, runner, "--depth-target", "0.5", "--context-window", "100")
+    assert exit_code == 1
+    summary = json.loads((project / "run" / "drift.json").read_text())
+    assert summary["depth_target"] == 0.5
+    assert any("under the 50 percent target" in warning for warning in summary["warnings"])
+
+
+def test_a_deep_run_under_the_default_target_warns_and_exits_1(project):
+    one = make_script(project / "d1.yaml", "d-one")
+    two = make_script(project / "d2.yaml", "d-two")
+    runner = FakeSessionRunner()
+    exit_code = run_cli(project, runner, "--scripts", str(one), str(two), turns=None)
+    assert exit_code == 1
+    summary = json.loads((project / "run" / "drift.json").read_text())
+    assert summary["depth_target"] == 0.6
+    warning = next(w for w in summary["warnings"] if "mean final depth" in w)
+    assert "6 tokens" in warning
+    assert "under the 60 percent target" in warning
+    assert "weak evidence" in warning
+    report = (project / "run" / "drift.md").read_text()
+    assert "The depth target is 60 percent of the window" in report
+
+
+def test_a_deep_run_at_the_target_passes_without_a_depth_warning(project):
+    assert run_cli(project, FakeSessionRunner(), *deep_args(project), turns=None) == 0
+    summary = json.loads((project / "run" / "drift.json").read_text())
+    assert summary["depth_target"] == 0.6
+    assert summary["warnings"] == []
+
+
+def test_a_depth_target_of_zero_disables_the_check(project):
+    one = make_script(project / "d1.yaml", "d-one")
+    two = make_script(project / "d2.yaml", "d-two")
+    runner = FakeSessionRunner()
+    exit_code = run_cli(
+        project, runner, "--scripts", str(one), str(two), "--depth-target", "0", turns=None
+    )
+    assert exit_code == 0
+    summary = json.loads((project / "run" / "drift.json").read_text())
+    assert "depth_target" not in summary
+
+
+def test_a_depth_target_past_one_exits_2(project):
+    with pytest.raises(SystemExit) as excinfo:
+        run_cli(project, FakeSessionRunner(), "--depth-target", "1.5")
+    assert excinfo.value.code == 2
+
+
+def test_the_style_section_states_the_final_depth(project):
+    run_cli(project, FakeSessionRunner(), "--context-window", "100")
+    report = (project / "run" / "drift.md").read_text()
+    assert "- Final depth: mean 6 tokens, 6.0 percent of the 100-token window" in report
+    assert "(repeats 6 / 6)" in report
+
+
+def test_a_row_without_token_fields_reads_as_not_measured(project):
+    result = score_answers(
+        project,
+        {(repeat, turn): CLEAN for repeat in (1, 2) for turn in (1, 2, 3)},
+    )
+    stats = result.styles["alpha"]
+    assert stats["depth"] == {
+        "final": {"1": None, "2": None},
+        "mean_final": None,
+        "window_fraction": None,
+    }
+    assert all(detail["context_tokens"] is None for detail in stats["turns"])
+
+
+def test_an_unmeasured_depth_with_a_target_warns(project):
+    result = score_answers(
+        project,
+        {(repeat, turn): CLEAN for repeat in (1, 2) for turn in (1, 2, 3)},
+        depth_target=0.6,
+    )
+    assert any("cannot be checked" in warning for warning in result.warnings)
+
+
+def test_project_script_replays_the_cache_arithmetic(tmp_path):
+    data = {
+        "session": {
+            "id": "est",
+            "description": "A sizing script.",
+            "turns": [
+                {"id": "turn-01", "text": "a" * 4000},
+                {"id": "turn-02", "text": "b" * 4000},
+            ],
+        }
+    }
+    path = tmp_path / "est.yaml"
+    path.write_text(yaml.safe_dump(data))
+    projection = project_script(load_session_script(path), 200_000)
+    assert projection["material_tokens"] == 2_000
+    # base 9,500 + material 2,000 + one carried answer of 550.
+    assert projection["final_depth"] == 12_050
+    # Turn 1 reads the base; turn 2 reads base + material 1. The
+    # answer of turn 1 is not cached yet: turn 2 writes it.
+    assert projection["session_cache_read_tokens"] == 9_500 + 10_500
+    # Turn 1 writes its material; turn 2 adds the previous answer.
+    assert projection["session_cache_creation_tokens"] == 1_000 + 1_550
+    assert projection["session_output_tokens"] == 1_100
+    assert projection["window_fraction"] == 0.06
+
+
+def test_cli_estimate_makes_no_call_and_exits_0(project, capsys):
+    runner = FakeSessionRunner()
+    exit_code = run_cli(
+        project, runner, "--estimate", *deep_args(project), turns=None, generate=False
+    )
+    assert exit_code == 0
+    assert runner.calls == []
+    assert not (project / "run").exists()
+    out = capsys.readouterr().out
+    assert "Deep-run estimate: 2 session(s)" in out
+    assert "projected final depth" in out
+    assert "uncached-token equivalents" in out
+
+
+def test_cli_estimate_requires_scripts(project):
+    with pytest.raises(SystemExit) as excinfo:
+        run_cli(project, FakeSessionRunner(), "--estimate", generate=False)
+    assert excinfo.value.code == 2

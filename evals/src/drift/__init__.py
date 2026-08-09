@@ -5,7 +5,15 @@ checks every turn. The report shows the violation-rate series over
 turn positions and a verdict per style: flat or growing.
 """
 
-from .analysis import DriftResult, load_sessions, score_sessions
+from .analysis import (
+    CONTEXT_WINDOW,
+    DEPTH_TARGET,
+    DriftResult,
+    context_tokens,
+    load_sessions,
+    score_sessions,
+)
+from .estimate import estimate_deep_run, estimate_lines, project_script
 from .report import build_drift_report, build_drift_summary
 from .session import (
     SESSION_FLAGS,
@@ -19,16 +27,22 @@ from .session import (
 )
 
 __all__ = [
+    "CONTEXT_WINDOW",
+    "DEPTH_TARGET",
     "SESSION_FLAGS",
     "DriftResult",
     "SessionTurn",
     "build_drift_report",
     "build_drift_summary",
     "build_session_argv",
+    "context_tokens",
     "deep_script",
+    "estimate_deep_run",
+    "estimate_lines",
     "generate_turn",
     "load_session_script",
     "load_sessions",
+    "project_script",
     "run_session",
     "score_sessions",
     "session_script",
