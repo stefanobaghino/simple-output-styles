@@ -236,10 +236,15 @@ variable) instead of the inherited one. Thus zero user plugins load,
 and the runner asserts that every call reports exactly the declared
 plugins: the harness plugin where the call passes `--plugin-dir`,
 and none otherwise. A leak fails the call without a retry. The
-credential has two routes: when `CLAUDE_CODE_OAUTH_TOKEN` is set
-(see `claude setup-token`), the token passes through and nothing is
-written; else an existing `~/.claude/.credentials.json` is copied
-into the hermetic directory with mode 600 and removed with it. The
+credential has three routes: when `ANTHROPIC_API_KEY` is set, the
+key passes through, the calls bill the Console account of the key,
+and the subscription credential stays out of the call; else when
+`CLAUDE_CODE_OAUTH_TOKEN` is set (see `claude setup-token`), the
+token passes through and nothing is written; else an existing
+`~/.claude/.credentials.json` is copied into the hermetic directory
+with mode 600 and removed with it. The billing route changes the
+invoice of a call and never its answer, so it opens no
+comparability era, like the cache lifetime below. The
 credential never lands in the run data. Without a credential, the
 tool warns and proceeds, and the first live call fails with zero
 tokens spent. The hermetic environment also forces the 5-minute
@@ -253,7 +258,8 @@ never its answer, so the variable stays outside the config manifest
 on purpose and opens no comparability era.
 The provenance records the config mode, the manifest
 hash of the declared config inputs, the resolved absolute path of
-the `claude` binary, and the names of the passed variables. The
+the `claude` binary, the credential route (`credential_source`),
+and the names of the passed variables. The
 config mode marks a comparability era: a run from before the
 hermetic directory saw the user plugins, so old runs and new runs
 warn in a comparison.

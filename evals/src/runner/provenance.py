@@ -14,7 +14,14 @@ from importlib import metadata
 from pathlib import Path
 
 from .generate import ISOLATION_FLAGS, WORKDIR_MODE
-from .hermetic import CACHE_TTL_VAR, CONFIG_DIR_VAR, CONFIG_MODE, ENV_WHITELIST, TOKEN_VAR
+from .hermetic import (
+    API_KEY_VAR,
+    CACHE_TTL_VAR,
+    CONFIG_DIR_VAR,
+    CONFIG_MODE,
+    ENV_WHITELIST,
+    TOKEN_VAR,
+)
 
 LINTER_PACKAGES = ("spacy", "en-core-web-sm")
 
@@ -80,6 +87,7 @@ def build_provenance(
     cli_version: str | None,
     claude_binary: str | None = None,
     config_manifest_sha256: str | None = None,
+    credential_source: str | None = None,
 ) -> dict:
     style_files = {style: plugin_dir / "output-styles" / f"{style}.md" for style in sorted(styles)}
     # A deep drift run reads no prompt file: its inputs are the session
@@ -99,9 +107,15 @@ def build_provenance(
             "config": CONFIG_MODE,
             "config_manifest_sha256": config_manifest_sha256,
             "claude_binary": claude_binary,
+            # The route of the credential ("api_key", "token", "file",
+            # or "none"): which account the calls billed. Billing is
+            # not a comparability condition, so the comparison never
+            # checks this field.
+            "credential_source": credential_source,
             # The variable names of the whitelisted environment. The
-            # values never land here.
-            "env_passed": [*ENV_WHITELIST, CONFIG_DIR_VAR, TOKEN_VAR, CACHE_TTL_VAR],
+            # values never land here. At most one of the two
+            # credential variables passes on a call.
+            "env_passed": [*ENV_WHITELIST, CONFIG_DIR_VAR, API_KEY_VAR, TOKEN_VAR, CACHE_TTL_VAR],
             "flags": list(ISOLATION_FLAGS),
             "settings": {
                 "base": {"disableAllHooks": True},

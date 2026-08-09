@@ -316,6 +316,7 @@ def main(argv: list[str] | None = None, run: Runner = subprocess_runner) -> int:
         cli_version=cli_version,
         claude_binary=hermetic.binary,
         config_manifest_sha256=hermetic.manifest_sha256,
+        credential_source=hermetic.credential_source,
     )
     if args.screening:
         provenance["screening"] = screening_provenance(prompts, full_count)
