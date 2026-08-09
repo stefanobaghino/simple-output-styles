@@ -43,6 +43,7 @@ from runner.generate import (
     PluginLeakError,
     Runner,
     assert_declared_plugins,
+    cache_creation_split,
     parse_events,
     subprocess_runner,
 )
@@ -443,6 +444,9 @@ class JudgeSession:
             "duration_ms": int(result.get("duration_ms", 0)),
             "wall_ms": wall_ms,
         }
+        split = cache_creation_split(usage)
+        if split is not None:
+            row["cache_creation"] = split
         if extra:
             row.update(extra)
         with self.lock:

@@ -24,6 +24,7 @@ from runner.generate import (
     GenerationError,
     Runner,
     assert_declared_plugins,
+    cache_creation_split,
     parse_events,
     plugin_name,
     style_reference,
@@ -39,7 +40,9 @@ USAGE_FIELDS = ("input_tokens", "cache_creation_input_tokens", "cache_read_input
 # The price of each token kind, as a ratio against one uncached input
 # token: a cache write costs 1.25 and a cache read costs 0.1. The
 # weighted overhead is thus in uncached-token equivalents, so the
-# number holds under any absolute price.
+# number holds under any absolute price. The write ratio is the
+# 5-minute rate, which the hermetic environment forces on every
+# call; the 1-hour rate would be 2.
 PRICE_WEIGHTS = {
     "input_tokens": 1.0,
     "cache_creation_input_tokens": 1.25,
@@ -114,6 +117,9 @@ def _run_arm(
             f"{name}: the usage reports zero input tokens, so the reading is invalid"
         )
     arm["output_tokens"] = int(usage.get("output_tokens", 0))
+    split = cache_creation_split(usage)
+    if split is not None:
+        arm["cache_creation"] = split
     arm["duration_ms"] = int(result.get("duration_ms", 0))
     arm["wall_ms"] = wall_ms
     return arm

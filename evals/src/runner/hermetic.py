@@ -15,6 +15,10 @@ hermetic directory with mode 600 and removed with it. The credential
 never lands in the run data. Without a credential, the invocation
 warns and proceeds: a call without a valid credential fails with
 zero tokens spent, so the failure is cheap and loud.
+
+The environment also forces the 5-minute prompt-cache lifetime on
+every call, because caching is a billing condition, not a call
+condition: see CACHE_TTL_VAR.
 """
 
 from __future__ import annotations
@@ -43,9 +47,19 @@ TOKEN_VAR = "CLAUDE_CODE_OAUTH_TOKEN"
 CREDENTIALS_FILE = ".credentials.json"
 
 # The environment of a call: these variables pass through from the
-# parent, plus CONFIG_DIR_VAR, plus TOKEN_VAR when set. Everything
-# else stays out.
+# parent, plus CONFIG_DIR_VAR, plus TOKEN_VAR when set, plus
+# CACHE_TTL_VAR. Everything else stays out.
 ENV_WHITELIST = ("HOME", "PATH", "TERM", "USER")
+
+# Every call forces the 5-minute prompt-cache lifetime. On
+# subscription billing the CLI requests the 1-hour lifetime, whose
+# cache writes cost 2 times an uncached token against 1.25 for the
+# 5-minute lifetime. The harness re-reads its cache within minutes,
+# and a cache read refreshes the lifetime, so the shorter lifetime
+# loses no reads and cuts the write bill. The variable changes the
+# billing of a call and never its answer, so it stays outside the
+# manifest declaration below on purpose: no comparability era opens.
+CACHE_TTL_VAR = "FORCE_PROMPT_CACHING_5M"
 
 # The declared file inputs of the hermetic directory, as a map from
 # relative path to sha256. The map is empty at this time, because an
@@ -107,6 +121,7 @@ def build_env(config_dir: Path, environ: Mapping[str, str]) -> dict[str, str]:
     env[CONFIG_DIR_VAR] = str(config_dir)
     if environ.get(TOKEN_VAR):
         env[TOKEN_VAR] = environ[TOKEN_VAR]
+    env[CACHE_TTL_VAR] = "1"
     return env
 
 

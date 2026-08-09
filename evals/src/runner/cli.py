@@ -292,6 +292,8 @@ def main(argv: list[str] | None = None, run: Runner = subprocess_runner) -> int:
                 "duration_ms": result.duration_ms,
                 "wall_ms": result.wall_ms,
             }
+            if result.cache_creation is not None:
+                line["cache_creation"] = result.cache_creation
             with lock:
                 done += 1
                 print(f"[{done}/{len(todo)}] {name}: {prompt['id']}", file=sys.stderr)

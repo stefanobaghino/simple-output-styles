@@ -25,6 +25,7 @@ from runner.generate import (
     GenerationError,
     Runner,
     assert_declared_plugins,
+    cache_creation_split,
     parse_events,
     plugin_name,
     style_reference,
@@ -48,6 +49,7 @@ class SessionTurn:
     input_tokens: int
     cache_creation_input_tokens: int
     cache_read_input_tokens: int
+    cache_creation: dict | None
     duration_ms: int
     wall_ms: int
 
@@ -117,6 +119,7 @@ def generate_turn(
         input_tokens=int(usage.get("input_tokens", 0)),
         cache_creation_input_tokens=int(usage.get("cache_creation_input_tokens", 0)),
         cache_read_input_tokens=int(usage.get("cache_read_input_tokens", 0)),
+        cache_creation=cache_creation_split(usage),
         duration_ms=int(result.get("duration_ms", 0)),
         wall_ms=wall_ms,
     )

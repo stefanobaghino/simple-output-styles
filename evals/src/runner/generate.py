@@ -97,8 +97,26 @@ class Generation:
     input_tokens: int
     cache_creation_input_tokens: int
     cache_read_input_tokens: int
+    cache_creation: dict | None
     duration_ms: int
     wall_ms: int
+
+
+def cache_creation_split(usage: dict) -> dict | None:
+    """The cache-write split by lifetime, when the CLI reports it.
+
+    The split states how many written tokens took the 5-minute and
+    the 1-hour cache lifetime, which bill at different rates. A CLI
+    from before the split reports none, and the row then omits the
+    field, which reads as "not measured".
+    """
+    split = usage.get("cache_creation")
+    if not isinstance(split, dict):
+        return None
+    return {
+        "ephemeral_5m_input_tokens": int(split.get("ephemeral_5m_input_tokens", 0)),
+        "ephemeral_1h_input_tokens": int(split.get("ephemeral_1h_input_tokens", 0)),
+    }
 
 
 def plugin_name(plugin_dir: Path) -> str:
@@ -198,6 +216,7 @@ def generate(
         input_tokens=int(usage.get("input_tokens", 0)),
         cache_creation_input_tokens=int(usage.get("cache_creation_input_tokens", 0)),
         cache_read_input_tokens=int(usage.get("cache_read_input_tokens", 0)),
+        cache_creation=cache_creation_split(usage),
         duration_ms=int(result.get("duration_ms", 0)),
         wall_ms=wall_ms,
     )

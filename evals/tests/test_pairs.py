@@ -35,7 +35,9 @@ HOLDOUT = HERE.parent / "prompts" / "holdout.yaml"
 TASK_TYPES = {"explanation", "code-review", "summarization", "debugging"}
 
 
-def stream_output(output_style="default", answer="ok", is_error=False, plugins=()):
+def stream_output(
+    output_style="default", answer="ok", is_error=False, plugins=(), cache_creation=None
+):
     init = {
         "type": "system",
         "subtype": "init",
@@ -59,6 +61,8 @@ def stream_output(output_style="default", answer="ok", is_error=False, plugins=(
         "modelUsage": {"claude-sonnet-5": {}},
         "duration_ms": 100,
     }
+    if cache_creation is not None:
+        result["usage"]["cache_creation"] = cache_creation
     return "\n".join(json.dumps(event) for event in (init, result))
 
 
@@ -70,15 +74,19 @@ def style_of(argv):
 class FakeRunner:
     """Returns stream-json output that matches the requested style."""
 
-    def __init__(self):
+    def __init__(self, cache_creation=None):
         self.calls = []
+        self.cache_creation = cache_creation
 
     def __call__(self, argv, cwd, env=None):
         self.calls.append(argv)
         style = style_of(argv)
         plugins = ("test-plugin",) if "--plugin-dir" in argv else ()
         return stream_output(
-            output_style=style or "default", answer=f"answer under {style}", plugins=plugins
+            output_style=style or "default",
+            answer=f"answer under {style}",
+            plugins=plugins,
+            cache_creation=self.cache_creation,
         )
 
 
@@ -168,8 +176,19 @@ def test_generate_parses_the_stream(tmp_path):
     assert result.input_tokens == 3
     assert result.cache_creation_input_tokens == 2
     assert result.cache_read_input_tokens == 1
+    assert result.cache_creation is None
     assert result.plugins == ("test-plugin",)
     assert isinstance(result.wall_ms, int)
+
+
+def test_generate_records_the_cache_write_split_when_the_cli_reports_it(tmp_path):
+    def run(argv, cwd, env=None):
+        return stream_output(
+            cache_creation={"ephemeral_5m_input_tokens": 2, "ephemeral_1h_input_tokens": 0}
+        )
+
+    result = generate("prompt", "sonnet", None, None, tmp_path, run=run)
+    assert result.cache_creation == {"ephemeral_5m_input_tokens": 2, "ephemeral_1h_input_tokens": 0}
 
 
 def test_generate_rejects_a_wrong_active_style(tmp_path):
@@ -273,6 +292,21 @@ def run_cli_default_out(project, runner, *extra):
         ],
         run=runner,
     )
+
+
+def test_an_answer_row_records_the_cache_write_split_when_reported(project):
+    split = {"ephemeral_5m_input_tokens": 2, "ephemeral_1h_input_tokens": 0}
+    assert run_cli(project, FakeRunner(cache_creation=split)) == 0
+    out = project / "run"
+    answers = [json.loads(line) for line in (out / "answers.jsonl").read_text().splitlines()]
+    assert all(a["cache_creation"] == split for a in answers)
+
+
+def test_an_answer_row_omits_the_cache_write_split_without_a_report(project):
+    assert run_cli(project, FakeRunner()) == 0
+    out = project / "run"
+    answers = [json.loads(line) for line in (out / "answers.jsonl").read_text().splitlines()]
+    assert all("cache_creation" not in a for a in answers)
 
 
 def test_cli_produces_a_complete_run(project):

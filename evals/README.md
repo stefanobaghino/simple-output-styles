@@ -242,7 +242,16 @@ written; else an existing `~/.claude/.credentials.json` is copied
 into the hermetic directory with mode 600 and removed with it. The
 credential never lands in the run data. Without a credential, the
 tool warns and proceeds, and the first live call fails with zero
-tokens spent. The provenance records the config mode, the manifest
+tokens spent. The hermetic environment also forces the 5-minute
+prompt-cache lifetime on every call (`FORCE_PROMPT_CACHING_5M`),
+because a subscription-billed call defaults to the 1-hour lifetime,
+whose cache writes cost 2 uncached-token equivalents against 1.25.
+The harness re-reads its cache within minutes, and a cache read
+refreshes the lifetime, so the shorter lifetime loses no reads and
+only cuts the write bill. Caching changes the billing of a call and
+never its answer, so the variable stays outside the config manifest
+on purpose and opens no comparability era.
+The provenance records the config mode, the manifest
 hash of the declared config inputs, the resolved absolute path of
 the `claude` binary, and the names of the passed variables. The
 config mode marks a comparability era: a run from before the
@@ -269,7 +278,11 @@ itself spends, apart from what the styles cost. The run report,
 the cost report, the reader-value report, the content-loss report,
 the clarity-ranking report, and the drift report state the totals
 of their own calls in a harness-spend section, with the cache-read
-share of the input. A row from before the token fields reads as
+share of the input. A call row also records the cache-write split
+by lifetime (`cache_creation`) when the CLI reports it, and the
+spend sections state the split totals, so a run shows which
+lifetime its writes billed at. A row from before the token fields
+or the split reads as
 "not measured" here as well, and this measurement also changes no
 call condition, so old runs stay comparable.
 The judge prompts stay as they are on purpose, after a measured

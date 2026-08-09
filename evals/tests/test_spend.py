@@ -54,6 +54,28 @@ def test_a_zero_input_total_has_no_share():
     assert spend_summary([zero])["cache_read_share"] is None
 
 
+def test_summary_totals_the_cache_write_split_when_rows_hold_one():
+    rows = [
+        dict(ROW, cache_creation={"ephemeral_5m_input_tokens": 2, "ephemeral_1h_input_tokens": 0}),
+        dict(ROW),
+    ]
+    spend = spend_summary(rows)
+    assert spend["cache_write_5m_tokens"] == 2
+    assert spend["cache_write_1h_tokens"] == 0
+
+
+def test_summary_without_a_split_row_states_no_split():
+    assert "cache_write_5m_tokens" not in spend_summary([dict(ROW)])
+
+
+def test_section_states_the_cache_write_split():
+    rows = [
+        dict(ROW, cache_creation={"ephemeral_5m_input_tokens": 2, "ephemeral_1h_input_tokens": 3})
+    ]
+    text = "\n".join(spend_section(spend_summary(rows)))
+    assert "Cache writes by lifetime: 2 at 5 minutes, 3 at 1 hour." in text
+
+
 def test_section_states_the_totals():
     text = "\n".join(spend_section(spend_summary([dict(ROW)])))
     assert "## Harness spend" in text
