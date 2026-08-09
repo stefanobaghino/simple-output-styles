@@ -135,6 +135,7 @@ def _generate(
         cli_version=cli_version,
         claude_binary=hermetic.binary,
         config_manifest_sha256=hermetic.manifest_sha256,
+        credential_source=hermetic.credential_source,
     )
     provenance["conditions"]["flags"] = list(SESSION_FLAGS)
     provenance["conditions"]["settings"] = {

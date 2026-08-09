@@ -11,6 +11,7 @@ import pytest
 from runner import hermetic
 from runner.generate import GenerationError, subprocess_runner
 from runner.hermetic import (
+    API_KEY_VAR,
     CACHE_TTL_VAR,
     CONFIG_DIR_VAR,
     CREDENTIALS_FILE,
@@ -114,6 +115,29 @@ def test_the_forced_cache_lifetime_opens_no_era():
         (Path(__file__).parent.parent / "runs" / "2026-08-08" / "provenance.json").read_text()
     )
     assert manifest_sha256() == stored["conditions"]["config_manifest_sha256"]
+
+
+def test_hermetic_env_passes_the_api_key_through(tmp_path):
+    environ = base_environ(tmp_path, **{API_KEY_VAR: "the-key"})
+    with hermetic_call("test", environ=environ) as h:
+        assert h.env[API_KEY_VAR] == "the-key"
+        assert h.credential_source == "api_key"
+        assert not (h.config_dir / CREDENTIALS_FILE).exists()
+
+
+def test_the_api_key_silences_the_subscription_credential(tmp_path):
+    # With the key set, the call must see no subscription credential
+    # at all: which account pays must never depend on a preference
+    # inside the CLI.
+    environ = base_environ(tmp_path, **{API_KEY_VAR: "the-key", TOKEN_VAR: "the-token"})
+    source = Path(environ["HOME"]) / ".claude"
+    source.mkdir()
+    (source / CREDENTIALS_FILE).write_text('{"token": "secret"}')
+
+    with hermetic_call("test", environ=environ) as h:
+        assert h.credential_source == "api_key"
+        assert TOKEN_VAR not in h.env
+        assert not (h.config_dir / CREDENTIALS_FILE).exists()
 
 
 def test_hermetic_env_passes_the_oauth_token_through(tmp_path):

@@ -8,13 +8,16 @@ through CLAUDE_CONFIG_DIR, and the call runs under a whitelisted
 environment instead of the inherited one. Thus zero user plugins
 load, and a config edit on the machine cannot change a call.
 
-The credential has two routes. When CLAUDE_CODE_OAUTH_TOKEN is set,
-the token passes through in the environment and nothing is written.
-Else, an existing ~/.claude/.credentials.json is copied into the
-hermetic directory with mode 600 and removed with it. The credential
-never lands in the run data. Without a credential, the invocation
-warns and proceeds: a call without a valid credential fails with
-zero tokens spent, so the failure is cheap and loud.
+The credential has three routes. When ANTHROPIC_API_KEY is set, the
+key passes through in the environment, the calls bill the Console
+account of the key, and the subscription credential stays out. Else,
+when CLAUDE_CODE_OAUTH_TOKEN is set, the token passes through in
+the environment and nothing is written. Else, an existing
+~/.claude/.credentials.json is copied into the hermetic directory
+with mode 600 and removed with it. The credential never lands in
+the run data. Without a credential, the invocation warns and
+proceeds: a call without a valid credential fails with zero tokens
+spent, so the failure is cheap and loud.
 
 The environment also forces the 5-minute prompt-cache lifetime on
 every call, because caching is a billing condition, not a call
@@ -43,12 +46,20 @@ from .generate import isolated_workdir
 CONFIG_MODE = "hermetic"
 
 CONFIG_DIR_VAR = "CLAUDE_CONFIG_DIR"
+# The API key routes the bill of a call to the Console account of
+# the key instead of the subscription of the machine. When the key
+# is set, it is the only credential a call sees: the token and the
+# credential file stay out, so which account pays is never a race
+# between two credentials. The route changes the bill of a call and
+# never its answer, so it stays outside the manifest declaration
+# below, like CACHE_TTL_VAR: no comparability era opens.
+API_KEY_VAR = "ANTHROPIC_API_KEY"
 TOKEN_VAR = "CLAUDE_CODE_OAUTH_TOKEN"
 CREDENTIALS_FILE = ".credentials.json"
 
 # The environment of a call: these variables pass through from the
-# parent, plus CONFIG_DIR_VAR, plus TOKEN_VAR when set, plus
-# CACHE_TTL_VAR. Everything else stays out.
+# parent, plus CONFIG_DIR_VAR, plus at most one credential variable
+# when set, plus CACHE_TTL_VAR. Everything else stays out.
 ENV_WHITELIST = ("HOME", "PATH", "TERM", "USER")
 
 # Every call forces the 5-minute prompt-cache lifetime. On
@@ -101,10 +112,14 @@ def manifest_sha256() -> str:
 def resolve_credential(environ: Mapping[str, str]) -> tuple[str, str | None]:
     """Find the credential of a call.
 
-    Returns the route and the file payload: ("token", None) when the
-    token variable is set, ("file", payload) when the user credentials
-    file exists, ("none", None) otherwise.
+    Returns the route and the file payload: ("api_key", None) when
+    the API key variable is set, ("token", None) when the token
+    variable is set, ("file", payload) when the user credentials
+    file exists, ("none", None) otherwise. The first match wins, so
+    the API key silences the subscription routes.
     """
+    if environ.get(API_KEY_VAR):
+        return "api_key", None
     if environ.get(TOKEN_VAR):
         return "token", None
     home = environ.get("HOME")
@@ -119,7 +134,9 @@ def build_env(config_dir: Path, environ: Mapping[str, str]) -> dict[str, str]:
     """The whitelisted environment of a call."""
     env = {name: environ[name] for name in ENV_WHITELIST if name in environ}
     env[CONFIG_DIR_VAR] = str(config_dir)
-    if environ.get(TOKEN_VAR):
+    if environ.get(API_KEY_VAR):
+        env[API_KEY_VAR] = environ[API_KEY_VAR]
+    elif environ.get(TOKEN_VAR):
         env[TOKEN_VAR] = environ[TOKEN_VAR]
     env[CACHE_TTL_VAR] = "1"
     return env
