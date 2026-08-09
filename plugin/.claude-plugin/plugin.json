@@ -1,6 +1,5 @@
 {
   "name": "simple-output-styles",
-  "displayName": "Simple output styles",
   "description": "Output styles that make Claude write clearly, for everyone.",
   "author": {
     "name": "Stefano Baghino",
