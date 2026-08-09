@@ -21,7 +21,8 @@ from runner.hermetic import hermetic_call
 from runner.provenance import build_provenance, claude_version, linter_toolchain, sha256_of
 from runner.spend import spend_summary
 
-from .analysis import load_sessions, score_sessions
+from .analysis import CONTEXT_WINDOW, DEPTH_TARGET, load_sessions, score_sessions
+from .estimate import estimate_deep_run, estimate_lines
 from .report import build_drift_report, build_drift_summary
 from .session import SESSION_FLAGS, deep_script, load_session_script, run_session, session_script
 
@@ -235,6 +236,26 @@ def main(argv: list[str] | None = None, run: Runner = subprocess_runner) -> int:
         "per 100 sentences per turn (default: the 0.95 quantile of a "
         "per-style permutation null)",
     )
+    parser.add_argument(
+        "--context-window",
+        type=int,
+        default=CONTEXT_WINDOW,
+        help="the context window in tokens, for the depth fraction "
+        "(the stream-json events do not carry the size)",
+    )
+    parser.add_argument(
+        "--depth-target",
+        type=float,
+        default=None,
+        help="the target mean final depth, as a fraction of the window; "
+        "a style under the target warns (default: 0.6 for a deep run, "
+        "no target for a shallow run; 0 disables the check)",
+    )
+    parser.add_argument(
+        "--estimate",
+        action="store_true",
+        help="print the projected depth and spend of the deep run and exit, without any call",
+    )
     parser.add_argument("--out", help="run directory (default: runs/<date>-drift)")
     args = parser.parse_args(argv)
 
@@ -271,6 +292,16 @@ def main(argv: list[str] | None = None, run: Runner = subprocess_runner) -> int:
 
     if args.turns < 2:
         raise _fail("the series needs at least 2 turns")
+    if args.context_window < 1:
+        raise _fail("the context window needs at least 1 token")
+    if args.depth_target is None:
+        depth_target = DEPTH_TARGET if scripts is not None else None
+    elif args.depth_target == 0:
+        depth_target = None
+    elif 0 < args.depth_target <= 1:
+        depth_target = args.depth_target
+    else:
+        raise _fail("the depth target is a fraction of the window, between 0 and 1")
     rules_dir = Path(args.rules_dir)
     styles = args.styles or discover_styles(rules_dir)
     if not styles:
@@ -279,6 +310,20 @@ def main(argv: list[str] | None = None, run: Runner = subprocess_runner) -> int:
     for style, rule_file in rule_files.items():
         if not rule_file.exists():
             raise _fail(f"{style}: no rule file at {rule_file}")
+
+    if args.estimate:
+        if scripts is None:
+            raise _fail("--estimate needs --scripts: the projection covers a deep run")
+        estimate = estimate_deep_run(
+            scripts=scripts,
+            style_count=len(styles),
+            repeats=args.repeats,
+            context_window=args.context_window,
+            depth_target=depth_target,
+        )
+        for line in estimate_lines(estimate):
+            print(line)
+        return 0
 
     suffix = "-drift-deep" if scripts is not None else "-drift"
     out = (
@@ -308,6 +353,8 @@ def main(argv: list[str] | None = None, run: Runner = subprocess_runner) -> int:
         turns=args.turns,
         repeats=args.repeats,
         threshold=args.slope_threshold,
+        context_window=args.context_window,
+        depth_target=depth_target,
     )
     if all(stats["complete_sessions"] == 0 for stats in result.styles.values()):
         raise _fail(f"{sessions_path}: no style has a complete session")
@@ -325,6 +372,8 @@ def main(argv: list[str] | None = None, run: Runner = subprocess_runner) -> int:
         turns=args.turns,
         repeats=args.repeats,
         slope_threshold=args.slope_threshold,
+        context_window=args.context_window,
+        depth_target=depth_target,
         mode="deep" if scripts is not None else None,
         scripts={
             str(repeat): scripts[(repeat - 1) % len(scripts)]["id"]

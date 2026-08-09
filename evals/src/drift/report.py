@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import statistics
 from datetime import UTC, datetime
 
 from runner.spend import spend_section
@@ -72,6 +73,8 @@ def build_drift_summary(
     turns: int,
     repeats: int,
     slope_threshold: float | None,
+    context_window: int,
+    depth_target: float | None,
     styles: dict[str, dict],
     rules: dict[str, dict],
     toolchain: dict,
@@ -86,14 +89,18 @@ def build_drift_summary(
         "turns": turns,
         "repeats": repeats,
         "slope_threshold": slope_threshold,
+        "context_window": context_window,
         "styles": styles,
         "rules": rules,
         "linter_toolchain": toolchain,
         "run_linter_toolchain": run_toolchain,
         "warnings": warnings,
     }
-    # The keys land only in deep mode, so a shallow summary stays
-    # byte-identical to the pre-script era.
+    # A target key lands only when a target exists, so a shallow
+    # summary carries none by default; the mode keys land only in
+    # deep mode, like before.
+    if depth_target is not None:
+        summary["depth_target"] = depth_target
     if mode is not None:
         summary["mode"] = mode
     if scripts is not None:
@@ -117,20 +124,46 @@ def _style_section(style: str, stats: dict, summary: dict) -> list[str]:
         threshold = f"{stats['threshold']} ({quantile}, seed {null['seed']})"
     else:
         threshold = f"{stats['threshold']} (override; the null quantile is {null['threshold']})"
+    depth = stats["depth"]
+    window = summary["context_window"]
+    if depth["mean_final"] is None:
+        depth_line = "- Final depth: not measured"
+    else:
+        per_repeat = " / ".join(
+            f"{depth['final'][str(repeat)]:,}"
+            if isinstance(depth["final"].get(str(repeat)), int)
+            else "-"
+            for repeat in range(1, repeats + 1)
+        )
+        depth_line = (
+            f"- Final depth: mean {depth['mean_final']:,} tokens, "
+            f"{100 * depth['mean_final'] / window:.1f} percent of the "
+            f"{window:,}-token window (repeats {per_repeat})"
+        )
     lines += [
         f"- Sessions: {stats['complete_sessions']}/{repeats} complete",
         f"- Slope of the pooled series: {stats['slope']} violations per 100 sentences per turn",
         f"- Slope threshold: {threshold}",
         f"- Null p-value: {null['p_value']} (the share of shuffled slopes at or above the slope)",
         f"- Verdict: {stats['verdict']}",
+        depth_line,
         "",
     ]
+    depth_by_turn: dict[int, list[int]] = {}
+    for detail in stats["turns"]:
+        value = detail.get("context_tokens")
+        if isinstance(value, int):
+            depth_by_turn.setdefault(detail["turn"], []).append(value)
     by_repeat = {session["repeat"]: session["series"] for session in stats["sessions"]}
-    header = ["Turn", "Pooled rate"] + [f"Repeat {repeat}" for repeat in range(1, repeats + 1)]
+    header = ["Turn", "Pooled rate", "Mean depth"] + [
+        f"Repeat {repeat}" for repeat in range(1, repeats + 1)
+    ]
     lines.append("| " + " | ".join(header) + " |")
     lines.append("|" + "---|" * len(header))
     for index in range(summary["turns"]):
-        cells = [str(index + 1), _rate(stats["pooled_series"][index])]
+        values = depth_by_turn.get(index + 1)
+        mean_depth = f"{round(statistics.mean(values)):,}" if values else "-"
+        cells = [str(index + 1), _rate(stats["pooled_series"][index]), mean_depth]
         for repeat in range(1, repeats + 1):
             series = by_repeat.get(repeat)
             cells.append(_rate(series[index]) if series is not None else "-")
@@ -153,6 +186,21 @@ def build_drift_report(summary: dict, spend: dict | None = None) -> str:
         for repeat, script_id in sorted(summary["scripts"].items(), key=lambda item: int(item[0])):
             lines.append(f"- Repeat {repeat}: script `{script_id}`")
         lines.append("")
+    depth_paragraph = (
+        "Each style section states the final context depth of its "
+        "sessions — the uncached input, the cache-write, and the "
+        "cache-read tokens of a call, summed — against the "
+        f"{summary['context_window']:,}-token context window "
+        "(`--context-window`)."
+    )
+    if summary.get("depth_target") is not None:
+        depth_paragraph += (
+            f" The depth target is {round(100 * summary['depth_target'])} "
+            "percent of the window: a style whose mean final depth misses "
+            "the target warns, because a flat verdict at a shallow depth "
+            "is weak evidence."
+        )
+    lines += [depth_paragraph, ""]
     for style in sorted(summary["styles"]):
         lines += _style_section(style, summary["styles"][style], summary)
     lines += spend_section(spend)

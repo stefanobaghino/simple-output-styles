@@ -28,7 +28,8 @@ drift report. It runs a scripted long session per style, several
 times, lints every turn, and shows the violation rate over turn
 positions with a verdict per style: flat or growing. A deep mode
 replaces the short scripted turns with coherent session scripts
-full of heavy material, so the sessions reach deep context. The eighth is a cross-run
+full of heavy material, so the sessions reach deep context, and
+the report states the measured depth against a target. The eighth is a cross-run
 comparison. It reads several runs with identical conditions and
 states, per style and axis, the spread across the runs: the error
 bar of the harness. The ninth is a clarity ranking. It runs blind
@@ -224,7 +225,7 @@ uv run style-loss runs/<date> [--judge] [--parallel N] [--reuse-from RUN]
 uv run style-rank runs/<date> [--judge] [--parallel N] [--reuse-from RUN]
 uv run style-agreement runs/<date> [--judge] [--model M] [--sample N] [--parallel N]
 uv run style-campaign [--runs N] [--budget W] [--probe-repeats N] [--screening] [--holdout] [--reuse-from RUN]
-uv run style-drift [--generate] [--scripts prompts/sessions/*.yaml] [--out runs/<date>-drift]
+uv run style-drift [--generate] [--scripts prompts/sessions/*.yaml] [--estimate] [--context-window N] [--depth-target F] [--out runs/<date>-drift]
 uv run style-compare runs/<a> runs/<b> [...] [--out runs/<date>-compare]
 uv run style-targets runs/<date> [--targets rules/targets.yaml] [--drift runs/<date>-drift]
 ```
@@ -553,6 +554,31 @@ script file, and the script per repeat; the shallow provenance
 does not change, so old shallow runs stay comparable. A change to
 a script file changes the measurement, like a change to the
 prompt set.
+
+Every drift report also states the context depth, because a flat
+verdict at a shallow depth is weak evidence. Per turn, the
+drift.json rows carry the context tokens of the call: the uncached
+input, the cache-write, and the cache-read tokens, summed. Per
+style, the report states the final depth of each session, the mean,
+and the fraction of the context window; the per-turn table adds a
+mean-depth column. The window size is a flag (`--context-window`,
+200000 by default), because the stream-json events do not carry
+it. A deep run also has a depth target: `--depth-target` sets the
+target mean final depth as a fraction of the window, 0.6 by
+default for a deep run — clearly below the compaction region near
+0.8, because compaction rewrites the context and changes what the
+test measures. A shallow run has no target unless the flag sets
+one, and 0 disables the check. A style whose mean final depth
+misses the target warns, and the tool exits 1. The depth fields
+are a pure function of the stored rows and the flags, so a rescore
+of an old run states them too, and no comparability era opens.
+`--estimate` prints a projection of a deep run before any call:
+the call count, the projected final depth per script against the
+window and the target, and the projected spend in uncached-token
+equivalents. The projection rests on three constants calibrated
+against runs/2026-08-08-drift — the context base, the answer
+length, and a bytes-per-token ratio — so it is an estimate that
+leans low on code and log material; the run measures the truth.
 
 The cross-run comparison reads the stored artifacts of two or more
 runs and writes `compare.json` and `compare.md` into its own
@@ -903,7 +929,7 @@ runs/<YYYY-MM-DD>-holdout/
 runs/<YYYY-MM-DD>-drift/
   provenance.json   # like the pair runs, plus the session script per repeat
   sessions.jsonl    # one line per turn, with the session-id chain
-  drift.json        # pooled rate series, slope, derived threshold, null p-value, and verdict per style
+  drift.json        # pooled rate series, slope, derived threshold, null p-value, verdict, and context depth per style
   drift.md          # the drift report for a human
 
 runs/<YYYY-MM-DD>-drift-deep/

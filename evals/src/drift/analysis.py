@@ -8,7 +8,10 @@ from a per-style permutation null: the turn order of each session
 shuffles, the pooled slope refits, and the threshold is the 0.95
 nearest-rank quantile of the shuffled slopes. The same null yields a
 one-sided p-value, stated for information; the verdict rests on the
-threshold alone.
+threshold alone. The scoring also states the context depth: per
+turn, the token sum of the call, and per style, the final depth of
+each session against the context window, with a warning when a
+depth target exists and the mean final depth misses it.
 """
 
 from __future__ import annotations
@@ -37,10 +40,30 @@ QUANTILE = 0.95
 """The one-sided null quantile that becomes the derived threshold."""
 
 
+CONTEXT_WINDOW = 200_000
+"""The assumed context window in tokens; the stream-json events do
+not carry the size, so the depth fraction rests on this flag."""
+
+DEPTH_TARGET = 0.6
+"""The default target of a deep run: the mean final depth as a
+fraction of the window. The value sits clearly below the compaction
+region of Claude Code (near 0.8), because compaction rewrites the
+context and changes what the test measures."""
+
+
 @dataclass
 class DriftResult:
     styles: dict[str, dict] = field(default_factory=dict)
     warnings: list[str] = field(default_factory=list)
+
+
+def context_tokens(row: dict) -> int | None:
+    """The context depth of one call: the uncached input, the
+    cache-write, and the cache-read tokens, summed. None for a row
+    from before the token fields."""
+    if not isinstance(row.get("input_tokens"), int):
+        return None
+    return row["input_tokens"] + row["cache_creation_input_tokens"] + row["cache_read_input_tokens"]
 
 
 def load_sessions(path: Path) -> dict[Key, dict]:
@@ -69,6 +92,7 @@ def _turn_row(row: dict, linter: Linter) -> dict:
         "violations": len(report.violations),
         "by_rule": dict(sorted(Counter(v.rule for v in report.violations).items())),
         "rate": round(report.rate, 2),
+        "context_tokens": context_tokens(row),
         "answer_sha256": hashlib.sha256(row["answer"].encode("utf-8")).hexdigest(),
     }
 
@@ -128,6 +152,8 @@ def score_sessions(
     threshold: float | None = None,
     permutations: int = PERMUTATIONS,
     seed: int = SEED,
+    context_window: int = CONTEXT_WINDOW,
+    depth_target: float | None = None,
 ) -> DriftResult:
     """Score every style of the linters mapping against the stored rows."""
     result = DriftResult()
@@ -136,6 +162,7 @@ def score_sessions(
         sessions: list[dict] = []
         session_pairs: list[list[tuple[int, int]]] = []
         turn_details: list[dict] = []
+        finals: dict[str, int | None] = {}
         for repeat in range(1, repeats + 1):
             present = {turn for (s, r, turn) in rows if s == style and r == repeat}
             if not present:
@@ -161,6 +188,17 @@ def score_sessions(
                 pairs.append((detail["violations"], detail["sentences"]))
             sessions.append({"repeat": repeat, "series": series})
             session_pairs.append(pairs)
+            finals[str(repeat)] = context_tokens(rows[(style, repeat, turns)])
+
+        measured = [depth for depth in finals.values() if depth is not None]
+        mean_final = round(statistics.mean(measured)) if measured else None
+        depth = {
+            "final": finals,
+            "mean_final": mean_final,
+            "window_fraction": (
+                round(mean_final / context_window, 3) if mean_final is not None else None
+            ),
+        }
 
         if not sessions:
             result.warnings.append(f"{style}: no complete session, so the style has no verdict")
@@ -174,9 +212,25 @@ def score_sessions(
                 "threshold_source": None,
                 "null": None,
                 "verdict": None,
+                "depth": depth,
                 "turns": [],
             }
             continue
+
+        if depth_target is not None:
+            if mean_final is None:
+                result.warnings.append(
+                    f"{style}: the final depth is not measured, "
+                    "so the depth target cannot be checked"
+                )
+            elif mean_final < depth_target * context_window:
+                result.warnings.append(
+                    f"{style}: the mean final depth is {mean_final:,} tokens, "
+                    f"{100 * mean_final / context_window:.1f} percent of the "
+                    f"{context_window:,}-token window — under the "
+                    f"{round(100 * depth_target)} percent target; a flat verdict "
+                    "at a shallow depth is weak evidence"
+                )
 
         pooled_series = _pooled_series(session_pairs, turns)
         slope, intercept = statistics.linear_regression(range(1, turns + 1), pooled_series)
@@ -198,6 +252,7 @@ def score_sessions(
                 "p_value": round(p_value, 4),
             },
             "verdict": "growing" if slope > effective else "flat",
+            "depth": depth,
             "turns": turn_details,
         }
     return result
