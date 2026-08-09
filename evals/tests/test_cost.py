@@ -236,6 +236,19 @@ def test_probe_measures_the_overhead(tmp_path):
         assert isinstance(arm["wall_ms"], int)
 
 
+def test_a_probe_arm_records_the_cache_write_split_when_reported(tmp_path):
+    plugin = make_plugin(tmp_path / "plugin")
+    split = {"ephemeral_5m_input_tokens": 400, "ephemeral_1h_input_tokens": 0}
+    runner = FakeProbeRunner(styled_usage=dict(STYLED_USAGE, cache_creation=split))
+    probe = probe_overhead(
+        styles=["alpha"], model="sonnet", plugin_dir=plugin, workdir=tmp_path, run=runner
+    )
+    styled_arms = [arm for arm in probe["arms"] if arm["arm"] == "alpha"]
+    unstyled_arms = [arm for arm in probe["arms"] if arm["arm"] == "unstyled"]
+    assert all(arm["cache_creation"] == split for arm in styled_arms)
+    assert all("cache_creation" not in arm for arm in unstyled_arms)
+
+
 def test_probe_repeats_give_the_overhead_a_spread(tmp_path):
     plugin = make_plugin(tmp_path / "plugin")
     creations = (400, 500, 450)

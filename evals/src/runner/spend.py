@@ -7,7 +7,9 @@ spends, and the cache-read share shows how much of the input comes
 from the prompt cache. The summary lands in the md reports only,
 because the raw rows already hold the machine-readable counts. Old
 rows predate the token fields, so the summary counts only the
-measured rows and states when none exist.
+measured rows and states when none exist. A row can also hold the
+cache-write split by lifetime; the summary states the split totals
+when any row holds one.
 """
 
 from __future__ import annotations
@@ -48,6 +50,16 @@ def spend_summary(rows: Iterable[dict]) -> dict | None:
         )
         share = round(counts["cache_read_input_tokens"] / input_total, 3) if input_total else None
         totals = {**counts, "cache_read_share": share}
+        splits = [
+            row["cache_creation"] for row in measured if isinstance(row.get("cache_creation"), dict)
+        ]
+        if splits:
+            totals["cache_write_5m_tokens"] = sum(
+                int(split.get("ephemeral_5m_input_tokens", 0)) for split in splits
+            )
+            totals["cache_write_1h_tokens"] = sum(
+                int(split.get("ephemeral_1h_input_tokens", 0)) for split in splits
+            )
     return {"calls": calls, "measured": len(measured), **totals}
 
 
@@ -75,6 +87,11 @@ def spend_section(spend: dict | None) -> list[str]:
             f"Output tokens: {spend['output_tokens']}."
         ),
         f"Cache-read share: {'not computable' if share is None else share}.",
-        "",
     ]
+    if "cache_write_5m_tokens" in spend:
+        lines.append(
+            f"Cache writes by lifetime: {spend['cache_write_5m_tokens']} at 5 minutes, "
+            f"{spend['cache_write_1h_tokens']} at 1 hour."
+        )
+    lines.append("")
     return lines

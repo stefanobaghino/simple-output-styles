@@ -43,6 +43,7 @@ def stream_output(
     init_session_id=None,
     is_error=False,
     plugins=("test-plugin",),
+    cache_creation=None,
 ):
     init = {
         "type": "system",
@@ -66,6 +67,8 @@ def stream_output(
         },
         "duration_ms": 100,
     }
+    if cache_creation is not None:
+        result["usage"]["cache_creation"] = cache_creation
     if session_id is not None:
         result["session_id"] = session_id
     return "\n".join(json.dumps(event) for event in (init, result))
@@ -84,9 +87,10 @@ class FakeSessionRunner:
     """Emits a fresh session id per call and tracks the turn number
     inside the current session, so the answer can vary per turn."""
 
-    def __init__(self, answer_for=lambda turn: CLEAN):
+    def __init__(self, answer_for=lambda turn: CLEAN, cache_creation=None):
         self.calls = []
         self.answer_for = answer_for
+        self.cache_creation = cache_creation
         self.count = 0
         self.turn = 0
 
@@ -97,6 +101,7 @@ class FakeSessionRunner:
         return stream_output(
             output_style=style_of(argv),
             answer=self.answer_for(self.turn),
+            cache_creation=self.cache_creation,
             session_id=f"sid-{self.count}",
         )
 
@@ -322,6 +327,18 @@ def test_cli_rescoring_needs_no_runner(project):
     del first["date"], second["date"]
     assert first == second
     assert first_md == second_md
+
+
+def test_a_session_row_records_the_cache_write_split_when_reported(project):
+    split = {"ephemeral_5m_input_tokens": 2, "ephemeral_1h_input_tokens": 0}
+    run_cli(project, FakeSessionRunner(cache_creation=split))
+    rows = load_rows(project)
+    assert all(row["cache_creation"] == split for row in rows)
+
+
+def test_a_session_row_omits_the_cache_write_split_without_a_report(project):
+    run_cli(project, FakeSessionRunner())
+    assert all("cache_creation" not in row for row in load_rows(project))
 
 
 def test_cli_without_sessions_and_without_generate_exits_2(project):

@@ -11,6 +11,7 @@ import pytest
 from runner import hermetic
 from runner.generate import GenerationError, subprocess_runner
 from runner.hermetic import (
+    CACHE_TTL_VAR,
     CONFIG_DIR_VAR,
     CREDENTIALS_FILE,
     ENV_WHITELIST,
@@ -95,9 +96,24 @@ def test_hermetic_call_hides_the_user_config(tmp_path):
 def test_hermetic_env_holds_only_the_whitelist(tmp_path):
     environ = base_environ(tmp_path, CANARY="leak", SHELL="/bin/zsh")
     with hermetic_call("test", environ=environ) as h:
-        assert set(h.env) == {*ENV_WHITELIST, CONFIG_DIR_VAR}
+        assert set(h.env) == {*ENV_WHITELIST, CONFIG_DIR_VAR, CACHE_TTL_VAR}
         for name in ENV_WHITELIST:
             assert h.env[name] == environ[name]
+
+
+def test_hermetic_env_forces_the_5_minute_cache_lifetime(tmp_path):
+    with hermetic_call("test", environ=base_environ(tmp_path)) as h:
+        assert h.env[CACHE_TTL_VAR] == "1"
+
+
+def test_the_forced_cache_lifetime_opens_no_era():
+    # The lifetime changes the billing of a call, never its answer,
+    # so the manifest hash must match the stored baseline: an era
+    # here would cut every new run off from the frozen field.
+    stored = json.loads(
+        (Path(__file__).parent.parent / "runs" / "2026-08-08" / "provenance.json").read_text()
+    )
+    assert manifest_sha256() == stored["conditions"]["config_manifest_sha256"]
 
 
 def test_hermetic_env_passes_the_oauth_token_through(tmp_path):

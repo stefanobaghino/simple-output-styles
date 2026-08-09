@@ -14,7 +14,7 @@ from importlib import metadata
 from pathlib import Path
 
 from .generate import ISOLATION_FLAGS, WORKDIR_MODE
-from .hermetic import CONFIG_DIR_VAR, CONFIG_MODE, ENV_WHITELIST, TOKEN_VAR
+from .hermetic import CACHE_TTL_VAR, CONFIG_DIR_VAR, CONFIG_MODE, ENV_WHITELIST, TOKEN_VAR
 
 LINTER_PACKAGES = ("spacy", "en-core-web-sm")
 
@@ -101,7 +101,7 @@ def build_provenance(
             "claude_binary": claude_binary,
             # The variable names of the whitelisted environment. The
             # values never land here.
-            "env_passed": [*ENV_WHITELIST, CONFIG_DIR_VAR, TOKEN_VAR],
+            "env_passed": [*ENV_WHITELIST, CONFIG_DIR_VAR, TOKEN_VAR, CACHE_TTL_VAR],
             "flags": list(ISOLATION_FLAGS),
             "settings": {
                 "base": {"disableAllHooks": True},

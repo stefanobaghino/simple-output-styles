@@ -60,6 +60,7 @@ def stream(result_text, output_style="default", model="claude-haiku-4-5-20251001
             "input_tokens": 3,
             "cache_creation_input_tokens": 2,
             "cache_read_input_tokens": 1,
+            "cache_creation": {"ephemeral_5m_input_tokens": 2, "ephemeral_1h_input_tokens": 0},
         },
         "duration_ms": 10,
     }
@@ -1034,6 +1035,8 @@ def test_cli_judge_writes_the_artifacts(project, capsys):
     assert all(row["input_tokens"] == 3 for row in call_rows)
     assert all(row["cache_creation_input_tokens"] == 2 for row in call_rows)
     assert all(row["cache_read_input_tokens"] == 1 for row in call_rows)
+    split = {"ephemeral_5m_input_tokens": 2, "ephemeral_1h_input_tokens": 0}
+    assert all(row["cache_creation"] == split for row in call_rows)
     report = (project / "run" / "value.md").read_text()
     assert "## Call timing" in report
     assert "## Harness spend" in report

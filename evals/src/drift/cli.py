@@ -103,6 +103,8 @@ def _generate(
                         "duration_ms": turn.duration_ms,
                         "wall_ms": turn.wall_ms,
                     }
+                    if turn.cache_creation is not None:
+                        row["cache_creation"] = turn.cache_creation
                     sessions_file.write(json.dumps(row, ensure_ascii=False) + "\n")
                     sessions_file.flush()
                     print(f"  [{turn_number}/{args.turns}] {prompt['id']}", file=sys.stderr)
