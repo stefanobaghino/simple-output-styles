@@ -156,7 +156,10 @@ below. Add a prompt with these steps:
    (`test_prompt_set_is_complete`).
 3. Update the count sentences in this document: the drift sentence
    ("15 of the N pair prompts") and the screening sentence ("8 of
-   the N prompts", with its design fractions).
+   the N prompts", with its design fractions). The measured
+   screening constants in `src/runner/screening.py` go stale with
+   the redrawn subset and need a re-measurement against a campaign
+   of the new era.
 
 A prompt edit opens a comparability era: the provenance records the
 sha256 of `prompts.yaml`, so new full runs warn against old runs in
@@ -753,12 +756,24 @@ full run. The subset draws 2 prompts per task type from the full
 prompt file, sorted and with seed 0, so every screening run uses
 the same 8 of the 32 prompts. By design, the generation calls are
 about 8% of a full campaign, and the judge calls are about 25% of
-one full run. These fractions are design numbers until a
-measurement against the baseline campaign replaces them, and they
-describe a run without reuse. A grown
-prompt set redraws the subset, so screening runs across a
-prompt-set change warn on the screening block of the provenance as
-well as on the prompt-set hash. The run
+one full run. The measurement against the baseline campaign
+(`runs/2026-08-08` and `runs/2026-08-08b`) grounds these design
+numbers in stored rows: restrict every stored call row of a run to
+the 8 subset prompt ids, divide by the run total, and count the 18
+cost-probe arms
+whole on both sides, because the probe is per style and repeat and
+does not shrink with the subset. A screening run then holds 24.8%
+and 24.5% of the calls of its run (8.3% and 8.2% of the 3-run
+campaign), 27.7% and 27.4% of the input tokens in uncached-token
+equivalents (an uncached token weighs 1, a cache write 1.25, a
+cache read 0.1), and 34.2% and 29.9% of the output tokens. The
+token shares sit above the call share because the seed-0 draw
+takes the last two sorted ids of every type, and those prompts
+draw the longest answers. The measurement describes a run without
+reuse, and it is era-scoped: a prompt-set change redraws the
+subset, stales the measured constants in
+`src/runner/screening.py`, and warns on the screening block of the
+provenance as well as on the prompt-set hash. The run
 lands under its own `-screening` directory family, the provenance
 carries a screening block, and every report of the run starts with
 a screening note, because the error bars of a screening run are

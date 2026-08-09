@@ -514,14 +514,19 @@ def test_screening_section_is_empty_without_the_block():
     assert screening_section({"date": "2026-08-06"}) == []
 
 
-def test_screening_section_states_the_design_fractions():
+def test_screening_section_states_the_design_and_measured_fractions():
     subset = [{"id": f"p{index}"} for index in range(8)]
     provenance = {"screening": screening_provenance(subset, 20)}
     text = "\n".join(screening_section(provenance))
+    # The design fractions recompute from the counts of the run.
     assert "8 of 20 prompts" in text
     assert "13% of a full campaign" in text
     assert "40%" in text
-    assert "design numbers" in text
+    # The measured calibration is a constant of the baseline era.
+    assert "Measured against the baseline campaign" in text
+    assert "25% of the calls" in text
+    assert "27% of the" in text
+    assert "full cost" in text
 
 
 def test_cli_screening_run_marks_the_provenance(screening_project):
