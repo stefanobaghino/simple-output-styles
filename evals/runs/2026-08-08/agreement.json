@@ -1,0 +1,347 @@
+{
+  "date": "2026-08-09T10:34:44+00:00",
+  "run": "2026-08-08",
+  "anchor": 0.7,
+  "first_judges": {
+    "comprehension": "opus",
+    "completeness": "opus",
+    "hedging": "opus",
+    "clarity": "opus"
+  },
+  "units": {
+    "comprehension": 882,
+    "completeness": 315,
+    "hedging": 93,
+    "clarity": 940
+  },
+  "skipped_stored": {
+    "comprehension": 0,
+    "completeness": 0,
+    "hedging": 0,
+    "clarity": 0
+  },
+  "arms": [
+    {
+      "model": "claude-opus-4-5-20251101",
+      "model_resolved": "claude-opus-4-5-20251101",
+      "sample": 100,
+      "judged_date": "2026-08-09T10:26:48+00:00",
+      "claude_version": "2.1.226 (Claude Code)",
+      "judge_prompts_sha256": "ca65700a37e42a2a04568bf034e98b2eb3b9bd3ecb1c987724dbcfe3059f332e",
+      "axes": {
+        "comprehension": {
+          "rows": 100,
+          "items": 600,
+          "agreements": 586,
+          "unusable": 0,
+          "not_judged": 0,
+          "rate": 0.977,
+          "judge_sensitive": false
+        },
+        "completeness": {
+          "rows": 99,
+          "items": 2128,
+          "agreements": 1967,
+          "unusable": 1,
+          "not_judged": 0,
+          "rate": 0.924,
+          "judge_sensitive": false
+        },
+        "hedging": {
+          "rows": 93,
+          "items": 368,
+          "agreements": 300,
+          "unusable": 0,
+          "not_judged": 0,
+          "rate": 0.815,
+          "judge_sensitive": false
+        },
+        "clarity": {
+          "rows": 100,
+          "items": 100,
+          "agreements": 60,
+          "unusable": 0,
+          "not_judged": 0,
+          "rate": 0.6,
+          "judge_sensitive": true
+        }
+      },
+      "per_style": {
+        "comprehension": {
+          "clarity-flow": {
+            "items": 126,
+            "agreements": 121,
+            "rate": 0.96
+          },
+          "classic-concise": {
+            "items": 102,
+            "agreements": 98,
+            "rate": 0.961
+          },
+          "developer-docs": {
+            "items": 102,
+            "agreements": 102,
+            "rate": 1.0
+          },
+          "plain-language": {
+            "items": 138,
+            "agreements": 135,
+            "rate": 0.978
+          },
+          "technical-simplified": {
+            "items": 132,
+            "agreements": 130,
+            "rate": 0.985
+          }
+        },
+        "completeness": {
+          "clarity-flow": {
+            "items": 511,
+            "agreements": 468,
+            "rate": 0.916
+          },
+          "classic-concise": {
+            "items": 358,
+            "agreements": 340,
+            "rate": 0.95
+          },
+          "developer-docs": {
+            "items": 517,
+            "agreements": 468,
+            "rate": 0.905
+          },
+          "plain-language": {
+            "items": 443,
+            "agreements": 411,
+            "rate": 0.928
+          },
+          "technical-simplified": {
+            "items": 299,
+            "agreements": 280,
+            "rate": 0.936
+          }
+        },
+        "hedging": {
+          "clarity-flow": {
+            "items": 76,
+            "agreements": 57,
+            "rate": 0.75
+          },
+          "classic-concise": {
+            "items": 76,
+            "agreements": 63,
+            "rate": 0.829
+          },
+          "developer-docs": {
+            "items": 76,
+            "agreements": 62,
+            "rate": 0.816
+          },
+          "plain-language": {
+            "items": 76,
+            "agreements": 66,
+            "rate": 0.868
+          },
+          "technical-simplified": {
+            "items": 64,
+            "agreements": 52,
+            "rate": 0.812
+          }
+        },
+        "clarity": {
+          "technical-simplified": {
+            "items": 33,
+            "agreements": 24,
+            "rate": 0.727
+          },
+          "classic-concise": {
+            "items": 30,
+            "agreements": 18,
+            "rate": 0.6
+          },
+          "developer-docs": {
+            "items": 40,
+            "agreements": 24,
+            "rate": 0.6
+          },
+          "plain-language": {
+            "items": 30,
+            "agreements": 15,
+            "rate": 0.5
+          },
+          "clarity-flow": {
+            "items": 35,
+            "agreements": 21,
+            "rate": 0.6
+          }
+        }
+      }
+    },
+    {
+      "model": "haiku",
+      "model_resolved": "claude-haiku-4-5-20251001",
+      "sample": null,
+      "judged_date": "2026-08-09T09:43:50+00:00",
+      "claude_version": "2.1.226 (Claude Code)",
+      "judge_prompts_sha256": "ca65700a37e42a2a04568bf034e98b2eb3b9bd3ecb1c987724dbcfe3059f332e",
+      "axes": {
+        "comprehension": {
+          "rows": 882,
+          "items": 5292,
+          "agreements": 5131,
+          "unusable": 0,
+          "not_judged": 0,
+          "rate": 0.97,
+          "judge_sensitive": false
+        },
+        "completeness": {
+          "rows": 309,
+          "items": 6319,
+          "agreements": 5727,
+          "unusable": 6,
+          "not_judged": 0,
+          "rate": 0.906,
+          "judge_sensitive": false
+        },
+        "hedging": {
+          "rows": 93,
+          "items": 368,
+          "agreements": 296,
+          "unusable": 0,
+          "not_judged": 0,
+          "rate": 0.804,
+          "judge_sensitive": false
+        },
+        "clarity": {
+          "rows": 939,
+          "items": 939,
+          "agreements": 644,
+          "unusable": 1,
+          "not_judged": 0,
+          "rate": 0.686,
+          "judge_sensitive": true
+        }
+      },
+      "per_style": {
+        "comprehension": {
+          "clarity-flow": {
+            "items": 1116,
+            "agreements": 1087,
+            "rate": 0.974
+          },
+          "classic-concise": {
+            "items": 1116,
+            "agreements": 1088,
+            "rate": 0.975
+          },
+          "developer-docs": {
+            "items": 1080,
+            "agreements": 1047,
+            "rate": 0.969
+          },
+          "plain-language": {
+            "items": 936,
+            "agreements": 907,
+            "rate": 0.969
+          },
+          "technical-simplified": {
+            "items": 1044,
+            "agreements": 1002,
+            "rate": 0.96
+          }
+        },
+        "completeness": {
+          "clarity-flow": {
+            "items": 1306,
+            "agreements": 1169,
+            "rate": 0.895
+          },
+          "classic-concise": {
+            "items": 1280,
+            "agreements": 1177,
+            "rate": 0.92
+          },
+          "developer-docs": {
+            "items": 1327,
+            "agreements": 1205,
+            "rate": 0.908
+          },
+          "plain-language": {
+            "items": 1208,
+            "agreements": 1070,
+            "rate": 0.886
+          },
+          "technical-simplified": {
+            "items": 1198,
+            "agreements": 1106,
+            "rate": 0.923
+          }
+        },
+        "hedging": {
+          "clarity-flow": {
+            "items": 76,
+            "agreements": 60,
+            "rate": 0.789
+          },
+          "classic-concise": {
+            "items": 76,
+            "agreements": 61,
+            "rate": 0.803
+          },
+          "developer-docs": {
+            "items": 76,
+            "agreements": 60,
+            "rate": 0.789
+          },
+          "plain-language": {
+            "items": 76,
+            "agreements": 64,
+            "rate": 0.842
+          },
+          "technical-simplified": {
+            "items": 64,
+            "agreements": 51,
+            "rate": 0.797
+          }
+        },
+        "clarity": {
+          "technical-simplified": {
+            "items": 300,
+            "agreements": 220,
+            "rate": 0.733
+          },
+          "plain-language": {
+            "items": 316,
+            "agreements": 233,
+            "rate": 0.737
+          },
+          "classic-concise": {
+            "items": 315,
+            "agreements": 217,
+            "rate": 0.689
+          },
+          "clarity-flow": {
+            "items": 316,
+            "agreements": 201,
+            "rate": 0.636
+          },
+          "developer-docs": {
+            "items": 315,
+            "agreements": 222,
+            "rate": 0.705
+          }
+        }
+      }
+    }
+  ],
+  "warnings": [
+    "technical-simplified/summarization-07: the pair failed the gate, excluded",
+    "technical-simplified/debugging-07: the pair failed the gate, excluded",
+    "completeness:check:52c24583db3d937b8215ef6bdb3e6fd4077f0828610ab919bef152e04e9b1734: the second judge gave no usable verdict, so the unit counts as unusable",
+    "claude-opus-4-5-20251101: 1 second verdicts of the completeness axis are unusable",
+    "claude-opus-4-5-20251101: the clarity axis agrees at 0.6, under the 0.7 anchor, so the axis is judge-sensitive for this arm",
+    "haiku: 6 second verdicts of the completeness axis are unusable",
+    "haiku: the clarity axis agrees at 0.686, under the 0.7 anchor, so the axis is judge-sensitive for this arm",
+    "haiku: 1 second verdicts of the clarity axis are unusable"
+  ]
+}
