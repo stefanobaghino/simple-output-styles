@@ -25,7 +25,10 @@ the slope of the pooled series against a per-style threshold:
 "growing" when the slope is larger, else "flat". The threshold comes
 from a permutation null: the turn order of each session shuffles,
 the pooled slope refits, and the threshold is a nearest-rank
-quantile of the shuffled slopes. The section of each style states
+quantile of the shuffled slopes. The same null yields a one-sided
+p-value — the share of shuffled slopes at or above the observed
+slope — stated for information; the verdict rests on the threshold
+alone. The section of each style states
 the quantile, the permutation count, and the seed. The
 `--slope-threshold` flag replaces the derived threshold, and the
 section then states both values.
@@ -54,6 +57,9 @@ against a per-style threshold: "growing" when the slope is larger,
 else "flat". The threshold comes from a permutation null: the turn
 order of each session shuffles, the pooled slope refits, and the
 threshold is a nearest-rank quantile of the shuffled slopes. The
+same null yields a one-sided p-value — the share of shuffled slopes
+at or above the observed slope — stated for information; the
+verdict rests on the threshold alone. The
 section of each style states the quantile, the permutation count,
 and the seed. The `--slope-threshold` flag replaces the derived
 threshold, and the section then states both values.
@@ -115,6 +121,7 @@ def _style_section(style: str, stats: dict, summary: dict) -> list[str]:
         f"- Sessions: {stats['complete_sessions']}/{repeats} complete",
         f"- Slope of the pooled series: {stats['slope']} violations per 100 sentences per turn",
         f"- Slope threshold: {threshold}",
+        f"- Null p-value: {null['p_value']} (the share of shuffled slopes at or above the slope)",
         f"- Verdict: {stats['verdict']}",
         "",
     ]

@@ -6,7 +6,9 @@ the pooled series over the complete sessions, the slope of the pooled
 series, and the verdict flat or growing. The verdict threshold comes
 from a per-style permutation null: the turn order of each session
 shuffles, the pooled slope refits, and the threshold is the 0.95
-nearest-rank quantile of the shuffled slopes.
+nearest-rank quantile of the shuffled slopes. The same null yields a
+one-sided p-value, stated for information; the verdict rests on the
+threshold alone.
 """
 
 from __future__ import annotations
@@ -25,7 +27,7 @@ from runner.stats import nearest_rank
 Key = tuple[str, int, int]
 """(style, repeat, turn), both numbers 1-based."""
 
-PERMUTATIONS = 1000
+PERMUTATIONS = 10000
 """Shuffles per style for the permutation null."""
 
 SEED = 0
@@ -86,16 +88,20 @@ def _pooled_series(session_pairs: list[list[tuple[int, int]]], turns: int) -> li
     return series
 
 
-def _derived_threshold(
+def _null_stats(
     session_pairs: list[list[tuple[int, int]]],
     turns: int,
     permutations: int,
     seed: int,
-) -> float:
-    """The 0.95 nearest-rank quantile of the shuffled pooled slopes.
+    slope: float,
+) -> tuple[float, float]:
+    """The threshold and the p-value of the permutation null.
 
     Each permutation shuffles the turn order within each session, so
-    the null keeps the rates and breaks only the turn positions.
+    the null keeps the rates and breaks only the turn positions. The
+    threshold is the 0.95 nearest-rank quantile of the shuffled
+    slopes. The p-value is the share of shuffled slopes at or above
+    the observed slope, stated for information only.
     """
     rng = random.Random(seed)
     null = []
@@ -105,11 +111,12 @@ def _derived_threshold(
             copy = list(pairs)
             rng.shuffle(copy)
             shuffled.append(copy)
-        slope, _ = statistics.linear_regression(
+        null_slope, _ = statistics.linear_regression(
             range(1, turns + 1), _pooled_series(shuffled, turns)
         )
-        null.append(slope)
-    return nearest_rank(sorted(null), QUANTILE * 100)
+        null.append(null_slope)
+    p_value = sum(1 for null_slope in null if null_slope >= slope) / permutations
+    return nearest_rank(sorted(null), QUANTILE * 100), p_value
 
 
 def score_sessions(
@@ -173,7 +180,7 @@ def score_sessions(
 
         pooled_series = _pooled_series(session_pairs, turns)
         slope, intercept = statistics.linear_regression(range(1, turns + 1), pooled_series)
-        derived = _derived_threshold(session_pairs, turns, permutations, seed)
+        derived, p_value = _null_stats(session_pairs, turns, permutations, seed, slope)
         effective = derived if threshold is None else threshold
         result.styles[style] = {
             "complete_sessions": len(sessions),
@@ -188,6 +195,7 @@ def score_sessions(
                 "seed": seed,
                 "quantile": QUANTILE,
                 "threshold": round(derived, 3),
+                "p_value": round(p_value, 4),
             },
             "verdict": "growing" if slope > effective else "flat",
             "turns": turn_details,

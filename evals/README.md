@@ -473,10 +473,13 @@ its sentence count and cannot dominate the series. The verdict per
 style compares the slope of the pooled series against a per-style
 threshold: "growing" when the slope is above the threshold, else
 "flat". The threshold comes from a permutation null: the turn order
-of each session shuffles 1000 times with a fixed seed, the pooled
+of each session shuffles 10000 times with a fixed seed, the pooled
 slope refits per shuffle, and the threshold is the 0.95 nearest-rank
 quantile of the shuffled slopes. A drift signal is thus a slope that
-the shuffled data almost never produces. The report states the
+the shuffled data almost never produces. The same null yields a
+one-sided p-value — the share of shuffled slopes at or above the
+observed slope — stated for information; the verdict rests on the
+threshold alone. The report states the
 quantile, the permutation count, and the seed per style.
 `--slope-threshold` replaces the derived threshold with one fixed
 value for every style, and the report then states both values. Few
@@ -789,7 +792,7 @@ runs/<YYYY-MM-DD>-holdout/
 runs/<YYYY-MM-DD>-drift/
   provenance.json   # like the pair runs, plus the session script per repeat
   sessions.jsonl    # one line per turn, with the session-id chain
-  drift.json        # pooled rate series, slope, derived threshold, and verdict per style
+  drift.json        # pooled rate series, slope, derived threshold, null p-value, and verdict per style
   drift.md          # the drift report for a human
 
 runs/<YYYY-MM-DD>-drift-deep/

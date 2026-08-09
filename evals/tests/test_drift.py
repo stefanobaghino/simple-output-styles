@@ -340,6 +340,7 @@ def test_flat_series_gets_a_flat_verdict_and_exit_0(project, capsys):
     assert stats["pooled_series"] == [0.0, 0.0, 0.0]
     assert stats["threshold"] == 0.0
     assert stats["threshold_source"] == "derived"
+    assert stats["null"]["p_value"] == 1.0
     assert stats["complete_sessions"] == 2
     assert summary["warnings"] == []
 
@@ -353,7 +354,13 @@ def test_growing_series_gets_a_growing_verdict_and_exit_1(project):
     assert stats["slope"] == 25.0
     assert stats["threshold"] == 18.75
     assert stats["threshold_source"] == "derived"
-    assert stats["null"] == {"permutations": 1000, "seed": 0, "quantile": 0.95, "threshold": 18.75}
+    assert stats["null"] == {
+        "permutations": 10000,
+        "seed": 0,
+        "quantile": 0.95,
+        "threshold": 18.75,
+        "p_value": 0.026,
+    }
     assert stats["verdict"] == "growing"
     rows = stats["turns"]
     assert {r["by_rule"].get("contraction", 0) for r in rows} == {0, 1, 2}
@@ -380,7 +387,7 @@ def test_report_md_holds_the_turn_table_and_verdict(project):
     report = (project / "run" / "drift.md").read_text()
     assert "# Drift report" in report
     assert "| Turn | Pooled rate | Repeat 1 | Repeat 2 |" in report
-    assert "- Slope threshold: 0.0 (the 0.95 quantile of 1000 shuffled slopes, seed 0)" in report
+    assert "- Slope threshold: 0.0 (the 0.95 quantile of 10000 shuffled slopes, seed 0)" in report
     assert "- Verdict: flat" in report
     assert "## Harness spend" in report
     assert "## Warnings" in report
@@ -439,6 +446,43 @@ def test_a_zero_sentence_turn_pools_to_zero_with_a_warning(project):
     assert stats["pooled_series"] == [0.0, 0.0, 0.0]
     assert stats["verdict"] == "flat"
     assert sum("has no sentences" in warning for warning in result.warnings) == 2
+
+
+def test_the_null_p_value_lies_between_zero_and_one(project):
+    result = score_answers(
+        project,
+        {(repeat, turn): growing_answer(turn) for repeat in (1, 2) for turn in (1, 2, 3)},
+    )
+    p_value = result.styles["alpha"]["null"]["p_value"]
+    assert 0.0 <= p_value <= 1.0
+
+
+def test_an_all_zero_series_gets_p_value_one_and_threshold_zero(project):
+    result = score_answers(
+        project,
+        {(repeat, turn): CLEAN for repeat in (1, 2) for turn in (1, 2, 3)},
+    )
+    stats = result.styles["alpha"]
+    assert stats["null"]["p_value"] == 1.0
+    assert stats["threshold"] == 0.0
+    assert stats["verdict"] == "flat"
+
+
+def test_a_growing_series_gets_a_small_p_value(project):
+    result = score_answers(
+        project,
+        {(repeat, turn): growing_answer(turn) for repeat in (1, 2) for turn in (1, 2, 3)},
+    )
+    assert result.styles["alpha"]["null"]["p_value"] < 0.05
+
+
+def test_the_report_states_the_null_p_value(project):
+    run_cli(project, FakeSessionRunner(answer_for=growing_answer))
+    summary = json.loads((project / "run" / "drift.json").read_text())
+    p_value = summary["styles"]["alpha"]["null"]["p_value"]
+    report = (project / "run" / "drift.md").read_text()
+    bullet = f"- Null p-value: {p_value} (the share of shuffled slopes at or above the slope)"
+    assert bullet in report
 
 
 def test_threshold_flag_overrides_the_derived_threshold(project, capsys):
