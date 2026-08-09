@@ -1,0 +1,882 @@
+{
+  "date": "2026-08-08T20:39:16+00:00",
+  "run": "2026-08-08",
+  "judge": {
+    "model": "opus",
+    "model_resolved": "claude-opus-5",
+    "judge_prompts_sha256": "f93fca76bee8f97e5a315a7ab346d1c0495a07d74fabc96e6af129c950f48584",
+    "judged_date": "2026-08-08T08:00:46+00:00",
+    "claude_version": "2.1.224 (Claude Code)"
+  },
+  "design": "clarity-v1",
+  "competitors": [
+    "clarity-flow",
+    "classic-concise",
+    "developer-docs",
+    "plain-language",
+    "technical-simplified",
+    "unstyled"
+  ],
+  "matchups": [
+    {
+      "a": "clarity-flow",
+      "b": "classic-concise",
+      "contests": 32,
+      "wins_a": 10,
+      "wins_b": 12,
+      "splits": 10,
+      "unscored": 0,
+      "net": -2
+    },
+    {
+      "a": "clarity-flow",
+      "b": "developer-docs",
+      "contests": 32,
+      "wins_a": 8,
+      "wins_b": 11,
+      "splits": 13,
+      "unscored": 0,
+      "net": -3
+    },
+    {
+      "a": "clarity-flow",
+      "b": "plain-language",
+      "contests": 32,
+      "wins_a": 11,
+      "wins_b": 14,
+      "splits": 7,
+      "unscored": 0,
+      "net": -3
+    },
+    {
+      "a": "clarity-flow",
+      "b": "technical-simplified",
+      "contests": 30,
+      "wins_a": 15,
+      "wins_b": 5,
+      "splits": 10,
+      "unscored": 0,
+      "net": 10
+    },
+    {
+      "a": "clarity-flow",
+      "b": "unstyled",
+      "contests": 32,
+      "wins_a": 12,
+      "wins_b": 12,
+      "splits": 8,
+      "unscored": 0,
+      "net": 0
+    },
+    {
+      "a": "classic-concise",
+      "b": "developer-docs",
+      "contests": 32,
+      "wins_a": 7,
+      "wins_b": 14,
+      "splits": 11,
+      "unscored": 0,
+      "net": -7
+    },
+    {
+      "a": "classic-concise",
+      "b": "plain-language",
+      "contests": 32,
+      "wins_a": 13,
+      "wins_b": 16,
+      "splits": 3,
+      "unscored": 0,
+      "net": -3
+    },
+    {
+      "a": "classic-concise",
+      "b": "technical-simplified",
+      "contests": 30,
+      "wins_a": 14,
+      "wins_b": 4,
+      "splits": 12,
+      "unscored": 0,
+      "net": 10
+    },
+    {
+      "a": "classic-concise",
+      "b": "unstyled",
+      "contests": 32,
+      "wins_a": 14,
+      "wins_b": 10,
+      "splits": 8,
+      "unscored": 0,
+      "net": 4
+    },
+    {
+      "a": "developer-docs",
+      "b": "plain-language",
+      "contests": 32,
+      "wins_a": 14,
+      "wins_b": 10,
+      "splits": 8,
+      "unscored": 0,
+      "net": 4
+    },
+    {
+      "a": "developer-docs",
+      "b": "technical-simplified",
+      "contests": 30,
+      "wins_a": 19,
+      "wins_b": 4,
+      "splits": 7,
+      "unscored": 0,
+      "net": 15
+    },
+    {
+      "a": "developer-docs",
+      "b": "unstyled",
+      "contests": 32,
+      "wins_a": 11,
+      "wins_b": 8,
+      "splits": 13,
+      "unscored": 0,
+      "net": 3
+    },
+    {
+      "a": "plain-language",
+      "b": "technical-simplified",
+      "contests": 30,
+      "wins_a": 18,
+      "wins_b": 4,
+      "splits": 8,
+      "unscored": 0,
+      "net": 14
+    },
+    {
+      "a": "plain-language",
+      "b": "unstyled",
+      "contests": 32,
+      "wins_a": 11,
+      "wins_b": 11,
+      "splits": 10,
+      "unscored": 0,
+      "net": 0
+    },
+    {
+      "a": "technical-simplified",
+      "b": "unstyled",
+      "contests": 30,
+      "wins_a": 5,
+      "wins_b": 18,
+      "splits": 7,
+      "unscored": 0,
+      "net": -13
+    }
+  ],
+  "win_matrix": {
+    "clarity-flow": {
+      "classic-concise": 15.0,
+      "developer-docs": 14.5,
+      "plain-language": 14.5,
+      "technical-simplified": 20.0,
+      "unstyled": 16.0
+    },
+    "classic-concise": {
+      "clarity-flow": 17.0,
+      "developer-docs": 12.5,
+      "plain-language": 14.5,
+      "technical-simplified": 20.0,
+      "unstyled": 18.0
+    },
+    "developer-docs": {
+      "clarity-flow": 17.5,
+      "classic-concise": 19.5,
+      "plain-language": 18.0,
+      "technical-simplified": 22.5,
+      "unstyled": 17.5
+    },
+    "plain-language": {
+      "clarity-flow": 17.5,
+      "classic-concise": 17.5,
+      "developer-docs": 14.0,
+      "technical-simplified": 22.0,
+      "unstyled": 16.0
+    },
+    "technical-simplified": {
+      "clarity-flow": 10.0,
+      "classic-concise": 10.0,
+      "developer-docs": 7.5,
+      "plain-language": 8.0,
+      "unstyled": 8.5
+    },
+    "unstyled": {
+      "clarity-flow": 16.0,
+      "classic-concise": 14.0,
+      "developer-docs": 14.5,
+      "plain-language": 16.0,
+      "technical-simplified": 21.5
+    }
+  },
+  "position_bias": {
+    "first_pick_rate": 0.412,
+    "picks": 940,
+    "split_rate": 0.287,
+    "contests": 470
+  },
+  "bradley_terry": {
+    "fitted": true,
+    "anchored_on": "unstyled",
+    "strengths": {
+      "developer-docs": {
+        "strength": 1.329,
+        "ci_low": 0.96,
+        "ci_high": 1.874
+      },
+      "plain-language": {
+        "strength": 1.115,
+        "ci_low": 0.783,
+        "ci_high": 1.603
+      },
+      "classic-concise": {
+        "strength": 1.0,
+        "ci_low": 0.714,
+        "ci_high": 1.413
+      },
+      "unstyled": {
+        "strength": 1.0,
+        "ci_low": null,
+        "ci_high": null
+      },
+      "clarity-flow": {
+        "strength": 0.958,
+        "ci_low": 0.674,
+        "ci_high": 1.365
+      },
+      "technical-simplified": {
+        "strength": 0.444,
+        "ci_low": 0.296,
+        "ci_high": 0.622
+      }
+    },
+    "bootstrap": {
+      "resamples": 1000,
+      "seed": 0
+    }
+  },
+  "by_task_type": {
+    "code-review": [
+      {
+        "a": "clarity-flow",
+        "b": "classic-concise",
+        "contests": 8,
+        "wins_a": 2,
+        "wins_b": 2,
+        "splits": 4,
+        "unscored": 0,
+        "net": 0
+      },
+      {
+        "a": "clarity-flow",
+        "b": "developer-docs",
+        "contests": 8,
+        "wins_a": 2,
+        "wins_b": 2,
+        "splits": 4,
+        "unscored": 0,
+        "net": 0
+      },
+      {
+        "a": "clarity-flow",
+        "b": "plain-language",
+        "contests": 8,
+        "wins_a": 5,
+        "wins_b": 2,
+        "splits": 1,
+        "unscored": 0,
+        "net": 3
+      },
+      {
+        "a": "clarity-flow",
+        "b": "technical-simplified",
+        "contests": 8,
+        "wins_a": 4,
+        "wins_b": 1,
+        "splits": 3,
+        "unscored": 0,
+        "net": 3
+      },
+      {
+        "a": "clarity-flow",
+        "b": "unstyled",
+        "contests": 8,
+        "wins_a": 4,
+        "wins_b": 2,
+        "splits": 2,
+        "unscored": 0,
+        "net": 2
+      },
+      {
+        "a": "classic-concise",
+        "b": "developer-docs",
+        "contests": 8,
+        "wins_a": 2,
+        "wins_b": 3,
+        "splits": 3,
+        "unscored": 0,
+        "net": -1
+      },
+      {
+        "a": "classic-concise",
+        "b": "plain-language",
+        "contests": 8,
+        "wins_a": 4,
+        "wins_b": 3,
+        "splits": 1,
+        "unscored": 0,
+        "net": 1
+      },
+      {
+        "a": "classic-concise",
+        "b": "technical-simplified",
+        "contests": 8,
+        "wins_a": 2,
+        "wins_b": 2,
+        "splits": 4,
+        "unscored": 0,
+        "net": 0
+      },
+      {
+        "a": "classic-concise",
+        "b": "unstyled",
+        "contests": 8,
+        "wins_a": 5,
+        "wins_b": 2,
+        "splits": 1,
+        "unscored": 0,
+        "net": 3
+      },
+      {
+        "a": "developer-docs",
+        "b": "plain-language",
+        "contests": 8,
+        "wins_a": 4,
+        "wins_b": 3,
+        "splits": 1,
+        "unscored": 0,
+        "net": 1
+      },
+      {
+        "a": "developer-docs",
+        "b": "technical-simplified",
+        "contests": 8,
+        "wins_a": 5,
+        "wins_b": 2,
+        "splits": 1,
+        "unscored": 0,
+        "net": 3
+      },
+      {
+        "a": "developer-docs",
+        "b": "unstyled",
+        "contests": 8,
+        "wins_a": 4,
+        "wins_b": 3,
+        "splits": 1,
+        "unscored": 0,
+        "net": 1
+      },
+      {
+        "a": "plain-language",
+        "b": "technical-simplified",
+        "contests": 8,
+        "wins_a": 2,
+        "wins_b": 3,
+        "splits": 3,
+        "unscored": 0,
+        "net": -1
+      },
+      {
+        "a": "plain-language",
+        "b": "unstyled",
+        "contests": 8,
+        "wins_a": 1,
+        "wins_b": 4,
+        "splits": 3,
+        "unscored": 0,
+        "net": -3
+      },
+      {
+        "a": "technical-simplified",
+        "b": "unstyled",
+        "contests": 8,
+        "wins_a": 2,
+        "wins_b": 2,
+        "splits": 4,
+        "unscored": 0,
+        "net": 0
+      }
+    ],
+    "debugging": [
+      {
+        "a": "clarity-flow",
+        "b": "classic-concise",
+        "contests": 8,
+        "wins_a": 2,
+        "wins_b": 5,
+        "splits": 1,
+        "unscored": 0,
+        "net": -3
+      },
+      {
+        "a": "clarity-flow",
+        "b": "developer-docs",
+        "contests": 8,
+        "wins_a": 3,
+        "wins_b": 2,
+        "splits": 3,
+        "unscored": 0,
+        "net": 1
+      },
+      {
+        "a": "clarity-flow",
+        "b": "plain-language",
+        "contests": 8,
+        "wins_a": 3,
+        "wins_b": 3,
+        "splits": 2,
+        "unscored": 0,
+        "net": 0
+      },
+      {
+        "a": "clarity-flow",
+        "b": "technical-simplified",
+        "contests": 7,
+        "wins_a": 2,
+        "wins_b": 3,
+        "splits": 2,
+        "unscored": 0,
+        "net": -1
+      },
+      {
+        "a": "clarity-flow",
+        "b": "unstyled",
+        "contests": 8,
+        "wins_a": 1,
+        "wins_b": 6,
+        "splits": 1,
+        "unscored": 0,
+        "net": -5
+      },
+      {
+        "a": "classic-concise",
+        "b": "developer-docs",
+        "contests": 8,
+        "wins_a": 2,
+        "wins_b": 3,
+        "splits": 3,
+        "unscored": 0,
+        "net": -1
+      },
+      {
+        "a": "classic-concise",
+        "b": "plain-language",
+        "contests": 8,
+        "wins_a": 4,
+        "wins_b": 2,
+        "splits": 2,
+        "unscored": 0,
+        "net": 2
+      },
+      {
+        "a": "classic-concise",
+        "b": "technical-simplified",
+        "contests": 7,
+        "wins_a": 4,
+        "wins_b": 1,
+        "splits": 2,
+        "unscored": 0,
+        "net": 3
+      },
+      {
+        "a": "classic-concise",
+        "b": "unstyled",
+        "contests": 8,
+        "wins_a": 4,
+        "wins_b": 2,
+        "splits": 2,
+        "unscored": 0,
+        "net": 2
+      },
+      {
+        "a": "developer-docs",
+        "b": "plain-language",
+        "contests": 8,
+        "wins_a": 3,
+        "wins_b": 1,
+        "splits": 4,
+        "unscored": 0,
+        "net": 2
+      },
+      {
+        "a": "developer-docs",
+        "b": "technical-simplified",
+        "contests": 7,
+        "wins_a": 3,
+        "wins_b": 1,
+        "splits": 3,
+        "unscored": 0,
+        "net": 2
+      },
+      {
+        "a": "developer-docs",
+        "b": "unstyled",
+        "contests": 8,
+        "wins_a": 1,
+        "wins_b": 3,
+        "splits": 4,
+        "unscored": 0,
+        "net": -2
+      },
+      {
+        "a": "plain-language",
+        "b": "technical-simplified",
+        "contests": 7,
+        "wins_a": 5,
+        "wins_b": 0,
+        "splits": 2,
+        "unscored": 0,
+        "net": 5
+      },
+      {
+        "a": "plain-language",
+        "b": "unstyled",
+        "contests": 8,
+        "wins_a": 2,
+        "wins_b": 4,
+        "splits": 2,
+        "unscored": 0,
+        "net": -2
+      },
+      {
+        "a": "technical-simplified",
+        "b": "unstyled",
+        "contests": 7,
+        "wins_a": 0,
+        "wins_b": 6,
+        "splits": 1,
+        "unscored": 0,
+        "net": -6
+      }
+    ],
+    "explanation": [
+      {
+        "a": "clarity-flow",
+        "b": "classic-concise",
+        "contests": 8,
+        "wins_a": 2,
+        "wins_b": 3,
+        "splits": 3,
+        "unscored": 0,
+        "net": -1
+      },
+      {
+        "a": "clarity-flow",
+        "b": "developer-docs",
+        "contests": 8,
+        "wins_a": 0,
+        "wins_b": 6,
+        "splits": 2,
+        "unscored": 0,
+        "net": -6
+      },
+      {
+        "a": "clarity-flow",
+        "b": "plain-language",
+        "contests": 8,
+        "wins_a": 2,
+        "wins_b": 5,
+        "splits": 1,
+        "unscored": 0,
+        "net": -3
+      },
+      {
+        "a": "clarity-flow",
+        "b": "technical-simplified",
+        "contests": 8,
+        "wins_a": 4,
+        "wins_b": 1,
+        "splits": 3,
+        "unscored": 0,
+        "net": 3
+      },
+      {
+        "a": "clarity-flow",
+        "b": "unstyled",
+        "contests": 8,
+        "wins_a": 3,
+        "wins_b": 4,
+        "splits": 1,
+        "unscored": 0,
+        "net": -1
+      },
+      {
+        "a": "classic-concise",
+        "b": "developer-docs",
+        "contests": 8,
+        "wins_a": 2,
+        "wins_b": 4,
+        "splits": 2,
+        "unscored": 0,
+        "net": -2
+      },
+      {
+        "a": "classic-concise",
+        "b": "plain-language",
+        "contests": 8,
+        "wins_a": 4,
+        "wins_b": 4,
+        "splits": 0,
+        "unscored": 0,
+        "net": 0
+      },
+      {
+        "a": "classic-concise",
+        "b": "technical-simplified",
+        "contests": 8,
+        "wins_a": 7,
+        "wins_b": 1,
+        "splits": 0,
+        "unscored": 0,
+        "net": 6
+      },
+      {
+        "a": "classic-concise",
+        "b": "unstyled",
+        "contests": 8,
+        "wins_a": 3,
+        "wins_b": 4,
+        "splits": 1,
+        "unscored": 0,
+        "net": -1
+      },
+      {
+        "a": "developer-docs",
+        "b": "plain-language",
+        "contests": 8,
+        "wins_a": 6,
+        "wins_b": 1,
+        "splits": 1,
+        "unscored": 0,
+        "net": 5
+      },
+      {
+        "a": "developer-docs",
+        "b": "technical-simplified",
+        "contests": 8,
+        "wins_a": 7,
+        "wins_b": 0,
+        "splits": 1,
+        "unscored": 0,
+        "net": 7
+      },
+      {
+        "a": "developer-docs",
+        "b": "unstyled",
+        "contests": 8,
+        "wins_a": 5,
+        "wins_b": 1,
+        "splits": 2,
+        "unscored": 0,
+        "net": 4
+      },
+      {
+        "a": "plain-language",
+        "b": "technical-simplified",
+        "contests": 8,
+        "wins_a": 6,
+        "wins_b": 1,
+        "splits": 1,
+        "unscored": 0,
+        "net": 5
+      },
+      {
+        "a": "plain-language",
+        "b": "unstyled",
+        "contests": 8,
+        "wins_a": 3,
+        "wins_b": 2,
+        "splits": 3,
+        "unscored": 0,
+        "net": 1
+      },
+      {
+        "a": "technical-simplified",
+        "b": "unstyled",
+        "contests": 8,
+        "wins_a": 1,
+        "wins_b": 6,
+        "splits": 1,
+        "unscored": 0,
+        "net": -5
+      }
+    ],
+    "summarization": [
+      {
+        "a": "clarity-flow",
+        "b": "classic-concise",
+        "contests": 8,
+        "wins_a": 4,
+        "wins_b": 2,
+        "splits": 2,
+        "unscored": 0,
+        "net": 2
+      },
+      {
+        "a": "clarity-flow",
+        "b": "developer-docs",
+        "contests": 8,
+        "wins_a": 3,
+        "wins_b": 1,
+        "splits": 4,
+        "unscored": 0,
+        "net": 2
+      },
+      {
+        "a": "clarity-flow",
+        "b": "plain-language",
+        "contests": 8,
+        "wins_a": 1,
+        "wins_b": 4,
+        "splits": 3,
+        "unscored": 0,
+        "net": -3
+      },
+      {
+        "a": "clarity-flow",
+        "b": "technical-simplified",
+        "contests": 7,
+        "wins_a": 5,
+        "wins_b": 0,
+        "splits": 2,
+        "unscored": 0,
+        "net": 5
+      },
+      {
+        "a": "clarity-flow",
+        "b": "unstyled",
+        "contests": 8,
+        "wins_a": 4,
+        "wins_b": 0,
+        "splits": 4,
+        "unscored": 0,
+        "net": 4
+      },
+      {
+        "a": "classic-concise",
+        "b": "developer-docs",
+        "contests": 8,
+        "wins_a": 1,
+        "wins_b": 4,
+        "splits": 3,
+        "unscored": 0,
+        "net": -3
+      },
+      {
+        "a": "classic-concise",
+        "b": "plain-language",
+        "contests": 8,
+        "wins_a": 1,
+        "wins_b": 7,
+        "splits": 0,
+        "unscored": 0,
+        "net": -6
+      },
+      {
+        "a": "classic-concise",
+        "b": "technical-simplified",
+        "contests": 7,
+        "wins_a": 1,
+        "wins_b": 0,
+        "splits": 6,
+        "unscored": 0,
+        "net": 1
+      },
+      {
+        "a": "classic-concise",
+        "b": "unstyled",
+        "contests": 8,
+        "wins_a": 2,
+        "wins_b": 2,
+        "splits": 4,
+        "unscored": 0,
+        "net": 0
+      },
+      {
+        "a": "developer-docs",
+        "b": "plain-language",
+        "contests": 8,
+        "wins_a": 1,
+        "wins_b": 5,
+        "splits": 2,
+        "unscored": 0,
+        "net": -4
+      },
+      {
+        "a": "developer-docs",
+        "b": "technical-simplified",
+        "contests": 7,
+        "wins_a": 4,
+        "wins_b": 1,
+        "splits": 2,
+        "unscored": 0,
+        "net": 3
+      },
+      {
+        "a": "developer-docs",
+        "b": "unstyled",
+        "contests": 8,
+        "wins_a": 1,
+        "wins_b": 1,
+        "splits": 6,
+        "unscored": 0,
+        "net": 0
+      },
+      {
+        "a": "plain-language",
+        "b": "technical-simplified",
+        "contests": 7,
+        "wins_a": 5,
+        "wins_b": 0,
+        "splits": 2,
+        "unscored": 0,
+        "net": 5
+      },
+      {
+        "a": "plain-language",
+        "b": "unstyled",
+        "contests": 8,
+        "wins_a": 5,
+        "wins_b": 1,
+        "splits": 2,
+        "unscored": 0,
+        "net": 4
+      },
+      {
+        "a": "technical-simplified",
+        "b": "unstyled",
+        "contests": 7,
+        "wins_a": 2,
+        "wins_b": 4,
+        "splits": 1,
+        "unscored": 0,
+        "net": -2
+      }
+    ]
+  },
+  "length_confound": {
+    "n": 467,
+    "pearson": 0.12,
+    "spearman": 0.2,
+    "longer_win_rate": 0.627
+  },
+  "warnings": [
+    "technical-simplified/summarization-07: the pair failed the gate, excluded",
+    "technical-simplified/debugging-07: the pair failed the gate, excluded"
+  ]
+}
