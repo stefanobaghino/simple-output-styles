@@ -1,0 +1,3048 @@
+{
+  "date": "2026-08-08T21:10:09+00:00",
+  "run": "2026-08-08-drift",
+  "turns": 15,
+  "repeats": 3,
+  "slope_threshold": null,
+  "styles": {
+    "clarity-flow": {
+      "complete_sessions": 3,
+      "sessions": [
+        {
+          "repeat": 1,
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "repeat": 2,
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "repeat": 3,
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "pooled_series": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "slope": 0.0,
+      "intercept": 0.0,
+      "threshold": 0.0,
+      "threshold_source": "derived",
+      "null": {
+        "permutations": 1000,
+        "seed": 0,
+        "quantile": 0.95,
+        "threshold": 0.0
+      },
+      "verdict": "flat",
+      "turns": [
+        {
+          "style": "clarity-flow",
+          "repeat": 1,
+          "turn": 1,
+          "prompt_id": "explanation-01",
+          "sentences": 13,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "1995892e53c13a666089dc03c81eae420769e84a2d3daa872f9be3619fede35e"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 1,
+          "turn": 2,
+          "prompt_id": "code-review-01",
+          "sentences": 18,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "7a396b09d64741df6e41e1a46fcbc0ef79bc9707ca4b7a9f3daf5607bd12ca17"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 1,
+          "turn": 3,
+          "prompt_id": "summarization-01",
+          "sentences": 8,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "4c6998c917c6601b44d79104cb53097cdae498cbe54f732fd2b1066bce15c9d3"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 1,
+          "turn": 4,
+          "prompt_id": "debugging-01",
+          "sentences": 3,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "a341e459c8303fd22df063dfcf80c2139beb0cd348d4777d1341ceaf242033a9"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 1,
+          "turn": 5,
+          "prompt_id": "explanation-02",
+          "sentences": 12,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "e1535c2d0b7ad8084ad68d96fd29270b1e21f29f7589f0e776ae21674fd2b989"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 1,
+          "turn": 6,
+          "prompt_id": "code-review-02",
+          "sentences": 16,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "473f016a28b1ebd220e1f4d7dbbf95b3e7dbd6894f77875800ab6808b5376711"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 1,
+          "turn": 7,
+          "prompt_id": "summarization-02",
+          "sentences": 8,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "b78da1cff927943ea64aef893c872f373be3b023eef8ecaf20c6e1728cbe8a2a"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 1,
+          "turn": 8,
+          "prompt_id": "debugging-02",
+          "sentences": 5,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "2d4e93999202c496c23d1f4473c89e8d468041a39c60678b3352ff0e15d01da8"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 1,
+          "turn": 9,
+          "prompt_id": "explanation-03",
+          "sentences": 12,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "e46499ac187f0dcba0d5abbd0ab5c0e9e8a967588b8e0c804a3a5e21792e5e81"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 1,
+          "turn": 10,
+          "prompt_id": "code-review-03",
+          "sentences": 13,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "8ada34929dc1e310486ebafa2ee855c76e31409b47f40dbdd7cb9065d5ac1292"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 1,
+          "turn": 11,
+          "prompt_id": "summarization-03",
+          "sentences": 4,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "9393866ac066b30c846c514cab7f1d70f206d6f293adfc336053f3818641e3f7"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 1,
+          "turn": 12,
+          "prompt_id": "debugging-03",
+          "sentences": 5,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "1a4b8664ca4d91275642999317109e8e471c474d5dc326381b4a08c673252aa6"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 1,
+          "turn": 13,
+          "prompt_id": "explanation-04",
+          "sentences": 17,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "9c01bcc94a17e4f31e0c36573282fdaabf45ab27ce6e1b8458375808f4fcc288"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 1,
+          "turn": 14,
+          "prompt_id": "code-review-04",
+          "sentences": 10,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "601dbffcff902c95bdce4343b49990e799c94c00228da7bb0e5e1815c1626d66"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 1,
+          "turn": 15,
+          "prompt_id": "summarization-04",
+          "sentences": 11,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "266b68903b058f7c909e4f9d5e5e0be386bc4c381ab375379fe3b7c78700628a"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 2,
+          "turn": 1,
+          "prompt_id": "code-review-02",
+          "sentences": 7,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "032ced1a27fbab006ff55018f9ab56e118bf56808655ba5f743940ed6906c523"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 2,
+          "turn": 2,
+          "prompt_id": "summarization-02",
+          "sentences": 10,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "34a7fb6e2017daedd408bc25662e61f0517b867db52614b38397fd504ffc8f37"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 2,
+          "turn": 3,
+          "prompt_id": "debugging-02",
+          "sentences": 7,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "e684c25849bf726539cda2fd04808d100d5a79df57f11e125afa7f52f59d64fb"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 2,
+          "turn": 4,
+          "prompt_id": "explanation-03",
+          "sentences": 13,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "10f7249694f8baa62869e420796bfe160b09f33975542826f4ebe270ea9500eb"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 2,
+          "turn": 5,
+          "prompt_id": "code-review-03",
+          "sentences": 10,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "a59c61a1f6bfc52a83c3392001bd776e1e09c06c29fda4ce42f19a35ae5c073f"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 2,
+          "turn": 6,
+          "prompt_id": "summarization-03",
+          "sentences": 3,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "c3646f8479e1bf17a38e0f960bf30497f0930e18e20ee9501a6805af8096d51d"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 2,
+          "turn": 7,
+          "prompt_id": "debugging-03",
+          "sentences": 4,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "d42d2aa2f914e7d1e7d540c86bc384d0ddddb8e025c4d2294a873f0b8e9b25b4"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 2,
+          "turn": 8,
+          "prompt_id": "explanation-04",
+          "sentences": 16,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "e2e45f9be51a255aded50042de16c54c31bdfc11afd36eb3312235b1c93f1229"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 2,
+          "turn": 9,
+          "prompt_id": "code-review-04",
+          "sentences": 10,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "431f0cd9ec422dbca252b516529e2069a8722239021e848996cf8ecfaf1d192c"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 2,
+          "turn": 10,
+          "prompt_id": "summarization-04",
+          "sentences": 11,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "ce6252c27c62cad304da20f7845c05bdf5f2b878a2b57abc6d3f6bed62365a5d"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 2,
+          "turn": 11,
+          "prompt_id": "explanation-01",
+          "sentences": 18,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "0d4ffc4760f373805bbfe093ad42be9684deed41c51fa7ac617405dcb4b09a86"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 2,
+          "turn": 12,
+          "prompt_id": "code-review-01",
+          "sentences": 13,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "134818097538edb3d08123a587e40620778b2b10a8bcc9ec1661f47c39e60169"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 2,
+          "turn": 13,
+          "prompt_id": "summarization-01",
+          "sentences": 6,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "6284435c17e2a1a1a40c490609887d929ebccc64e1ace49e2428ebf08646660a"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 2,
+          "turn": 14,
+          "prompt_id": "debugging-01",
+          "sentences": 3,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "f46995ccf9e490a6e8710fcf159be29cf60ab0483726a99473d9046a80bd65a8"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 2,
+          "turn": 15,
+          "prompt_id": "explanation-02",
+          "sentences": 17,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "d6f729cf960751be0416f1c66434fd5c18b203c02274d5b209407b44e85fa286"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 3,
+          "turn": 1,
+          "prompt_id": "summarization-03",
+          "sentences": 4,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "66b7e8b590f14949274b0a076f74132e9317b0d6c7b34d83e2ed0782f097fef0"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 3,
+          "turn": 2,
+          "prompt_id": "debugging-03",
+          "sentences": 2,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "f53445ddab50b93fde2730be465a38a972a0f26b32e85244078bcbc37bee057b"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 3,
+          "turn": 3,
+          "prompt_id": "explanation-04",
+          "sentences": 6,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "91380eade9f62283dabe3be75ea0104da5586be6db3db4053e58f8557b54fad6"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 3,
+          "turn": 4,
+          "prompt_id": "code-review-04",
+          "sentences": 4,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "9d7eb0cd2cefe24066f8dd8528589967983ae098c2638ea9d219f8018ed861b2"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 3,
+          "turn": 5,
+          "prompt_id": "summarization-04",
+          "sentences": 10,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "1a41bd4b1010b1b277baf4a0f30f03a4917e9ad475cd3df2833d252120dfabd5"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 3,
+          "turn": 6,
+          "prompt_id": "explanation-01",
+          "sentences": 12,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "01180651baa795462bb18f32b99c5fd6567267b99734e66250b6c43546ad8ff2"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 3,
+          "turn": 7,
+          "prompt_id": "code-review-01",
+          "sentences": 14,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "cfdf545ce6b5095c6382424a6655b033dbe1de67c979508ac8d46bb87839d029"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 3,
+          "turn": 8,
+          "prompt_id": "summarization-01",
+          "sentences": 5,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "8f9aeb6bfc933685fa2441ea46803b07ee7b00cb60eb1631fd558047103a600a"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 3,
+          "turn": 9,
+          "prompt_id": "debugging-01",
+          "sentences": 2,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "24566bef387b762fb20f0927620940c12ee612a942925b823c412c0df04d3267"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 3,
+          "turn": 10,
+          "prompt_id": "explanation-02",
+          "sentences": 7,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "5cb95b37eb081e0a7215ba1acbbb8bd6073b745e83556f8803627c6ac6865f48"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 3,
+          "turn": 11,
+          "prompt_id": "code-review-02",
+          "sentences": 9,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "7491919474824d3cd82695d1857499240aef2a7e8c57b3687aca1825c4c23439"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 3,
+          "turn": 12,
+          "prompt_id": "summarization-02",
+          "sentences": 4,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "0a709c54650a403b2b524d132a07b14c7d73ba1e5afa37c44cd1fcc99fdc6801"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 3,
+          "turn": 13,
+          "prompt_id": "debugging-02",
+          "sentences": 3,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "e05a03d21dae227cd3df30eb99398deabcd5b51f65be4e8841ecfdc94721a738"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 3,
+          "turn": 14,
+          "prompt_id": "explanation-03",
+          "sentences": 9,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "043ff1f4360def1d4132a8a6edb2c1eda884de1c85c0f7b4e5cbeae854c54b23"
+        },
+        {
+          "style": "clarity-flow",
+          "repeat": 3,
+          "turn": 15,
+          "prompt_id": "code-review-03",
+          "sentences": 9,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "1c9ef52cc529d26963603464b3b9580c10b3f0982f513cbd09e73016c228d181"
+        }
+      ]
+    },
+    "classic-concise": {
+      "complete_sessions": 3,
+      "sessions": [
+        {
+          "repeat": 1,
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "repeat": 2,
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "repeat": 3,
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "pooled_series": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "slope": 0.0,
+      "intercept": 0.0,
+      "threshold": 0.0,
+      "threshold_source": "derived",
+      "null": {
+        "permutations": 1000,
+        "seed": 0,
+        "quantile": 0.95,
+        "threshold": 0.0
+      },
+      "verdict": "flat",
+      "turns": [
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 1,
+          "prompt_id": "explanation-01",
+          "sentences": 14,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "f70e0ec165006c8d6f048026adca14a3cc72151d183ce48bfe2394c0da8e84e3"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 2,
+          "prompt_id": "code-review-01",
+          "sentences": 13,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "2a83c21ac8de00543d1c071158a43016edf696093e3dc71b4401a5db3d1e497d"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 3,
+          "prompt_id": "summarization-01",
+          "sentences": 6,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "14c5447179c1f0081dff663c1530ea48d2e5fa2042e7cb3abca7d318e9a27517"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 4,
+          "prompt_id": "debugging-01",
+          "sentences": 3,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "509504378afb4494785a2f19ef49a52b4188b0b8ae2f9d301cb55f0de494718a"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 5,
+          "prompt_id": "explanation-02",
+          "sentences": 12,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "8d7be46e716acead7756d89b387c53b993394f04d229f90adc35ab2f3a8b87d6"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 6,
+          "prompt_id": "code-review-02",
+          "sentences": 12,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "2f4cba238c42ceeff1424a2af75a0d0ea7ef22720f69f06bfee1c7d9aed83fac"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 7,
+          "prompt_id": "summarization-02",
+          "sentences": 6,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "91a964e00a16283a8d10baf76db6b7856260b4334582778419154e0a95524366"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 8,
+          "prompt_id": "debugging-02",
+          "sentences": 4,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "daecd107c6fc5f127ed25d6ba873ea3f3d2dc2ed08fcd0781a6831fce0e5faa7"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 9,
+          "prompt_id": "explanation-03",
+          "sentences": 13,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "b47052f92ec5a27827b29e46283a6f754dcdfbfd76dc10a49a7a8c072513a3c1"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 10,
+          "prompt_id": "code-review-03",
+          "sentences": 12,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "a02606f1e76a0906f3045ad328293140bd728eb5b7c015434844e437843e998b"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 11,
+          "prompt_id": "summarization-03",
+          "sentences": 4,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "e9ff9665f44528c53b811ccdf76d28f326da965bb799911ad5acac6d57311c25"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 12,
+          "prompt_id": "debugging-03",
+          "sentences": 4,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "1d7d7844af5c32776e823bcd3b2eb814f1acb285a1ed111605b0ee7a290be069"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 13,
+          "prompt_id": "explanation-04",
+          "sentences": 18,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "1bb2b49e026e8cceded2edf3f676dc4ed060baab5f56921b36dbd743181e002a"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 14,
+          "prompt_id": "code-review-04",
+          "sentences": 9,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "ccc24be920f61b1fa12eb87bae90b1c6e7e9626ab9e538a3a093053ad990a959"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 15,
+          "prompt_id": "summarization-04",
+          "sentences": 11,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "fa72eac935645b25e043fb2301170703b85dd2563a1cc27518b8ea4cefd4c995"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 1,
+          "prompt_id": "code-review-02",
+          "sentences": 10,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "a605c8579c076bdee061a3be1aa2073ae03bab4aeefd6e9b409c16f38cad7aae"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 2,
+          "prompt_id": "summarization-02",
+          "sentences": 6,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "b3126fe70a1a8d3e5d0b1bf8aa2e0d4eeab19670d447ae249a9033c31a403d0b"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 3,
+          "prompt_id": "debugging-02",
+          "sentences": 5,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "10a1cf509e9838562403101b530420f8e13adbb46a52fe8b7bd293c82072b631"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 4,
+          "prompt_id": "explanation-03",
+          "sentences": 8,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "4424337ac7479f202d248c1a1fa98de1685b49f50167c5df2134efce569bdcd7"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 5,
+          "prompt_id": "code-review-03",
+          "sentences": 12,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "a7f845f9ad0746a3e0cecd0a01559c23a082af496e31cfb00731c82c30e8d507"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 6,
+          "prompt_id": "summarization-03",
+          "sentences": 3,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "6753f21c91c837dcc347b81cfcf85de80c6b74c236f17e275d4a5354db33c208"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 7,
+          "prompt_id": "debugging-03",
+          "sentences": 3,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "02ab8f0a63d6065cf00ec8dc16a384838a0561b6ab3b2bcc80307ba795ef4203"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 8,
+          "prompt_id": "explanation-04",
+          "sentences": 15,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "067a8d6eb9da3f5f55221e519cbaea5437cb2408e808fa2805ed7905d5c6e84a"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 9,
+          "prompt_id": "code-review-04",
+          "sentences": 11,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "ddab0edf155c79434d5cad5a62d3fa1a05b3960fb45cde35c7b5f4d0488c66ab"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 10,
+          "prompt_id": "summarization-04",
+          "sentences": 10,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "cbb2946d69ae0bc435497c965d01687b17a7ffc0a5dba12c9f99263eb1193a3f"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 11,
+          "prompt_id": "explanation-01",
+          "sentences": 17,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "3749363e6b12756a3c02e4410d8a31326510963fca124f2ed1e3e57f7430a221"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 12,
+          "prompt_id": "code-review-01",
+          "sentences": 16,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "fbbfa6ce35f844ebdb7b3a963e29b446f71b1170f04c404d28b82f8c14f22556"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 13,
+          "prompt_id": "summarization-01",
+          "sentences": 5,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "ce01e96e2a140408d8b52e613a05da48bbea7327619f4f9e1a14d26c7b57032d"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 14,
+          "prompt_id": "debugging-01",
+          "sentences": 3,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "f3a1af971312c74241563a6288eb7e1e2ce42af84768d6751c95ee4d5a5abf0b"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 15,
+          "prompt_id": "explanation-02",
+          "sentences": 15,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "68c824a2c8c406c847f3da0f1d007a649b5a53613107d9efb83ce89edba5ed22"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 1,
+          "prompt_id": "summarization-03",
+          "sentences": 4,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "f117966f52946557647c4ecbd3965ab2a808e600e84be5b8af4b2f099e89799f"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 2,
+          "prompt_id": "debugging-03",
+          "sentences": 3,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "1a2358d0f463e1b29250875ee6cece00d5fca2e97838fb021873b15ad58c6483"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 3,
+          "prompt_id": "explanation-04",
+          "sentences": 6,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "7a0422e2b0785ad3921ef2e1a1be1360d6434aaa874469da09d751df14859c75"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 4,
+          "prompt_id": "code-review-04",
+          "sentences": 10,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "28e2acfe9bd18e03d70b92e767c5e32074aedbbd11e8359090e25564c2154d8f"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 5,
+          "prompt_id": "summarization-04",
+          "sentences": 10,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "5f1f8466a2e9212b59ac653131d366ee1644295748bb8ca37ab0dd6a77c883ab"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 6,
+          "prompt_id": "explanation-01",
+          "sentences": 14,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "c2b3ff67333bf68f91dccba3542b66a3a1a0435930bdaa998db5c12f2cf36e61"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 7,
+          "prompt_id": "code-review-01",
+          "sentences": 16,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "af2f93559eb7dc59f54faefbcacad55c5c33d9ec60a455194c211bcd4f1a6b9a"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 8,
+          "prompt_id": "summarization-01",
+          "sentences": 5,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "7ac7ed9f58087997358028c3a9a5e7a2acb7d4aee74c2831642fef47501551ce"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 9,
+          "prompt_id": "debugging-01",
+          "sentences": 3,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "c0879662c9970b99a9d48879860aac528c8480833cab8376561be24d8b45af59"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 10,
+          "prompt_id": "explanation-02",
+          "sentences": 8,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "36ea5d8618746526ac6b46499fd7d42fc6915bd2f9f94bc048684d9c614b3faa"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 11,
+          "prompt_id": "code-review-02",
+          "sentences": 11,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "c930419ec99f511ee26be80dfa4bd85dc7f60b8f410f44e93fbb4e61eec8a91f"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 12,
+          "prompt_id": "summarization-02",
+          "sentences": 4,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "ccdf02854e0e1a3912c6ff8cc4c5d3ac3f3399477ece97a6afdd18be89f76810"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 13,
+          "prompt_id": "debugging-02",
+          "sentences": 3,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "246b50b842c972b2199c216eabc11e1c4fac908575310424ef5bd2322e14a9b5"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 14,
+          "prompt_id": "explanation-03",
+          "sentences": 6,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "80ed3bf02f0cdc4e682976cb3014478e324ac5e0b1abcc270830f1b5b406f4e1"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 15,
+          "prompt_id": "code-review-03",
+          "sentences": 11,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "00d35b1649134839ede78e7fc3dfbdab1d5f09e155d1b4defb7d33a3b1491fb7"
+        }
+      ]
+    },
+    "developer-docs": {
+      "complete_sessions": 3,
+      "sessions": [
+        {
+          "repeat": 1,
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "repeat": 2,
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            3.57,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "repeat": 3,
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            5.88,
+            0.0
+          ]
+        }
+      ],
+      "pooled_series": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.44,
+        0.0,
+        2.78,
+        0.0
+      ],
+      "slope": 0.094,
+      "intercept": -0.407,
+      "threshold": 0.078,
+      "threshold_source": "derived",
+      "null": {
+        "permutations": 1000,
+        "seed": 0,
+        "quantile": 0.95,
+        "threshold": 0.078
+      },
+      "verdict": "growing",
+      "turns": [
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 1,
+          "prompt_id": "explanation-01",
+          "sentences": 36,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "720e9b048c2597b407ed4d794193f82dbabc54f7ded8f47395f56a8be1781f7d"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 2,
+          "prompt_id": "code-review-01",
+          "sentences": 17,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "b195df0137d30b715bdccd5dcddcd7ce0e0d9b52651c2aa56276192c55b3c0d6"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 3,
+          "prompt_id": "summarization-01",
+          "sentences": 8,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "cfe3843e119729a36d470b4dd278a02788545ac59a75439b776e90db6f91efed"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 4,
+          "prompt_id": "debugging-01",
+          "sentences": 3,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "1f53af55385367b98fbf10e6906028d4cfece7fffc7c1a6da35a96f5a7f3b741"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 5,
+          "prompt_id": "explanation-02",
+          "sentences": 32,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "dc1cc371f9be0f7323c567905263eea37e24593cba562071957ef7805c7941d9"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 6,
+          "prompt_id": "code-review-02",
+          "sentences": 16,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "7726a8cc89ac40a89d124474ee33ac83a2fad51db7bf69bce61315c7bca8731e"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 7,
+          "prompt_id": "summarization-02",
+          "sentences": 8,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "99c5f246b6a892da439afb985a1a14467940d4f85c6158e36c75c42bff07a690"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 8,
+          "prompt_id": "debugging-02",
+          "sentences": 6,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "6a6395e3ffe8b2e64bec32f2e3312ffa7d96fee1ca2af8720f44e1fa604507e9"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 9,
+          "prompt_id": "explanation-03",
+          "sentences": 15,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "5f2ff12fc75ca5a5fd9800c49600a56423e9448e97d20a65927e0cfebc6bb7f1"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 10,
+          "prompt_id": "code-review-03",
+          "sentences": 12,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "9aca773dc3ccd354c7b1aae287bf4cfd015603c73e10ae9e0a82352913dec60e"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 11,
+          "prompt_id": "summarization-03",
+          "sentences": 4,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "89e98c48a5382711b455e81e8e8bc7c018705e9db48b94c525f9c74d304f263c"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 12,
+          "prompt_id": "debugging-03",
+          "sentences": 5,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "81161988d63408f8b47aaff5d15b6116051a03d5e6c44b7d1588ca59be1a041f"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 13,
+          "prompt_id": "explanation-04",
+          "sentences": 34,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "2211e0244a421a11b6cc5c6cc0e90f0a7c671fef5ea4c419b13aaff4c1b63551"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 14,
+          "prompt_id": "code-review-04",
+          "sentences": 11,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "d36c2bcc393d77f112d44077fc64843fb22a61b860de08d8b08787acee57674a"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 15,
+          "prompt_id": "summarization-04",
+          "sentences": 11,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "6b9fd6797d27a33dfbedc3c1b2f96a5fc0a8a17226ed4f9bab9def635690bc67"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 1,
+          "prompt_id": "code-review-02",
+          "sentences": 17,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "11cb0d15485b7457d72613b53132d0f8ed6f7e4a8df60a8a47b24fb8561ddc8c"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 2,
+          "prompt_id": "summarization-02",
+          "sentences": 8,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "39b22eb26dd7561c7364867671da34cc8d911b638307268c1d3b0be523f3549f"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 3,
+          "prompt_id": "debugging-02",
+          "sentences": 11,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "5c58f93ef0e0c14618941aba5eb3077b24a3baa728c3ec181feda62d328bc0c8"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 4,
+          "prompt_id": "explanation-03",
+          "sentences": 18,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "31e76fa803d0e60236ce6705354168c47e291618e362da5cf3d1c34a991c3487"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 5,
+          "prompt_id": "code-review-03",
+          "sentences": 19,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "39e6e9341f488613ebb61d1a4e0e7b3f536988573b703698f6ceb0ac7a8fe373"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 6,
+          "prompt_id": "summarization-03",
+          "sentences": 4,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "6cb6e737be2d381211f6693aa6037da8d792a2ff15d48cda93963c3f4568c893"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 7,
+          "prompt_id": "debugging-03",
+          "sentences": 7,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "250da36c3a5784f74ffbde7d3b865be1ae10bcec311c699d27c5e8bad2c05d5a"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 8,
+          "prompt_id": "explanation-04",
+          "sentences": 44,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "da6232831006a3ceff5336b35c121d1ba3cc0610952efa8b36413b9895df5268"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 9,
+          "prompt_id": "code-review-04",
+          "sentences": 16,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "78e8a18e9515eae0be2c142650e1a77b74d32b054292bf52b23316bc65e79c65"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 10,
+          "prompt_id": "summarization-04",
+          "sentences": 15,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "5730240bb29908b4ac6f3fc1fc025d13083aa4dde4bf47ca85d885f72450a848"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 11,
+          "prompt_id": "explanation-01",
+          "sentences": 30,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "78a8defb23b35cc9e09e6efb068e734ea1b833a5699d55a97b651d0dbbe47979"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 12,
+          "prompt_id": "code-review-01",
+          "sentences": 28,
+          "violations": 1,
+          "by_rule": {
+            "minimizer": 1
+          },
+          "rate": 3.57,
+          "answer_sha256": "a0b40e4f7d12ae000539a1bc5e624736e8715dc55b03790f69e9a1660ae65024"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 13,
+          "prompt_id": "summarization-01",
+          "sentences": 7,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "d75478b1a178d94b48f737340dc0b016a84d2f84f2d0b854a6283c409e9657f0"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 14,
+          "prompt_id": "debugging-01",
+          "sentences": 8,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "0a040156770ee0db03bf878e411b62d5b3b6ca2f8524f3216c11791036498894"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 15,
+          "prompt_id": "explanation-02",
+          "sentences": 38,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "bec528c86bdac8566a307b1a92159ab42a59c4ef37a4febfd26bad83e730b9df"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 1,
+          "prompt_id": "summarization-03",
+          "sentences": 5,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "5a040a145d7f2109022fdfe3d0f350ebd9668ee6cbd8af871c180456c3d69160"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 2,
+          "prompt_id": "debugging-03",
+          "sentences": 4,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "48335bc1cdd73065e98d69eb9769ab9e164effe51395657da9737e92a4404dc4"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 3,
+          "prompt_id": "explanation-04",
+          "sentences": 21,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "01f6ab2dd634936f60310dce3a49e8a2d767f503d44e8105c46977f79fbf81bb"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 4,
+          "prompt_id": "code-review-04",
+          "sentences": 13,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "4f3e5db64984f14f9cb5ab1c56e15dd9d8b78e82f9e9a35a0350319f60714b35"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 5,
+          "prompt_id": "summarization-04",
+          "sentences": 11,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "142378cfa462093dcc972eedc8a67ae4391c697422a0ce8eaf236400bcec3c48"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 6,
+          "prompt_id": "explanation-01",
+          "sentences": 21,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "2edf3ebd089b984a5867d6ca9280c0ac67162e9ad8c8ee59c3ee6c91f7f6c6f4"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 7,
+          "prompt_id": "code-review-01",
+          "sentences": 22,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "ff8b37c644a6ff0ef148e235c461d86c9c4c5cf96719505c9e9ca337d5622d53"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 8,
+          "prompt_id": "summarization-01",
+          "sentences": 7,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "6944109d3a1402d81de5e1b00fd326688c7bc1790abf069f102b3f5ac6450088"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 9,
+          "prompt_id": "debugging-01",
+          "sentences": 4,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "eb4a10bbc967944abe63d25cd017c22325e0460330bcf10807c39d962f2b9a4f"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 10,
+          "prompt_id": "explanation-02",
+          "sentences": 20,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "3352ba2084132de0dcae21bbb5f65062e5d36d406b8d0a16ebee3740facd7e78"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 11,
+          "prompt_id": "code-review-02",
+          "sentences": 17,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "2be4071aa82b96bc98ff9f9ceaa89e923daf963e1c38624ce033a569ebee2b0b"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 12,
+          "prompt_id": "summarization-02",
+          "sentences": 8,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "8959ad1ddd924c2a608114e8c6d4a7d864780a3db3dc6f5f0c6a20f4b284772f"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 13,
+          "prompt_id": "debugging-02",
+          "sentences": 5,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "ba9478c396bc79688f1cab32d88919ed89b4d93cb8daf267baa1d73af8c871ac"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 14,
+          "prompt_id": "explanation-03",
+          "sentences": 17,
+          "violations": 1,
+          "by_rule": {
+            "minimizer": 1
+          },
+          "rate": 5.88,
+          "answer_sha256": "e010a193f05daf274c71a9e3f615aa3079504b71dec47b373fb86c5f5a900a33"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 15,
+          "prompt_id": "code-review-03",
+          "sentences": 16,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "74100eb9e3a7ad0ba285942aaa8d585d35af5bf81816797174ed3b32f3e635e3"
+        }
+      ]
+    },
+    "plain-language": {
+      "complete_sessions": 3,
+      "sessions": [
+        {
+          "repeat": 1,
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "repeat": 2,
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "repeat": 3,
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "pooled_series": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "slope": 0.0,
+      "intercept": 0.0,
+      "threshold": 0.0,
+      "threshold_source": "derived",
+      "null": {
+        "permutations": 1000,
+        "seed": 0,
+        "quantile": 0.95,
+        "threshold": 0.0
+      },
+      "verdict": "flat",
+      "turns": [
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 1,
+          "prompt_id": "explanation-01",
+          "sentences": 30,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "320964615a55e5264b15b02454b3acb0d30fd9d911c0de4f75698d1fc05df6a8"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 2,
+          "prompt_id": "code-review-01",
+          "sentences": 25,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "eecbc9aa59c64f1c586f51f7fbd8df43249d6395fe57160a41394bf11893c178"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 3,
+          "prompt_id": "summarization-01",
+          "sentences": 8,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "2af7b8f263f14638d7d1525737ddb2833581b2f3c408ee95762354ac321b67d5"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 4,
+          "prompt_id": "debugging-01",
+          "sentences": 6,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "000aa598bdaba6eb097680205cdbe4bac0a2c1e7646a33820167ce143ac25f6c"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 5,
+          "prompt_id": "explanation-02",
+          "sentences": 34,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "99e0c4b2829c3457e1fe3dbd391d4c8893562142c4883b08d189ad420502148e"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 6,
+          "prompt_id": "code-review-02",
+          "sentences": 16,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "7b204463b0a87206b7a5b061c4d8b143e8ada1bc63146e1715e64351c10e2251"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 7,
+          "prompt_id": "summarization-02",
+          "sentences": 9,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "a87b37221b2c64177c9aa137cea75ee0859222591b87fa9f50572549d8775820"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 8,
+          "prompt_id": "debugging-02",
+          "sentences": 10,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "c3a4888ee85894e91841025e47783e859873ec274d3780299412836913ada4f8"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 9,
+          "prompt_id": "explanation-03",
+          "sentences": 22,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "af84b4d0599ef4402ec32cbdcbbf0e59619aa71032def212ca375052b4730e1e"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 10,
+          "prompt_id": "code-review-03",
+          "sentences": 18,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "c80e3d41afdefa756300a1c621ac9271a435891f0cff79359b38f2204df10e20"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 11,
+          "prompt_id": "summarization-03",
+          "sentences": 5,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "1573237b393436ffb880bbfde54a122323106a2882701adc3071a81dcea19a8f"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 12,
+          "prompt_id": "debugging-03",
+          "sentences": 7,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "b85885a405c59106254f174a67f561e3d0cf1a6c789f5b18712bd7a0f7c717b6"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 13,
+          "prompt_id": "explanation-04",
+          "sentences": 24,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "11b16a4db3e88404405e649869b010a6f9ab453867e4c3846706e72f19f32707"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 14,
+          "prompt_id": "code-review-04",
+          "sentences": 15,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "9ca94b3173da816b0f56892328666658ff2d6bf64c65a9a872de6be52ea946ae"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 15,
+          "prompt_id": "summarization-04",
+          "sentences": 11,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "f429cafb4750165a644bd789375788bf4b3af1c34a5d97b51c810f4b1b427ddb"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 1,
+          "prompt_id": "code-review-02",
+          "sentences": 17,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "127afacaa719f386674987fbbcb91b9ef888ae883ed78ce76264263bc7ba0832"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 2,
+          "prompt_id": "summarization-02",
+          "sentences": 12,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "a5c1a1efeca776b668d75a1447daaebbf6c6c7498b9f56ae8d774b1714179185"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 3,
+          "prompt_id": "debugging-02",
+          "sentences": 17,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "6adb826928c24ba0c9311652e0979048dfb5425d32e03accf81bd44abab21ca3"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 4,
+          "prompt_id": "explanation-03",
+          "sentences": 22,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "fe61b1cf5c09563c3a43f497d066da40dcf4c724c630e2dcc1f1452ce16eaa06"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 5,
+          "prompt_id": "code-review-03",
+          "sentences": 20,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "2f979039cbfafb541366de5472ea38a38aa0cd8392a0b1cc44c480d2939274dd"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 6,
+          "prompt_id": "summarization-03",
+          "sentences": 4,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "6181500b430d153e8fcfa9ae77e3d3213c138e509bb9ea2e004cd2f67447e1b9"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 7,
+          "prompt_id": "debugging-03",
+          "sentences": 9,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "c638942c7aa757dc21b3ef0ba13bd807d15056574b1e3c711a4b7ed8e8e94040"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 8,
+          "prompt_id": "explanation-04",
+          "sentences": 22,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "296a6025dd4a659d87604264fd9984908cf4b4b7fa97d72aba1ad42b5fe8f0d6"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 9,
+          "prompt_id": "code-review-04",
+          "sentences": 24,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "f915dc2916cbf14056468a1a77584da2fe1760654ed7f02884e981d384e5110e"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 10,
+          "prompt_id": "summarization-04",
+          "sentences": 12,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "3f35adacbba9489f9ab5000a1f68185592eaeee665db88225f7318fd27b4c321"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 11,
+          "prompt_id": "explanation-01",
+          "sentences": 30,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "2071efab37bd9d46bff829a0b28782a4f45bc3841582642ddb907d738786f1ff"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 12,
+          "prompt_id": "code-review-01",
+          "sentences": 30,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "c01ee12e19b36a9e5ae119a4bf5d52de3f93e3d234b9ec29ba4fc7cc4b73e447"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 13,
+          "prompt_id": "summarization-01",
+          "sentences": 6,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "9fd8cca88572a859dec8ff08f522cd7196e69df4e47fcd7339fbbefb73d0e89d"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 14,
+          "prompt_id": "debugging-01",
+          "sentences": 6,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "5c95afc7d55c0467f901b53b232548574553ee9059d7b3f1c4bacfa5441e53a3"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 15,
+          "prompt_id": "explanation-02",
+          "sentences": 38,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "ba158a080126a38d3716452515230955229ddc1d4312c9b4b446e92a663ec266"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 1,
+          "prompt_id": "summarization-03",
+          "sentences": 7,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "cfcaf0a68bb25e21ef04832fe00e799ef17875eecf3bcdafb90a30cbd069627c"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 2,
+          "prompt_id": "debugging-03",
+          "sentences": 6,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "34e26b735ce17a4c74a9db849c62c324fdaab8ff36bd3d49a21250f20ab9b996"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 3,
+          "prompt_id": "explanation-04",
+          "sentences": 22,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "8cd255dabbd3fedcb1e2ed47f3ba24578d7fabb96e90818c27f1ba32e66075e1"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 4,
+          "prompt_id": "code-review-04",
+          "sentences": 19,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "e2c09f281917a31c2048656c37e0a697f9e819794763af9b271af8f1c83aaaf4"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 5,
+          "prompt_id": "summarization-04",
+          "sentences": 11,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "d6bf98ff46b8db67f3fa0f74bfc41190784da043fd822970f188d679cfc795d2"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 6,
+          "prompt_id": "explanation-01",
+          "sentences": 27,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "21f014ba894a614848a2b87b4a1068b621319c153e22345a5e12e5d773806d5a"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 7,
+          "prompt_id": "code-review-01",
+          "sentences": 27,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "ef31f8733396a5252a253a55447280513f4887966303c999d69e11465009604f"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 8,
+          "prompt_id": "summarization-01",
+          "sentences": 6,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "6b57aa246d9bfb0ab9edf72935ee67861785882342d17ce62e0759bdf0a2c33c"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 9,
+          "prompt_id": "debugging-01",
+          "sentences": 5,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "c6937a6d2bea3173bf1958f0bc788e544c57bf837f344f74a373d2744f68c391"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 10,
+          "prompt_id": "explanation-02",
+          "sentences": 24,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "712feedae2285676c1cf97f2fde10429e718ef2658e23643554fe72f87795bd1"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 11,
+          "prompt_id": "code-review-02",
+          "sentences": 21,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "b6dcfd4fc01b68b72a4e5451b2092fe75a726d6c8cc8cc7623b40bb490fa5fae"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 12,
+          "prompt_id": "summarization-02",
+          "sentences": 9,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "98339f28928399155b72407b2913b8a151869245af4f496a06843224588a0018"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 13,
+          "prompt_id": "debugging-02",
+          "sentences": 7,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "915fedd98f0d6bd31b96bdabe41d493f6076155c5669244de2e3fc5f376a4f1d"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 14,
+          "prompt_id": "explanation-03",
+          "sentences": 15,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "9b2777791d90998c31f3594b9b0f14a19450dc1dd47836e4476fa3f710e60a89"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 15,
+          "prompt_id": "code-review-03",
+          "sentences": 19,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "4ebdd12558221a4613aa901b81d9cc82d807d876724fedbf2c8eb289260fa79a"
+        }
+      ]
+    },
+    "technical-simplified": {
+      "complete_sessions": 3,
+      "sessions": [
+        {
+          "repeat": 1,
+          "series": [
+            14.29,
+            3.57,
+            0.0,
+            0.0,
+            0.0,
+            4.55,
+            0.0,
+            0.0,
+            12.5,
+            4.76,
+            40.0,
+            11.11,
+            13.64,
+            5.56,
+            0.0
+          ]
+        },
+        {
+          "repeat": 2,
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            27.27,
+            0.0,
+            0.0,
+            9.09,
+            7.69,
+            4.76,
+            0.0,
+            25.0,
+            3.7,
+            0.0,
+            0.0,
+            20.0
+          ]
+        },
+        {
+          "repeat": 3,
+          "series": [
+            11.11,
+            0.0,
+            5.56,
+            0.0,
+            0.0,
+            4.55,
+            0.0,
+            0.0,
+            0.0,
+            15.79,
+            5.26,
+            12.5,
+            0.0,
+            50.0,
+            0.0
+          ]
+        }
+      ],
+      "pooled_series": [
+        7.41,
+        2.08,
+        2.56,
+        13.04,
+        0.0,
+        3.92,
+        2.27,
+        4.55,
+        7.84,
+        7.27,
+        18.75,
+        6.82,
+        7.14,
+        20.51,
+        8.62
+      ],
+      "slope": 0.663,
+      "intercept": 2.216,
+      "threshold": 0.634,
+      "threshold_source": "derived",
+      "null": {
+        "permutations": 1000,
+        "seed": 0,
+        "quantile": 0.95,
+        "threshold": 0.634
+      },
+      "verdict": "growing",
+      "turns": [
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 1,
+          "prompt_id": "explanation-01",
+          "sentences": 21,
+          "violations": 3,
+          "by_rule": {
+            "banned-word": 2,
+            "sentence-length": 1
+          },
+          "rate": 14.29,
+          "answer_sha256": "1b5a7efafdc9cd71dd18622405aeeb41adef857f35fab9a7d4743814f1cdc995"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 2,
+          "prompt_id": "code-review-01",
+          "sentences": 28,
+          "violations": 1,
+          "by_rule": {
+            "banned-word": 1
+          },
+          "rate": 3.57,
+          "answer_sha256": "c9a963679cbf3d33c0545d5202297d0198181a6784288e0dfe082a728595f38e"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 3,
+          "prompt_id": "summarization-01",
+          "sentences": 9,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "b14040f83589d734208efe37b308ca80c40d314e7a79419fa4e7c1ee281d5dfb"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 4,
+          "prompt_id": "debugging-01",
+          "sentences": 7,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "2183d6f7845b78d58e39d90d90140cc70830055ffef25df29a067221454c5cf6"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 5,
+          "prompt_id": "explanation-02",
+          "sentences": 24,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "07249e120beb180fc040eafac75ffadf386d44355dc9c3a83e4df2730863e8f4"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 6,
+          "prompt_id": "code-review-02",
+          "sentences": 22,
+          "violations": 1,
+          "by_rule": {
+            "banned-word": 1
+          },
+          "rate": 4.55,
+          "answer_sha256": "c27d65eacd5fd4f36a7dec837c4e80aa678535fd29bac1971c63b4ad3d7a598a"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 7,
+          "prompt_id": "summarization-02",
+          "sentences": 10,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "cd02ccca44220cacdf1ff79cbcbcc303f7e36366f16f48d20d5139c1e40b4bee"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 8,
+          "prompt_id": "debugging-02",
+          "sentences": 11,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "fbec81f91b7b4e7dba88dea67bfe507abbd86a1c3f27244b7c8a24ebd46481a7"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 9,
+          "prompt_id": "explanation-03",
+          "sentences": 24,
+          "violations": 3,
+          "by_rule": {
+            "banned-word": 3
+          },
+          "rate": 12.5,
+          "answer_sha256": "a339bccbdf9d0b69fb8dbf6ee948eca7c12824861522c4e6196695bb2203c005"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 10,
+          "prompt_id": "code-review-03",
+          "sentences": 21,
+          "violations": 1,
+          "by_rule": {
+            "banned-word": 1
+          },
+          "rate": 4.76,
+          "answer_sha256": "43b6b1bd03c513d93c0b493d9a79dd67ee8fd4bc63ed809f6beb64d8e9d87138"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 11,
+          "prompt_id": "summarization-03",
+          "sentences": 5,
+          "violations": 2,
+          "by_rule": {
+            "banned-word": 1,
+            "sentence-length": 1
+          },
+          "rate": 40.0,
+          "answer_sha256": "980a081cf4e942c21620f407fbb1e11f1a415631349ad6273aba446c6dc022eb"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 12,
+          "prompt_id": "debugging-03",
+          "sentences": 9,
+          "violations": 1,
+          "by_rule": {
+            "banned-word": 1
+          },
+          "rate": 11.11,
+          "answer_sha256": "f60421584d7e470a695cac0c076ba7fe95474b68209e2097c95a1e5ec6e04b2b"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 13,
+          "prompt_id": "explanation-04",
+          "sentences": 22,
+          "violations": 3,
+          "by_rule": {
+            "banned-word": 2,
+            "sentence-length": 1
+          },
+          "rate": 13.64,
+          "answer_sha256": "fee8cb2ed73ca8aecf02fd616a5bd89e3842bd6af44edcbe3c49959093d5ee1a"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 14,
+          "prompt_id": "code-review-04",
+          "sentences": 18,
+          "violations": 1,
+          "by_rule": {
+            "sentence-length": 1
+          },
+          "rate": 5.56,
+          "answer_sha256": "9c7e427458acc916f0aed64e685449e80f8b3c036e3e8a0a081e16ec47aa4ec0"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 15,
+          "prompt_id": "summarization-04",
+          "sentences": 11,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "46048e2bd928486aaf78f3bee4227d02cfdcb317c53b578d69c3af81b474953b"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 1,
+          "prompt_id": "code-review-02",
+          "sentences": 24,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "e773c88ab34b7bfd29b642ab7e6791e5ac5d05abd2bc9e3d42b114f0127eebaa"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 2,
+          "prompt_id": "summarization-02",
+          "sentences": 13,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "2d77589e24aac843e86fee71fe89d3168ec03dc2dbbfae144d2f8d4b214f523a"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 3,
+          "prompt_id": "debugging-02",
+          "sentences": 12,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "d187e1808eb110478417b77364e906ed2c635bda976edb59ade45afe73e3088c"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 4,
+          "prompt_id": "explanation-03",
+          "sentences": 22,
+          "violations": 6,
+          "by_rule": {
+            "banned-word": 5,
+            "sentence-length": 1
+          },
+          "rate": 27.27,
+          "answer_sha256": "dba4c0795f98f1db4e6945681bad06e2fe683b64e823a0780182ae5454141677"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 5,
+          "prompt_id": "code-review-03",
+          "sentences": 14,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "7364d27aef4ab248a5d895601219c1b0e975987ffbb7d9769395e02184777511"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 6,
+          "prompt_id": "summarization-03",
+          "sentences": 7,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "85b2f90f71718d4811076063b3ad3bc16171fd154346b9ee7907c99988927547"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 7,
+          "prompt_id": "debugging-03",
+          "sentences": 11,
+          "violations": 1,
+          "by_rule": {
+            "banned-word": 1
+          },
+          "rate": 9.09,
+          "answer_sha256": "cccefe3abb69346c39a2a1fa4d70e5c64d250a563ab8ac8151f84de02873ec42"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 8,
+          "prompt_id": "explanation-04",
+          "sentences": 26,
+          "violations": 2,
+          "by_rule": {
+            "sentence-length": 2
+          },
+          "rate": 7.69,
+          "answer_sha256": "33937060bec1862f67ce5e51142446f6628c0c93b2f7ee73c9859cab3f5855cb"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 9,
+          "prompt_id": "code-review-04",
+          "sentences": 21,
+          "violations": 1,
+          "by_rule": {
+            "sentence-length": 1
+          },
+          "rate": 4.76,
+          "answer_sha256": "dafccd3b48aeabcdb4486ea860d6b159517ec2686da71429ba3632638b5cbba2"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 10,
+          "prompt_id": "summarization-04",
+          "sentences": 15,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "7ad50b5f01d23d19d9253551b8e3ad05770f8827a1b7f6599b2fde0bdd0e4e1d"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 11,
+          "prompt_id": "explanation-01",
+          "sentences": 24,
+          "violations": 6,
+          "by_rule": {
+            "banned-word": 3,
+            "sentence-length": 3
+          },
+          "rate": 25.0,
+          "answer_sha256": "43324dbf33a6b4dd127c67b4af2a917198784ff743424ff5d7c4ce3a814e3840"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 12,
+          "prompt_id": "code-review-01",
+          "sentences": 27,
+          "violations": 1,
+          "by_rule": {
+            "sentence-length": 1
+          },
+          "rate": 3.7,
+          "answer_sha256": "55d631ca1638553210ad9216dbb15e53d93a03db85e3dc2db1db1398cb659de5"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 13,
+          "prompt_id": "summarization-01",
+          "sentences": 10,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "11f608f4d3f72984c7cb73822993a3e424f39dbc4b8672dd39ce767906fc4227"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 14,
+          "prompt_id": "debugging-01",
+          "sentences": 7,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "65b4194b76810226ebe43890db90fe1278021bafb1c45df6170c73c7fcd05e6b"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 15,
+          "prompt_id": "explanation-02",
+          "sentences": 25,
+          "violations": 5,
+          "by_rule": {
+            "banned-word": 1,
+            "sentence-length": 4
+          },
+          "rate": 20.0,
+          "answer_sha256": "c6530481794ad0591a24511b0c07eea28f570eeaba214840e5284d48dc298b2d"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 1,
+          "prompt_id": "summarization-03",
+          "sentences": 9,
+          "violations": 1,
+          "by_rule": {
+            "banned-word": 1
+          },
+          "rate": 11.11,
+          "answer_sha256": "87940a84b5c99cbc773f9e0ca947eac4300b1b8e4cef6b17a32bc2d51f23846d"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 2,
+          "prompt_id": "debugging-03",
+          "sentences": 7,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "24136ecd50dcf7a21c07440d1f88ea564b35f6e9cce79f84192e59219cbc5d88"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 3,
+          "prompt_id": "explanation-04",
+          "sentences": 18,
+          "violations": 1,
+          "by_rule": {
+            "sentence-length": 1
+          },
+          "rate": 5.56,
+          "answer_sha256": "dae9c4516bf888027ab47f2acc5a8aad96db7647da96397c0ac9210ea80ddd87"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 4,
+          "prompt_id": "code-review-04",
+          "sentences": 17,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "a5f42e59bbf2e64c54b93d96cae4a83003bcf7340fb9e32cac6ae2f179d17034"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 5,
+          "prompt_id": "summarization-04",
+          "sentences": 12,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "25fb5917df7ca7fc410596e4632d615dc1d7fc2f009e9ef71075957251517f17"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 6,
+          "prompt_id": "explanation-01",
+          "sentences": 22,
+          "violations": 1,
+          "by_rule": {
+            "banned-word": 1
+          },
+          "rate": 4.55,
+          "answer_sha256": "4eff2293f3fc2f1c8853dfeb92c6a61b3c161e613bd13d6c6d0cb364cd83d280"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 7,
+          "prompt_id": "code-review-01",
+          "sentences": 23,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "ec14e07e3ce016758e0f6968f8a21c244c0f5b52447f0dd3f926423d33a961a7"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 8,
+          "prompt_id": "summarization-01",
+          "sentences": 7,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "45b6345030feb0b90407ec724518af09f2d0590075f802bf00018b6f0631912e"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 9,
+          "prompt_id": "debugging-01",
+          "sentences": 6,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "502a1ae84193c23f69e7e8dc3024bcdf6ee69bad3836e0b14560d05d2b2da0a3"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 10,
+          "prompt_id": "explanation-02",
+          "sentences": 19,
+          "violations": 3,
+          "by_rule": {
+            "banned-word": 3
+          },
+          "rate": 15.79,
+          "answer_sha256": "bd366aa58f62a52e539eb9d4c888e9d0befa9f7f87929833b5d70e552a7540ff"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 11,
+          "prompt_id": "code-review-02",
+          "sentences": 19,
+          "violations": 1,
+          "by_rule": {
+            "banned-word": 1
+          },
+          "rate": 5.26,
+          "answer_sha256": "e78a60e42965775312538b0b6326b30771c79e9b31a49fd4206418534663ddd0"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 12,
+          "prompt_id": "summarization-02",
+          "sentences": 8,
+          "violations": 1,
+          "by_rule": {
+            "banned-modal": 1
+          },
+          "rate": 12.5,
+          "answer_sha256": "bbadf5f3480fd9ee88e7791b68d751cc55eee4274e1e9ee402aae2b0999131b9"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 13,
+          "prompt_id": "debugging-02",
+          "sentences": 10,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "fdb4ecf2a5e952d96bb0b14f85064cfa67daf581ae0808c0b71d9e5f0406dd87"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 14,
+          "prompt_id": "explanation-03",
+          "sentences": 14,
+          "violations": 7,
+          "by_rule": {
+            "banned-modal": 3,
+            "banned-word": 3,
+            "sentence-length": 1
+          },
+          "rate": 50.0,
+          "answer_sha256": "654973a830b8d2544b2099f776b1561145de31bad7cc6134ff57bf855d31ec41"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 15,
+          "prompt_id": "code-review-03",
+          "sentences": 22,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "answer_sha256": "ce9b4a38b01a552b261e94fba3d04787463f2a78fb0153de2b75d759aae8efda"
+        }
+      ]
+    }
+  },
+  "rules": {
+    "clarity-flow": {
+      "file": "rules/clarity-flow.rules.yaml",
+      "sha256": "d4047e50d635f3427b5373f4bfdd85574e5f91622b0ee462edb454c69420e32a"
+    },
+    "classic-concise": {
+      "file": "rules/classic-concise.rules.yaml",
+      "sha256": "d3496c81a6c74cd388b4e3e44e405b32cc1de656ba4a35a58f3eeaf7b9bd57d9"
+    },
+    "developer-docs": {
+      "file": "rules/developer-docs.rules.yaml",
+      "sha256": "7d0f20c52814fced11943ace3dec6cce0c4f5716766562fd346a9c7891047903"
+    },
+    "plain-language": {
+      "file": "rules/plain-language.rules.yaml",
+      "sha256": "b2175b219907fcf815762e53fd9c4ac11f86901b6bce590224aeb6d5db6485a8"
+    },
+    "technical-simplified": {
+      "file": "rules/technical-simplified.rules.yaml",
+      "sha256": "f7120e410a1863e07bda72bd5b0fe07c7ca0cbad642c9a093681e86497025fdd"
+    }
+  },
+  "linter_toolchain": {
+    "spacy": "3.8.14",
+    "en-core-web-sm": "3.8.0"
+  },
+  "run_linter_toolchain": {
+    "spacy": "3.8.14",
+    "en-core-web-sm": "3.8.0"
+  },
+  "warnings": []
+}
