@@ -5,7 +5,7 @@ This directory holds the evaluation harness for the output styles in
 the marketplace serves only the `plugin/` directory, so installers never
 receive the harness.
 
-The harness has eleven components. The first is a deterministic linter.
+The harness has twelve components. The first is a deterministic linter.
 It checks a Markdown text against the writing rules of a style and
 reports each violation, plus a rate per 100 sentences. The second is a
 pair runner. It produces, per prompt, one answer per style and one
@@ -45,6 +45,11 @@ It compares the stored artifacts of one run against pre-committed
 targets per axis and per style, so a style change fails loudly on a
 regression. The token axis is a bound there, not a target: a ratio
 past the bound blocks, and savings under the bound earn nothing.
+The twelfth is a second-judge agreement sample. It re-runs the
+stored discrete verdicts of a run with a second judge model, one
+raw file per arm, and reports the agreement rate per axis, so a
+judge-sensitive axis is visible before the style-design loop
+optimizes against it.
 See the tracking issue in this repository for
 the other planned components.
 
@@ -217,6 +222,7 @@ uv run style-cost runs/<date> [--probe] [--repeats N] [--reuse-from RUN]
 uv run style-value runs/<date> [--judge] [--parallel N] [--reuse-from RUN]
 uv run style-loss runs/<date> [--judge] [--parallel N] [--reuse-from RUN]
 uv run style-rank runs/<date> [--judge] [--parallel N] [--reuse-from RUN]
+uv run style-agreement runs/<date> [--judge] [--model M] [--sample N] [--parallel N]
 uv run style-campaign [--runs N] [--budget W] [--probe-repeats N] [--screening] [--holdout] [--reuse-from RUN]
 uv run style-drift [--generate] [--scripts prompts/sessions/*.yaml] [--out runs/<date>-drift]
 uv run style-compare runs/<a> runs/<b> [...] [--out runs/<date>-compare]
@@ -661,6 +667,64 @@ When the agreement rate is below 0.7, do not accept the style, and
 open an issue that lists the disagreements. The protocol is manual:
 no tool draws the sample or computes the rate.
 
+### Second-judge agreement
+
+The stored verdicts of a run come from one judge model, and the
+style-design loop optimizes against those verdicts, so a
+judge-specific verdict is a standing risk. `style-agreement` re-runs
+the stored discrete verdicts of a run with a second judge model and
+reports the agreement rate per axis: comprehension (the quiz
+grades), completeness (both check directions), hedging, and clarity
+(the contest picks). Only the discrete verdicts enter, like in the
+freshness sample of the reuse layer: the extraction and free-text
+rows carry nothing that an equality comparison can score. The tool
+rebuilds each judged prompt from the stored rows, with the joins
+the scorers already perform and the original prompt templates, so
+the second judge answers the exact stored question. By default the
+tool judges everything; `--sample N` draws N verdict rows per axis
+with seed 0, the spot-check precedent.
+
+Two arms exist by convention, and the report reads them together. A
+cross-line arm (`--model haiku`, a weaker Claude line) is a lower
+bound: its disagreement mixes genuine ambiguity with weaker
+capability. A cross-vintage arm (an older model of the first-judge
+line, passed as the exact model ID, which the pin table resolves to
+itself) is capability-matched: its disagreement measures what a
+model update would move — the risk the judge pin freezes. An axis
+where only the cross-line arm disagrees points at capability; an
+axis where both arms disagree is judge-sensitive. Every judge runs
+through the Claude CLI, so a second judge is a different Claude
+line or vintage, never a different vendor; the human spot check
+above stays the cross-vendor anchor. On the comprehension axis, a
+cross-line grader can share the model line of the original reader,
+so leniency toward the reader's phrasing is possible; the
+cross-vintage arm is the cleaner signal there.
+
+The agreement unit is one discrete verdict: one graded quiz item,
+one checked fact, one checked claim, or one contest pick. The
+report states, per arm and axis, the items compared, the agreement
+rate, the unusable second outputs, and a per-style breakdown,
+because a style-specific disagreement is exactly what the
+shared-bias risk predicts. An axis under 0.7 — the acceptance
+anchor of the spot check — is marked judge-sensitive and warns.
+The rates are also an input to the noise floor of issue #29: a
+reuse deviation only means drift once it exceeds what two judges
+disagree on anyway.
+
+The second judge must differ from the writer model of the run and
+from the first judge of every axis, on the requested alias and on
+the pinned resolution, and the per-call pin check applies. Each
+arm appends to its own raw file, `agreement-<model>-raw.jsonl`, so
+every raw file stays single-model; an interrupted pass resumes
+when the same invocation runs again, and a meta mismatch (another
+model, another sample spec) exits with code 2. The scoring is
+offline, discovers every arm file of the run, and re-runs without
+`--judge`. The tool writes new files only and changes no call
+condition of any stored tool, so it opens no comparability era.
+Exit codes: 0 when the arms are scored and no warnings exist, 1
+when warnings exist (a judge-sensitive axis, an unusable second
+output, an incomplete arm), 2 when the run cannot be scored.
+
 ### Screening threshold
 
 A screening run gives a cheap first verdict on a candidate style,
@@ -819,6 +883,9 @@ runs/<YYYY-MM-DD>/
   rank-raw.jsonl    # judge provenance plus one line per raw judge call
   rank.json         # matchups, win matrix, and strengths, machine-readable
   rank.md           # the clarity-ranking report for a human
+  agreement-<model>-raw.jsonl  # one file per second-judge arm: meta plus one line per raw call
+  agreement.json    # the agreement rate per arm and axis, machine-readable
+  agreement.md      # the second-judge agreement report for a human
   spot-check.md     # the human spot-check record and the agreement rate (manual)
   targets.json      # the regression-targets verdicts per style and axis, machine-readable
   targets.md        # the regression-targets report for a human

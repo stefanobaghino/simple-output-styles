@@ -22,6 +22,7 @@ style-cost = "cost.cli:main"
 style-value = "value.cli:main"
 style-loss = "loss.cli:main"
 style-rank = "rank.cli:main"
+style-agreement = "agreement.cli:main"
 style-drift = "drift.cli:main"
 style-compare = "compare.cli:main"
 style-campaign = "campaign.cli:main"
@@ -49,6 +50,7 @@ packages = [
     "src/value",
     "src/loss",
     "src/rank",
+    "src/agreement",
     "src/drift",
     "src/compare",
     "src/campaign",
