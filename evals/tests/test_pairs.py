@@ -26,7 +26,12 @@ from runner import (
 )
 from runner.provenance import build_provenance
 from runner.report import build_report
-from runner.screening import screening_provenance, screening_section, select_screening_prompts
+from runner.screening import (
+    HEDGE_RICH_IDS,
+    screening_provenance,
+    screening_section,
+    select_screening_prompts,
+)
 
 HERE = Path(__file__).parent
 PROMPTS = HERE.parent / "prompts" / "prompts.yaml"
@@ -501,6 +506,16 @@ def test_screening_subset_is_deterministic_and_balanced():
     assert positions == sorted(positions)
 
 
+def test_screening_subset_mirrors_the_hedge_rich_share():
+    prompts = yaml.safe_load(PROMPTS.read_text())["prompts"]
+    subset = select_screening_prompts(prompts)
+    hedge = [prompt for prompt in subset if prompt["id"] in HEDGE_RICH_IDS]
+    # 8 of the 32 prompts carry the mark, so the 8-prompt subset holds 2,
+    # in 2 different types — never the whole subset (#111).
+    assert len(hedge) == 2
+    assert len({prompt["type"] for prompt in hedge}) == 2
+
+
 def test_screening_keeps_a_small_type_whole():
     prompts = [
         {"id": "explanation-01", "type": "explanation", "text": "Explain A."},
@@ -515,17 +530,22 @@ def test_screening_section_is_empty_without_the_block():
 
 
 def test_screening_section_states_the_design_and_measured_fractions():
-    subset = [{"id": f"p{index}"} for index in range(8)]
+    subset = [{"id": f"p{index}"} for index in range(6)] + [
+        {"id": "debugging-08"},
+        {"id": "summarization-08"},
+    ]
     provenance = {"screening": screening_provenance(subset, 20)}
     text = "\n".join(screening_section(provenance))
     # The design fractions recompute from the counts of the run.
     assert "8 of 20 prompts" in text
     assert "13% of a full campaign" in text
     assert "40%" in text
+    # The mix sentence counts the marked ids of the subset.
+    assert "holds 2 hedge-rich prompts" in text
     # The measured calibration is a constant of the baseline era.
     assert "Measured against the baseline campaign" in text
     assert "25% of the calls" in text
-    assert "27% of the" in text
+    assert "and about 25% of the\nweighted input tokens" in text
     assert "full cost" in text
 
 
@@ -545,6 +565,7 @@ def test_cli_screening_run_marks_the_provenance(screening_project):
         "prompts_per_type": 2,
         "seed": 0,
         "prompt_ids": sorted(prompt["id"] for prompt in subset),
+        "hedge_rich_prompt_ids": [],
         "full_prompt_count": 6,
     }
     report = (out / "report.md").read_text()

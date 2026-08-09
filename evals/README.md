@@ -154,7 +154,11 @@ below. Add a prompt with these steps:
    tail position keeps the turn order of the drift sessions stable.
 2. Update the prompt counts in `tests/test_pairs.py`
    (`test_prompt_set_is_complete`).
-3. Update the count sentences in this document: the drift sentence
+3. Add a hedge-rich prompt also to `HEDGE_RICH_IDS` in
+   `src/runner/screening.py`. The mark steers the screening subset
+   draw, and it lives in the code and not in the prompt file,
+   because the provenance hashes the prompt file whole.
+4. Update the count sentences in this document: the drift sentence
    ("15 of the N pair prompts") and the screening sentence ("8 of
    the N prompts", with its design fractions). The measured
    screening constants in `src/runner/screening.py` go stale with
@@ -163,9 +167,9 @@ below. Add a prompt with these steps:
 
 A prompt edit opens a comparability era: the provenance records the
 sha256 of `prompts.yaml`, so new full runs warn against old runs in
-a comparison. The screening subset also redraws, because the seed-0
-sample runs over a longer sorted id list. Old runs stay comparable
-among themselves.
+a comparison. The screening subset also redraws, because the
+stratified seed-0 draw runs over the grown id lists. Old runs stay
+comparable among themselves.
 
 ## The held-out prompt set
 
@@ -753,8 +757,14 @@ resumes, so a stop loses no data.
 `style-campaign --screening` screens one candidate style: one run
 instead of three, over a fixed prompt subset, with every stage of a
 full run. The subset draws 2 prompts per task type from the full
-prompt file, sorted and with seed 0, so every screening run uses
-the same 8 of the 32 prompts. By design, the generation calls are
+prompt file with seed 0, stratified over the hedge-rich mark
+(`HEDGE_RICH_IDS` in `src/runner/screening.py`): the subset holds
+the hedge-rich share of the full set, rounded — 2 hedge-rich and 6
+confident prompts of the 32 — so a screening verdict rests on the
+prompt mix a full campaign measures, not on one class (#111). One
+shared seeded generator draws which types contribute a hedge-rich
+prompt and which ids fill the rest, so every screening run uses
+the same 8 prompts. By design, the generation calls are
 about 8% of a full campaign, and the judge calls are about 25% of
 one full run. The measurement against the baseline campaign
 (`runs/2026-08-08` and `runs/2026-08-08b`) grounds these design
@@ -762,14 +772,14 @@ numbers in stored rows: restrict every stored call row of a run to
 the 8 subset prompt ids, divide by the run total, and count the 18
 cost-probe arms
 whole on both sides, because the probe is per style and repeat and
-does not shrink with the subset. A screening run then holds 24.8%
-and 24.5% of the calls of its run (8.3% and 8.2% of the 3-run
-campaign), 27.7% and 27.4% of the input tokens in uncached-token
+does not shrink with the subset. A screening run then holds 25.5%
+and 24.4% of the calls of its run (8.5% and 8.1% of the 3-run
+campaign), 25.3% and 24.4% of the input tokens in uncached-token
 equivalents (an uncached token weighs 1, a cache write 1.25, a
-cache read 0.1), and 34.2% and 29.9% of the output tokens. The
-token shares sit above the call share because the seed-0 draw
-takes the last two sorted ids of every type, and those prompts
-draw the longest answers. The measurement describes a run without
+cache read 0.1), and 23.2% and 23.6% of the output tokens. The
+token shares track the call share because the stratified subset
+mirrors the answer-length mix of the full set. The measurement
+describes a run without
 reuse, and it is era-scoped: a prompt-set change redraws the
 subset, stales the measured constants in
 `src/runner/screening.py`, and warns on the screening block of the
