@@ -375,6 +375,7 @@ def test_campaign_screening_produces_one_reduced_run(project):
         "prompts_per_type": 2,
         "seed": 0,
         "prompt_ids": ["debugging-01", "explanation-01"],
+        "hedge_rich_prompt_ids": [],
         "full_prompt_count": 2,
     }
     assert "**Screening run.**" in (run_dir / "rank.md").read_text()
