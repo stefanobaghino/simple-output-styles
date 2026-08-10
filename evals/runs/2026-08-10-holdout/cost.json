@@ -1,0 +1,460 @@
+{
+  "date": "2026-08-10T14:50:34+00:00",
+  "run": "2026-08-10-holdout",
+  "answer_ratio": {
+    "per_style": {
+      "actionable-clarity": {
+        "pairs": 24,
+        "styled_output_tokens_total": 20009,
+        "unstyled_output_tokens_total": 25367,
+        "ratio_of_totals": 0.79,
+        "distribution": {
+          "n": 24,
+          "min": 0.12,
+          "p25": 0.74,
+          "median": 0.98,
+          "p75": 1.35,
+          "max": 18.57,
+          "mean": 1.88
+        },
+        "by_task_type": {
+          "code-review": {
+            "n": 6,
+            "min": 0.12,
+            "median": 0.68,
+            "mean": 3.53,
+            "max": 18.57
+          },
+          "debugging": {
+            "n": 6,
+            "min": 0.46,
+            "median": 1.22,
+            "mean": 1.16,
+            "max": 1.74
+          },
+          "explanation": {
+            "n": 6,
+            "min": 0.74,
+            "median": 1.01,
+            "mean": 1.05,
+            "max": 1.35
+          },
+          "summarization": {
+            "n": 6,
+            "min": 0.7,
+            "median": 1.0,
+            "mean": 1.79,
+            "max": 4.35
+          }
+        }
+      },
+      "clarity-flow": {
+        "pairs": 24,
+        "styled_output_tokens_total": 22966,
+        "unstyled_output_tokens_total": 25367,
+        "ratio_of_totals": 0.91,
+        "distribution": {
+          "n": 24,
+          "min": 0.38,
+          "p25": 0.61,
+          "median": 0.8,
+          "p75": 0.98,
+          "max": 11.12,
+          "mean": 1.59
+        },
+        "by_task_type": {
+          "code-review": {
+            "n": 6,
+            "min": 0.38,
+            "median": 0.84,
+            "mean": 2.43,
+            "max": 11.12
+          },
+          "debugging": {
+            "n": 6,
+            "min": 0.56,
+            "median": 0.74,
+            "mean": 2.14,
+            "max": 9.21
+          },
+          "explanation": {
+            "n": 6,
+            "min": 0.56,
+            "median": 0.65,
+            "mean": 0.73,
+            "max": 1.04
+          },
+          "summarization": {
+            "n": 6,
+            "min": 0.58,
+            "median": 0.97,
+            "mean": 1.07,
+            "max": 1.97
+          }
+        }
+      },
+      "classic-concise": {
+        "pairs": 24,
+        "styled_output_tokens_total": 18350,
+        "unstyled_output_tokens_total": 25367,
+        "ratio_of_totals": 0.72,
+        "distribution": {
+          "n": 24,
+          "min": 0.32,
+          "p25": 0.57,
+          "median": 0.76,
+          "p75": 0.87,
+          "max": 15.12,
+          "mean": 1.65
+        },
+        "by_task_type": {
+          "code-review": {
+            "n": 6,
+            "min": 0.32,
+            "median": 0.58,
+            "mean": 2.97,
+            "max": 15.12
+          },
+          "debugging": {
+            "n": 6,
+            "min": 0.33,
+            "median": 0.71,
+            "mean": 1.65,
+            "max": 6.78
+          },
+          "explanation": {
+            "n": 6,
+            "min": 0.62,
+            "median": 0.74,
+            "mean": 0.75,
+            "max": 0.89
+          },
+          "summarization": {
+            "n": 6,
+            "min": 0.57,
+            "median": 0.88,
+            "mean": 1.22,
+            "max": 3.21
+          }
+        }
+      },
+      "developer-docs": {
+        "pairs": 24,
+        "styled_output_tokens_total": 23313,
+        "unstyled_output_tokens_total": 25367,
+        "ratio_of_totals": 0.92,
+        "distribution": {
+          "n": 24,
+          "min": 0.06,
+          "p25": 0.75,
+          "median": 0.97,
+          "p75": 1.14,
+          "max": 11.63,
+          "mean": 1.6
+        },
+        "by_task_type": {
+          "code-review": {
+            "n": 6,
+            "min": 0.06,
+            "median": 0.94,
+            "mean": 1.52,
+            "max": 5.47
+          },
+          "debugging": {
+            "n": 6,
+            "min": 0.33,
+            "median": 1.14,
+            "mean": 2.7,
+            "max": 11.63
+          },
+          "explanation": {
+            "n": 6,
+            "min": 0.67,
+            "median": 0.91,
+            "mean": 1.02,
+            "max": 1.9
+          },
+          "summarization": {
+            "n": 6,
+            "min": 0.61,
+            "median": 0.98,
+            "mean": 1.14,
+            "max": 2.39
+          }
+        }
+      },
+      "plain-language": {
+        "pairs": 24,
+        "styled_output_tokens_total": 19415,
+        "unstyled_output_tokens_total": 25367,
+        "ratio_of_totals": 0.77,
+        "distribution": {
+          "n": 24,
+          "min": 0.05,
+          "p25": 0.84,
+          "median": 1.03,
+          "p75": 1.45,
+          "max": 22.37,
+          "mean": 2.31
+        },
+        "by_task_type": {
+          "code-review": {
+            "n": 6,
+            "min": 0.05,
+            "median": 0.91,
+            "mean": 4.3,
+            "max": 22.37
+          },
+          "debugging": {
+            "n": 6,
+            "min": 0.09,
+            "median": 1.49,
+            "mean": 2.52,
+            "max": 9.08
+          },
+          "explanation": {
+            "n": 6,
+            "min": 0.73,
+            "median": 0.99,
+            "mean": 0.93,
+            "max": 1.05
+          },
+          "summarization": {
+            "n": 6,
+            "min": 0.73,
+            "median": 1.02,
+            "mean": 1.5,
+            "max": 3.96
+          }
+        }
+      },
+      "technical-simplified": {
+        "pairs": 24,
+        "styled_output_tokens_total": 37674,
+        "unstyled_output_tokens_total": 25367,
+        "ratio_of_totals": 1.49,
+        "distribution": {
+          "n": 24,
+          "min": 0.09,
+          "p25": 0.8,
+          "median": 0.99,
+          "p75": 1.43,
+          "max": 24.53,
+          "mean": 2.9
+        },
+        "by_task_type": {
+          "code-review": {
+            "n": 6,
+            "min": 0.43,
+            "median": 1.26,
+            "mean": 2.65,
+            "max": 10.53
+          },
+          "debugging": {
+            "n": 6,
+            "min": 0.87,
+            "median": 1.09,
+            "mean": 4.97,
+            "max": 24.53
+          },
+          "explanation": {
+            "n": 6,
+            "min": 0.53,
+            "median": 0.81,
+            "mean": 0.81,
+            "max": 1.07
+          },
+          "summarization": {
+            "n": 6,
+            "min": 0.09,
+            "median": 1.2,
+            "mean": 3.15,
+            "max": 10.55
+          }
+        }
+      }
+    }
+  },
+  "input_overhead": {
+    "measured": true,
+    "per_style": {
+      "actionable-clarity": {
+        "tokens": {
+          "n": 3,
+          "per_repeat": [
+            2061,
+            2061,
+            2061
+          ],
+          "min": 2061,
+          "mean": 2061.0,
+          "max": 2061,
+          "stdev": 0.0
+        },
+        "weighted": {
+          "n": 3,
+          "per_repeat": [
+            11869.4,
+            -1195.75,
+            206.1
+          ],
+          "min": -1195.75,
+          "mean": 3626.583,
+          "max": 11869.4,
+          "stdev": 7172.818
+        },
+        "styled_input_total_mean": 10514.0,
+        "unstyled_input_total_mean": 8453.0
+      },
+      "clarity-flow": {
+        "tokens": {
+          "n": 3,
+          "per_repeat": [
+            1238,
+            1238,
+            1238
+          ],
+          "min": 1238,
+          "mean": 1238.0,
+          "max": 1238,
+          "stdev": 0.0
+        },
+        "weighted": {
+          "n": 3,
+          "per_repeat": [
+            2506.6,
+            -1278.05,
+            123.8
+          ],
+          "min": -1278.05,
+          "mean": 450.783,
+          "max": 2506.6,
+          "stdev": 1913.396
+        },
+        "styled_input_total_mean": 9691.0,
+        "unstyled_input_total_mean": 8453.0
+      },
+      "classic-concise": {
+        "tokens": {
+          "n": 3,
+          "per_repeat": [
+            1302,
+            1302,
+            1302
+          ],
+          "min": 1302,
+          "mean": 1302.0,
+          "max": 1302,
+          "stdev": 0.0
+        },
+        "weighted": {
+          "n": 3,
+          "per_repeat": [
+            2586.6,
+            -1271.65,
+            130.2
+          ],
+          "min": -1271.65,
+          "mean": 481.717,
+          "max": 2586.6,
+          "stdev": 1952.997
+        },
+        "styled_input_total_mean": 9755.0,
+        "unstyled_input_total_mean": 8453.0
+      },
+      "developer-docs": {
+        "tokens": {
+          "n": 3,
+          "per_repeat": [
+            1241,
+            1241,
+            1241
+          ],
+          "min": 1241,
+          "mean": 1241.0,
+          "max": 1241,
+          "stdev": 0.0
+        },
+        "weighted": {
+          "n": 3,
+          "per_repeat": [
+            2510.35,
+            -1277.75,
+            124.1
+          ],
+          "min": -1277.75,
+          "mean": 452.233,
+          "max": 2510.35,
+          "stdev": 1915.249
+        },
+        "styled_input_total_mean": 9694.0,
+        "unstyled_input_total_mean": 8453.0
+      },
+      "plain-language": {
+        "tokens": {
+          "n": 3,
+          "per_repeat": [
+            1460,
+            1460,
+            1460
+          ],
+          "min": 1460,
+          "mean": 1460.0,
+          "max": 1460,
+          "stdev": 0.0
+        },
+        "weighted": {
+          "n": 3,
+          "per_repeat": [
+            2784.1,
+            -1255.85,
+            146.0
+          ],
+          "min": -1255.85,
+          "mean": 558.083,
+          "max": 2784.1,
+          "stdev": 2051.258
+        },
+        "styled_input_total_mean": 9913.0,
+        "unstyled_input_total_mean": 8453.0
+      },
+      "technical-simplified": {
+        "tokens": {
+          "n": 3,
+          "per_repeat": [
+            1988,
+            1988,
+            1988
+          ],
+          "min": 1988,
+          "mean": 1988.0,
+          "max": 1988,
+          "stdev": 0.0
+        },
+        "weighted": {
+          "n": 3,
+          "per_repeat": [
+            3444.1,
+            -1203.05,
+            198.8
+          ],
+          "min": -1203.05,
+          "mean": 813.283,
+          "max": 3444.1,
+          "stdev": 2383.735
+        },
+        "styled_input_total_mean": 10441.0,
+        "unstyled_input_total_mean": 8453.0
+      }
+    },
+    "probe_date": "2026-08-10T14:50:34+00:00",
+    "probe_model": "sonnet",
+    "repeats": 3,
+    "price_weights": {
+      "input_tokens": 1.0,
+      "cache_creation_input_tokens": 1.25,
+      "cache_read_input_tokens": 0.1
+    }
+  },
+  "warnings": []
+}
