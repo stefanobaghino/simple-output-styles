@@ -37,9 +37,14 @@ Each style keeps Claude Code's default coding instructions.
 > [!TIP]
 > Switch styles at the start of a new session or right after `/clear`. The output style is part of the system prompt, which Claude Code [reads once at session start](https://code.claude.com/docs/en/prompt-caching#changing-output-style): a switch made mid-session does not take effect until the next `/clear` or restart.
 
-## How to give feedback
+## How to contribute
 
-Open an issue through the [feedback forms](https://github.com/stefanobaghino/simple-output-styles/issues/new/choose): one form for feedback on an existing style, one for everything else — evaluations and methodology, documentation, installation, licensing, and requests for new styles. If you have the plugin installed, run `/simple-output-styles:feedback` and Claude gathers the details and prefills the form for you.
+The project does not accept external pull requests at this time, but feedback is welcome.
+
+Open an issue through the [feedback forms](https://github.com/stefanobaghino/simple-output-styles/issues/new/choose): one form for feedback on an existing style, one for everything else — evaluations and methodology, documentation, installation, licensing, and requests for new styles.
+
+> [!TIP]
+> If you have the plugin installed, run `/simple-output-styles:feedback` and Claude gathers the details and prefills the form for you.
 
 ## Styles
 
