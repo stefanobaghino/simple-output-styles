@@ -26,13 +26,13 @@ Open an issue through the [feedback forms](https://github.com/stefanobaghino/sim
 
 ## Styles
 
-Each section below describes the spirit of one style, then the advantages and disadvantages that the [evaluation harness](evals/) measured for it. The style texts live in [plugin/output-styles/](plugin/output-styles/).
+Each section below describes the spirit of one style, then what testing with the [evaluation harness](evals/) found: what the style does well, and where it falls short. The style texts live in [plugin/output-styles/](plugin/output-styles/).
 
 ### actionable-clarity
 
 The style aims at answers a reader understands on first read and can act on at once: the answer first, every needed fact stated outright, and no more certainty than the evidence supports. It combines the organization of plain-language, the directness of developer-docs, and the information-flow principles of clarity-flow, and adds content-preservation and uncertainty rules of its own.
 
-The harness measured three advantages: the model judge ranked it clearest of the styled field across the confirmation campaign, its rewrites preserve checked facts better than any other style in the collection, and its output stays level across long sessions. It also measured four disadvantages: the style writes longer answers than unstyled Claude, and it is the only style in the collection that does; on the held-out prompt set it came second, behind plain-language, within the accepted statistical tie; against baselines whose unstyled answers hedge heavily, it can drop or harden stated uncertainty more than its target allows; and its clarity results rest on the model judge alone, because the human spot check agreed with the judge only half of the time and the maintainer accepted the style by explicit overrule.
+In testing, its answers were the easiest to understand of all the styles, it kept more details than any other style, and its writing stayed steady even in very long sessions. On the downside: its answers run longer than Claude's normal output; on a fresh set of questions it came in a close second behind plain-language; where a careful answer would say "maybe", this style sometimes sounds more certain than it should; and most of its scores come from an AI judge — the one human check agreed with that judge only half of the time.
 
 #### Sources and disclaimers
 
@@ -42,7 +42,7 @@ The style is a synthesis. It combines principles from the Federal Plain Language
 
 The style pursues classic prescriptive concision, the archetypal "omit needless words" doctrine: make every word tell, and cut the rest.
 
-The harness measured two advantages: it produces the shortest output in the collection, and its rewrites keep checked facts well despite the cuts. It also measured two disadvantages: the model judge places it in the lower half of the field on clarity, and it loses more stated uncertainty than the leading styles.
+In testing, it wrote the shortest answers of any style and still kept the details well. But its answers were harder to understand than those of the leading styles, and it sometimes drops the "maybe" from a claim that deserves one.
 
 #### Source and disclaimers
 
@@ -52,7 +52,7 @@ The style adapts the composition principles of The Elements of Style (William St
 
 The style pursues reader-centered clarity grounded in reading psychology: make the actors of a sentence its subjects, put the actions in verbs, and place old information before new.
 
-The harness measured two advantages: it preserves checked facts best among the five reference styles, and it shortens output on average. It also measured three disadvantages: the model judge ranks it mid-field on clarity, behind plain-language and developer-docs; it loses stated uncertainty more than the leaders; and its output length swings widely from one run to the next.
+In testing, it was second only to actionable-clarity at keeping details, and it makes answers shorter on average. But it landed mid-pack on clarity, it sometimes drops the "maybe" from a claim that deserves one, and its answer length varies a lot from one test to the next.
 
 #### Source and disclaimers
 
@@ -62,7 +62,7 @@ The style is an independent adaptation of the clarity principles taught in Style
 
 The style speaks in the modern industry documentation voice: direct, conversational, and written for a global audience.
 
-The harness measured three advantages: it is one of the two clarity leaders among the reference styles, its output length stays close to unstyled Claude, and it preserves checked facts well. It also measured two disadvantages: it drops or hardens stated uncertainty more than plain-language does, because its directness discourages hedging words, and it grows slightly more verbose as a session gets long.
+In testing, it was among the clearest styles, its answers stay about as long as normal, and it keeps details well. But its direct tone sometimes turns a "maybe" into a certainty, and it gets a little wordier as a session drags on.
 
 #### Source and disclaimers
 
@@ -72,7 +72,7 @@ The style adapts the [Google developer documentation style guide](https://develo
 
 The style follows government plain language: familiar words, active voice, short sentences, and the reader addressed directly.
 
-The harness measured four advantages: the model judge ranks it clearest of the five reference styles, it placed first on the held-out prompt set, it shortens output, and it preserves stated uncertainty best in the whole collection. It also measured one disadvantage: its rewrites lose more checked facts than the other leading styles — the drive to shorten cuts details the reader needs.
+In testing, only actionable-clarity read as clearer, and on a fresh set of questions plain-language won outright. It makes answers shorter, and it is the best of all the styles at keeping "maybe" where it belongs. Its one weakness: the push to shorten can cut details you need.
 
 #### Source and disclaimers
 
@@ -82,7 +82,7 @@ The style adapts the [Federal Plain Language Guidelines](https://digital.gov/gui
 
 The style applies controlled technical language: a restricted vocabulary, short sentences, and one instruction per sentence, built for procedural documents read worldwide.
 
-The harness measured no advantage for it on conversational work. It measured three disadvantages: it ranks last on clarity, it loses the most checked facts and the most stated uncertainty in the collection, and it grows markedly more verbose as a session gets long. A controlled language built for procedures fits the conversational prompt set poorly; the style stays in the collection for the diversity of its philosophy.
+Testing found nothing it does better than the other styles in everyday conversation: its answers were the hardest to understand, it dropped the most details and the most "maybes", and it got much wordier as a session dragged on. It is built for procedure documents, not chat, and it stays in the collection for that different philosophy.
 
 #### Source and disclaimers
 
