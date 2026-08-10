@@ -1,0 +1,661 @@
+{
+  "date": "2026-08-10T11:03:14+00:00",
+  "claude_version": "2.1.226 (Claude Code)",
+  "model_requested": "sonnet",
+  "probe_prompt": "Reply with the word OK.",
+  "flags": [
+    "--output-format",
+    "stream-json",
+    "--verbose",
+    "--no-session-persistence",
+    "--max-turns",
+    "1",
+    "--disallowedTools",
+    "*",
+    "--exclude-dynamic-system-prompt-sections",
+    "--strict-mcp-config"
+  ],
+  "config": "hermetic",
+  "config_manifest_sha256": "e3ef87bafe5a44a4929464925e932ad3a0ede1accc791d84f511e706c8d9abab",
+  "note": "Both probe arms load the plugin through --plugin-dir, unlike the unstyled arm of the runner. Thus the difference between a styled arm and the unstyled arm isolates the style block.",
+  "plugin": {
+    "dir": "/Users/ste/Projects/github.com/stefanobaghino/simple-claude-output-style/plugin",
+    "name": "simple-output-styles"
+  },
+  "styles": {
+    "actionable-clarity": {
+      "file": "/Users/ste/Projects/github.com/stefanobaghino/simple-claude-output-style/plugin/output-styles/actionable-clarity.md",
+      "sha256": "7e89219ea8bb541b391dc1fe55cdf77c153f8e3d8745c75e63dd5896a4ca4c07"
+    },
+    "clarity-flow": {
+      "file": "/Users/ste/Projects/github.com/stefanobaghino/simple-claude-output-style/plugin/output-styles/clarity-flow.md",
+      "sha256": "b96eb83b01ad11b18ec5cf46dbb7203aad77de54ebafff10a6476b84cac19a06"
+    },
+    "classic-concise": {
+      "file": "/Users/ste/Projects/github.com/stefanobaghino/simple-claude-output-style/plugin/output-styles/classic-concise.md",
+      "sha256": "6adc8c4fb691900266f0cbceb873767423d623824387d8f14ef85d552ef06d44"
+    },
+    "developer-docs": {
+      "file": "/Users/ste/Projects/github.com/stefanobaghino/simple-claude-output-style/plugin/output-styles/developer-docs.md",
+      "sha256": "c62b6bf0a91ce36fe15d5318816eca56d318f5aa8e54fc5f9520e82bf46b9efc"
+    },
+    "plain-complete": {
+      "file": "/Users/ste/Projects/github.com/stefanobaghino/simple-claude-output-style/plugin/output-styles/plain-complete.md",
+      "sha256": "9ac41c3fff30a173ed3b076396865102e6dbd7ed3903c9960a23415951243b3f"
+    },
+    "plain-language": {
+      "file": "/Users/ste/Projects/github.com/stefanobaghino/simple-claude-output-style/plugin/output-styles/plain-language.md",
+      "sha256": "d9acbffcfb85937603524c3defc7491f91e86f24fcc679ec1247313b80bcbc04"
+    },
+    "technical-simplified": {
+      "file": "/Users/ste/Projects/github.com/stefanobaghino/simple-claude-output-style/plugin/output-styles/technical-simplified.md",
+      "sha256": "69bf572f15b1b570bd8ace5e93960150ec5f0096f0b71b9f42f8833ccaa4f089"
+    }
+  },
+  "repeats": 3,
+  "price_weights": {
+    "input_tokens": 1.0,
+    "cache_creation_input_tokens": 1.25,
+    "cache_read_input_tokens": 0.1
+  },
+  "arms": [
+    {
+      "arm": "unstyled",
+      "repeat": 0,
+      "output_style_active": "default",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 371,
+      "cache_read_input_tokens": 8081,
+      "total_input_tokens": 8454,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 371,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 2968,
+      "wall_ms": 11741
+    },
+    {
+      "arm": "actionable-clarity",
+      "repeat": 0,
+      "output_style_active": "simple-output-styles:actionable-clarity",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 10543,
+      "cache_read_input_tokens": 0,
+      "total_input_tokens": 10545,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 10543,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 2378,
+      "wall_ms": 418097
+    },
+    {
+      "arm": "clarity-flow",
+      "repeat": 0,
+      "output_style_active": "simple-output-styles:clarity-flow",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2443,
+      "cache_read_input_tokens": 7247,
+      "total_input_tokens": 9692,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 2443,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 1680,
+      "wall_ms": 2615
+    },
+    {
+      "arm": "classic-concise",
+      "repeat": 0,
+      "output_style_active": "simple-output-styles:classic-concise",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2507,
+      "cache_read_input_tokens": 7247,
+      "total_input_tokens": 9756,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 2507,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 2323,
+      "wall_ms": 3230
+    },
+    {
+      "arm": "developer-docs",
+      "repeat": 0,
+      "output_style_active": "simple-output-styles:developer-docs",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2446,
+      "cache_read_input_tokens": 7247,
+      "total_input_tokens": 9695,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 2446,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 3385,
+      "wall_ms": 4217
+    },
+    {
+      "arm": "plain-complete",
+      "repeat": 0,
+      "output_style_active": "simple-output-styles:plain-complete",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 3057,
+      "cache_read_input_tokens": 7247,
+      "total_input_tokens": 10306,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 3057,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 2144,
+      "wall_ms": 3034
+    },
+    {
+      "arm": "plain-language",
+      "repeat": 0,
+      "output_style_active": "simple-output-styles:plain-language",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2665,
+      "cache_read_input_tokens": 7247,
+      "total_input_tokens": 9914,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 2665,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 1816,
+      "wall_ms": 2671
+    },
+    {
+      "arm": "technical-simplified",
+      "repeat": 0,
+      "output_style_active": "simple-output-styles:technical-simplified",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 3193,
+      "cache_read_input_tokens": 7247,
+      "total_input_tokens": 10442,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 3193,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 2145,
+      "wall_ms": 3083
+    },
+    {
+      "arm": "unstyled",
+      "repeat": 1,
+      "output_style_active": "default",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 1220,
+      "cache_read_input_tokens": 7232,
+      "total_input_tokens": 8454,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 1220,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 1766,
+      "wall_ms": 2708
+    },
+    {
+      "arm": "actionable-clarity",
+      "repeat": 1,
+      "output_style_active": "simple-output-styles:actionable-clarity",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 10543,
+      "total_input_tokens": 10545,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 0,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 2831,
+      "wall_ms": 3654
+    },
+    {
+      "arm": "clarity-flow",
+      "repeat": 1,
+      "output_style_active": "simple-output-styles:clarity-flow",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 9690,
+      "total_input_tokens": 9692,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 0,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 1629,
+      "wall_ms": 2557
+    },
+    {
+      "arm": "classic-concise",
+      "repeat": 1,
+      "output_style_active": "simple-output-styles:classic-concise",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 9754,
+      "total_input_tokens": 9756,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 0,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 9718,
+      "wall_ms": 10531
+    },
+    {
+      "arm": "developer-docs",
+      "repeat": 1,
+      "output_style_active": "simple-output-styles:developer-docs",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 9693,
+      "total_input_tokens": 9695,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 0,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 2060,
+      "wall_ms": 2984
+    },
+    {
+      "arm": "plain-complete",
+      "repeat": 1,
+      "output_style_active": "simple-output-styles:plain-complete",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 10304,
+      "total_input_tokens": 10306,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 0,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 1804,
+      "wall_ms": 2740
+    },
+    {
+      "arm": "plain-language",
+      "repeat": 1,
+      "output_style_active": "simple-output-styles:plain-language",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 9912,
+      "total_input_tokens": 9914,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 0,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 2405,
+      "wall_ms": 3228
+    },
+    {
+      "arm": "technical-simplified",
+      "repeat": 1,
+      "output_style_active": "simple-output-styles:technical-simplified",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 10440,
+      "total_input_tokens": 10442,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 0,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 2230,
+      "wall_ms": 3058
+    },
+    {
+      "arm": "unstyled",
+      "repeat": 2,
+      "output_style_active": "default",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 8452,
+      "total_input_tokens": 8454,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 0,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 2850,
+      "wall_ms": 3673
+    },
+    {
+      "arm": "actionable-clarity",
+      "repeat": 2,
+      "output_style_active": "simple-output-styles:actionable-clarity",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 10543,
+      "total_input_tokens": 10545,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 0,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 2199,
+      "wall_ms": 3040
+    },
+    {
+      "arm": "clarity-flow",
+      "repeat": 2,
+      "output_style_active": "simple-output-styles:clarity-flow",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 9690,
+      "total_input_tokens": 9692,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 0,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 1528,
+      "wall_ms": 2457
+    },
+    {
+      "arm": "classic-concise",
+      "repeat": 2,
+      "output_style_active": "simple-output-styles:classic-concise",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 9754,
+      "total_input_tokens": 9756,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 0,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 2717,
+      "wall_ms": 3534
+    },
+    {
+      "arm": "developer-docs",
+      "repeat": 2,
+      "output_style_active": "simple-output-styles:developer-docs",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 9693,
+      "total_input_tokens": 9695,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 0,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 3340,
+      "wall_ms": 4158
+    },
+    {
+      "arm": "plain-complete",
+      "repeat": 2,
+      "output_style_active": "simple-output-styles:plain-complete",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 10304,
+      "total_input_tokens": 10306,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 0,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 2296,
+      "wall_ms": 3138
+    },
+    {
+      "arm": "plain-language",
+      "repeat": 2,
+      "output_style_active": "simple-output-styles:plain-language",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 9912,
+      "total_input_tokens": 9914,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 0,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 5360,
+      "wall_ms": 6211
+    },
+    {
+      "arm": "technical-simplified",
+      "repeat": 2,
+      "output_style_active": "simple-output-styles:technical-simplified",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 10440,
+      "total_input_tokens": 10442,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 0,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 2912,
+      "wall_ms": 3804
+    }
+  ],
+  "unstyled_totals": [
+    8454,
+    8454,
+    8454
+  ],
+  "overhead": {
+    "actionable-clarity": {
+      "tokens": {
+        "n": 3,
+        "per_repeat": [
+          2091,
+          2091,
+          2091
+        ],
+        "min": 2091,
+        "mean": 2091.0,
+        "max": 2091,
+        "stdev": 0.0
+      },
+      "weighted": {
+        "n": 3,
+        "per_repeat": [
+          11906.9,
+          -1193.9,
+          209.1
+        ],
+        "min": -1193.9,
+        "mean": 3640.7,
+        "max": 11906.9,
+        "stdev": 7193.028
+      }
+    },
+    "clarity-flow": {
+      "tokens": {
+        "n": 3,
+        "per_repeat": [
+          1238,
+          1238,
+          1238
+        ],
+        "min": 1238,
+        "mean": 1238.0,
+        "max": 1238,
+        "stdev": 0.0
+      },
+      "weighted": {
+        "n": 3,
+        "per_repeat": [
+          2506.6,
+          -1279.2,
+          123.8
+        ],
+        "min": -1279.2,
+        "mean": 450.4,
+        "max": 2506.6,
+        "stdev": 1913.915
+      }
+    },
+    "classic-concise": {
+      "tokens": {
+        "n": 3,
+        "per_repeat": [
+          1302,
+          1302,
+          1302
+        ],
+        "min": 1302,
+        "mean": 1302.0,
+        "max": 1302,
+        "stdev": 0.0
+      },
+      "weighted": {
+        "n": 3,
+        "per_repeat": [
+          2586.6,
+          -1272.8,
+          130.2
+        ],
+        "min": -1272.8,
+        "mean": 481.333,
+        "max": 2586.6,
+        "stdev": 1953.513
+      }
+    },
+    "developer-docs": {
+      "tokens": {
+        "n": 3,
+        "per_repeat": [
+          1241,
+          1241,
+          1241
+        ],
+        "min": 1241,
+        "mean": 1241.0,
+        "max": 1241,
+        "stdev": 0.0
+      },
+      "weighted": {
+        "n": 3,
+        "per_repeat": [
+          2510.35,
+          -1278.9,
+          124.1
+        ],
+        "min": -1278.9,
+        "mean": 451.85,
+        "max": 2510.35,
+        "stdev": 1915.768
+      }
+    },
+    "plain-complete": {
+      "tokens": {
+        "n": 3,
+        "per_repeat": [
+          1852,
+          1852,
+          1852
+        ],
+        "min": 1852,
+        "mean": 1852.0,
+        "max": 1852,
+        "stdev": 0.0
+      },
+      "weighted": {
+        "n": 3,
+        "per_repeat": [
+          3274.1,
+          -1217.8,
+          185.2
+        ],
+        "min": -1217.8,
+        "mean": 747.167,
+        "max": 3274.1,
+        "stdev": 2298.074
+      }
+    },
+    "plain-language": {
+      "tokens": {
+        "n": 3,
+        "per_repeat": [
+          1460,
+          1460,
+          1460
+        ],
+        "min": 1460,
+        "mean": 1460.0,
+        "max": 1460,
+        "stdev": 0.0
+      },
+      "weighted": {
+        "n": 3,
+        "per_repeat": [
+          2784.1,
+          -1257.0,
+          146.0
+        ],
+        "min": -1257.0,
+        "mean": 557.7,
+        "max": 2784.1,
+        "stdev": 2051.766
+      }
+    },
+    "technical-simplified": {
+      "tokens": {
+        "n": 3,
+        "per_repeat": [
+          1988,
+          1988,
+          1988
+        ],
+        "min": 1988,
+        "mean": 1988.0,
+        "max": 1988,
+        "stdev": 0.0
+      },
+      "weighted": {
+        "n": 3,
+        "per_repeat": [
+          3444.1,
+          -1204.2,
+          198.8
+        ],
+        "min": -1204.2,
+        "mean": 812.9,
+        "max": 3444.1,
+        "stdev": 2384.222
+      }
+    }
+  },
+  "warnings": []
+}

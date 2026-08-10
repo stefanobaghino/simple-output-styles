@@ -44,14 +44,13 @@
 #   11.1 or above. The threshold 10.0 passes the observed styled
 #   rate with headroom and fails that upper half of the baseline.
 #
-# plain-complete, actionable-clarity: provisional thresholds for the
-#   candidate styles of the #83 design loop, set before any measured
-#   rates. Both rule sets copy field sets whose styled rates were all
-#   zero (plain-language; plain-language plus clarity-flow plus one
-#   developer-docs pattern), so 5.0 mirrors those: strict, with slack
-#   for one violation in an answer of 20 or more sentences.
-#   Recalibrate against the first screening run of the loop, which
-#   carries the one-time asterisk.
+# actionable-clarity: the candidate style of the #83 design loop.
+#   Calibrated against runs/2026-08-10-screening, which carries the
+#   one-time asterisk. The styled rates were 8 zeros and the baseline
+#   rate was 10.22, so the threshold 5.0 mirrors plain-language:
+#   strict, with slack for one violation in an answer of 20 or more
+#   sentences. The screening sample is 8 pairs, so the confirmation
+#   campaign re-checks this calibration.
 thresholds:
   technical-simplified:
     max_rate: 15.0
@@ -63,7 +62,5 @@ thresholds:
     max_rate: 5.0
   developer-docs:
     max_rate: 10.0
-  plain-complete:
-    max_rate: 5.0
   actionable-clarity:
     max_rate: 5.0

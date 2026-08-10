@@ -1,0 +1,109 @@
+{
+  "date": "2026-08-10T10:54:44+00:00",
+  "run": "2026-08-10-screening",
+  "thresholds": {
+    "actionable-clarity": 5.0,
+    "clarity-flow": 5.0,
+    "classic-concise": 10.0,
+    "developer-docs": 10.0,
+    "plain-complete": 5.0,
+    "plain-language": 5.0,
+    "technical-simplified": 15.0
+  },
+  "summary": {
+    "actionable-clarity": {
+      "gated": 8,
+      "passed": 8,
+      "failed": 0,
+      "styled_rate": 0.0,
+      "baseline_rate": 10.22
+    },
+    "clarity-flow": {
+      "gated": 8,
+      "passed": 8,
+      "failed": 0,
+      "styled_rate": 0.0,
+      "baseline_rate": 0.0
+    },
+    "classic-concise": {
+      "gated": 8,
+      "passed": 8,
+      "failed": 0,
+      "styled_rate": 0.0,
+      "baseline_rate": 0.0
+    },
+    "developer-docs": {
+      "gated": 8,
+      "passed": 8,
+      "failed": 0,
+      "styled_rate": 0.0,
+      "baseline_rate": 12.41
+    },
+    "plain-complete": {
+      "gated": 8,
+      "passed": 8,
+      "failed": 0,
+      "styled_rate": 0.0,
+      "baseline_rate": 10.22
+    },
+    "plain-language": {
+      "gated": 8,
+      "passed": 8,
+      "failed": 0,
+      "styled_rate": 0.0,
+      "baseline_rate": 10.22
+    },
+    "technical-simplified": {
+      "gated": 8,
+      "passed": 6,
+      "failed": 2,
+      "styled_rate": 9.8,
+      "baseline_rate": 91.24
+    }
+  },
+  "linter_toolchain": {
+    "spacy": "3.8.14",
+    "en-core-web-sm": "3.8.0",
+    "markdown-it-py": "4.2.0"
+  },
+  "run_linter_toolchain": {
+    "spacy": "3.8.14",
+    "en-core-web-sm": "3.8.0",
+    "markdown-it-py": "4.2.0"
+  },
+  "rules": {
+    "actionable-clarity": {
+      "file": "rules/actionable-clarity.rules.yaml",
+      "sha256": "6a98da981e2daf278bbc0ee4c3bee5ac0e25a2c78c6566a964c1fba35f403435"
+    },
+    "clarity-flow": {
+      "file": "rules/clarity-flow.rules.yaml",
+      "sha256": "d4047e50d635f3427b5373f4bfdd85574e5f91622b0ee462edb454c69420e32a"
+    },
+    "classic-concise": {
+      "file": "rules/classic-concise.rules.yaml",
+      "sha256": "d3496c81a6c74cd388b4e3e44e405b32cc1de656ba4a35a58f3eeaf7b9bd57d9"
+    },
+    "developer-docs": {
+      "file": "rules/developer-docs.rules.yaml",
+      "sha256": "7d0f20c52814fced11943ace3dec6cce0c4f5716766562fd346a9c7891047903"
+    },
+    "plain-complete": {
+      "file": "rules/plain-complete.rules.yaml",
+      "sha256": "8d2aaee9040654b1f901934b6839fcd9e56c2a6ee12cf3252890b769efa80ad0"
+    },
+    "plain-language": {
+      "file": "rules/plain-language.rules.yaml",
+      "sha256": "b2175b219907fcf815762e53fd9c4ac11f86901b6bce590224aeb6d5db6485a8"
+    },
+    "technical-simplified": {
+      "file": "rules/technical-simplified.rules.yaml",
+      "sha256": "f7120e410a1863e07bda72bd5b0fe07c7ca0cbad642c9a093681e86497025fdd"
+    }
+  },
+  "gate_config": {
+    "file": "rules/gate.yaml",
+    "sha256": "5c5d86e3e205200b1f9eca51be30787621bfda441d7245b05b9a0cbb57bd3f62"
+  },
+  "warnings": []
+}
