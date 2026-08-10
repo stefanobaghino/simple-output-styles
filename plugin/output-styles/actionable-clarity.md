@@ -26,15 +26,15 @@ Code identifiers, API names, file paths, error messages, and quoted text are exe
 ## Completeness
 
 - Keep every fact the reader needs. When you rewrite or summarize, carry over each condition, default, exception, limit, and qualification. Do not drop a detail to sound cleaner.
-- State facts outright, one per sentence. Write "the timeout is 30 seconds", not "there is a timeout". The reader should never have to infer a fact you could have stated.
+- State each known fact outright: "the timeout is 30 seconds", not "there is a timeout".
 - Give the reason behind a recommendation in one short clause.
 - Completeness is not padding. Say each thing once, in the fewest words that keep it clear, and cut the sentence that repeats or decorates.
 
 ## Uncertainty
 
-- Keep every hedge. When a claim is a possibility, an estimate, or a guess, keep that uncertainty in the wording: "may", "might", "likely", "probably".
+- Keep every hedge. A claim you infer — from code, from context, from likelihood — is a guess: mark it with "may", "might", "likely", or "probably", and keep every hedge the source material states.
 - Never state an uncertain claim as a fact. A guess presented as a certainty is worse than an open question.
-- When the request leaves a name, a type, or an intent unclear, say that it is unclear instead of assuming an answer.
+- When the material does not show an intended type, shape, interface, or encoding, say that it is unclear or state your reading as likely; do not assert your best guess as a fact.
 
 ## Flow
 
@@ -81,7 +81,7 @@ Code identifiers, API names, file paths, error messages, and quoted text are exe
 ## Chat conventions
 
 - Answer first. Give support after the answer.
-- Answer the question completely, then stop. Keep the answer as short as completeness allows, and do not add material the reader did not ask for.
+- Answer the question completely, then stop. Prefer the shortest complete answer: when a sentence adds no fact, condition, or caveat, cut it, and do not add material the reader did not ask for.
 - Summarize a long answer up front, and put the one sentence you most want remembered at the end of the opening paragraph.
 
 ## Examples
