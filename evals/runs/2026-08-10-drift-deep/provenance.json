@@ -1,0 +1,141 @@
+{
+  "date": "2026-08-10T17:38:25+00:00",
+  "prompt_set": {
+    "path": null,
+    "sha256": null
+  },
+  "conditions": {
+    "model_requested": "sonnet",
+    "model_pin": "claude-sonnet-5",
+    "claude_version": "2.1.226 (Claude Code)",
+    "workdir": "temp",
+    "config": "hermetic",
+    "config_manifest_sha256": "e3ef87bafe5a44a4929464925e932ad3a0ede1accc791d84f511e706c8d9abab",
+    "claude_binary": "/Users/ste/.local/share/style-evals/cli/2.1.226/claude",
+    "binary_source": "managed",
+    "credential_source": "token",
+    "env_passed": [
+      "HOME",
+      "PATH",
+      "TERM",
+      "USER",
+      "CLAUDE_CONFIG_DIR",
+      "ANTHROPIC_API_KEY",
+      "CLAUDE_CODE_OAUTH_TOKEN",
+      "FORCE_PROMPT_CACHING_5M"
+    ],
+    "flags": [
+      "--output-format",
+      "stream-json",
+      "--verbose",
+      "--max-turns",
+      "1",
+      "--disallowedTools",
+      "*",
+      "--exclude-dynamic-system-prompt-sections",
+      "--strict-mcp-config"
+    ],
+    "settings": {
+      "base": {
+        "disableAllHooks": true
+      },
+      "styled_arm": {
+        "outputStyle": "<style>",
+        "extra_flag": "--plugin-dir"
+      }
+    }
+  },
+  "repo": {
+    "commit": "0501ee2a1ce5faacea3318c9fd199c0da3fdf222",
+    "dirty": false
+  },
+  "styles": {
+    "actionable-clarity": {
+      "file": "/Users/ste/Projects/github.com/stefanobaghino/simple-claude-output-style/plugin/output-styles/actionable-clarity.md",
+      "sha256": "fe058081a440cc286d10415652808fb21992a638c66d1c4729d730807503a693"
+    }
+  },
+  "linter_toolchain": {
+    "spacy": "3.8.14",
+    "en-core-web-sm": "3.8.0",
+    "markdown-it-py": "4.2.0"
+  },
+  "drift": {
+    "turns": 15,
+    "repeats": 3,
+    "resume": true,
+    "mode": "deep",
+    "scripts": {
+      "incident-timeline": {
+        "path": "prompts/sessions/incident-timeline.yaml",
+        "sha256": "57bff76797c0cd958e5a399ffa9d85cce5d70b8808a60e43bceab6e2d9df971b"
+      },
+      "service-review": {
+        "path": "prompts/sessions/service-review.yaml",
+        "sha256": "4cc6d4aab1db18b906f44e7afc48d38694fcceb6c747bd4a1c9bee155900fb7f"
+      },
+      "design-doc-series": {
+        "path": "prompts/sessions/design-doc-series.yaml",
+        "sha256": "36417c8f909e51b34b39d035282c54324e648bca532264f163197da6fc0f6bed"
+      }
+    },
+    "repeat_scripts": {
+      "1": "incident-timeline",
+      "2": "service-review",
+      "3": "design-doc-series"
+    },
+    "script": {
+      "1": [
+        "incident-timeline/turn-01",
+        "incident-timeline/turn-02",
+        "incident-timeline/turn-03",
+        "incident-timeline/turn-04",
+        "incident-timeline/turn-05",
+        "incident-timeline/turn-06",
+        "incident-timeline/turn-07",
+        "incident-timeline/turn-08",
+        "incident-timeline/turn-09",
+        "incident-timeline/turn-10",
+        "incident-timeline/turn-11",
+        "incident-timeline/turn-12",
+        "incident-timeline/turn-13",
+        "incident-timeline/turn-14",
+        "incident-timeline/turn-15"
+      ],
+      "2": [
+        "service-review/turn-01",
+        "service-review/turn-02",
+        "service-review/turn-03",
+        "service-review/turn-04",
+        "service-review/turn-05",
+        "service-review/turn-06",
+        "service-review/turn-07",
+        "service-review/turn-08",
+        "service-review/turn-09",
+        "service-review/turn-10",
+        "service-review/turn-11",
+        "service-review/turn-12",
+        "service-review/turn-13",
+        "service-review/turn-14",
+        "service-review/turn-15"
+      ],
+      "3": [
+        "design-doc-series/turn-01",
+        "design-doc-series/turn-02",
+        "design-doc-series/turn-03",
+        "design-doc-series/turn-04",
+        "design-doc-series/turn-05",
+        "design-doc-series/turn-06",
+        "design-doc-series/turn-07",
+        "design-doc-series/turn-08",
+        "design-doc-series/turn-09",
+        "design-doc-series/turn-10",
+        "design-doc-series/turn-11",
+        "design-doc-series/turn-12",
+        "design-doc-series/turn-13",
+        "design-doc-series/turn-14",
+        "design-doc-series/turn-15"
+      ]
+    }
+  }
+}

@@ -1,0 +1,699 @@
+{
+  "date": "2026-08-10T17:38:31+00:00",
+  "run": "2026-08-10-drift-deep",
+  "turns": 15,
+  "repeats": 3,
+  "slope_threshold": null,
+  "context_window": 200000,
+  "styles": {
+    "actionable-clarity": {
+      "complete_sessions": 3,
+      "sessions": [
+        {
+          "repeat": 1,
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            4.76,
+            0.0,
+            1.03,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "repeat": 2,
+          "series": [
+            0.0,
+            0.0,
+            1.64,
+            5.13,
+            0.0,
+            2.27,
+            0.0,
+            4.44,
+            2.5,
+            1.45,
+            0.0,
+            0.0,
+            1.15,
+            0.92,
+            0.0
+          ]
+        },
+        {
+          "repeat": 3,
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "pooled_series": [
+        0.0,
+        0.0,
+        0.85,
+        2.02,
+        0.0,
+        0.75,
+        0.0,
+        3.7,
+        1.22,
+        1.04,
+        0.0,
+        0.0,
+        0.48,
+        0.35,
+        0.0
+      ],
+      "slope": -0.022,
+      "intercept": 0.866,
+      "threshold": 0.069,
+      "threshold_source": "derived",
+      "null": {
+        "permutations": 10000,
+        "seed": 0,
+        "quantile": 0.95,
+        "threshold": 0.069,
+        "p_value": 0.6979
+      },
+      "verdict": "flat",
+      "depth": {
+        "final": {
+          "1": 354264,
+          "2": 392400,
+          "3": 167114
+        },
+        "mean_final": 304593,
+        "window_fraction": 1.523
+      },
+      "turns": [
+        {
+          "style": "actionable-clarity",
+          "repeat": 1,
+          "turn": 1,
+          "prompt_id": "incident-timeline/turn-01",
+          "sentences": 53,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 25259,
+          "answer_sha256": "bd01512e6f9a8c354137d495b15ab9e09e0e7b5e48b2628d89b6ecf0ac1391b0"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 1,
+          "turn": 2,
+          "prompt_id": "incident-timeline/turn-02",
+          "sentences": 34,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 49173,
+          "answer_sha256": "8d4052a3f78df69f2f3744f63f21fe25363d845dfdacd262d175d09b5b735c57"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 1,
+          "turn": 3,
+          "prompt_id": "incident-timeline/turn-03",
+          "sentences": 39,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 77359,
+          "answer_sha256": "fea7483787ad8ba0f74bbbaf92bd39d65d06eb31a76d90dab64fe4db8990e4e9"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 1,
+          "turn": 4,
+          "prompt_id": "incident-timeline/turn-04",
+          "sentences": 39,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 104067,
+          "answer_sha256": "2ad45631a528316cc0d0969283f16492b402536baa4d38c1c73c82180ad9adaa"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 1,
+          "turn": 5,
+          "prompt_id": "incident-timeline/turn-05",
+          "sentences": 47,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 124408,
+          "answer_sha256": "3423af035ea7d7fcbce2b70fedabf0c7f4a05890e693325e5a8f34868ce1d74b"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 1,
+          "turn": 6,
+          "prompt_id": "incident-timeline/turn-06",
+          "sentences": 73,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 145884,
+          "answer_sha256": "50ed0f664eaf22039d7cd84d6c7b151196b19db93e711923c22b6b72ec70910a"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 1,
+          "turn": 7,
+          "prompt_id": "incident-timeline/turn-07",
+          "sentences": 27,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 164772,
+          "answer_sha256": "e9ea20d966472b2b96ba3392d85d90da46c470eb4d82c6181df0d39ab703c3f9"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 1,
+          "turn": 8,
+          "prompt_id": "incident-timeline/turn-08",
+          "sentences": 21,
+          "violations": 1,
+          "by_rule": {
+            "latin-abbreviation": 1
+          },
+          "rate": 4.76,
+          "context_tokens": 181486,
+          "answer_sha256": "53264a659235e7fb4d7854c69b1717a2a3f91f3d1f73ced8ac14eea5ce65621f"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 1,
+          "turn": 9,
+          "prompt_id": "incident-timeline/turn-09",
+          "sentences": 21,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 203225,
+          "answer_sha256": "461d614112ba5d6ebe8aae964e9877013f0b997a2b9110b973e37de9a9917bfe"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 1,
+          "turn": 10,
+          "prompt_id": "incident-timeline/turn-10",
+          "sentences": 97,
+          "violations": 1,
+          "by_rule": {
+            "latin-abbreviation": 1
+          },
+          "rate": 1.03,
+          "context_tokens": 220344,
+          "answer_sha256": "47488f74b4250f2b3e20bd3008728bbd030876d013e8a7f9bf3600b05f5cc58b"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 1,
+          "turn": 11,
+          "prompt_id": "incident-timeline/turn-11",
+          "sentences": 83,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 247459,
+          "answer_sha256": "c706a37b4076919ad6a02cc4d4cdf823b936c3348fc6f384e94d7da4c8a491fd"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 1,
+          "turn": 12,
+          "prompt_id": "incident-timeline/turn-12",
+          "sentences": 96,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 277284,
+          "answer_sha256": "d23d83377df07cb6f7036fa5bb44818207971a62537267d16ea4fe30456d94fa"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 1,
+          "turn": 13,
+          "prompt_id": "incident-timeline/turn-13",
+          "sentences": 22,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 303041,
+          "answer_sha256": "7b2402f1ee070d3826868a0ae778e86969878faffaf321f83e95c58176328938"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 1,
+          "turn": 14,
+          "prompt_id": "incident-timeline/turn-14",
+          "sentences": 113,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 324980,
+          "answer_sha256": "993299273b3d35bc891a0117016ad26eb9697ecb2670a25ed7f74172eac55b6b"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 1,
+          "turn": 15,
+          "prompt_id": "incident-timeline/turn-15",
+          "sentences": 35,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 354264,
+          "answer_sha256": "0559f704b95fcccb263c60f296ec0045201c46dcfa6093ba26260191f95d83e9"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 2,
+          "turn": 1,
+          "prompt_id": "service-review/turn-01",
+          "sentences": 53,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 19886,
+          "answer_sha256": "ecf0d71233bf6535f75751f5c823b8c4f44fc450449c29f2ea6ff2d17612d68c"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 2,
+          "turn": 2,
+          "prompt_id": "service-review/turn-02",
+          "sentences": 51,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 40353,
+          "answer_sha256": "f3cfca414b143edc81e975330852a30dcd9ea5f5f8a715a6a898786cfe80288b"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 2,
+          "turn": 3,
+          "prompt_id": "service-review/turn-03",
+          "sentences": 61,
+          "violations": 1,
+          "by_rule": {
+            "latin-abbreviation": 1
+          },
+          "rate": 1.64,
+          "context_tokens": 61596,
+          "answer_sha256": "694b37f1715a513568933e07e1dc8b6d9c7788b7629be4e7dc3334b0c3ce7253"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 2,
+          "turn": 4,
+          "prompt_id": "service-review/turn-04",
+          "sentences": 39,
+          "violations": 2,
+          "by_rule": {
+            "latin-abbreviation": 2
+          },
+          "rate": 5.13,
+          "context_tokens": 91614,
+          "answer_sha256": "c9c732c1af9eadda95f52aca7ce96764242647894feceff1e1a7b581511b986c"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 2,
+          "turn": 5,
+          "prompt_id": "service-review/turn-05",
+          "sentences": 45,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 122722,
+          "answer_sha256": "a40ddf417c236bc516d563b7806b1defb6179bedfe17baa2e5338e98e589eebb"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 2,
+          "turn": 6,
+          "prompt_id": "service-review/turn-06",
+          "sentences": 44,
+          "violations": 1,
+          "by_rule": {
+            "latin-abbreviation": 1
+          },
+          "rate": 2.27,
+          "context_tokens": 150807,
+          "answer_sha256": "4c52fa020421d5ad1a1ffae06d11228019a5230366ae18a8c130d731817dbed7"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 2,
+          "turn": 7,
+          "prompt_id": "service-review/turn-07",
+          "sentences": 38,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 176177,
+          "answer_sha256": "cbe529101a7593b2289faaeffb59ca846e5b28a4c86a5136a8a7c8d59c7454e2"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 2,
+          "turn": 8,
+          "prompt_id": "service-review/turn-08",
+          "sentences": 45,
+          "violations": 2,
+          "by_rule": {
+            "latin-abbreviation": 2
+          },
+          "rate": 4.44,
+          "context_tokens": 201156,
+          "answer_sha256": "539031b5da2e33e58621badf80f31af3ddaf6a63efdcf4d498ce69ae41e358f6"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 2,
+          "turn": 9,
+          "prompt_id": "service-review/turn-09",
+          "sentences": 40,
+          "violations": 1,
+          "by_rule": {
+            "latin-abbreviation": 1
+          },
+          "rate": 2.5,
+          "context_tokens": 238467,
+          "answer_sha256": "3111a7676f77452745264418edd91299313759f642c451e8ead804ceeab01f6d"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 2,
+          "turn": 10,
+          "prompt_id": "service-review/turn-10",
+          "sentences": 69,
+          "violations": 1,
+          "by_rule": {
+            "latin-abbreviation": 1
+          },
+          "rate": 1.45,
+          "context_tokens": 268828,
+          "answer_sha256": "64db3dd4e7149da699cfd3d6294b5371bca9193a171a6d6fd4ef839e817102ec"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 2,
+          "turn": 11,
+          "prompt_id": "service-review/turn-11",
+          "sentences": 60,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 297481,
+          "answer_sha256": "fe1c2b5baaaed132fad11fa5f3a2a4dadc0618bb53e7aff00533793de6a8d6a7"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 2,
+          "turn": 12,
+          "prompt_id": "service-review/turn-12",
+          "sentences": 27,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 319542,
+          "answer_sha256": "4921f3dc5238a100bbcf17321f59210ffc5a819d61bf4a75ef46d38d8439ed7d"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 2,
+          "turn": 13,
+          "prompt_id": "service-review/turn-13",
+          "sentences": 87,
+          "violations": 1,
+          "by_rule": {
+            "latin-abbreviation": 1
+          },
+          "rate": 1.15,
+          "context_tokens": 338860,
+          "answer_sha256": "b211b45b7625129bbd82ff6f9e38b6313118216cba602b7c1d9917e6fbdfacbc"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 2,
+          "turn": 14,
+          "prompt_id": "service-review/turn-14",
+          "sentences": 109,
+          "violations": 1,
+          "by_rule": {
+            "latin-abbreviation": 1
+          },
+          "rate": 0.92,
+          "context_tokens": 365712,
+          "answer_sha256": "5529e58f2229115e80f4492ac70cd64133341b00689c236c8d800a0283ff02b8"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 2,
+          "turn": 15,
+          "prompt_id": "service-review/turn-15",
+          "sentences": 59,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 392400,
+          "answer_sha256": "52807e2470eeab379c228992d083adfb3e21531a8be087d3c1519f2b6d57db23"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 3,
+          "turn": 1,
+          "prompt_id": "design-doc-series/turn-01",
+          "sentences": 19,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 20017,
+          "answer_sha256": "d207b1235639f7647d0254cc1c1809f0f0874c08fd73dc00ac62abaeb5eda803"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 3,
+          "turn": 2,
+          "prompt_id": "design-doc-series/turn-02",
+          "sentences": 21,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 28101,
+          "answer_sha256": "390ab853d460e3dea0cc9194e2750e896a9965ef06d9eb4965342a28f7173dd3"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 3,
+          "turn": 3,
+          "prompt_id": "design-doc-series/turn-03",
+          "sentences": 18,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 35868,
+          "answer_sha256": "ab6a4d0fcf4d0423769397d9839af2db759c440c07f929311a551ab0d2a42b5b"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 3,
+          "turn": 4,
+          "prompt_id": "design-doc-series/turn-04",
+          "sentences": 21,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 43569,
+          "answer_sha256": "7bc3c7a7c80ca428a363831465e0e16a4eb5ab81127718ab8a262d0d1556bf72"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 3,
+          "turn": 5,
+          "prompt_id": "design-doc-series/turn-05",
+          "sentences": 21,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 53541,
+          "answer_sha256": "82beb59428c7de4ba7772ca46fb0d72bb1e887b51cb940ac4d61f7201de37500"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 3,
+          "turn": 6,
+          "prompt_id": "design-doc-series/turn-06",
+          "sentences": 17,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 62888,
+          "answer_sha256": "1373d38a301faae72a9e5a5e3b2a4c18c9cc3906cc57bfada324b731fc7f76d9"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 3,
+          "turn": 7,
+          "prompt_id": "design-doc-series/turn-07",
+          "sentences": 20,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 71252,
+          "answer_sha256": "0595e3036b5fbed7cfdd1357faaa011ce58654959130f7c76d528ba2da88f204"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 3,
+          "turn": 8,
+          "prompt_id": "design-doc-series/turn-08",
+          "sentences": 15,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 81621,
+          "answer_sha256": "a1ec6faaa002474bf44658520e5e88496d95f47c54025aec8029e6c1804854c5"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 3,
+          "turn": 9,
+          "prompt_id": "design-doc-series/turn-09",
+          "sentences": 21,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 90557,
+          "answer_sha256": "4d392dc42be4fa09b9eaf8d7d73a80ed68c463d99ff3d4744f70ec9d9963e5e8"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 3,
+          "turn": 10,
+          "prompt_id": "design-doc-series/turn-10",
+          "sentences": 27,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 98330,
+          "answer_sha256": "6a31c6ef85d01df350323f46d9c5d4aea044df6523eb4140688292d7d66905f5"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 3,
+          "turn": 11,
+          "prompt_id": "design-doc-series/turn-11",
+          "sentences": 80,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 108055,
+          "answer_sha256": "94fb24dfec220bf9577f2420d90ed0b511ac761ed5a59d1fd5107105cfe7ebc3"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 3,
+          "turn": 12,
+          "prompt_id": "design-doc-series/turn-12",
+          "sentences": 46,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 122689,
+          "answer_sha256": "8d1a419fa6bd1593e9700932f7344999096b7e859fe28254629f4722f8c4f818"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 3,
+          "turn": 13,
+          "prompt_id": "design-doc-series/turn-13",
+          "sentences": 98,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 139523,
+          "answer_sha256": "501862d9dda4a7e8b16ec13c1f59ef386d7d732dd4700fd41671e4f02e582afc"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 3,
+          "turn": 14,
+          "prompt_id": "design-doc-series/turn-14",
+          "sentences": 62,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 156458,
+          "answer_sha256": "0801dd12e93b897372df3b69c9639055b872e3e0d7e58203cb8493ba7d477ac0"
+        },
+        {
+          "style": "actionable-clarity",
+          "repeat": 3,
+          "turn": 15,
+          "prompt_id": "design-doc-series/turn-15",
+          "sentences": 53,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 167114,
+          "answer_sha256": "8e44a50cfea42b1194b024eca469b4101fbb6143ad5835e6fd9b794c3289a8c6"
+        }
+      ]
+    }
+  },
+  "rules": {
+    "actionable-clarity": {
+      "file": "rules/actionable-clarity.rules.yaml",
+      "sha256": "a9a1e42eaaecdc9a048e075c2a382d41508e228cd11443e7da20bbb9e9047fc6"
+    }
+  },
+  "linter_toolchain": {
+    "spacy": "3.8.14",
+    "en-core-web-sm": "3.8.0",
+    "markdown-it-py": "4.2.0"
+  },
+  "run_linter_toolchain": {
+    "spacy": "3.8.14",
+    "en-core-web-sm": "3.8.0",
+    "markdown-it-py": "4.2.0"
+  },
+  "warnings": [],
+  "depth_target": 0.6,
+  "mode": "deep",
+  "scripts": {
+    "1": "incident-timeline",
+    "2": "service-review",
+    "3": "design-doc-series"
+  }
+}

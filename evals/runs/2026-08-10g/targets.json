@@ -1,0 +1,245 @@
+{
+  "date": "2026-08-10T17:39:26+00:00",
+  "run": "2026-08-10g",
+  "targets_config": {
+    "file": "rules/targets.yaml",
+    "sha256": "5295162f4e0feb50292343ac8479c110ccc31c9685d54b350b279e036bd63ef8"
+  },
+  "drift_run": "2026-08-10-drift-deep",
+  "styles": {
+    "actionable-clarity": [
+      {
+        "axis": "max_token_ratio",
+        "kind": "max",
+        "limit": 1.45,
+        "observed": 1.32,
+        "verdict": "pass"
+      },
+      {
+        "axis": "min_fact_survival",
+        "kind": "min",
+        "limit": 0.73,
+        "observed": 0.808,
+        "verdict": "pass"
+      },
+      {
+        "axis": "min_hedge_survival",
+        "kind": "min",
+        "limit": 0.9,
+        "observed": 0.75,
+        "verdict": "fail"
+      },
+      {
+        "axis": "min_rank_strength",
+        "kind": "min",
+        "limit": 1.7,
+        "observed": 3.144,
+        "verdict": "pass"
+      },
+      {
+        "axis": "max_drift_slope",
+        "kind": "max",
+        "limit": 0.05,
+        "observed": -0.022,
+        "verdict": "pass"
+      }
+    ],
+    "clarity-flow": [
+      {
+        "axis": "max_token_ratio",
+        "kind": "max",
+        "limit": 1.1,
+        "observed": 1.04,
+        "verdict": "pass"
+      },
+      {
+        "axis": "min_fact_survival",
+        "kind": "min",
+        "limit": 0.75,
+        "observed": 0.771,
+        "verdict": "pass"
+      },
+      {
+        "axis": "min_hedge_survival",
+        "kind": "min",
+        "limit": 0.6,
+        "observed": 0.8,
+        "verdict": "pass"
+      },
+      {
+        "axis": "min_rank_strength",
+        "kind": "min",
+        "limit": 0.8,
+        "observed": 0.888,
+        "verdict": "pass"
+      },
+      {
+        "axis": "max_drift_slope",
+        "kind": "max",
+        "limit": 0.05,
+        "observed": null,
+        "verdict": "skipped",
+        "note": "not in the drift run"
+      }
+    ],
+    "classic-concise": [
+      {
+        "axis": "max_token_ratio",
+        "kind": "max",
+        "limit": 0.95,
+        "observed": 0.88,
+        "verdict": "pass"
+      },
+      {
+        "axis": "min_fact_survival",
+        "kind": "min",
+        "limit": 0.68,
+        "observed": 0.769,
+        "verdict": "pass"
+      },
+      {
+        "axis": "min_hedge_survival",
+        "kind": "min",
+        "limit": 0.57,
+        "observed": 0.667,
+        "verdict": "pass"
+      },
+      {
+        "axis": "min_rank_strength",
+        "kind": "min",
+        "limit": 0.3,
+        "observed": 1.092,
+        "verdict": "pass"
+      },
+      {
+        "axis": "max_drift_slope",
+        "kind": "max",
+        "limit": 0.05,
+        "observed": null,
+        "verdict": "skipped",
+        "note": "not in the drift run"
+      }
+    ],
+    "developer-docs": [
+      {
+        "axis": "max_token_ratio",
+        "kind": "max",
+        "limit": 1.1,
+        "observed": 1.02,
+        "verdict": "pass"
+      },
+      {
+        "axis": "min_fact_survival",
+        "kind": "min",
+        "limit": 0.73,
+        "observed": 0.78,
+        "verdict": "pass"
+      },
+      {
+        "axis": "min_hedge_survival",
+        "kind": "min",
+        "limit": 0.49,
+        "observed": 0.771,
+        "verdict": "pass"
+      },
+      {
+        "axis": "min_rank_strength",
+        "kind": "min",
+        "limit": 0.95,
+        "observed": 1.553,
+        "verdict": "pass"
+      },
+      {
+        "axis": "max_drift_slope",
+        "kind": "max",
+        "limit": 0.12,
+        "observed": null,
+        "verdict": "skipped",
+        "note": "not in the drift run"
+      }
+    ],
+    "plain-language": [
+      {
+        "axis": "max_token_ratio",
+        "kind": "max",
+        "limit": 1.0,
+        "observed": 0.93,
+        "verdict": "pass"
+      },
+      {
+        "axis": "min_fact_survival",
+        "kind": "min",
+        "limit": 0.66,
+        "observed": 0.735,
+        "verdict": "pass"
+      },
+      {
+        "axis": "min_hedge_survival",
+        "kind": "min",
+        "limit": 0.74,
+        "observed": 0.95,
+        "verdict": "pass"
+      },
+      {
+        "axis": "min_rank_strength",
+        "kind": "min",
+        "limit": 0.8,
+        "observed": 1.698,
+        "verdict": "pass"
+      },
+      {
+        "axis": "max_drift_slope",
+        "kind": "max",
+        "limit": 0.05,
+        "observed": null,
+        "verdict": "skipped",
+        "note": "not in the drift run"
+      }
+    ],
+    "technical-simplified": [
+      {
+        "axis": "max_token_ratio",
+        "kind": "max",
+        "limit": 1.15,
+        "observed": 1.0,
+        "verdict": "pass"
+      },
+      {
+        "axis": "min_fact_survival",
+        "kind": "min",
+        "limit": 0.59,
+        "observed": 0.661,
+        "verdict": "pass"
+      },
+      {
+        "axis": "min_hedge_survival",
+        "kind": "min",
+        "limit": 0.4,
+        "observed": 0.5,
+        "verdict": "pass"
+      },
+      {
+        "axis": "min_rank_strength",
+        "kind": "min",
+        "limit": 0.35,
+        "observed": 0.517,
+        "verdict": "pass"
+      },
+      {
+        "axis": "max_drift_slope",
+        "kind": "max",
+        "limit": 0.83,
+        "observed": null,
+        "verdict": "skipped",
+        "note": "not in the drift run"
+      }
+    ]
+  },
+  "warnings": [
+    "clarity-flow: no observed max_drift_slope in the drift run",
+    "classic-concise: no observed max_drift_slope in the drift run",
+    "developer-docs: no observed max_drift_slope in the drift run",
+    "plain-language: no observed max_drift_slope in the drift run",
+    "technical-simplified: no observed max_drift_slope in the drift run"
+  ]
+}
