@@ -114,7 +114,17 @@ The first five members were frozen as the field of #79: they are the
 competitor set of the baseline, and `runs/2026-08-07` is the
 calibration run of the field. The acceptance of actionable-clarity
 (#83) re-opened the field once, through the process below; its
-calibration runs are `runs/2026-08-10d` to `f`. A later addition
+calibration runs are `runs/2026-08-10d` to `f`. An extension
+campaign later brought the candidate to the six-sample error bar of
+the field: `runs/2026-08-10g` to `i` reuse the pre-pin baselines
+`runs/2026-08-07` to `2026-08-08b`, and the six-run spread is
+`runs/2026-08-10c-compare`. Two of the extension runs measured
+hedge survival under the 0.90 floor (0.75 and 0.80, in the targets
+files of `runs/2026-08-10g` and `i`), against unstyled baselines
+that hedge more than the acceptance baselines did. The candidate
+also has a deep drift run of its own, `runs/2026-08-10-drift-deep`:
+flat, with a non-degenerate null, at 152 percent of the context
+window. A later addition
 goes through the same process and re-opens
 the field on purpose. Every member adds a linear cost to every
 campaign, so an addition needs a reason that a smaller field cannot
