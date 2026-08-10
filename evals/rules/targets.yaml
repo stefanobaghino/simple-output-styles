@@ -85,9 +85,33 @@
 # incumbents, and acceptance replaces the default with a calibrated
 # row from the confirmation campaign. The other axes of an unlisted
 # style stay unchecked until that row exists.
+#
+# actionable-clarity: calibrated against the confirmation campaign of
+# the #83 acceptance — runs/2026-08-10d, runs/2026-08-10e, and
+# runs/2026-08-10f, plus the drift run runs/2026-08-10-drift. The
+# same derivation rules and the same one-time asterisk apply.
+#
+#   max_token_ratio: 1.36, 1.20, 1.00 -> 1.45. This cap sits above
+#     the 1.10 field envelope, and the acceptance chose that on
+#     purpose: the style buys its clarity lead (first on
+#     Bradley-Terry strength in the campaign) with output about 19
+#     percent longer than unstyled on the main set, and the
+#     acceptance PR of #83 records the decision. The default for
+#     future candidates stays 1.10; this row loosens nothing for
+#     any other style.
+#   min_fact_survival: 0.806, 0.800, 0.758 (sd 0.026) -> 0.73
+#   min_hedge_survival: 1.000, 1.000, 0.938 (sd 0.036) -> 0.90
+#   min_rank_strength: 2.933, 2.211, 2.158 (sd 0.433) -> 1.70
+#   max_drift_slope: 0.000 -> 0.05 (the floor)
 defaults:
   max_token_ratio: 1.10
 styles:
+  actionable-clarity:
+    max_token_ratio: 1.45
+    min_fact_survival: 0.73
+    min_hedge_survival: 0.90
+    min_rank_strength: 1.70
+    max_drift_slope: 0.05
   clarity-flow:
     max_token_ratio: 1.10
     min_fact_survival: 0.75

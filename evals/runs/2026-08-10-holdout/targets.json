@@ -1,6 +1,6 @@
 {
   "date": "2026-08-10T15:29:42+00:00",
-  "run": "2026-08-10f",
+  "run": "2026-08-10-holdout",
   "targets_config": {
     "file": "rules/targets.yaml",
     "sha256": "5295162f4e0feb50292343ac8479c110ccc31c9685d54b350b279e036bd63ef8"
@@ -12,28 +12,28 @@
         "axis": "max_token_ratio",
         "kind": "max",
         "limit": 1.45,
-        "observed": 1.0,
+        "observed": 0.79,
         "verdict": "pass"
       },
       {
         "axis": "min_fact_survival",
         "kind": "min",
         "limit": 0.73,
-        "observed": 0.758,
-        "verdict": "pass"
+        "observed": 0.72,
+        "verdict": "fail"
       },
       {
         "axis": "min_hedge_survival",
         "kind": "min",
         "limit": 0.9,
-        "observed": 0.938,
-        "verdict": "pass"
+        "observed": 0.75,
+        "verdict": "fail"
       },
       {
         "axis": "min_rank_strength",
         "kind": "min",
         "limit": 1.7,
-        "observed": 2.158,
+        "observed": 1.944,
         "verdict": "pass"
       },
       {
@@ -49,28 +49,28 @@
         "axis": "max_token_ratio",
         "kind": "max",
         "limit": 1.1,
-        "observed": 0.82,
+        "observed": 0.91,
         "verdict": "pass"
       },
       {
         "axis": "min_fact_survival",
         "kind": "min",
         "limit": 0.75,
-        "observed": 0.746,
-        "verdict": "fail"
+        "observed": 0.782,
+        "verdict": "pass"
       },
       {
         "axis": "min_hedge_survival",
         "kind": "min",
         "limit": 0.6,
-        "observed": 0.875,
+        "observed": 0.667,
         "verdict": "pass"
       },
       {
         "axis": "min_rank_strength",
         "kind": "min",
         "limit": 0.8,
-        "observed": 1.197,
+        "observed": 1.407,
         "verdict": "pass"
       },
       {
@@ -86,28 +86,28 @@
         "axis": "max_token_ratio",
         "kind": "max",
         "limit": 0.95,
-        "observed": 0.66,
+        "observed": 0.72,
         "verdict": "pass"
       },
       {
         "axis": "min_fact_survival",
         "kind": "min",
         "limit": 0.68,
-        "observed": 0.734,
+        "observed": 0.786,
         "verdict": "pass"
       },
       {
         "axis": "min_hedge_survival",
         "kind": "min",
         "limit": 0.57,
-        "observed": 0.938,
+        "observed": 0.667,
         "verdict": "pass"
       },
       {
         "axis": "min_rank_strength",
         "kind": "min",
         "limit": 0.3,
-        "observed": 0.873,
+        "observed": 1.113,
         "verdict": "pass"
       },
       {
@@ -123,28 +123,28 @@
         "axis": "max_token_ratio",
         "kind": "max",
         "limit": 1.1,
-        "observed": 0.75,
+        "observed": 0.92,
         "verdict": "pass"
       },
       {
         "axis": "min_fact_survival",
         "kind": "min",
         "limit": 0.73,
-        "observed": 0.679,
-        "verdict": "fail"
+        "observed": 0.767,
+        "verdict": "pass"
       },
       {
         "axis": "min_hedge_survival",
         "kind": "min",
         "limit": 0.49,
-        "observed": 0.857,
+        "observed": 0.584,
         "verdict": "pass"
       },
       {
         "axis": "min_rank_strength",
         "kind": "min",
         "limit": 0.95,
-        "observed": 1.47,
+        "observed": 1.262,
         "verdict": "pass"
       },
       {
@@ -160,28 +160,28 @@
         "axis": "max_token_ratio",
         "kind": "max",
         "limit": 1.0,
-        "observed": 0.7,
+        "observed": 0.77,
         "verdict": "pass"
       },
       {
         "axis": "min_fact_survival",
         "kind": "min",
         "limit": 0.66,
-        "observed": 0.657,
-        "verdict": "fail"
+        "observed": 0.734,
+        "verdict": "pass"
       },
       {
         "axis": "min_hedge_survival",
         "kind": "min",
         "limit": 0.74,
-        "observed": 1.0,
-        "verdict": "pass"
+        "observed": 0.667,
+        "verdict": "fail"
       },
       {
         "axis": "min_rank_strength",
         "kind": "min",
         "limit": 0.8,
-        "observed": 1.428,
+        "observed": 3.136,
         "verdict": "pass"
       },
       {
@@ -197,28 +197,28 @@
         "axis": "max_token_ratio",
         "kind": "max",
         "limit": 1.15,
-        "observed": 0.85,
-        "verdict": "pass"
+        "observed": 1.49,
+        "verdict": "fail"
       },
       {
         "axis": "min_fact_survival",
         "kind": "min",
         "limit": 0.59,
-        "observed": 0.649,
+        "observed": 0.71,
         "verdict": "pass"
       },
       {
         "axis": "min_hedge_survival",
         "kind": "min",
         "limit": 0.4,
-        "observed": 0.75,
+        "observed": 0.584,
         "verdict": "pass"
       },
       {
         "axis": "min_rank_strength",
         "kind": "min",
         "limit": 0.35,
-        "observed": 0.438,
+        "observed": 0.723,
         "verdict": "pass"
       },
       {

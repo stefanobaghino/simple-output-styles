@@ -1,52 +1,47 @@
 {
-  "date": "2026-08-10T13:59:38+00:00",
+  "date": "2026-08-10T15:29:41+00:00",
   "run": "2026-08-10d",
   "targets_config": {
     "file": "rules/targets.yaml",
-    "sha256": "da15e687146b4854050ba61de1f8751f22d1c03b28eb62c787485bc304c97496"
+    "sha256": "5295162f4e0feb50292343ac8479c110ccc31c9685d54b350b279e036bd63ef8"
   },
-  "drift_run": "2026-08-08-drift",
+  "drift_run": "2026-08-10-drift",
   "styles": {
     "actionable-clarity": [
       {
         "axis": "max_token_ratio",
         "kind": "max",
-        "limit": 1.1,
+        "limit": 1.45,
         "observed": 1.36,
-        "verdict": "fail",
-        "note": "no calibrated row in targets.yaml; the default bound applies"
+        "verdict": "pass"
       },
       {
         "axis": "min_fact_survival",
         "kind": "min",
-        "limit": null,
-        "observed": null,
-        "verdict": "skipped",
-        "note": "uncalibrated"
+        "limit": 0.73,
+        "observed": 0.806,
+        "verdict": "pass"
       },
       {
         "axis": "min_hedge_survival",
         "kind": "min",
-        "limit": null,
-        "observed": null,
-        "verdict": "skipped",
-        "note": "uncalibrated"
+        "limit": 0.9,
+        "observed": 1.0,
+        "verdict": "pass"
       },
       {
         "axis": "min_rank_strength",
         "kind": "min",
-        "limit": null,
-        "observed": null,
-        "verdict": "skipped",
-        "note": "uncalibrated"
+        "limit": 1.7,
+        "observed": 2.933,
+        "verdict": "pass"
       },
       {
         "axis": "max_drift_slope",
         "kind": "max",
-        "limit": null,
-        "observed": null,
-        "verdict": "skipped",
-        "note": "uncalibrated"
+        "limit": 0.05,
+        "observed": 0.0,
+        "verdict": "pass"
       }
     ],
     "clarity-flow": [
@@ -119,7 +114,7 @@
         "axis": "max_drift_slope",
         "kind": "max",
         "limit": 0.05,
-        "observed": 0.0,
+        "observed": -0.024,
         "verdict": "pass"
       }
     ],
@@ -156,7 +151,7 @@
         "axis": "max_drift_slope",
         "kind": "max",
         "limit": 0.12,
-        "observed": 0.094,
+        "observed": -0.046,
         "verdict": "pass"
       }
     ],
@@ -193,7 +188,7 @@
         "axis": "max_drift_slope",
         "kind": "max",
         "limit": 0.05,
-        "observed": 0.0,
+        "observed": -0.051,
         "verdict": "pass"
       }
     ],
@@ -230,7 +225,7 @@
         "axis": "max_drift_slope",
         "kind": "max",
         "limit": 0.83,
-        "observed": 0.663,
+        "observed": 0.581,
         "verdict": "pass"
       }
     ]

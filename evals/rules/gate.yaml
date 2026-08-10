@@ -50,7 +50,12 @@
 #   rate was 10.22, so the threshold 5.0 mirrors plain-language:
 #   strict, with slack for one violation in an answer of 20 or more
 #   sentences. The screening sample is 8 pairs, so the confirmation
-#   campaign re-checks this calibration.
+#   campaign re-checks this calibration. The re-check held: the styled
+#   rates of the confirmation runs (runs/2026-08-10d to f) were 0.17,
+#   0.68, and 0.0, and the held-out run measured 0.41, all far under
+#   5.0. One pair per run failed the gate in two of those runs — a
+#   single violation in a short answer clears 5.0 per pair — and the
+#   exclusions are the gate working, not a calibration miss.
 thresholds:
   technical-simplified:
     max_rate: 15.0

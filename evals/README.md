@@ -99,10 +99,20 @@ the harness. The members:
   government plain language, reader first.
 - **technical-simplified** — ASD-STE100 Issue 9: controlled technical
   language with a restricted vocabulary and grammar.
+- **actionable-clarity** — the accepted candidate of the #83 design
+  loop: a synthesis of plain-language organization, developer-docs
+  directness, and clarity-flow information flow, with
+  content-preservation and uncertainty rules of its own. Unlike the
+  other members, its human validation is downstream of the harness —
+  the spot check of its acceptance — because the wording was tuned
+  against the harness itself.
 
-The field is frozen (#79): these five members are the competitor set
-of the baseline, and `runs/2026-08-07` is the calibration run of the
-field. A later addition goes through the process below and re-opens
+The first five members were frozen as the field of #79: they are the
+competitor set of the baseline, and `runs/2026-08-07` is the
+calibration run of the field. The acceptance of actionable-clarity
+(#83) re-opened the field once, through the process below; its
+calibration runs are `runs/2026-08-10d` to `f`. A later addition
+goes through the same process and re-opens
 the field on purpose. Every member adds a linear cost to every
 campaign, so an addition needs a reason that a smaller field cannot
 serve. The reuse layer (#76) keeps the cost of an addition linear

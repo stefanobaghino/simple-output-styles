@@ -103,12 +103,14 @@ def test_targets_config_loads_bounds_per_style():
     assert config.styles["plain-language"].min_hedge_survival > 0
 
 
-# The frozen field of #79. A candidate style has a rule file but no
-# targets row: it runs under defaults.max_token_ratio until acceptance
-# calibrates its row, so the covered set is the field, not the rule-file
-# glob. An acceptance that adds a row re-opens the field on purpose and
-# extends this constant in the same change.
+# The frozen field of #79, extended by the acceptance of the #83
+# candidate. A candidate style has a rule file but no targets row: it
+# runs under defaults.max_token_ratio until acceptance calibrates its
+# row, so the covered set is the field, not the rule-file glob. An
+# acceptance that adds a row re-opens the field on purpose and extends
+# this constant in the same change.
 FIELD_STYLES = {
+    "actionable-clarity",
     "clarity-flow",
     "classic-concise",
     "developer-docs",
