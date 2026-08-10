@@ -1,0 +1,40 @@
+name: General feedback
+description: Everything else — evals and methodology, documentation, installation, licensing, requests for new styles, or anything else.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for anything that is not feedback on an existing style,
+        including requests for new styles.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Which part of the project is the feedback about?
+      options:
+        - Evals and methodology
+        - Documentation
+        - Installation
+        - New style request
+        - Licensing and attribution
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: sentiment
+    attributes:
+      label: Sentiment
+      description: Overall, how do you feel about this part of the project?
+      options:
+        - Positive
+        - Mixed
+        - Negative
+    validations:
+      required: true
+  - type: textarea
+    id: feedback
+    attributes:
+      label: Feedback
+      description: Describe the feedback or the request. Add links or examples if you can.
+    validations:
+      required: true

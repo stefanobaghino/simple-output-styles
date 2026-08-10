@@ -18,5 +18,6 @@
     "actionable-clarity",
     "writing"
   ],
-  "outputStyles": "./output-styles/"
+  "outputStyles": "./output-styles/",
+  "skills": "./skills/"
 }

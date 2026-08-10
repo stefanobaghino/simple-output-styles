@@ -29,6 +29,10 @@ Each style keeps the default coding instructions of Claude Code.
 
 3. Open `/config`, then select **Output style** and pick a style.
 
+## How to give feedback
+
+Open an issue through the [feedback forms](https://github.com/stefanobaghino/simple-output-styles/issues/new/choose): one form for feedback on an existing style, one for everything else — evals and methodology, documentation, installation, licensing, and requests for new styles. If you have the plugin installed, run `/simple-output-styles:feedback` and Claude gathers the details and prefills the form for you.
+
 ## Sources and disclaimers
 
 ### actionable-clarity
