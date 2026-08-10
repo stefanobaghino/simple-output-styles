@@ -32,7 +32,7 @@ Each section below describes the spirit of one style, then what testing with the
 
 The style aims at answers a reader understands on first read and can act on at once: the answer first, every needed fact stated outright, and no more certainty than the evidence supports. It combines the organization of plain-language, the directness of developer-docs, and the information-flow principles of clarity-flow, and adds content-preservation and uncertainty rules of its own.
 
-In testing, its answers were the easiest to understand of all the styles, it kept more details than any other style, and its writing stayed steady even in very long sessions. On the downside: its answers run longer than Claude's normal output; on a fresh set of questions it came in a close second behind plain-language; where a careful answer would say "maybe", this style sometimes sounds more certain than it should; and most of its scores come from an AI judge — the one human check agreed with that judge only half of the time.
+In testing, its answers were the easiest to understand of all the styles, it kept more details than any other style, and its writing stayed steady even in very long sessions. On the downside: its answers run longer than Claude's normal output; on a fresh set of questions it came in a close second behind plain-language; and where a careful answer would say "maybe", this style sometimes sounds more certain than it should.
 
 #### Sources and disclaimers
 
