@@ -1,0 +1,52 @@
+name: Style feedback
+description: Feedback on one or more of the existing output styles in this plugin.
+labels:
+  - "area:style-feedback"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for feedback on a style that already exists in the plugin.
+        To request a new style, or for any other feedback, use the general feedback form instead.
+  - type: dropdown
+    id: styles
+    attributes:
+      label: Styles
+      description: Select the style or styles the feedback is about. Pick "I don't know" if you are not sure which style was active.
+      multiple: true
+      options:
+        - actionable-clarity
+        - clarity-flow
+        - classic-concise
+        - developer-docs
+        - plain-language
+        - technical-simplified
+        - I don't know
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Claude Code version
+      description: Run `claude --version` and paste the output.
+      placeholder: "2.0.14"
+    validations:
+      required: true
+  - type: dropdown
+    id: sentiment
+    attributes:
+      label: Sentiment
+      description: Overall, how do you feel about the style or styles you selected?
+      options:
+        - Positive
+        - Mixed
+        - Negative
+    validations:
+      required: true
+  - type: textarea
+    id: feedback
+    attributes:
+      label: Feedback
+      description: What worked, what did not, and what you expected instead. Paste examples of output if you can.
+    validations:
+      required: true

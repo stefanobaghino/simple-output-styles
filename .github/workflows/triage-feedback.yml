@@ -1,0 +1,112 @@
+name: Triage feedback
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  issues: write
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0
+        with:
+          script: |
+            const issue = context.payload.issue;
+            if (issue.user.type === 'Bot') return;
+
+            // Parse the "### Heading\n\nvalue" sections that issue forms render.
+            const sections = {};
+            for (const part of (issue.body || '').split(/^### /m).slice(1)) {
+              const nl = part.indexOf('\n');
+              const heading = (nl === -1 ? part : part.slice(0, nl)).trim();
+              const value = (nl === -1 ? '' : part.slice(nl + 1)).trim();
+              sections[heading] = value === '_No response_' ? '' : value;
+            }
+            const val = (heading) => (sections[heading] || '').trim();
+
+            const STYLES = [
+              'actionable-clarity',
+              'clarity-flow',
+              'classic-concise',
+              'developer-docs',
+              'plain-language',
+              'technical-simplified',
+            ];
+            const AREAS = {
+              'Evals and methodology': 'area:evals',
+              'Documentation': 'area:docs',
+              'Installation': 'area:installation',
+              'New style request': 'area:style-request',
+              'Licensing and attribution': 'area:licensing',
+              'Other': 'area:other',
+            };
+            const SENTIMENTS = {
+              'Positive': 'sentiment:positive',
+              'Mixed': 'sentiment:mixed',
+              'Negative': 'sentiment:negative',
+            };
+
+            const isStyleForm = 'Styles' in sections || 'Claude Code version' in sections;
+            const isGeneralForm = 'Area' in sections;
+
+            const missing = [];
+            const labels = [];
+
+            if (isStyleForm) {
+              labels.push('area:style-feedback');
+              const styles = val('Styles').split(',').map((s) => s.trim()).filter(Boolean);
+              if (styles.length === 0) missing.push('Styles');
+              labels.push(...styles.filter((s) => STYLES.includes(s)).map((s) => `style:${s}`));
+              if (!val('Claude Code version')) missing.push('Claude Code version');
+            } else if (isGeneralForm) {
+              const area = AREAS[val('Area')];
+              if (area) labels.push(area);
+              else missing.push('Area');
+            }
+
+            if (isStyleForm || isGeneralForm) {
+              const sentiment = SENTIMENTS[val('Sentiment')];
+              if (sentiment) labels.push(sentiment);
+              else missing.push('Sentiment');
+              if (!val('Feedback')) missing.push('Feedback');
+            }
+
+            const target = { ...context.repo, issue_number: issue.number };
+
+            if (labels.length > 0) {
+              await github.rest.issues.addLabels({ ...target, labels });
+            }
+
+            if (!isStyleForm && !isGeneralForm) {
+              if (context.payload.action === 'opened') {
+                await github.rest.issues.createComment({
+                  ...target,
+                  body: [
+                    'Thanks for the interest in the project! Issues in this repository are opened',
+                    'through the [feedback forms](https://github.com/stefanobaghino/simple-output-styles/issues/new/choose),',
+                    'which gather the fields needed to act on the feedback.',
+                    'Please open a new issue through one of the forms.',
+                  ].join('\n'),
+                });
+                await github.rest.issues.update({ ...target, state: 'closed', state_reason: 'not_planned' });
+              }
+              return;
+            }
+
+            if (missing.length > 0 && context.payload.action === 'opened') {
+              await github.rest.issues.createComment({
+                ...target,
+                body: [
+                  'Thanks for the feedback! This issue is missing required fields:',
+                  '',
+                  ...missing.map((f) => `- **${f}**`),
+                  '',
+                  'Please edit the issue to fill them in, then reopen it — or open a new issue',
+                  'through the [feedback forms](https://github.com/stefanobaghino/simple-output-styles/issues/new/choose).',
+                ].join('\n'),
+              });
+              await github.rest.issues.update({ ...target, state: 'closed', state_reason: 'not_planned' });
+            }
