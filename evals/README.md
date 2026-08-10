@@ -534,14 +534,18 @@ exist, 2 when the run cannot run or cannot be scored.
 The drift sessions also have a deep mode, because the shallow
 prompts reach only the start of the context window: a shallow
 session ends near 20K tokens. `--scripts` selects coherent session
-scripts, one YAML file per script in `prompts/sessions/`, with
-about 8K input tokens per turn, so 15 turns reach about 120K
-tokens. Later turns of a script reference earlier material by
-name, so the model must read deep context while it obeys the
-style. A coherent script cannot rotate. Thus each repeat runs one
-whole script, the repeats spread over several different scripts
-(repeat r runs script (r - 1) mod the script count), and the
-repeat count must spread evenly over the scripts. The shallow
+scripts, one YAML file per script in `prompts/sessions/`. A
+15-turn session reaches a measured final depth between about 150K
+and 420K tokens, script by script, with a per-style mean near 300K
+(runs/2026-08-09-drift-deep): the answers of the model join the
+context that every later turn re-reads, so the depth outgrows the
+authored material alone. Later turns of a script reference
+earlier material by name, so the model must read deep context
+while it obeys the style. A coherent script cannot rotate. Thus
+each repeat runs one whole script, the repeats spread over
+several different scripts (repeat r runs script (r - 1) mod the
+script count), and the repeat count must spread evenly over the
+scripts. The shallow
 rotated run stays as the control. The scripts fix the turn count:
 `--turns` does not combine with `--scripts`, and every passed
 script must hold the same turn count, because the analysis pools

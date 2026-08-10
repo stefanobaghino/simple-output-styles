@@ -1,5 +1,5 @@
 {
-  "date": "2026-08-09T12:33:53+00:00",
+  "date": "2026-08-10T02:01:44+00:00",
   "run": "2026-08-09-drift-deep",
   "turns": 15,
   "repeats": 3,
@@ -650,12 +650,2846 @@
           "answer_sha256": "28228f5e28fbe820b01f629382f3466cd3287d11c7fdcd0c8411f50aa2488d5e"
         }
       ]
+    },
+    "classic-concise": {
+      "complete_sessions": 3,
+      "sessions": [
+        {
+          "repeat": 1,
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "repeat": 2,
+          "series": [
+            0.0,
+            0.0,
+            1.85,
+            0.0,
+            1.85,
+            0.0,
+            0.0,
+            1.49,
+            0.0,
+            5.08,
+            0.0,
+            3.57,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "repeat": 3,
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "pooled_series": [
+        0.0,
+        0.0,
+        1.28,
+        0.0,
+        1.14,
+        0.0,
+        0.0,
+        1.09,
+        0.0,
+        2.46,
+        0.0,
+        0.75,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "slope": -0.007,
+      "intercept": 0.502,
+      "threshold": 0.081,
+      "threshold_source": "derived",
+      "null": {
+        "permutations": 10000,
+        "seed": 0,
+        "quantile": 0.95,
+        "threshold": 0.081,
+        "p_value": 0.5461
+      },
+      "verdict": "flat",
+      "depth": {
+        "final": {
+          "1": 319464,
+          "2": 372171,
+          "3": 152529
+        },
+        "mean_final": 281388,
+        "window_fraction": 1.407
+      },
+      "turns": [
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 1,
+          "prompt_id": "incident-timeline/turn-01",
+          "sentences": 14,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 24492,
+          "answer_sha256": "400fa0e5d6d3d3796872affff40e730e64b0a2cd729b1f9c9198d12a8240492d"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 2,
+          "prompt_id": "incident-timeline/turn-02",
+          "sentences": 16,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 46515,
+          "answer_sha256": "51cc39a37da7ff8d776202b4449e517932d8049c74bb8948fa5c675ed440486e"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 3,
+          "prompt_id": "incident-timeline/turn-03",
+          "sentences": 10,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 71405,
+          "answer_sha256": "456b7d11b8b2ab0b01bd13aa031a73dd24d15b407c5816cdd99ca8f57f049035"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 4,
+          "prompt_id": "incident-timeline/turn-04",
+          "sentences": 14,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 90404,
+          "answer_sha256": "d3fe8ae54fa82e215d2d5d6a5845241cbde163518e9283b24a261912c3dada3e"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 5,
+          "prompt_id": "incident-timeline/turn-05",
+          "sentences": 22,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 109112,
+          "answer_sha256": "f65870979d9c2c5a37c025099d1a2308f2247a3060429004c18f46f567c582e8"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 6,
+          "prompt_id": "incident-timeline/turn-06",
+          "sentences": 20,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 127685,
+          "answer_sha256": "91339ae0f21d54887ddf3398dfd554fe11a27e899c266c490ed114dc1b71824b"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 7,
+          "prompt_id": "incident-timeline/turn-07",
+          "sentences": 20,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 142374,
+          "answer_sha256": "a05b644d93e3848e5b632f2131b05dd223714cce7b28f480e2c2ecbe5d33aa2e"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 8,
+          "prompt_id": "incident-timeline/turn-08",
+          "sentences": 14,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 158550,
+          "answer_sha256": "11195e651d0cf17a5f649f31b8d3913b9cd45959d77eb6c5e4b8cb92b0d46526"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 9,
+          "prompt_id": "incident-timeline/turn-09",
+          "sentences": 23,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 177338,
+          "answer_sha256": "b6ee64cbccd51bbb9d33f3b933ef42309076a74cc709904ba27a001878963b2d"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 10,
+          "prompt_id": "incident-timeline/turn-10",
+          "sentences": 43,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 194064,
+          "answer_sha256": "7b2742b7896b74fe0a5f4db60b480b76658a87bdfff5a2fc2d862d2b3040e972"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 11,
+          "prompt_id": "incident-timeline/turn-11",
+          "sentences": 113,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 216019,
+          "answer_sha256": "4deb139c127edff652e49f2f6d6f0fc8378fc793216b0d62f8e5d5fd6a318f2d"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 12,
+          "prompt_id": "incident-timeline/turn-12",
+          "sentences": 77,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 244650,
+          "answer_sha256": "337b871381956b66aeb6edc7e8e213ca3f5c42587a054ead6a8ec69739e72116"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 13,
+          "prompt_id": "incident-timeline/turn-13",
+          "sentences": 30,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 270532,
+          "answer_sha256": "319199a65387c264081fba46216327685989d40c46f817d91e99028097256d9b"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 14,
+          "prompt_id": "incident-timeline/turn-14",
+          "sentences": 76,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 292581,
+          "answer_sha256": "ea3d5f95a0440891e85f177f3e0ea3c5f2e980b09b024203cdbad60773d570d6"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 1,
+          "turn": 15,
+          "prompt_id": "incident-timeline/turn-15",
+          "sentences": 7,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 319464,
+          "answer_sha256": "6f0daae6b8d47f7dc62b7d1a98ae4d388fce9235ce6e3b096b80db17ab202c1a"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 1,
+          "prompt_id": "service-review/turn-01",
+          "sentences": 57,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 19119,
+          "answer_sha256": "3f029e27d87a3a3b17769db0262440885c3e5d125e27819274e5d2791202d86d"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 2,
+          "prompt_id": "service-review/turn-02",
+          "sentences": 54,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 40267,
+          "answer_sha256": "a045c5e177812afc337ab7192c24103b2bc672e73dfb68e48e133febb995ab4c"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 3,
+          "prompt_id": "service-review/turn-03",
+          "sentences": 54,
+          "violations": 1,
+          "by_rule": {
+            "banned-word": 1
+          },
+          "rate": 1.85,
+          "context_tokens": 60580,
+          "answer_sha256": "0157e0d92d76cb4b63b121e5c89c2bf9958f74cc0bac87c3bd5b5a42d32afa38"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 4,
+          "prompt_id": "service-review/turn-04",
+          "sentences": 53,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 88633,
+          "answer_sha256": "9f0033faef812b7e9bac0e3b0cf7a19d882700f71c85f2d7b7a888cde23f6784"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 5,
+          "prompt_id": "service-review/turn-05",
+          "sentences": 54,
+          "violations": 1,
+          "by_rule": {
+            "banned-word": 1
+          },
+          "rate": 1.85,
+          "context_tokens": 119722,
+          "answer_sha256": "93e69572e9e7bdf24bd7bf6d4cc4c574a84dbc27eed2cd7bfd207196f0e8237e"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 6,
+          "prompt_id": "service-review/turn-06",
+          "sentences": 61,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 145129,
+          "answer_sha256": "c20e9a9396a1ce35163302c31f57e2e498a5e443998063d993faba8b8907ad25"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 7,
+          "prompt_id": "service-review/turn-07",
+          "sentences": 41,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 169825,
+          "answer_sha256": "456948b6b98d51d42b62f144b12c55aab5641fcd875cb26e33f28324c390122d"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 8,
+          "prompt_id": "service-review/turn-08",
+          "sentences": 67,
+          "violations": 1,
+          "by_rule": {
+            "banned-word": 1
+          },
+          "rate": 1.49,
+          "context_tokens": 192444,
+          "answer_sha256": "f959d3d79408866f0915c605fba51a7175206501911e5e8f3ece72d1b56ac025"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 9,
+          "prompt_id": "service-review/turn-09",
+          "sentences": 32,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 225438,
+          "answer_sha256": "5caa112ac7680b688ac28542ff66708ffeab2b866a3376cb257f0bd157969b2a"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 10,
+          "prompt_id": "service-review/turn-10",
+          "sentences": 59,
+          "violations": 3,
+          "by_rule": {
+            "banned-word": 3
+          },
+          "rate": 5.08,
+          "context_tokens": 247423,
+          "answer_sha256": "57f4f16b19818bd482de33ae5808fdb7cf244e6ae0122e2068773fb1579ef89a"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 11,
+          "prompt_id": "service-review/turn-11",
+          "sentences": 53,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 275973,
+          "answer_sha256": "3663bc2e8a177b4a77301464191bafe7243c9c5e4ea51f7d9d4f1cce7852a514"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 12,
+          "prompt_id": "service-review/turn-12",
+          "sentences": 28,
+          "violations": 1,
+          "by_rule": {
+            "banned-word": 1
+          },
+          "rate": 3.57,
+          "context_tokens": 299032,
+          "answer_sha256": "5a5b9d3437154d50eb2b62df56983c585202967971d1ae5746737510d1c6cace"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 13,
+          "prompt_id": "service-review/turn-13",
+          "sentences": 68,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 318027,
+          "answer_sha256": "36b949b3a746685440a38afd9be2580f9da8316f1e49f54cc644633047a70de9"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 14,
+          "prompt_id": "service-review/turn-14",
+          "sentences": 102,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 342871,
+          "answer_sha256": "1fe52ee0b175c81ee67c5f0ab8165bb1f5e2c1141fea58292a4d2cc486df2228"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 2,
+          "turn": 15,
+          "prompt_id": "service-review/turn-15",
+          "sentences": 57,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 372171,
+          "answer_sha256": "6bd964b881bdf346b5ef45708f95d6e0682a002df294fcfaebc77f44f1b479f0"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 1,
+          "prompt_id": "design-doc-series/turn-01",
+          "sentences": 16,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 19250,
+          "answer_sha256": "bde1d597fc2e0aa9db5fb269c9efc2fc9d32e4d78cf54b7fcfc997af284153fe"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 2,
+          "prompt_id": "design-doc-series/turn-02",
+          "sentences": 16,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 27068,
+          "answer_sha256": "625a6e7e636fe13d6ce1c9e0762a64af097cb052e0fa50b4131ebd72745a03d4"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 3,
+          "prompt_id": "design-doc-series/turn-03",
+          "sentences": 14,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 34616,
+          "answer_sha256": "d333a8d05ec25ca371352586dbdf41945055882ae0ea75e3cab19cf988fbbf37"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 4,
+          "prompt_id": "design-doc-series/turn-04",
+          "sentences": 14,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 42017,
+          "answer_sha256": "d2b0cd70990a6a4010b43282783d7458ec3c807444a24a10fbcfd65b5e8c03cb"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 5,
+          "prompt_id": "design-doc-series/turn-05",
+          "sentences": 12,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 51563,
+          "answer_sha256": "173f2d8268315481a4d09356c32a8888d691da03a644c285f51781ac056bc9c9"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 6,
+          "prompt_id": "design-doc-series/turn-06",
+          "sentences": 12,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 59691,
+          "answer_sha256": "afd7fd91b45ca2d8c921900ce3b8345fac2c4e5d773bb3c325f04f83febe37a5"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 7,
+          "prompt_id": "design-doc-series/turn-07",
+          "sentences": 16,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 67649,
+          "answer_sha256": "f012e85195cffb0d532ea637710d734d90cba6ca79cd2096e573d779871bf68e"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 8,
+          "prompt_id": "design-doc-series/turn-08",
+          "sentences": 11,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 76839,
+          "answer_sha256": "3d6a7b060c7f0e0247b24ac56a08fc35e166e0db549cc0a60aeaf655c591c8ce"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 9,
+          "prompt_id": "design-doc-series/turn-09",
+          "sentences": 13,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 85351,
+          "answer_sha256": "17d0b400576f3237220ecde1753418ea3902399901bfde81482c4be124108406"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 10,
+          "prompt_id": "design-doc-series/turn-10",
+          "sentences": 20,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 92708,
+          "answer_sha256": "ec12e03caedec31f35e9c47e76b17deea6d5f40abfefe6d4b37348fdb2a6bb12"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 11,
+          "prompt_id": "design-doc-series/turn-11",
+          "sentences": 42,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 101288,
+          "answer_sha256": "d6f38b5ae60e11ef04d36f1b7bc1bccd68e8577004678db545bc53275a6bf9a5"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 12,
+          "prompt_id": "design-doc-series/turn-12",
+          "sentences": 28,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 113305,
+          "answer_sha256": "7bca2253c52e4f7523ae89eb0c9fef7e4f7375cdc3d8702e4f840518f8da8fb4"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 13,
+          "prompt_id": "design-doc-series/turn-13",
+          "sentences": 70,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 131297,
+          "answer_sha256": "2b968006a1a06f92a4ea63a5e35b0172f7fea134ab05e7d673fcab3d9ec18583"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 14,
+          "prompt_id": "design-doc-series/turn-14",
+          "sentences": 34,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 144222,
+          "answer_sha256": "eef32884d437c3a4e90eaf4fceaa41e646dc0fb8c7b71f805d40413bc9dc57f0"
+        },
+        {
+          "style": "classic-concise",
+          "repeat": 3,
+          "turn": 15,
+          "prompt_id": "design-doc-series/turn-15",
+          "sentences": 41,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 152529,
+          "answer_sha256": "554715cd3c5ac239fcf17a1c9760fd1b6293af64bec3ff678eb2822afb34d3c8"
+        }
+      ]
+    },
+    "developer-docs": {
+      "complete_sessions": 3,
+      "sessions": [
+        {
+          "repeat": 1,
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            3.57,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "repeat": 2,
+          "series": [
+            0.0,
+            0.0,
+            1.59,
+            0.0,
+            1.75,
+            0.0,
+            2.38,
+            0.0,
+            0.0,
+            2.53,
+            1.2,
+            0.0,
+            0.93,
+            2.73,
+            2.56
+          ]
+        },
+        {
+          "repeat": 3,
+          "series": [
+            0.0,
+            0.0,
+            4.35,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            6.67,
+            0.0,
+            0.0,
+            0.0,
+            2.44,
+            2.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "pooled_series": [
+        0.0,
+        0.0,
+        1.59,
+        0.0,
+        0.92,
+        0.0,
+        1.16,
+        0.98,
+        1.09,
+        1.1,
+        0.45,
+        0.55,
+        1.31,
+        1.06,
+        1.4
+      ],
+      "slope": 0.063,
+      "intercept": 0.269,
+      "threshold": 0.072,
+      "threshold_source": "derived",
+      "null": {
+        "permutations": 10000,
+        "seed": 0,
+        "quantile": 0.95,
+        "threshold": 0.072,
+        "p_value": 0.0767
+      },
+      "verdict": "flat",
+      "depth": {
+        "final": {
+          "1": 330077,
+          "2": 407119,
+          "3": 154457
+        },
+        "mean_final": 297218,
+        "window_fraction": 1.486
+      },
+      "turns": [
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 1,
+          "prompt_id": "incident-timeline/turn-01",
+          "sentences": 30,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 24431,
+          "answer_sha256": "24ad3609cdb7248fb11def2371c6da7b99588cdc02fe9892579cb6b3b506eece"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 2,
+          "prompt_id": "incident-timeline/turn-02",
+          "sentences": 25,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 47938,
+          "answer_sha256": "e715208a70cdea85aeb5a93e28d7d11c2b9ee80644830dd735eb39c99d7b9952"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 3,
+          "prompt_id": "incident-timeline/turn-03",
+          "sentences": 40,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 74225,
+          "answer_sha256": "8fe28aaaf0b37217de38dcc05ce4b1b2adeb236c33cfa4ef77a86b61eecb3bf2"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 4,
+          "prompt_id": "incident-timeline/turn-04",
+          "sentences": 26,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 95545,
+          "answer_sha256": "758238240e972e4b2b5561acbe4416e4bca04b32d0d1513c2a647ac5ce102a21"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 5,
+          "prompt_id": "incident-timeline/turn-05",
+          "sentences": 40,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 114714,
+          "answer_sha256": "856e479bc4091f72383bf6762bbae97bd662e532230e9115de929b81d8fe77d4"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 6,
+          "prompt_id": "incident-timeline/turn-06",
+          "sentences": 74,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 134401,
+          "answer_sha256": "e8f893510e9f546285b2f444ab70f93dbddf4a5a5732ac7fadf35bd7cd766bb9"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 7,
+          "prompt_id": "incident-timeline/turn-07",
+          "sentences": 27,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 151715,
+          "answer_sha256": "8fc5d60140f5b0c91997721442df12754d7f56e98a262afea1b54ee9b7c7c034"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 8,
+          "prompt_id": "incident-timeline/turn-08",
+          "sentences": 20,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 167231,
+          "answer_sha256": "eebe3a3556828972668845ce0c25988e1b9aea47e4b12dfcd977666dbc196911"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 9,
+          "prompt_id": "incident-timeline/turn-09",
+          "sentences": 28,
+          "violations": 1,
+          "by_rule": {
+            "minimizer": 1
+          },
+          "rate": 3.57,
+          "context_tokens": 187937,
+          "answer_sha256": "fafb5b5e48a5d3d43730ed184697b0ed2c9af4be04f9c497dd6b245e41a9febe"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 10,
+          "prompt_id": "incident-timeline/turn-10",
+          "sentences": 83,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 204739,
+          "answer_sha256": "9b25eef668e2c2153def7d2071da6cecfcf6ae2124dc5f288ebe4397eda5a0f7"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 11,
+          "prompt_id": "incident-timeline/turn-11",
+          "sentences": 72,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 228015,
+          "answer_sha256": "b6bcd0db83449221abeaefc39fca38a94b11d2dc79b7e4adae590a8c9387c3cf"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 12,
+          "prompt_id": "incident-timeline/turn-12",
+          "sentences": 103,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 256114,
+          "answer_sha256": "5dbc380894263f2096097ddb1e00b823f7e6ed9c5f518e3e0bd9b54f7b334b88"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 13,
+          "prompt_id": "incident-timeline/turn-13",
+          "sentences": 22,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 282922,
+          "answer_sha256": "e0cc1e40af3cb5690b2398e71d46e9bca592c500213a9036bbf108226b6df745"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 14,
+          "prompt_id": "incident-timeline/turn-14",
+          "sentences": 107,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 301388,
+          "answer_sha256": "96c3e95b26519d343aa89f90e70d17c661893afb24c9b8fed21793d330b8545b"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 1,
+          "turn": 15,
+          "prompt_id": "incident-timeline/turn-15",
+          "sentences": 10,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 330077,
+          "answer_sha256": "1cec1b9fbce0739b636ec531caf437f497c928450e6268670260a0600c3854bf"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 1,
+          "prompt_id": "service-review/turn-01",
+          "sentences": 60,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 19058,
+          "answer_sha256": "f8166d9c8e2a31461333e418ac40d20c605e3707212a2c5c8996d3bd8e6525b6"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 2,
+          "prompt_id": "service-review/turn-02",
+          "sentences": 60,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 38865,
+          "answer_sha256": "63cbc2f38a5959fe696e2603157ad3f2dee036edefe1561f406e79a6abda86a6"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 3,
+          "prompt_id": "service-review/turn-03",
+          "sentences": 63,
+          "violations": 1,
+          "by_rule": {
+            "latin-abbreviation": 1
+          },
+          "rate": 1.59,
+          "context_tokens": 60481,
+          "answer_sha256": "a11dd2cdff1fda8526a9183f0dc335237715d3d81b44ea57d9266ef89e86f1d7"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 4,
+          "prompt_id": "service-review/turn-04",
+          "sentences": 52,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 85666,
+          "answer_sha256": "5514b1ed68089e1ba5542c576ac9378ee30cee980ccc865a43e3d0ff032995c6"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 5,
+          "prompt_id": "service-review/turn-05",
+          "sentences": 57,
+          "violations": 1,
+          "by_rule": {
+            "minimizer": 1
+          },
+          "rate": 1.75,
+          "context_tokens": 113492,
+          "answer_sha256": "784f124cc346434306e4f9359357bd6759ea165c1672bd125e0e647a8994e6fb"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 6,
+          "prompt_id": "service-review/turn-06",
+          "sentences": 63,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 140619,
+          "answer_sha256": "5ea67e893c825661643a89c35c5f6f2e7ac9b60021353ee7d3d74a9437ae3d25"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 7,
+          "prompt_id": "service-review/turn-07",
+          "sentences": 42,
+          "violations": 1,
+          "by_rule": {
+            "latin-abbreviation": 1
+          },
+          "rate": 2.38,
+          "context_tokens": 167933,
+          "answer_sha256": "4f30ea4ae5fa39ec8fae015b7385a3b071a079ded74ed7896c8214a8c0718596"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 8,
+          "prompt_id": "service-review/turn-08",
+          "sentences": 67,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 196000,
+          "answer_sha256": "2f57267bdbd0ae1c2df41f570cc6b9c9b2655cc8d8c7459ff950eb7fe55d3762"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 9,
+          "prompt_id": "service-review/turn-09",
+          "sentences": 47,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 231968,
+          "answer_sha256": "17a8e78580a30b3eed42f171b8884a63476202ace7a7a2ac1d139f1a2e25bdd5"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 10,
+          "prompt_id": "service-review/turn-10",
+          "sentences": 79,
+          "violations": 2,
+          "by_rule": {
+            "banned-modal": 1,
+            "minimizer": 1
+          },
+          "rate": 2.53,
+          "context_tokens": 266318,
+          "answer_sha256": "90389434e6f6b4a4730b2f1a405cd990836c736d24b05f81138a9627533bc38a"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 11,
+          "prompt_id": "service-review/turn-11",
+          "sentences": 83,
+          "violations": 1,
+          "by_rule": {
+            "minimizer": 1
+          },
+          "rate": 1.2,
+          "context_tokens": 302433,
+          "answer_sha256": "ed4c144d7f51207a6111079ca10d49ab285638c22ad8a2fc2fac7faa67be3ed4"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 12,
+          "prompt_id": "service-review/turn-12",
+          "sentences": 39,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 328478,
+          "answer_sha256": "2b97005205b866948fb7ffb2bc00ee3b1166c67a53c105c92187dceb59d78da9"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 13,
+          "prompt_id": "service-review/turn-13",
+          "sentences": 107,
+          "violations": 1,
+          "by_rule": {
+            "banned-modal": 1
+          },
+          "rate": 0.93,
+          "context_tokens": 349888,
+          "answer_sha256": "ef8f4f3c62d9d5071a67b89382df94445c39e16e1550881570ed2a3a76581e42"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 14,
+          "prompt_id": "service-review/turn-14",
+          "sentences": 110,
+          "violations": 3,
+          "by_rule": {
+            "banned-modal": 2,
+            "latin-abbreviation": 1
+          },
+          "rate": 2.73,
+          "context_tokens": 376891,
+          "answer_sha256": "6808b62f1a0ef2151d487b698bd27f7905a289b8bbed6e992492ac9faadc623a"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 2,
+          "turn": 15,
+          "prompt_id": "service-review/turn-15",
+          "sentences": 78,
+          "violations": 2,
+          "by_rule": {
+            "banned-modal": 1,
+            "minimizer": 1
+          },
+          "rate": 2.56,
+          "context_tokens": 407119,
+          "answer_sha256": "0f5060d004500bd3c55b48848836ed6ef90266f0771e8862e4ca190284ff9db8"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 1,
+          "prompt_id": "design-doc-series/turn-01",
+          "sentences": 19,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 19189,
+          "answer_sha256": "23582f61c2305764e0c04d2955b39bf555a6f5498c59d7f65d2c312c301bf1eb"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 2,
+          "prompt_id": "design-doc-series/turn-02",
+          "sentences": 21,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 27051,
+          "answer_sha256": "8605e83cc0b1f0c8e6417e7e6649ce543579c2cdc9412b5bfbed30af8caf3269"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 3,
+          "prompt_id": "design-doc-series/turn-03",
+          "sentences": 23,
+          "violations": 1,
+          "by_rule": {
+            "banned-modal": 1
+          },
+          "rate": 4.35,
+          "context_tokens": 34645,
+          "answer_sha256": "78d43967e1dc9bf92598c82f1443c3cb2ebad96f5170434d96f17d95c2bdd537"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 4,
+          "prompt_id": "design-doc-series/turn-04",
+          "sentences": 23,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 42234,
+          "answer_sha256": "7878836f91b4b172cd63b1f34dbd34251bc49b233e417df3dee40fd3ee283ba2"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 5,
+          "prompt_id": "design-doc-series/turn-05",
+          "sentences": 12,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 52055,
+          "answer_sha256": "0e954cba6ba81ae08d97e2f683d21c14664afa0015c3fa5f2861cc298f719a0a"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 6,
+          "prompt_id": "design-doc-series/turn-06",
+          "sentences": 85,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 60319,
+          "answer_sha256": "f30c4428f8767d7d293b23c3b41026ca701d503e829e82e532407f1e44fac003"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 7,
+          "prompt_id": "design-doc-series/turn-07",
+          "sentences": 17,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 68778,
+          "answer_sha256": "6597c6d669485f523971e202c51f2dd9291e3c261f22f4f08b19e1df542a85c5"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 8,
+          "prompt_id": "design-doc-series/turn-08",
+          "sentences": 15,
+          "violations": 1,
+          "by_rule": {
+            "latin-abbreviation": 1
+          },
+          "rate": 6.67,
+          "context_tokens": 78375,
+          "answer_sha256": "71206a30a6c83fea571c69ce985da2fa5d6b6da5b2dba8c6c0eb1f436a3e3b73"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 9,
+          "prompt_id": "design-doc-series/turn-09",
+          "sentences": 17,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 87071,
+          "answer_sha256": "bf95dc4a9b29acc6f4e7ce04e1b0e3ea202af67d5388df864a2ee5a12900f707"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 10,
+          "prompt_id": "design-doc-series/turn-10",
+          "sentences": 20,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 94308,
+          "answer_sha256": "541b49c02633f83b8beca6f713d2ee3a02cee56eb9fc40819fee793ba7a12c8f"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 11,
+          "prompt_id": "design-doc-series/turn-11",
+          "sentences": 68,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 103405,
+          "answer_sha256": "caef7523631b6f9445d7b298adc449cdf46c198b3dd6637e63d5b8ae26034590"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 12,
+          "prompt_id": "design-doc-series/turn-12",
+          "sentences": 41,
+          "violations": 1,
+          "by_rule": {
+            "banned-modal": 1
+          },
+          "rate": 2.44,
+          "context_tokens": 117170,
+          "answer_sha256": "76090bd4aea450e7e6b141bdf8ba822ffa11b6e233ecc87762ba159d86751ef5"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 13,
+          "prompt_id": "design-doc-series/turn-13",
+          "sentences": 100,
+          "violations": 2,
+          "by_rule": {
+            "banned-modal": 2
+          },
+          "rate": 2.0,
+          "context_tokens": 132951,
+          "answer_sha256": "a79b5fb2c89840ab2b75120c308309e41a35c36ca164ad62c508247723a67857"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 14,
+          "prompt_id": "design-doc-series/turn-14",
+          "sentences": 67,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 145112,
+          "answer_sha256": "3d25bbcd29a2d7f000137f35b7995c06604e0787dde893f8df78eb8f250be856"
+        },
+        {
+          "style": "developer-docs",
+          "repeat": 3,
+          "turn": 15,
+          "prompt_id": "design-doc-series/turn-15",
+          "sentences": 55,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 154457,
+          "answer_sha256": "061278381515bf84fb464d1afdb98dddc50f9e3f28cb6cb050e562579e5afe9f"
+        }
+      ]
+    },
+    "plain-language": {
+      "complete_sessions": 3,
+      "sessions": [
+        {
+          "repeat": 1,
+          "series": [
+            0.0,
+            3.45,
+            0.0,
+            0.0,
+            0.0,
+            3.8,
+            2.86,
+            0.0,
+            0.0,
+            0.0,
+            3.0,
+            0.83,
+            0.0,
+            1.59,
+            0.0
+          ]
+        },
+        {
+          "repeat": 2,
+          "series": [
+            1.75,
+            0.0,
+            0.0,
+            0.0,
+            1.37,
+            1.64,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.88,
+            0.0
+          ]
+        },
+        {
+          "repeat": 3,
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "pooled_series": [
+        0.91,
+        0.84,
+        0.0,
+        0.0,
+        0.74,
+        1.87,
+        0.93,
+        0.0,
+        0.0,
+        0.0,
+        1.12,
+        0.52,
+        0.0,
+        0.85,
+        0.0
+      ],
+      "slope": -0.028,
+      "intercept": 0.74,
+      "threshold": 0.062,
+      "threshold_source": "derived",
+      "null": {
+        "permutations": 10000,
+        "seed": 0,
+        "quantile": 0.95,
+        "threshold": 0.062,
+        "p_value": 0.7563
+      },
+      "verdict": "flat",
+      "depth": {
+        "final": {
+          "1": 342385,
+          "2": 423433,
+          "3": 159438
+        },
+        "mean_final": 308419,
+        "window_fraction": 1.542
+      },
+      "turns": [
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 1,
+          "prompt_id": "incident-timeline/turn-01",
+          "sentences": 28,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 24650,
+          "answer_sha256": "b406b5af12c5c053e876d93701473297d77865bcae58dbfec08cf63356f1c7f2"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 2,
+          "prompt_id": "incident-timeline/turn-02",
+          "sentences": 29,
+          "violations": 1,
+          "by_rule": {
+            "latin-abbreviation": 1
+          },
+          "rate": 3.45,
+          "context_tokens": 49436,
+          "answer_sha256": "0a4b194b5327b4a1b953a2344d9b8e636f9bbfc9a2afbcc6d8abca27302b01ea"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 3,
+          "prompt_id": "incident-timeline/turn-03",
+          "sentences": 37,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 75174,
+          "answer_sha256": "e68145981f567391ec40f7db486a373c138d0eb44ae7cf054669a80ea6ac535d"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 4,
+          "prompt_id": "incident-timeline/turn-04",
+          "sentences": 24,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 96840,
+          "answer_sha256": "642cc73a19eb2274e3c184e91def16a094fa8e5da59e2b091233cd863f953953"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 5,
+          "prompt_id": "incident-timeline/turn-05",
+          "sentences": 42,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 116455,
+          "answer_sha256": "4d476d683275c28cc793a313ab6a751e1547ef5a5fe2f7bd86202966538a6b6f"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 6,
+          "prompt_id": "incident-timeline/turn-06",
+          "sentences": 79,
+          "violations": 3,
+          "by_rule": {
+            "latin-abbreviation": 3
+          },
+          "rate": 3.8,
+          "context_tokens": 135758,
+          "answer_sha256": "d86d52991245bf93dd8a4affc6c5433c089951851822ddfec259cc37dd94566f"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 7,
+          "prompt_id": "incident-timeline/turn-07",
+          "sentences": 35,
+          "violations": 1,
+          "by_rule": {
+            "latin-abbreviation": 1
+          },
+          "rate": 2.86,
+          "context_tokens": 152790,
+          "answer_sha256": "84964304acf79005cb4e448303fec99216883fb7db91434f624cb037fd19b6cf"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 8,
+          "prompt_id": "incident-timeline/turn-08",
+          "sentences": 22,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 169459,
+          "answer_sha256": "dede77118523e271721dc82f28fb8faac95a699149c52319b63c805805b7c4c5"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 9,
+          "prompt_id": "incident-timeline/turn-09",
+          "sentences": 28,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 190138,
+          "answer_sha256": "fc0447c56ebf98aab91b3ea83654db6f8dc718aafb24bd08cc2f3c999c8abbda"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 10,
+          "prompt_id": "incident-timeline/turn-10",
+          "sentences": 87,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 207331,
+          "answer_sha256": "e98437a0bd28c8d5e8ec9eabca5c9dc2e82be98096ba11e786ecdac015173811"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 11,
+          "prompt_id": "incident-timeline/turn-11",
+          "sentences": 100,
+          "violations": 3,
+          "by_rule": {
+            "latin-abbreviation": 3
+          },
+          "rate": 3.0,
+          "context_tokens": 229429,
+          "answer_sha256": "30236a3cc332f0013fb1e6850389d316ea7fc7499e9eaa5918c379a805773637"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 12,
+          "prompt_id": "incident-timeline/turn-12",
+          "sentences": 120,
+          "violations": 1,
+          "by_rule": {
+            "and-or": 1
+          },
+          "rate": 0.83,
+          "context_tokens": 261368,
+          "answer_sha256": "06379423aa898028ba8bf350145afbab5b2aacc303f27d93dcffb6abddc4f54f"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 13,
+          "prompt_id": "incident-timeline/turn-13",
+          "sentences": 35,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 291753,
+          "answer_sha256": "fd1299105d41e28e92b4d09878e2789f58fb1cce5ddaa5f4ca168f6bf2227a19"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 14,
+          "prompt_id": "incident-timeline/turn-14",
+          "sentences": 63,
+          "violations": 1,
+          "by_rule": {
+            "latin-abbreviation": 1
+          },
+          "rate": 1.59,
+          "context_tokens": 312154,
+          "answer_sha256": "456367fd3aa2a9eaa23759b97722ebec6593cd104ae6011d1efc6a0b94278488"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 1,
+          "turn": 15,
+          "prompt_id": "incident-timeline/turn-15",
+          "sentences": 6,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 342385,
+          "answer_sha256": "214b211b0bd28c71b1664fdfbb907b804a976b359431358b3dc10aaaa7910e04"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 1,
+          "prompt_id": "service-review/turn-01",
+          "sentences": 57,
+          "violations": 1,
+          "by_rule": {
+            "latin-abbreviation": 1
+          },
+          "rate": 1.75,
+          "context_tokens": 19277,
+          "answer_sha256": "50c37f20d8ffa8523290762bda150ed6b9f701165015dd28d8771511560dd142"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 2,
+          "prompt_id": "service-review/turn-02",
+          "sentences": 66,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 37898,
+          "answer_sha256": "1ad876baa733ebebb763c3532a6c89e9286c68110ff943daf3d2cdcf4139b868"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 3,
+          "prompt_id": "service-review/turn-03",
+          "sentences": 64,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 61121,
+          "answer_sha256": "e71530bf6cac4dbf44d30e19076563863c4fa38907afbcfad0d85a255f06aead"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 4,
+          "prompt_id": "service-review/turn-04",
+          "sentences": 63,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 96210,
+          "answer_sha256": "8d3d26aa4285656c2d34d02d2e2a422c91af4f65122da388484de710c9334ee2"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 5,
+          "prompt_id": "service-review/turn-05",
+          "sentences": 73,
+          "violations": 1,
+          "by_rule": {
+            "latin-abbreviation": 1
+          },
+          "rate": 1.37,
+          "context_tokens": 127644,
+          "answer_sha256": "1d5a8d53d836823607d604101e55ed83e63cfd09aef1d9de53e90d776fdf7441"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 6,
+          "prompt_id": "service-review/turn-06",
+          "sentences": 61,
+          "violations": 1,
+          "by_rule": {
+            "latin-abbreviation": 1
+          },
+          "rate": 1.64,
+          "context_tokens": 157767,
+          "answer_sha256": "a1a87cc0679b03206caa33580bbfeb510fd2f45e08625e2ca9f0b31fb17d02f7"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 7,
+          "prompt_id": "service-review/turn-07",
+          "sentences": 49,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 182887,
+          "answer_sha256": "3b710044bd321f540e2bd591181f978818224b088d497fde3195f11b130cf225"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 8,
+          "prompt_id": "service-review/turn-08",
+          "sentences": 67,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 208033,
+          "answer_sha256": "07ea9f0da0239e74d535228b6f420916ef678f5eb13c78cd02581cc883233ebe"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 9,
+          "prompt_id": "service-review/turn-09",
+          "sentences": 53,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 246187,
+          "answer_sha256": "b339ea0b0531c821fd36895c50f2155df2d7d53d921aa2f5cf0f8739092315e6"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 10,
+          "prompt_id": "service-review/turn-10",
+          "sentences": 103,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 273827,
+          "answer_sha256": "74afc5c89f86962cbc0d0bd59a3b75ce5dbf363bf971f6f5748a314fb3b4de25"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 11,
+          "prompt_id": "service-review/turn-11",
+          "sentences": 102,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 305992,
+          "answer_sha256": "bfb88c484dd3bfd6cd0c200ffaa6d39e03ecb3ac00e5cf7259057a07619ef79a"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 12,
+          "prompt_id": "service-review/turn-12",
+          "sentences": 35,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 336758,
+          "answer_sha256": "970ef47c05213919ac24184554bb3b32c729b3203763cab3544c5e5c2aaaaec0"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 13,
+          "prompt_id": "service-review/turn-13",
+          "sentences": 76,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 357680,
+          "answer_sha256": "84ec12688fcdc4a1f3c9b534b7d876e9042bc456792dec188ceb4378ad68dff8"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 14,
+          "prompt_id": "service-review/turn-14",
+          "sentences": 113,
+          "violations": 1,
+          "by_rule": {
+            "latin-abbreviation": 1
+          },
+          "rate": 0.88,
+          "context_tokens": 386628,
+          "answer_sha256": "cdcbd6c51db474b4879511cced40e90d73e977f0b693349e30b582d576e5bf9f"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 2,
+          "turn": 15,
+          "prompt_id": "service-review/turn-15",
+          "sentences": 67,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 423433,
+          "answer_sha256": "3db13ff1e9c89c80af88260abd1964190810d7c194d6b47f40147ac342b286d1"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 1,
+          "prompt_id": "design-doc-series/turn-01",
+          "sentences": 25,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 19408,
+          "answer_sha256": "7c082f6e1b4c15e36c021ba6e823dea475b355701cd101955f3c39f1229e00cd"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 2,
+          "prompt_id": "design-doc-series/turn-02",
+          "sentences": 24,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 27152,
+          "answer_sha256": "256b3404683a5f7bf0e371a23e4b784ccabcdf1fdd604cf8ca82e3a75b7e9c97"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 3,
+          "prompt_id": "design-doc-series/turn-03",
+          "sentences": 29,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 34945,
+          "answer_sha256": "cfce1817608789977b285582b302c39f24e1a0c60f590e0e1e75b3195f06e944"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 4,
+          "prompt_id": "design-doc-series/turn-04",
+          "sentences": 26,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 42536,
+          "answer_sha256": "a5fb11cdb745d0268eb6dbca850e29c6f37740f7df27fc669fe32c7745c1d4f8"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 5,
+          "prompt_id": "design-doc-series/turn-05",
+          "sentences": 21,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 52261,
+          "answer_sha256": "4562b7c4e8522eeaaf64eddfa0c911f11d4f3292e9c3be0403c4f7951b037cb7"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 6,
+          "prompt_id": "design-doc-series/turn-06",
+          "sentences": 74,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 60567,
+          "answer_sha256": "77af877ea19d17b5956758afc0e47ccdc6364158facca98aca8b7499c44fa7ae"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 7,
+          "prompt_id": "design-doc-series/turn-07",
+          "sentences": 23,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 68926,
+          "answer_sha256": "dec291d06e93b16ea1c926f4d78cd76a3546c7390e958b83b62feb1771a4d592"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 8,
+          "prompt_id": "design-doc-series/turn-08",
+          "sentences": 18,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 78524,
+          "answer_sha256": "c322210e6286104713faf62661b3ba5c19a354d5803deb158e9cfbecc7c51a85"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 9,
+          "prompt_id": "design-doc-series/turn-09",
+          "sentences": 26,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 87276,
+          "answer_sha256": "e74fa20ed87372a5bfd6acc9371dbaed165f6f7e1b8bbd9dac6214b6b6a0403a"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 10,
+          "prompt_id": "design-doc-series/turn-10",
+          "sentences": 24,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 94702,
+          "answer_sha256": "60cf85cd2a4718af72424c150a177119ebf45584df4fb0838bc2e8f75e73e268"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 11,
+          "prompt_id": "design-doc-series/turn-11",
+          "sentences": 67,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 103715,
+          "answer_sha256": "cda96d2b9764d4a2f860e078307962cbf82150d488ab78fb1c64f113344faac6"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 12,
+          "prompt_id": "design-doc-series/turn-12",
+          "sentences": 39,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 116739,
+          "answer_sha256": "5c99ee085a5045f3d72d76fa0b552d246699da32e823e88f155ddb1c3fc5386f"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 13,
+          "prompt_id": "design-doc-series/turn-13",
+          "sentences": 114,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 136703,
+          "answer_sha256": "2385654aff07e27bca950be407c478a3d85b0a4922d4f71f485e893f5b8e74f4"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 14,
+          "prompt_id": "design-doc-series/turn-14",
+          "sentences": 58,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 150391,
+          "answer_sha256": "f9376fb89f841e1425702e6ced907d7795e97e83c9e2765f2c1dd64c3eadd19b"
+        },
+        {
+          "style": "plain-language",
+          "repeat": 3,
+          "turn": 15,
+          "prompt_id": "design-doc-series/turn-15",
+          "sentences": 53,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 159438,
+          "answer_sha256": "7071a2a865e637e2bb7a9b13e40622b27a8c281aaf333576b2a28ba7d8d3d8df"
+        }
+      ]
+    },
+    "technical-simplified": {
+      "complete_sessions": 3,
+      "sessions": [
+        {
+          "repeat": 1,
+          "series": [
+            3.03,
+            30.3,
+            13.64,
+            15.15,
+            16.67,
+            30.95,
+            47.06,
+            37.14,
+            40.54,
+            21.59,
+            59.3,
+            56.76,
+            70.27,
+            36.61,
+            66.67
+          ]
+        },
+        {
+          "repeat": 2,
+          "series": [
+            4.11,
+            0.0,
+            36.9,
+            56.86,
+            75.56,
+            69.81,
+            78.38,
+            86.21,
+            60.98,
+            81.03,
+            39.39,
+            86.11,
+            61.84,
+            50.44,
+            83.33
+          ]
+        },
+        {
+          "repeat": 3,
+          "series": [
+            4.55,
+            34.62,
+            17.39,
+            4.55,
+            50.0,
+            23.81,
+            16.67,
+            13.33,
+            31.82,
+            33.33,
+            14.29,
+            38.6,
+            34.48,
+            27.78,
+            17.19
+          ]
+        }
+      ],
+      "pooled_series": [
+        3.91,
+        31.67,
+        27.15,
+        33.02,
+        46.02,
+        47.41,
+        51.58,
+        60.19,
+        47.0,
+        43.35,
+        36.4,
+        56.86,
+        49.34,
+        39.73,
+        48.82
+      ],
+      "slope": 1.884,
+      "intercept": 26.426,
+      "threshold": 1.236,
+      "threshold_source": "derived",
+      "null": {
+        "permutations": 10000,
+        "seed": 0,
+        "quantile": 0.95,
+        "threshold": 1.236,
+        "p_value": 0.0046
+      },
+      "verdict": "growing",
+      "depth": {
+        "final": {
+          "1": 351867,
+          "2": 403826,
+          "3": 158209
+        },
+        "mean_final": 304634,
+        "window_fraction": 1.523
+      },
+      "turns": [
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 1,
+          "prompt_id": "incident-timeline/turn-01",
+          "sentences": 33,
+          "violations": 1,
+          "by_rule": {
+            "sentence-length": 1
+          },
+          "rate": 3.03,
+          "context_tokens": 25178,
+          "answer_sha256": "f5a2386ff89b4e772802c3a4937e57d47b33c8da55f176f92522e0dc7b994c92"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 2,
+          "prompt_id": "incident-timeline/turn-02",
+          "sentences": 33,
+          "violations": 10,
+          "by_rule": {
+            "banned-modal": 2,
+            "banned-word": 1,
+            "sentence-length": 7
+          },
+          "rate": 30.3,
+          "context_tokens": 48571,
+          "answer_sha256": "9c3e74684c2d714b9017b1ff0f5a1a97e864b7bec2418baae9c25dce594598b7"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 3,
+          "prompt_id": "incident-timeline/turn-03",
+          "sentences": 44,
+          "violations": 6,
+          "by_rule": {
+            "banned-modal": 1,
+            "banned-word": 3,
+            "sentence-length": 2
+          },
+          "rate": 13.64,
+          "context_tokens": 77363,
+          "answer_sha256": "7a9d41f76d89a7e64825e1eb96335bec8e76409a6b12e1075f07ce8fad2a929d"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 4,
+          "prompt_id": "incident-timeline/turn-04",
+          "sentences": 33,
+          "violations": 5,
+          "by_rule": {
+            "banned-modal": 1,
+            "banned-word": 1,
+            "sentence-length": 3
+          },
+          "rate": 15.15,
+          "context_tokens": 97893,
+          "answer_sha256": "a679dd38abcf9a951beebd39d9a1455bfe20808acd1cc33ea0ccee67d807fe24"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 5,
+          "prompt_id": "incident-timeline/turn-05",
+          "sentences": 48,
+          "violations": 8,
+          "by_rule": {
+            "banned-word": 1,
+            "sentence-length": 7
+          },
+          "rate": 16.67,
+          "context_tokens": 116966,
+          "answer_sha256": "e37357caf7e5b58536a354857cd62bc602c89bae8f98031a84db05dae6c73884"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 6,
+          "prompt_id": "incident-timeline/turn-06",
+          "sentences": 42,
+          "violations": 13,
+          "by_rule": {
+            "banned-word": 7,
+            "semicolon": 1,
+            "sentence-length": 5
+          },
+          "rate": 30.95,
+          "context_tokens": 137381,
+          "answer_sha256": "83a938aa31b3f2c42dfe74b93e6de18dc6e002609abac1b3cc392eef6429f106"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 7,
+          "prompt_id": "incident-timeline/turn-07",
+          "sentences": 34,
+          "violations": 16,
+          "by_rule": {
+            "banned-modal": 2,
+            "banned-word": 3,
+            "sentence-length": 11
+          },
+          "rate": 47.06,
+          "context_tokens": 157349,
+          "answer_sha256": "89691355a85e124f30632f76c0213f70267387990fcb089c0d540c60b855423b"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 8,
+          "prompt_id": "incident-timeline/turn-08",
+          "sentences": 35,
+          "violations": 13,
+          "by_rule": {
+            "banned-word": 6,
+            "sentence-length": 7
+          },
+          "rate": 37.14,
+          "context_tokens": 174195,
+          "answer_sha256": "0320243d31489a2cc14310be0b77462cd0e0b1a8951630787a1bb813a2e6974a"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 9,
+          "prompt_id": "incident-timeline/turn-09",
+          "sentences": 37,
+          "violations": 15,
+          "by_rule": {
+            "banned-modal": 2,
+            "banned-word": 2,
+            "sentence-length": 11
+          },
+          "rate": 40.54,
+          "context_tokens": 196708,
+          "answer_sha256": "9002e775fb635681f2303c5a39e2180295ceb3559aa35290c49761caf02a37fa"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 10,
+          "prompt_id": "incident-timeline/turn-10",
+          "sentences": 88,
+          "violations": 19,
+          "by_rule": {
+            "banned-modal": 2,
+            "banned-word": 10,
+            "semicolon": 2,
+            "sentence-length": 5
+          },
+          "rate": 21.59,
+          "context_tokens": 215258,
+          "answer_sha256": "d9b6ca3611fe7d0df50fe1f3911077f93d372bb2540c05bcbb2735588c5fb7fc"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 11,
+          "prompt_id": "incident-timeline/turn-11",
+          "sentences": 86,
+          "violations": 51,
+          "by_rule": {
+            "banned-word": 4,
+            "semicolon": 32,
+            "sentence-length": 15
+          },
+          "rate": 59.3,
+          "context_tokens": 240268,
+          "answer_sha256": "2eb767feb857865d375e80251a62314545ebb2b0acfc1eb5886f79becb8c4af8"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 12,
+          "prompt_id": "incident-timeline/turn-12",
+          "sentences": 111,
+          "violations": 63,
+          "by_rule": {
+            "banned-modal": 14,
+            "banned-word": 21,
+            "semicolon": 7,
+            "sentence-length": 21
+          },
+          "rate": 56.76,
+          "context_tokens": 269878,
+          "answer_sha256": "a845d460aa1d6a96b0a914d0876708351b500cd2ff6c316bbf5baf1a71be2d03"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 13,
+          "prompt_id": "incident-timeline/turn-13",
+          "sentences": 37,
+          "violations": 26,
+          "by_rule": {
+            "banned-modal": 4,
+            "banned-word": 1,
+            "semicolon": 2,
+            "sentence-length": 19
+          },
+          "rate": 70.27,
+          "context_tokens": 295722,
+          "answer_sha256": "12eb43d94c9c8ce0eb449167bf41a76e10edad6d37c6c922661ba349781d5594"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 14,
+          "prompt_id": "incident-timeline/turn-14",
+          "sentences": 112,
+          "violations": 41,
+          "by_rule": {
+            "banned-modal": 4,
+            "banned-word": 7,
+            "semicolon": 4,
+            "sentence-length": 26
+          },
+          "rate": 36.61,
+          "context_tokens": 316458,
+          "answer_sha256": "1171193dd6e43d7df20cce0123ea51fb85b5f9eee7aa4f49cc5510a5a5c3ab96"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 1,
+          "turn": 15,
+          "prompt_id": "incident-timeline/turn-15",
+          "sentences": 9,
+          "violations": 6,
+          "by_rule": {
+            "banned-modal": 2,
+            "semicolon": 1,
+            "sentence-length": 3
+          },
+          "rate": 66.67,
+          "context_tokens": 351867,
+          "answer_sha256": "70eeb99f9fba7cd4f745136f0ca2022fbb0f26053a096959a987e3e6686bdac2"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 1,
+          "prompt_id": "service-review/turn-01",
+          "sentences": 73,
+          "violations": 3,
+          "by_rule": {
+            "banned-word": 2,
+            "sentence-length": 1
+          },
+          "rate": 4.11,
+          "context_tokens": 19805,
+          "answer_sha256": "ce14447f7957e9156db1658c3f0155350ed908f5a88f9140a190fca54a0a846f"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 2,
+          "prompt_id": "service-review/turn-02",
+          "sentences": 1,
+          "violations": 0,
+          "by_rule": {},
+          "rate": 0.0,
+          "context_tokens": 36980,
+          "answer_sha256": "173ebc3ff59fe08f7c07795e2edf02c39e08b175cd8b857270eb0ea1c1330077"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 3,
+          "prompt_id": "service-review/turn-03",
+          "sentences": 84,
+          "violations": 31,
+          "by_rule": {
+            "banned-modal": 2,
+            "banned-word": 12,
+            "semicolon": 2,
+            "sentence-length": 15
+          },
+          "rate": 36.9,
+          "context_tokens": 57772,
+          "answer_sha256": "023f16397d3435da8e828ffc405c466772fb2e2c71957357d53e6a7ab71686fa"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 4,
+          "prompt_id": "service-review/turn-04",
+          "sentences": 51,
+          "violations": 29,
+          "by_rule": {
+            "banned-modal": 1,
+            "banned-word": 12,
+            "semicolon": 2,
+            "sentence-length": 14
+          },
+          "rate": 56.86,
+          "context_tokens": 91499,
+          "answer_sha256": "b14ad2f5804143ed36b06d79939b04586f90bd66f035128efa695fda2eb63207"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 5,
+          "prompt_id": "service-review/turn-05",
+          "sentences": 45,
+          "violations": 34,
+          "by_rule": {
+            "banned-modal": 4,
+            "banned-word": 9,
+            "semicolon": 3,
+            "sentence-length": 18
+          },
+          "rate": 75.56,
+          "context_tokens": 119939,
+          "answer_sha256": "7f4298e7f2a19d317f1752a03205c36e19eaf99ab939752e75f8201332fdfb47"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 6,
+          "prompt_id": "service-review/turn-06",
+          "sentences": 53,
+          "violations": 37,
+          "by_rule": {
+            "banned-modal": 4,
+            "banned-word": 8,
+            "semicolon": 4,
+            "sentence-length": 21
+          },
+          "rate": 69.81,
+          "context_tokens": 147205,
+          "answer_sha256": "08b3481519306a1d406966932944a7cafc1f503ce7ac345c0616ea018f80a4fc"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 7,
+          "prompt_id": "service-review/turn-07",
+          "sentences": 37,
+          "violations": 29,
+          "by_rule": {
+            "banned-modal": 4,
+            "banned-word": 6,
+            "semicolon": 2,
+            "sentence-length": 17
+          },
+          "rate": 78.38,
+          "context_tokens": 172544,
+          "answer_sha256": "260d82add3e4758ce460f4ea3b5453389a4da9f172aa2f1627d120854ff931e1"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 8,
+          "prompt_id": "service-review/turn-08",
+          "sentences": 58,
+          "violations": 50,
+          "by_rule": {
+            "banned-modal": 6,
+            "banned-word": 14,
+            "contraction": 3,
+            "semicolon": 4,
+            "sentence-length": 23
+          },
+          "rate": 86.21,
+          "context_tokens": 195405,
+          "answer_sha256": "b5f9555358ce373b72ca23c932a48fb5d9068f66d3216439f34402d8b35757a2"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 9,
+          "prompt_id": "service-review/turn-09",
+          "sentences": 41,
+          "violations": 25,
+          "by_rule": {
+            "banned-modal": 1,
+            "banned-word": 6,
+            "contraction": 1,
+            "semicolon": 3,
+            "sentence-length": 14
+          },
+          "rate": 60.98,
+          "context_tokens": 233185,
+          "answer_sha256": "573d9e12a45673c32bd4b5ff23c756fd000952f8b481e6b5a0f3dd96465b2f89"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 10,
+          "prompt_id": "service-review/turn-10",
+          "sentences": 58,
+          "violations": 47,
+          "by_rule": {
+            "banned-modal": 7,
+            "banned-word": 11,
+            "contraction": 1,
+            "semicolon": 6,
+            "sentence-length": 22
+          },
+          "rate": 81.03,
+          "context_tokens": 264600,
+          "answer_sha256": "9d6601e93a0f0e39f75747054ddea8fed52ef92ac5fa6a2fe45a0520a59f58a4"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 11,
+          "prompt_id": "service-review/turn-11",
+          "sentences": 66,
+          "violations": 26,
+          "by_rule": {
+            "banned-modal": 2,
+            "banned-word": 7,
+            "semicolon": 3,
+            "sentence-length": 14
+          },
+          "rate": 39.39,
+          "context_tokens": 295690,
+          "answer_sha256": "01a54232ed4fb5ec7f1add8c7b3e1db64a910bff7bbb90b7057ddeb3d0997142"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 12,
+          "prompt_id": "service-review/turn-12",
+          "sentences": 36,
+          "violations": 31,
+          "by_rule": {
+            "banned-modal": 3,
+            "banned-word": 5,
+            "contraction": 1,
+            "semicolon": 3,
+            "sentence-length": 19
+          },
+          "rate": 86.11,
+          "context_tokens": 319347,
+          "answer_sha256": "673cf67744335444a0d35b9ef2c00cfcc56a053025d57cc9190c96c8510f26c0"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 13,
+          "prompt_id": "service-review/turn-13",
+          "sentences": 76,
+          "violations": 47,
+          "by_rule": {
+            "banned-modal": 4,
+            "banned-word": 8,
+            "semicolon": 7,
+            "sentence-length": 28
+          },
+          "rate": 61.84,
+          "context_tokens": 341870,
+          "answer_sha256": "f11c76e408dbdf01d725a5e2d800ce402b841fc0d44b4fae50653f4517812d41"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 14,
+          "prompt_id": "service-review/turn-14",
+          "sentences": 113,
+          "violations": 57,
+          "by_rule": {
+            "banned-modal": 2,
+            "banned-word": 22,
+            "contraction": 6,
+            "latin-abbreviation": 1,
+            "semicolon": 12,
+            "sentence-length": 14
+          },
+          "rate": 50.44,
+          "context_tokens": 372380,
+          "answer_sha256": "b76100f85a5b4d87bd81b3a1dd2713516b68adf50973b8d467ed36b83408c54b"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 2,
+          "turn": 15,
+          "prompt_id": "service-review/turn-15",
+          "sentences": 54,
+          "violations": 45,
+          "by_rule": {
+            "banned-modal": 6,
+            "banned-word": 10,
+            "semicolon": 4,
+            "sentence-length": 25
+          },
+          "rate": 83.33,
+          "context_tokens": 403826,
+          "answer_sha256": "5eae4735c2e344c4967811f3daeabdfa7092cb3348bc13dd2b92d881ac6c1d66"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 1,
+          "prompt_id": "design-doc-series/turn-01",
+          "sentences": 22,
+          "violations": 1,
+          "by_rule": {
+            "banned-modal": 1
+          },
+          "rate": 4.55,
+          "context_tokens": 19936,
+          "answer_sha256": "4377ecfd56e4d78b8ce008d417a20e58c78fd09c31f4c489b244e363b59bf9fb"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 2,
+          "prompt_id": "design-doc-series/turn-02",
+          "sentences": 26,
+          "violations": 9,
+          "by_rule": {
+            "banned-modal": 5,
+            "banned-word": 4
+          },
+          "rate": 34.62,
+          "context_tokens": 27220,
+          "answer_sha256": "738af28fb66a8ea18b845a51c438458f1b3ef03cb0927e651246e481df5e6af7"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 3,
+          "prompt_id": "design-doc-series/turn-03",
+          "sentences": 23,
+          "violations": 4,
+          "by_rule": {
+            "banned-modal": 3,
+            "sentence-length": 1
+          },
+          "rate": 17.39,
+          "context_tokens": 34748,
+          "answer_sha256": "5656fbb7053e844d9580e918bcc941c566b676c7c6278921c4b05fd991b9b97b"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 4,
+          "prompt_id": "design-doc-series/turn-04",
+          "sentences": 22,
+          "violations": 1,
+          "by_rule": {
+            "banned-word": 1
+          },
+          "rate": 4.55,
+          "context_tokens": 42144,
+          "answer_sha256": "bdc3e856cadc2cf21635aa7e8ecfb5cd8bbb77df8f788b117551b5cf610fb1e3"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 5,
+          "prompt_id": "design-doc-series/turn-05",
+          "sentences": 20,
+          "violations": 10,
+          "by_rule": {
+            "banned-word": 8,
+            "sentence-length": 2
+          },
+          "rate": 50.0,
+          "context_tokens": 51780,
+          "answer_sha256": "60f509dcd8b45218633d0edc0c699a3ac050bdcb6993194b43e10e6b3db734af"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 6,
+          "prompt_id": "design-doc-series/turn-06",
+          "sentences": 21,
+          "violations": 5,
+          "by_rule": {
+            "banned-word": 1,
+            "sentence-length": 4
+          },
+          "rate": 23.81,
+          "context_tokens": 59922,
+          "answer_sha256": "382833fd0ff0aca184a8e015f7ad7bc995818464a3e3e1d0652f66343d2e0bef"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 7,
+          "prompt_id": "design-doc-series/turn-07",
+          "sentences": 24,
+          "violations": 4,
+          "by_rule": {
+            "banned-word": 3,
+            "sentence-length": 1
+          },
+          "rate": 16.67,
+          "context_tokens": 67940,
+          "answer_sha256": "9cadb655fdaa734924ba5b254850729808969f88ef774757d41cb2cc616df685"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 8,
+          "prompt_id": "design-doc-series/turn-08",
+          "sentences": 15,
+          "violations": 2,
+          "by_rule": {
+            "banned-word": 2
+          },
+          "rate": 13.33,
+          "context_tokens": 77153,
+          "answer_sha256": "94584e53a109954c68f8b054f54f6a75268d19e16d923b1f03b96c529d7dbd1f"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 9,
+          "prompt_id": "design-doc-series/turn-09",
+          "sentences": 22,
+          "violations": 7,
+          "by_rule": {
+            "banned-word": 3,
+            "sentence-length": 4
+          },
+          "rate": 31.82,
+          "context_tokens": 85684,
+          "answer_sha256": "75bd3133f3ef5b2f175a248e9fead60229f20d5d025d62ceb9ccbf6aa14e2a82"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 10,
+          "prompt_id": "design-doc-series/turn-10",
+          "sentences": 27,
+          "violations": 9,
+          "by_rule": {
+            "banned-word": 4,
+            "sentence-length": 5
+          },
+          "rate": 33.33,
+          "context_tokens": 92911,
+          "answer_sha256": "943c202cdc0d64e492375854e74dfec45d0e5b45ec35f896278b2bdf7a34a80b"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 11,
+          "prompt_id": "design-doc-series/turn-11",
+          "sentences": 98,
+          "violations": 14,
+          "by_rule": {
+            "banned-word": 8,
+            "semicolon": 3,
+            "sentence-length": 3
+          },
+          "rate": 14.29,
+          "context_tokens": 101386,
+          "answer_sha256": "b25c3dc13910501b6321613cdc99a72fb0a3cff3b3433cc47b484ccb4d6a948e"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 12,
+          "prompt_id": "design-doc-series/turn-12",
+          "sentences": 57,
+          "violations": 22,
+          "by_rule": {
+            "banned-modal": 5,
+            "banned-word": 5,
+            "sentence-length": 12
+          },
+          "rate": 38.6,
+          "context_tokens": 116080,
+          "answer_sha256": "f91c5683a785a9d7ad0983babffa50215afc1a4c71fd2ff1d974d1d31e874c66"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 13,
+          "prompt_id": "design-doc-series/turn-13",
+          "sentences": 116,
+          "violations": 40,
+          "by_rule": {
+            "banned-word": 16,
+            "semicolon": 5,
+            "sentence-length": 19
+          },
+          "rate": 34.48,
+          "context_tokens": 134379,
+          "answer_sha256": "f7ce5a70cc3fb5b2291a57ed1f286498df9c93e720da6bedd4a7fe92de6187d3"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 14,
+          "prompt_id": "design-doc-series/turn-14",
+          "sentences": 72,
+          "violations": 20,
+          "by_rule": {
+            "banned-word": 10,
+            "sentence-length": 10
+          },
+          "rate": 27.78,
+          "context_tokens": 148373,
+          "answer_sha256": "aaec68f6c3451cc82367f93e0fc93eee5593e098e59607520ac8a09af1635de1"
+        },
+        {
+          "style": "technical-simplified",
+          "repeat": 3,
+          "turn": 15,
+          "prompt_id": "design-doc-series/turn-15",
+          "sentences": 64,
+          "violations": 11,
+          "by_rule": {
+            "banned-word": 2,
+            "sentence-length": 9
+          },
+          "rate": 17.19,
+          "context_tokens": 158209,
+          "answer_sha256": "8685b8f2cdd298f709b9d370a36c011348416598ab757fd19c03860f5dc72c42"
+        }
+      ]
     }
   },
   "rules": {
     "clarity-flow": {
       "file": "rules/clarity-flow.rules.yaml",
       "sha256": "d4047e50d635f3427b5373f4bfdd85574e5f91622b0ee462edb454c69420e32a"
+    },
+    "classic-concise": {
+      "file": "rules/classic-concise.rules.yaml",
+      "sha256": "d3496c81a6c74cd388b4e3e44e405b32cc1de656ba4a35a58f3eeaf7b9bd57d9"
+    },
+    "developer-docs": {
+      "file": "rules/developer-docs.rules.yaml",
+      "sha256": "7d0f20c52814fced11943ace3dec6cce0c4f5716766562fd346a9c7891047903"
+    },
+    "plain-language": {
+      "file": "rules/plain-language.rules.yaml",
+      "sha256": "b2175b219907fcf815762e53fd9c4ac11f86901b6bce590224aeb6d5db6485a8"
+    },
+    "technical-simplified": {
+      "file": "rules/technical-simplified.rules.yaml",
+      "sha256": "f7120e410a1863e07bda72bd5b0fe07c7ca0cbad642c9a093681e86497025fdd"
     }
   },
   "linter_toolchain": {
