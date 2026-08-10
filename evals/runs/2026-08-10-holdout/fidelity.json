@@ -1,0 +1,97 @@
+{
+  "date": "2026-08-10T14:32:55+00:00",
+  "run": "2026-08-10-holdout",
+  "thresholds": {
+    "actionable-clarity": 5.0,
+    "clarity-flow": 5.0,
+    "classic-concise": 10.0,
+    "developer-docs": 10.0,
+    "plain-language": 5.0,
+    "technical-simplified": 15.0
+  },
+  "summary": {
+    "actionable-clarity": {
+      "gated": 24,
+      "passed": 23,
+      "failed": 1,
+      "styled_rate": 0.41,
+      "baseline_rate": 4.61
+    },
+    "clarity-flow": {
+      "gated": 24,
+      "passed": 24,
+      "failed": 0,
+      "styled_rate": 0.0,
+      "baseline_rate": 0.0
+    },
+    "classic-concise": {
+      "gated": 24,
+      "passed": 24,
+      "failed": 0,
+      "styled_rate": 0.3,
+      "baseline_rate": 1.44
+    },
+    "developer-docs": {
+      "gated": 24,
+      "passed": 24,
+      "failed": 0,
+      "styled_rate": 0.22,
+      "baseline_rate": 6.92
+    },
+    "plain-language": {
+      "gated": 24,
+      "passed": 24,
+      "failed": 0,
+      "styled_rate": 0.0,
+      "baseline_rate": 4.61
+    },
+    "technical-simplified": {
+      "gated": 24,
+      "passed": 21,
+      "failed": 3,
+      "styled_rate": 6.52,
+      "baseline_rate": 74.35
+    }
+  },
+  "linter_toolchain": {
+    "spacy": "3.8.14",
+    "en-core-web-sm": "3.8.0",
+    "markdown-it-py": "4.2.0"
+  },
+  "run_linter_toolchain": {
+    "spacy": "3.8.14",
+    "en-core-web-sm": "3.8.0",
+    "markdown-it-py": "4.2.0"
+  },
+  "rules": {
+    "actionable-clarity": {
+      "file": "rules/actionable-clarity.rules.yaml",
+      "sha256": "a9a1e42eaaecdc9a048e075c2a382d41508e228cd11443e7da20bbb9e9047fc6"
+    },
+    "clarity-flow": {
+      "file": "rules/clarity-flow.rules.yaml",
+      "sha256": "d4047e50d635f3427b5373f4bfdd85574e5f91622b0ee462edb454c69420e32a"
+    },
+    "classic-concise": {
+      "file": "rules/classic-concise.rules.yaml",
+      "sha256": "d3496c81a6c74cd388b4e3e44e405b32cc1de656ba4a35a58f3eeaf7b9bd57d9"
+    },
+    "developer-docs": {
+      "file": "rules/developer-docs.rules.yaml",
+      "sha256": "7d0f20c52814fced11943ace3dec6cce0c4f5716766562fd346a9c7891047903"
+    },
+    "plain-language": {
+      "file": "rules/plain-language.rules.yaml",
+      "sha256": "b2175b219907fcf815762e53fd9c4ac11f86901b6bce590224aeb6d5db6485a8"
+    },
+    "technical-simplified": {
+      "file": "rules/technical-simplified.rules.yaml",
+      "sha256": "f7120e410a1863e07bda72bd5b0fe07c7ca0cbad642c9a093681e86497025fdd"
+    }
+  },
+  "gate_config": {
+    "file": "rules/gate.yaml",
+    "sha256": "81fdcb3a2d5ecf7d10b790d66df35f76869a35b6c3b1f210c5796b868ea72570"
+  },
+  "warnings": []
+}
