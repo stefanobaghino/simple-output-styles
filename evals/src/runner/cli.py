@@ -346,6 +346,7 @@ def main(argv: list[str] | None = None, run: Runner = subprocess_runner) -> int:
         plugin_dir=plugin_dir,
         cli_version=cli_version,
         claude_binary=hermetic.binary,
+        binary_source=hermetic.binary_source,
         config_manifest_sha256=hermetic.manifest_sha256,
         credential_source=hermetic.credential_source,
     )

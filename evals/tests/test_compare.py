@@ -516,3 +516,24 @@ def test_a_duplicate_run_name_exits_2(tmp_path):
     with pytest.raises(SystemExit) as error:
         cli.main([str(run_a), str(run_a)])
     assert error.value.code == 2
+
+
+def test_the_binary_route_stays_out_of_the_condition_check(tmp_path):
+    # The binary path and its resolution route are machine facts,
+    # like the credential route: two runs that differ there must
+    # compare clean.
+    runs = tmp_path / "runs"
+    write_run(runs, "run-a")
+    write_run(runs, "run-b")
+    for name, binary, source in (
+        ("run-a", "/a/claude", "managed"),
+        ("run-b", "/b/claude", "path"),
+    ):
+        path = runs / name / "provenance.json"
+        provenance = json.loads(path.read_text())
+        provenance["conditions"]["claude_binary"] = binary
+        provenance["conditions"]["binary_source"] = source
+        path.write_text(json.dumps(provenance))
+    code, summary, _ = run_cli(tmp_path, "run-a", "run-b")
+    assert code == 0
+    assert summary["warnings"] == []

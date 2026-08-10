@@ -765,8 +765,9 @@ def test_provenance_holds_the_config_fields(project):
     assert conditions["config"] == "hermetic"
     assert conditions["config_manifest_sha256"] == manifest_sha256()
     assert "claude_binary" in conditions
-    # The route depends on the machine that runs the test, but it is
-    # always one of the four named routes, and never a value.
+    # The routes depend on the machine that runs the test, but they
+    # are always one of the named routes, and never a value.
+    assert conditions["binary_source"] in {"managed", "path", "none"}
     assert conditions["credential_source"] in {"api_key", "token", "file", "none"}
     assert "CLAUDE_CONFIG_DIR" in conditions["env_passed"]
     assert "ANTHROPIC_API_KEY" in conditions["env_passed"]

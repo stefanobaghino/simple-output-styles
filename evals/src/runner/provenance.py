@@ -23,6 +23,7 @@ from .hermetic import (
     ENV_WHITELIST,
     TOKEN_VAR,
 )
+from .pin import CLI_VERSION_PIN
 
 LINTER_PACKAGES = ("spacy", "en-core-web-sm")
 
@@ -79,16 +80,6 @@ def claude_version(binary: str | None = "claude", env: dict[str, str] | None = N
     return completed.stdout.strip()
 
 
-CLI_VERSION_PIN = "2.1.226 (Claude Code)"
-"""The Claude CLI version that every live invocation must run under.
-
-The CLI auto-updates, so the installed version drifts silently; the
-pin turns the drift into a stop before the first billed call. A pin
-move is a deliberate PR, and it opens a comparability era: the
-comparison warns when two runs store different versions.
-"""
-
-
 def check_cli_version(found: str | None, *, accept: bool = False) -> str:
     """Stop a live invocation whose CLI differs from the pin.
 
@@ -124,6 +115,7 @@ def build_provenance(
     plugin_dir: Path,
     cli_version: str | None,
     claude_binary: str | None = None,
+    binary_source: str | None = None,
     config_manifest_sha256: str | None = None,
     credential_source: str | None = None,
 ) -> dict:
@@ -148,6 +140,12 @@ def build_provenance(
             "config": CONFIG_MODE,
             "config_manifest_sha256": config_manifest_sha256,
             "claude_binary": claude_binary,
+            # The route of the binary ("managed" or "path"): where
+            # the resolution found the CLI. The version above is the
+            # cross-machine guarantee, so the route is informative,
+            # like the credential route below, and the comparison
+            # never checks this field.
+            "binary_source": binary_source,
             # The route of the credential ("api_key", "token", "file",
             # or "none"): which account the calls billed. Billing is
             # not a comparability condition, so the comparison never

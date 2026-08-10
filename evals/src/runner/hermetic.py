@@ -38,6 +38,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from .generate import isolated_workdir
+from .pin import CLI_VERSION_BARE
 
 # The config mode of a call, recorded in the provenance: the mode
 # marks the comparability era of a run, because a user plugin in the
@@ -78,6 +79,23 @@ CACHE_TTL_VAR = "FORCE_PROMPT_CACHING_5M"
 # design, so the manifest hash is identical on every machine.
 DECLARED_FILES: dict[str, str] = {}
 
+# The harness-managed store of the pinned CLI, relative to HOME.
+# style-provision fills it; the resolution below serves it ahead of
+# the PATH, and the version check stays the guarantee: a managed
+# binary that reports another version still stops the run.
+MANAGED_STORE = Path(".local/share/style-evals/cli")
+
+
+def managed_binary(environ: Mapping[str, str]) -> Path | None:
+    """The managed binary of the pinned version, when provisioned."""
+    home = environ.get("HOME")
+    if not home:
+        return None
+    candidate = Path(home) / MANAGED_STORE / CLI_VERSION_BARE / "claude"
+    if candidate.is_file() and os.access(candidate, os.X_OK):
+        return candidate
+    return None
+
 
 @dataclass(frozen=True)
 class Hermetic:
@@ -87,6 +105,7 @@ class Hermetic:
     config_dir: Path
     env: dict[str, str]
     binary: str | None
+    binary_source: str
     manifest_sha256: str
     credential_source: str
 
@@ -133,6 +152,14 @@ def resolve_credential(environ: Mapping[str, str]) -> tuple[str, str | None]:
 def build_env(config_dir: Path, environ: Mapping[str, str]) -> dict[str, str]:
     """The whitelisted environment of a call."""
     env = {name: environ[name] for name in ENV_WHITELIST if name in environ}
+    managed = managed_binary(environ)
+    if managed is not None:
+        # The managed directory leads the call PATH, so the recorded
+        # binary, the version check, and every subprocess resolve the
+        # same CLI. The manifest covers env names, not values, so no
+        # comparability era opens.
+        path = env.get("PATH")
+        env["PATH"] = str(managed.parent) if path is None else f"{managed.parent}{os.pathsep}{path}"
     env[CONFIG_DIR_VAR] = str(config_dir)
     if environ.get(API_KEY_VAR):
         env[API_KEY_VAR] = environ[API_KEY_VAR]
@@ -150,6 +177,11 @@ def hermetic_call(tool: str, environ: Mapping[str, str] = os.environ) -> Iterato
     invocation, shared by every parallel call. The drift sessions of
     one invocation thus resume against the same directory. The
     credential file, when written, is removed with the directory.
+
+    The binary resolves in two steps: the managed binary of the
+    pinned version when provisioned, else the PATH lookup. The
+    managed directory leads the call PATH, so the resolved binary is
+    also the one every subprocess executes.
     """
     with (
         isolated_workdir(tool) as workdir,
@@ -167,11 +199,20 @@ def hermetic_call(tool: str, environ: Mapping[str, str] = os.environ) -> Iterato
                 file=sys.stderr,
             )
         env = build_env(config_dir, environ)
+        binary = shutil.which("claude", path=env.get("PATH"))
+        managed = managed_binary(environ)
+        if binary is None:
+            binary_source = "none"
+        elif managed is not None and Path(binary) == managed:
+            binary_source = "managed"
+        else:
+            binary_source = "path"
         yield Hermetic(
             workdir=workdir,
             config_dir=config_dir,
             env=env,
-            binary=shutil.which("claude", path=env.get("PATH")),
+            binary=binary,
+            binary_source=binary_source,
             manifest_sha256=manifest_sha256(),
             credential_source=source,
         )

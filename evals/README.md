@@ -224,6 +224,7 @@ uv run style-value runs/<date> [--judge] [--parallel N] [--reuse-from RUN] [--ac
 uv run style-loss runs/<date> [--judge] [--parallel N] [--reuse-from RUN] [--accept-cli-version]
 uv run style-rank runs/<date> [--judge] [--parallel N] [--reuse-from RUN] [--accept-cli-version]
 uv run style-agreement runs/<date> [--judge] [--model M] [--sample N] [--parallel N] [--accept-cli-version]
+uv run style-provision [--status]
 uv run style-campaign [--runs N] [--budget W] [--probe-repeats N] [--screening] [--holdout] [--reuse-from RUN] [--accept-cli-version]
 uv run style-drift [--generate] [--scripts prompts/sessions/*.yaml] [--estimate] [--context-window N] [--depth-target F] [--out runs/<date>-drift] [--accept-cli-version]
 uv run style-compare runs/<a> runs/<b> [...] [--out runs/<date>-compare]
@@ -289,7 +290,8 @@ resolution is fixed. The provenance records the pin (`model_pin`)
 next to the requested alias, and a pin change opens a comparability
 era: the comparison warns when two runs store different pins.
 The Claude CLI version is pinned as well (`CLI_VERSION_PIN` in
-`src/runner/provenance.py`), because the CLI auto-updates and the
+`src/runner/pin.py`, importable from `runner.provenance`), because
+the CLI auto-updates and the
 version fixes the CLI-composed system prompt of every call. Every
 live invocation — the pair runner, the probe, the judge passes,
 and the drift generation — checks the installed version against
@@ -301,6 +303,27 @@ run proceeds, the provenance records the found version, and the
 comparison warns across the boundary. The upgrade procedure is the
 pin procedure: edit the constant, land it by PR, and accept the
 new era.
+The pinned binary itself can be harness-managed, so an auto-update
+on the machine stops touching the runs. `uv run style-provision`
+fills a managed store
+(`~/.local/share/style-evals/cli/<version>/claude`) with the
+pinned version: from the version store of the native installer
+when it holds the pin, else by a download from the release
+endpoint of the official installer, verified against the manifest
+checksum. The provision command is the only part of the harness
+that touches the network, and only when it downloads; run time
+makes no network call. When the managed binary exists, the
+hermetic environment puts it at the front of the call PATH, so
+the recorded binary, the version check, and every measured call
+see the same CLI; without it, the calls use the PATH `claude`
+plus the pin check, unchanged. A provisioned binary still goes
+through the version check, so the store is a convenience, never
+the guarantee. The provenance records the resolution route
+(`binary_source`: managed or path) next to the binary path; the
+route is machine-local and informative, like the credential
+route, so it opens no comparability era and the comparison never
+checks it. `style-provision --status` reports the store, and a
+re-run after a pin move re-provisions the new version.
 The generation calls run several at a time (8 by default), and
 `--parallel` sets the count (1 runs one call at a time). The calls do
 not interact, so the concurrency changes no condition of a run. The
