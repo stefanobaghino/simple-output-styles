@@ -15,16 +15,19 @@ the same row, plus one provenance field.
 The judge can shift between the store date of a row and the reuse
 date, in ways that the key does not see. Thus each reuse pass re-runs
 a small fixed sample of the imported verdict rows live and stores the
-comparison in the report. A disagreement is a warning. The per-axis
-noise floor of issue #29 does not exist yet; once it does, it replaces
-the equality rule and invalidates the reuse for an axis past the
-floor. The probe arms of the cost tool carry no freshness sample,
+comparison in the report. On a verdict axis one differing verdict is
+a warning. The clarity picks carry an aggregate tolerance derived
+from the measured cross-judge agreement instead (see
+clarity_tolerance), because two judges disagree on a large share of
+picks even without drift, so one differing pick is noise, not
+evidence. The probe arms of the cost tool carry no freshness sample,
 because they are token measurements, not judge scores.
 """
 
 from __future__ import annotations
 
 import json
+import math
 import sys
 from collections.abc import Callable
 from pathlib import Path
@@ -44,6 +47,43 @@ Only verdict rows are sampled. The extraction rows (facts, claims,
 questions, readers, paraphrases, translations) feed the scorers as
 inputs, so an equality comparison of their free text means nothing.
 """
+
+CLARITY_DISAGREE_RATE = 0.4
+"""The judge-noise probability that one clarity pick disagrees.
+
+One minus the 0.60 clarity agreement of the capability-matched
+cross-vintage arm (claude-opus-4-5, 100 picks) of the second-judge
+sample of runs/2026-08-08. Two judges disagree with each other at
+least as often as one judge disagrees with itself later, so a
+cross-judge rate bounds the same-judge reuse noise from above.
+Between the two measured arms this is the larger disagreement, so
+the derived tolerance is the quieter of the two; the cross-line
+census arm (0.686 agreement over 939 picks) yields the same
+tolerance at the full sample of 6 and at 4.
+"""
+
+CLARITY_RATE_SOURCE = "runs/2026-08-08"
+"""The run whose second-judge sample measured the clarity rate."""
+
+CLARITY_ALPHA = 0.05
+"""The one-sided binomial tail under which a disagreement count warns."""
+
+
+def clarity_tolerance(n: int) -> int | None:
+    """The smallest clarity disagreement count that warns, or None.
+
+    The smallest k where the one-sided upper tail P(X >= k) of a
+    Binomial(n, CLARITY_DISAGREE_RATE) drops under CLARITY_ALPHA:
+    fewer disagreements are plausible as judge noise. None means no
+    reachable count: a sample of 3 picks or fewer cannot distinguish
+    drift from noise, so it never warns.
+    """
+    p = CLARITY_DISAGREE_RATE
+    for k in range(1, n + 1):
+        tail = sum(math.comb(n, i) * p**i * (1 - p) ** (n - i) for i in range(k, n + 1))
+        if tail < CLARITY_ALPHA:
+            return k
+    return None
 
 
 def _fail(message: str) -> SystemExit:
@@ -194,15 +234,41 @@ def freshness_block(
                 "agree": agree,
             }
         )
-        if agree is False:
-            warnings.append(f"reuse freshness: {key}: the live verdict differs from the reused one")
-        elif agree is None:
+        if agree is None:
             warnings.append(f"reuse freshness: {key}: a side gave no usable verdict")
+        elif agree is False and reused_row.get("check") != "clarity":
+            warnings.append(f"reuse freshness: {key}: the live verdict differs from the reused one")
     block = {
         "sampled": len(comparisons),
         "agreements": sum(1 for entry in comparisons if entry["agree"] is True),
         "comparisons": comparisons,
     }
+    clarity = [entry for entry in comparisons if entry["check"] == "clarity"]
+    if clarity:
+        # The unusable sides warned per key above and carry no
+        # evidence about the disagreement rate, so only the decided
+        # picks enter the count.
+        decided = [entry for entry in clarity if entry["agree"] is not None]
+        disagreements = sum(1 for entry in decided if entry["agree"] is False)
+        tolerance = clarity_tolerance(len(decided))
+        stale = tolerance is not None and disagreements >= tolerance
+        block["clarity"] = {
+            "compared": len(decided),
+            "disagreements": disagreements,
+            "tolerance": tolerance,
+            "disagree_rate": CLARITY_DISAGREE_RATE,
+            "alpha": CLARITY_ALPHA,
+            "source": CLARITY_RATE_SOURCE,
+            "stale": stale,
+        }
+        if stale:
+            warnings.append(
+                f"reuse freshness: {disagreements} of {len(decided)} clarity picks disagree "
+                f"with the live judge, at or past the tolerance of {tolerance}; judge noise "
+                f"at the {CLARITY_DISAGREE_RATE} cross-judge disagreement rate of "
+                f"{CLARITY_RATE_SOURCE} reaches this count in under {CLARITY_ALPHA} of "
+                "samples, so the imported clarity picks look stale"
+            )
     return block, warnings
 
 
@@ -234,12 +300,30 @@ def reuse_section(reuse: dict | None) -> list[str]:
             continue
         state = "no usable verdict on a side" if entry["agree"] is None else "the verdicts differ"
         lines.append(f"- {entry['key']}: {state}.")
+    clarity = freshness.get("clarity")
+    if clarity:
+        if clarity["tolerance"] is None:
+            bar = (
+                f"a sample of {clarity['compared']} picks clears no "
+                f"{clarity['alpha']} tail, so the count alone cannot warn"
+            )
+        else:
+            bar = f"the tolerance is {clarity['tolerance']}"
+        lines += [
+            "",
+            f"Clarity picks: {clarity['disagreements']} of {clarity['compared']} disagree; {bar}.",
+        ]
     lines += [
         "",
-        "The comparison uses exact verdict equality. The per-axis noise",
-        "floor of issue #29 does not exist yet; once it does, it replaces",
-        "the equality rule and invalidates the reuse for an axis past the",
-        "floor.",
+        "A verdict axis compares on exact equality, and one differing",
+        "verdict is a warning. The clarity picks carry an aggregate",
+        "tolerance instead: the sample warns only when its disagreement",
+        f"count clears a one-sided binomial tail of {CLARITY_ALPHA} at the",
+        f"{CLARITY_DISAGREE_RATE} cross-judge disagreement rate of the",
+        f"{CLARITY_RATE_SOURCE} second-judge sample. Two judges disagree",
+        "with each other at least as often as one judge disagrees with",
+        "itself later, so the cross-judge rate bounds the reuse noise",
+        "from above.",
         "",
     ]
     return lines

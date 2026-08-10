@@ -716,12 +716,22 @@ check family, 6 comprehension grades, and 6 contests. The judge
 can shift between the store date of a row and the reuse date, in
 ways that the key does not see, and the sample measures that
 shift. The report of each tool states the reused and live counts
-and the comparison per sampled key, and a disagreement is a
-warning. The comparison uses exact verdict equality until the
-noise floor of issue #29 exists. A deviation past that floor will
-invalidate the reuse for the axis. The probe arms carry no
-freshness sample, because they are token measurements, not judge
-scores.
+and the comparison per sampled key. On a verdict axis —
+comprehension grades, completeness, hedging — the comparison is
+exact equality, and one differing verdict is a warning. The
+clarity picks carry an aggregate tolerance instead, because two
+judges disagree on many picks even without drift: the second-judge
+sample of runs/2026-08-08 measured a 0.60 clarity agreement on its
+capability-matched cross-vintage arm (100 picks; the cross-line
+census arm agreed at 0.686 over 939). The contest sample warns
+only when its disagreement count clears a one-sided binomial tail
+of 0.05 at that 0.40 disagreement rate — 5 of the full sample of
+6, and a sample of 3 picks or fewer clears no bar. A cross-judge
+rate bounds the same-judge-over-time noise from above, so the
+tolerance stays quiet on plausible noise and fires only on counts
+the measured disagreement almost never produces. The probe arms
+carry no freshness sample, because they are token measurements,
+not judge scores.
 
 `uv run style-campaign --reuse-from RUN` runs the whole chain. A
 field extension then makes only the calls of the new style, its
@@ -790,9 +800,11 @@ rate, the unusable second outputs, and a per-style breakdown,
 because a style-specific disagreement is exactly what the
 shared-bias risk predicts. An axis under 0.7 — the acceptance
 anchor of the spot check — is marked judge-sensitive and warns.
-The rates are also an input to the noise floor of issue #29: a
-reuse deviation only means drift once it exceeds what two judges
-disagree on anyway.
+The clarity rate also feeds the reuse layer: the freshness
+tolerance of the contest sample derives from the cross-vintage
+clarity rate of this report, as "Reuse across runs" describes,
+because a reuse deviation only means drift once it exceeds what
+two judges disagree on anyway.
 
 The second judge must differ from the writer model of the run and
 from the first judge of every axis, on the requested alias and on

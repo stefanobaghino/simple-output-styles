@@ -1584,6 +1584,32 @@ def test_cli_reuse_c_forces_the_freshness_sample_and_counts_cumulatively(tmp_pat
     assert "## Reuse" in (dst / "run" / "value.md").read_text()
 
 
+def test_cli_reuse_freshness_disagreement_warns(tmp_path):
+    # The comprehension grades are a verdict axis, so one differing
+    # verdict stays a per-key warning: the clarity tolerance does not
+    # reach this tool.
+    source = make_reuse_source(tmp_path)
+    rows = [json.loads(line) for line in (source / "value-raw.jsonl").read_text().splitlines()]
+    grades = [row for row in rows if row.get("key", "").startswith("comprehension:v3:grades:")]
+    target = min(grades, key=lambda row: row["key"])
+    flipped = json.loads(target["output"])
+    flipped[0] = not flipped[0]
+    target["output"] = json.dumps(flipped)
+    write_jsonl(source / "value-raw.jsonl", rows)
+    dst = tmp_path / "dst"
+    dst.mkdir()
+    make_project(dst)
+    run_cli(dst, "--judge", "--checks", "paraphrase,roundtrip", "--reuse-from", str(source))
+    exit_code = run_cli(dst, "--judge", "--checks", "comprehension", "--reuse-from", str(source))
+    assert exit_code == 1
+    summary = json.loads((dst / "run" / "value.json").read_text())
+    freshness = summary["reuse"]["freshness"]
+    assert "clarity" not in freshness
+    disagreeing = [e for e in freshness["comparisons"] if e["agree"] is False]
+    assert [e["key"] for e in disagreeing] == [target["key"]]
+    assert any("the live verdict differs from the reused one" in w for w in summary["warnings"])
+
+
 def test_cli_reuse_comprehension_needs_both_arm_texts_equal(tmp_path):
     source = make_reuse_source(tmp_path)
     dst = tmp_path / "dst"
