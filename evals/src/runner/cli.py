@@ -15,7 +15,14 @@ import yaml
 
 from value.judges import TaskPool
 
-from .generate import GenerationError, Runner, generate, subprocess_runner
+from .generate import (
+    WRITER_MODEL_PINS,
+    GenerationError,
+    Runner,
+    WriterPinError,
+    generate,
+    subprocess_runner,
+)
 from .hermetic import hermetic_call
 from .provenance import build_provenance, claude_version, sha256_of
 from .report import arm_name, build_report
@@ -229,6 +236,7 @@ def main(argv: list[str] | None = None, run: Runner = subprocess_runner) -> int:
             arms=qualifying,
             prompt_ids=[prompt["id"] for prompt in prompts],
             source_name=source_dir.name,
+            expected_model=WRITER_MODEL_PINS.get(args.model, args.model),
         )
         print(f"reuse: {imported} answer(s) imported from {source_dir.name}", file=sys.stderr)
 
@@ -268,6 +276,10 @@ def main(argv: list[str] | None = None, run: Runner = subprocess_runner) -> int:
                     run=run,
                     env=hermetic.env,
                 )
+            except WriterPinError:
+                # Deterministic, so no per-answer failure entry: the
+                # error escapes and stops the whole run.
+                raise
             except GenerationError as error:
                 with lock:
                     done += 1
@@ -303,7 +315,13 @@ def main(argv: list[str] | None = None, run: Runner = subprocess_runner) -> int:
         pool = TaskPool(args.parallel)
         for style, prompt in todo:
             pool.submit(partial(generate_one, style, prompt))
-        pool.drain()
+        try:
+            pool.drain()
+        except WriterPinError as error:
+            # The stored rows stay valid and the run resumes once the
+            # resolution is fixed; only the exit code says "stopped".
+            print(f"the run stopped: {error}", file=sys.stderr)
+            raise SystemExit(2) from error
         # The version call needs the live hermetic directory, so it
         # runs before the context closes.
         cli_version = claude_version(hermetic.binary, hermetic.env)

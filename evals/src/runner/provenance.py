@@ -13,7 +13,7 @@ from datetime import UTC, datetime
 from importlib import metadata
 from pathlib import Path
 
-from .generate import ISOLATION_FLAGS, WORKDIR_MODE
+from .generate import ISOLATION_FLAGS, WORKDIR_MODE, WRITER_MODEL_PINS
 from .hermetic import (
     API_KEY_VAR,
     CACHE_TTL_VAR,
@@ -102,6 +102,9 @@ def build_provenance(
         "prompt_set": prompt_set,
         "conditions": {
             "model_requested": model,
+            # The pin the calls enforced, so also the resolved writer
+            # of every complete run. A pin change opens an era.
+            "model_pin": WRITER_MODEL_PINS.get(model, model),
             "claude_version": cli_version,
             "workdir": WORKDIR_MODE,
             "config": CONFIG_MODE,

@@ -18,6 +18,7 @@ from cost.analysis import task_type
 from runner import (
     GenerationError,
     PluginLeakError,
+    WriterPinError,
     build_argv,
     cli,
     generate,
@@ -41,13 +42,18 @@ TASK_TYPES = {"explanation", "code-review", "summarization", "debugging"}
 
 
 def stream_output(
-    output_style="default", answer="ok", is_error=False, plugins=(), cache_creation=None
+    output_style="default",
+    answer="ok",
+    is_error=False,
+    plugins=(),
+    cache_creation=None,
+    model="claude-sonnet-5",
 ):
     init = {
         "type": "system",
         "subtype": "init",
         "output_style": output_style,
-        "model": "claude-sonnet-5",
+        "model": model,
         "claude_code_version": "2.1.220",
         "plugins": [{"name": name} for name in plugins],
         "tools": [],
@@ -63,7 +69,7 @@ def stream_output(
             "cache_creation_input_tokens": 2,
             "cache_read_input_tokens": 1,
         },
-        "modelUsage": {"claude-sonnet-5": {}},
+        "modelUsage": {model: {}},
         "duration_ms": 100,
     }
     if cache_creation is not None:
@@ -79,9 +85,10 @@ def style_of(argv):
 class FakeRunner:
     """Returns stream-json output that matches the requested style."""
 
-    def __init__(self, cache_creation=None):
+    def __init__(self, cache_creation=None, model="claude-sonnet-5"):
         self.calls = []
         self.cache_creation = cache_creation
+        self.model = model
 
     def __call__(self, argv, cwd, env=None):
         self.calls.append(argv)
@@ -92,6 +99,7 @@ class FakeRunner:
             answer=f"answer under {style}",
             plugins=plugins,
             cache_creation=self.cache_creation,
+            model=self.model,
         )
 
 
@@ -211,6 +219,14 @@ def test_generate_rejects_an_error_result(tmp_path):
         return stream_output(answer="Not logged in", is_error=True)
 
     with pytest.raises(GenerationError, match="error"):
+        generate("prompt", "sonnet", None, None, tmp_path, run=run)
+
+
+def test_generate_stops_on_a_writer_pin_mismatch(tmp_path):
+    def run(argv, cwd, env=None):
+        return stream_output(model="claude-opus-5")
+
+    with pytest.raises(WriterPinError, match="'sonnet' must resolve to 'claude-sonnet-5'"):
         generate("prompt", "sonnet", None, None, tmp_path, run=run)
 
 
@@ -404,6 +420,25 @@ def test_cli_with_parallel_one_runs_serially(project):
     assert run_cli(project, runner, "run", "--parallel", "1") == 0
     assert len(runner.calls) == 4
     assert live["peak"] == 1
+
+
+def test_cli_a_writer_pin_mismatch_exits_2_without_a_retry(project):
+    runner = FakeRunner(model="claude-opus-5")
+    with pytest.raises(SystemExit) as error:
+        run_cli(project, runner, "run", "--parallel", "1")
+    assert error.value.code == 2
+    assert len(runner.calls) == 1
+    assert (project / "run" / "answers.jsonl").read_text() == ""
+
+
+def test_cli_an_exact_writer_id_passes_and_an_unpinned_alias_fails(project):
+    exact = FakeRunner()
+    assert run_cli(project, exact, "exact", "--model", "claude-sonnet-5") == 0
+    assert len(exact.calls) == 4
+
+    with pytest.raises(SystemExit) as error:
+        run_cli(project, FakeRunner(model="claude-opus-5"), "aliased", "--model", "opus")
+    assert error.value.code == 2
 
 
 def test_cli_rejects_a_parallel_below_one(project):
@@ -675,6 +710,12 @@ def test_provenance_holds_the_linter_toolchain(project):
     assert "--disallowedTools" in provenance["conditions"]["flags"]
 
 
+def test_provenance_records_the_writer_pin(project):
+    assert run_cli(project, FakeRunner()) == 0
+    provenance = json.loads((project / "run" / "provenance.json").read_text())
+    assert provenance["conditions"]["model_pin"] == "claude-sonnet-5"
+
+
 def test_provenance_holds_the_config_fields(project):
     runner = FakeRunner()
     assert run_cli(project, runner) == 0
@@ -757,6 +798,19 @@ def test_cli_reuse_rejects_another_model(project):
         run_cli(
             project, FakeRunner(), "run", "--model", "opus", "--reuse-from", str(project / "source")
         )
+
+
+def test_cli_reuse_rejects_another_writer_era(project):
+    run_cli(project, FakeRunner(), "source")
+    answers_path = project / "source" / "answers.jsonl"
+    rows = [json.loads(line) for line in answers_path.read_text().splitlines()]
+    for row in rows:
+        row["model"] = "claude-opus-5"
+    answers_path.write_text("".join(json.dumps(row) + "\n" for row in rows))
+    with pytest.raises(SystemExit, match="another writer era"):
+        run_cli(project, FakeRunner(), "run", "--reuse-from", str(project / "source"))
+    # The check fires before any append, so nothing imported.
+    assert not (project / "run" / "answers.jsonl").exists()
 
 
 def test_cli_reuse_rejects_a_screening_mismatch(screening_project):
