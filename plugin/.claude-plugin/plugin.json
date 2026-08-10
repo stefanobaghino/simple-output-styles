@@ -1,5 +1,6 @@
 {
   "name": "simple-output-styles",
+  "version": "1.0.0",
   "description": "Output styles that make Claude write clearly, for everyone.",
   "author": {
     "name": "Stefano Baghino",
