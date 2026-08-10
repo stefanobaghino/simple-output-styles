@@ -49,9 +49,10 @@ Let the user pick one, or none — stopping without a style is a fine outcome.
    an empty object first.
 2. If `outputStyle` is already set to another style, tell the user what is
    active and confirm the replacement before you write.
-3. Set `outputStyle` to the chosen style name, for example
-   `"outputStyle": "actionable-clarity"`. Change only that key and keep every
-   other setting as it is.
+3. Set `outputStyle` to the chosen style, in the plugin-qualified form that
+   `/config` writes, for example
+   `"outputStyle": "simple-output-styles:actionable-clarity"`. Change only
+   that key and keep every other setting as it is.
 4. Check that the file is still valid JSON after the edit.
 
 If the user asks for the style in this project only, write the same key to
