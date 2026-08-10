@@ -15,6 +15,7 @@
     "classic-concise",
     "clarity-flow",
     "developer-docs",
+    "actionable-clarity",
     "writing"
   ],
   "outputStyles": "./output-styles/"

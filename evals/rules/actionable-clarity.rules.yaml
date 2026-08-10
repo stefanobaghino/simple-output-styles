@@ -1,0 +1,86 @@
+# Rule data for the actionable-clarity output style.
+#
+# The style file lives at plugin/output-styles/actionable-clarity.md.
+#
+# Documented exclusions. These rules of the style need judgment or work on
+# the whole document, so the linter does not check them, and the fidelity
+# score does not cover them: answer-first organization, topic sentences,
+# headings, list and table choice, conditions before instructions, the
+# success statement, the whole Completeness section (fact coverage,
+# outright statements, reasons, the anti-padding rule), the whole
+# Uncertainty section (kept hedges, no hardening, named ambiguity,
+# brevity under completeness), actors as grammatical
+# subjects, old information before new, the stress position, topic
+# strings, one idea per sentence, active voice, present tense, imperative
+# instructions, pronoun specificity, familiar words, term definitions,
+# link text, and the minimizers ("just" has a legal temporal sense, and
+# "simply" and "easily" have legal adverbial senses, so the minimizer
+# sense needs judgment).
+#
+# The style permits contractions and semicolons, so both toggles stay
+# off. The style protects stated uncertainty, so every modal except
+# "shall" is permitted and the modal ban covers only "shall". The source
+# states no numeric sentence limit, so the sentence-length check stays
+# off. This rule set conflicts with the technical-simplified rule set on
+# purpose.
+#
+# Format: see rules/technical-simplified.rules.yaml.
+
+style: actionable-clarity
+
+modals:
+  banned: [shall]
+  permitted: [must, may, should]
+
+latin_abbreviations:
+  - avoid: "e.g."
+    write: "for example"
+  - avoid: "i.e."
+    write: "that is"
+  - avoid: "etc."
+    write: "and so on, or stop the list"
+  - avoid: "et al."
+    write: "and others"
+  - avoid: "cf."
+    write: "compare"
+  - avoid: "viz."
+    write: "namely"
+
+words:
+  # Hidden verbs: the action sits in an abstract noun, and the verb is a
+  # placeholder. The lemma sequences name the natural article of each
+  # noun, because "an" keeps its own lemma in the tagger.
+  - { avoid: [make, a, decision], write: decide, pos: [VERB] }
+  - { avoid: [make, an, assumption], write: assume, pos: [VERB] }
+  - { avoid: [conduct, an, analysis], write: analyze, pos: [VERB] }
+  - { avoid: [reach, a, conclusion], write: conclude, pos: [VERB] }
+  - { avoid: [give, consideration, to], write: consider, pos: [VERB] }
+  - { avoid: [carry, out, an, investigation], write: investigate, pos: [VERB] }
+  - { avoid: [provide, an, explanation], write: explain, pos: [VERB] }
+  - { avoid: [come, to, an, agreement], write: agree, pos: [VERB] }
+
+patterns:
+  - id: and-or
+    regex: '\band/or\b'
+    message: 'Do not write "and/or". Write "either X or Y, or both".'
+  - id: double-negative
+    regex: '\bno (?:fewer|less) than\b'
+    message: 'Do not use a double negative. Write "at least".'
+  - id: double-negative
+    regex: '\bnot un(?:common|usual|likely)\b'
+    message: 'Do not use a double negative. State the idea in positive form.'
+  - id: metadiscourse
+    regex: '\bit should be noted that\b'
+    message: 'Cut the announcement. State the point directly.'
+  - id: metadiscourse
+    regex: '\bit is important to note that\b'
+    message: 'Cut the announcement. State the point directly.'
+  - id: metadiscourse
+    regex: '\bas previously mentioned\b'
+    message: 'Cut the announcement. Repeat the point or link to it.'
+  - id: metadiscourse
+    regex: '\bneedless to say\b'
+    message: 'Cut "needless to say". If the point is needless, cut the point.'
+  - id: click-here
+    regex: '\bclick here\b'
+    message: 'Make the link text describe the destination. Never write "click here".'

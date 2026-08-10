@@ -74,6 +74,16 @@ EXPECTED_DIRTY = {
         ("click-here", "click here"),
         ("and-or", "and/or"),
     ],
+    "actionable-clarity": [
+        ("banned-modal", "shall"),
+        ("latin-abbreviation", "e.g."),
+        ("and-or", "and/or"),
+        ("double-negative", "no fewer than"),
+        ("latin-abbreviation", "i.e."),
+        ("metadiscourse", "it should be noted that"),
+        ("banned-word", "make a decision"),
+        ("click-here", "click here"),
+    ],
 }
 
 # Violations in the dirty samples beyond the pairs above: the dirty sample of
@@ -84,6 +94,7 @@ EXTRA_DIRTY = {
     "classic-concise": 0,
     "clarity-flow": 0,
     "developer-docs": 0,
+    "actionable-clarity": 0,
 }
 
 STYLES = sorted(EXPECTED_DIRTY)
@@ -92,6 +103,7 @@ STYLES = sorted(EXPECTED_DIRTY)
 # dirty under the rules of the value style. Every new clean sample carries a
 # contraction (and some a semicolon), so technical-simplified rejects it.
 CONFLICTS = {
+    "actionable-clarity": "technical-simplified",
     "classic-concise": "technical-simplified",
     "clarity-flow": "technical-simplified",
     "developer-docs": "technical-simplified",

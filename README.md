@@ -4,6 +4,7 @@ This plugin adds a collection of [output styles](https://code.claude.com/docs/en
 
 | Style | Original source | Implementation |
 |---|---|---|
+| **actionable-clarity** | Synthesis of plain-language, developer-docs, and clarity-flow, tuned against the [evaluation harness](evals/) | [actionable-clarity.md](plugin/output-styles/actionable-clarity.md) |
 | **classic-concise** | [The Elements of Style, 1918](https://www.gutenberg.org/ebooks/37134) | [classic-concise.md](plugin/output-styles/classic-concise.md) |
 | **clarity-flow** | Style: Toward Clarity and Grace | [clarity-flow.md](plugin/output-styles/clarity-flow.md) |
 | **developer-docs** | [Google developer documentation style guide](https://developers.google.com/style) | [developer-docs.md](plugin/output-styles/developer-docs.md) |
@@ -29,6 +30,10 @@ Each style keeps the default coding instructions of Claude Code.
 3. Open `/config`, then select **Output style** and pick a style.
 
 ## Sources and disclaimers
+
+### actionable-clarity
+
+The actionable-clarity style is a synthesis. It combines principles from the Federal Plain Language Guidelines (public domain), the [Google developer documentation style guide](https://developers.google.com/style) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)), and the clarity principles taught in Style: Toward Clarity and Grace, restated in its own words, plus content-preservation and uncertainty rules of its own. The affiliation notes and disclaimers of the clarity-flow, developer-docs, and plain-language sections below apply here as well. The wording was tuned against the measurements of the [evaluation harness](evals/); the style is a candidate: it passed the screening loop, and the confirmation campaign, the held-out check, and the human spot check are pending.
 
 ### classic-concise
 

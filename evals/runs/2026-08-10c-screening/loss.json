@@ -1,0 +1,1893 @@
+{
+  "date": "2026-08-10T11:14:58+00:00",
+  "run": "2026-08-10c-screening",
+  "judge": {
+    "model": "opus",
+    "model_resolved": "claude-opus-5",
+    "fact_mine": "two-way",
+    "judge_prompts_sha256": "749fa840daf4d0c2e5a5cc7dc9dc78161dda4cf9af37189467c04580bdea6a51",
+    "judged_date": "2026-08-10T11:13:25+00:00",
+    "claude_version": "2.1.226 (Claude Code)"
+  },
+  "pairs": {
+    "clarity-flow": [
+      "code-review-01",
+      "code-review-03",
+      "debugging-04",
+      "debugging-08",
+      "explanation-03",
+      "explanation-04",
+      "summarization-05",
+      "summarization-08"
+    ],
+    "classic-concise": [
+      "code-review-01",
+      "code-review-03",
+      "debugging-04",
+      "debugging-08",
+      "explanation-03",
+      "explanation-04",
+      "summarization-05",
+      "summarization-08"
+    ],
+    "developer-docs": [
+      "code-review-01",
+      "code-review-03",
+      "debugging-04",
+      "debugging-08",
+      "explanation-03",
+      "explanation-04",
+      "summarization-05",
+      "summarization-08"
+    ],
+    "plain-language": [
+      "code-review-01",
+      "code-review-03",
+      "debugging-04",
+      "debugging-08",
+      "explanation-03",
+      "explanation-04",
+      "summarization-05",
+      "summarization-08"
+    ],
+    "technical-simplified": [
+      "code-review-01",
+      "code-review-03",
+      "debugging-04",
+      "debugging-08",
+      "explanation-04",
+      "summarization-05"
+    ],
+    "actionable-clarity": [
+      "code-review-01",
+      "code-review-03",
+      "debugging-04",
+      "debugging-08",
+      "explanation-03",
+      "explanation-04",
+      "summarization-05",
+      "summarization-08"
+    ]
+  },
+  "checks": {
+    "completeness": {
+      "judged": true,
+      "per_style": {
+        "actionable-clarity": {
+          "median": 0.728,
+          "additions_median": 4.5,
+          "pairs": {
+            "code-review-01": {
+              "facts": 28,
+              "survived": 20,
+              "fraction": 0.714,
+              "lost": [
+                "The function does not check whether `\"member\"` is already in `roles` before appending it.",
+                "If `roles` already contains `\"member\"`, it gets appended again, producing duplicates.",
+                "The function has no type hints and no docstring.",
+                "The missing type hints and docstring are a minor issue.",
+                "Without type hints or a docstring, the expected shape of `roles` (list of str) and the interface required of `db` (a `.insert` method) are unclear to callers.",
+                "The cleaner version appends `\"member\"` only if it is not already in `roles`.",
+                "The cleaner version lets exceptions propagate instead of masking failures as a plain `False`.",
+                "Specific exceptions, such as `db`-related errors, can be caught at the call site instead."
+              ],
+              "styled_facts": 28,
+              "additions": 6,
+              "added": [
+                "The code has five problems, listed in order of severity.",
+                "Using a mutable default argument (roles=[]) is the most severe of the five problems.",
+                "Python evaluates a function's default list argument once, at function definition time.",
+                "The suggested fix narrows the except clause to the specific error type the database library raises.",
+                "DatabaseError in the suggested fix should be replaced with whatever exception the db client actually throws.",
+                "The suggested fix logs the failure with logger.error and returns False when the insert raises DatabaseError."
+              ]
+            },
+            "code-review-03": {
+              "facts": 30,
+              "survived": 16,
+              "fraction": 0.533,
+              "lost": [
+                "The function has no input validation.",
+                "Nothing prevents `customer_name` or `status` from being `None` before reaching the database.",
+                "Nothing prevents `customer_name` or `status` from being the wrong type before reaching the database.",
+                "The function has no error handling.",
+                "A database error such as a bad connection will propagate as an unhandled exception.",
+                "The unhandled exception provides no context for the caller.",
+                "The function has no type hints.",
+                "The function has no docstring.",
+                "Without type hints or a docstring, the expected shape of `cursor` is not documented.",
+                "Without type hints or a docstring, the expected shape of the return value is not documented.",
+                "The missing type hints and docstring are a minor issue.",
+                "Missing type hints and docstrings are worth noting for a public or reusable function.",
+                "The SQL injection is the only issue that actually matters in this code.",
+                "All the other issues identified are secondary polish."
+              ],
+              "styled_facts": 17,
+              "additions": 7,
+              "added": [
+                "The function has one critical bug and two design issues.",
+                "With parameterized queries, the database driver handles escaping.",
+                "`%s` is the placeholder syntax for psycopg2 and MySQLdb.",
+                "A legitimate name like `O'Brien` contains a single quote.",
+                "A single quote in a value breaks the string concatenation and raises a SQL syntax error.",
+                "Parameterized queries also fix the quote-character breakage, because the driver escapes the value correctly.",
+                "If the table schema changes by adding, renaming, or reordering a column, code that unpacks the result by position can break silently."
+              ]
+            },
+            "debugging-04": {
+              "facts": 11,
+              "survived": 4,
+              "fraction": 0.364,
+              "lost": [
+                "The file contains a non-ASCII byte with value 0xc3.",
+                "The byte 0xc3 is likely part of a UTF-8 multi-byte sequence, such as an accented character.",
+                "Passing errors=\"replace\" to open allows decoding errors to be handled explicitly.",
+                "Passing errors=\"surrogateescape\" to open enables a byte-for-byte round trip.",
+                "charset-normalizer is a detection library that can determine a file's encoding before opening it.",
+                "Opening a file in binary mode (\"rb\") avoids decoding altogether.",
+                "Counting lines in binary mode sidesteps encoding issues because only line boundaries are needed, not the text content."
+              ],
+              "styled_facts": 14,
+              "additions": 5,
+              "added": [
+                "The file contains a non-ASCII byte with value 0xc3 at position 512.",
+                "errors=\"replace\" substitutes the replacement character \u001a for invalid bytes instead of raising an exception.",
+                "errors=\"replace\" should only be used if approximate counts are acceptable.",
+                "The default value of the errors argument is \"strict\".",
+                "Keeping errors=\"strict\" and catching UnicodeDecodeError lets you detect files with encoding problems."
+              ]
+            },
+            "debugging-08": {
+              "facts": 43,
+              "survived": 22,
+              "fraction": 0.512,
+              "lost": [
+                "If a bounded cache were behaving correctly, quiet periods with no new unique products would let old entries evict.",
+                "If GC were working as intended, it would reclaim short-lived garbage and the RSS/heap floor would flatten.",
+                "A common failure mode is cache keys including unbounded fields such as request ID, locale, or webhook payload variant.",
+                "If key cardinality is effectively infinite, eviction never catches up.",
+                "Cache key cardinality explosion is the most likely cause given the described profile.",
+                "Campaigns produce more distinct products and promotions, and therefore more unique cache keys.",
+                "The canary still serves some baseline product lookups.",
+                "Comparing cache entry count against cache memory bytes over the day distinguishes key-cardinality growth from entry-size growth.",
+                "Sampling cache keys during a campaign versus a quiet week can reveal high-cardinality fields such as campaign ID, variant ID, or session ID in the key.",
+                "`jcmd GC.class_histogram` can count live objects on the JVM.",
+                "`/debug/pprof/heap` can be used to count live objects in Go.",
+                "`objgraph` can count live objects in Python.",
+                "Webhook idempotency keys often use a TTL cache that does not actually expire entries.",
+                "Memory that grows and does not return can be the allocator failing to return pages to the OS while live heap is fine.",
+                "Allocator fragmentation is a red herring rather than a real leak.",
+                "If live heap after a forced full GC stays elevated, the problem is a real leak.",
+                "If used heap drops back near baseline after a forced GC, the behavior is allocator fragmentation and lower priority.",
+                "`jmap -histo` produces object-count dumps on the JVM.",
+                "Go supports `runtime.ReadMemStats` and pprof for object-count dumps.",
+                "Node supports heap snapshots via `--inspect`.",
+                "Python supports `tracemalloc` for memory tracking."
+              ],
+              "styled_facts": 27,
+              "additions": 10,
+              "added": [
+                "The working directory is empty.",
+                "The application's memory grows about 2% every day.",
+                "The bounded product cache is probably not the main driver of the growth.",
+                "Logging periodic counts of thread pools, timers, and queue lengths would directly reveal an unbounded queue or growing thread pool.",
+                "A second unbounded cache, such as a memoization map or listener list keyed by product ID, can sit alongside a bounded cache.",
+                "Marketing campaigns can add larger product payloads to a cache.",
+                "Roughly constant memory growth per webhook is strong evidence of a per-request object leaking.",
+                "If heap size is flat while process RSS grows, the leak is off-heap.",
+                "Off-heap leaks come from sources such as buffer pools, native HTTP client connections, and thread-local storage that is not freed.",
+                "A growing gap between heap-used metrics and total process RSS implicates off-heap allocation."
+              ]
+            },
+            "explanation-03": {
+              "facts": 29,
+              "survived": 22,
+              "fraction": 0.759,
+              "lost": [
+                "Historically, the initial cwnd was 1 segment.",
+                "The initial cwnd is now typically 10 segments.",
+                "RFC 6928 specifies the initial congestion window of 10 segments.",
+                "Each time the sender receives an ACK confirming successful delivery, it increases cwnd by roughly one segment's worth.",
+                "Because every ACK triggers growth and the number of ACKs increases as more data is sent, cwnd effectively doubles every round-trip time (RTT).",
+                "The slow start send pattern is approximately: send 10 segments, receive ACKs, send about 20, receive ACKs, send about 40, and so on.",
+                "Growing cwnd by one segment per RTT would be painfully slow for high-bandwidth links."
+              ],
+              "styled_facts": 22,
+              "additions": 4,
+              "added": [
+                "When a TCP connection starts, neither the sender nor the network knows how much bandwidth is available.",
+                "Congestion collapse is a condition where the network spends most of its capacity retransmitting lost packets instead of delivering new data.",
+                "Slow start exists to probe available bandwidth gradually and avoid triggering congestion collapse.",
+                "The name 'slow start' is relative rather than absolute."
+              ]
+            },
+            "explanation-04": {
+              "facts": 27,
+              "survived": 20,
+              "fraction": 0.741,
+              "lost": [
+                "All threads in a process share the same address space, heap, and file descriptors.",
+                "Threads can corrupt each other's data without careful synchronization such as locks and mutexes.",
+                "Separate processes make independent starting, stopping, and resource limiting (memory caps, CPU quotas via cgroups) natural.",
+                "The OS manages resource accounting per-process.",
+                "Processes eliminate categories of concurrency bugs such as race conditions and deadlocks from shared mutable state, because each process's memory is isolated by default.",
+                "A web server handling many concurrent connections whose handlers share a cache is an example where threads are preferred.",
+                "Parallel algorithms operating on the same large in-memory dataset are an example where threads are preferred."
+              ],
+              "styled_facts": 29,
+              "additions": 2,
+              "added": [
+                "Ruby historically had a global interpreter lock.",
+                "In Python and historically Ruby, only one thread runs bytecode at a time inside a process, regardless of how many threads are spawned."
+              ]
+            },
+            "summarization-05": {
+              "facts": 9,
+              "survived": 9,
+              "fraction": 1.0,
+              "lost": [],
+              "styled_facts": 10,
+              "additions": 0,
+              "added": []
+            },
+            "summarization-08": {
+              "facts": 21,
+              "survived": 20,
+              "fraction": 0.952,
+              "lost": [
+                "The template gallery non-use is an additional observation rather than a core finding."
+              ],
+              "styled_facts": 22,
+              "additions": 4,
+              "added": [
+                "A more granular progress indicator is a possible fix for the progress bar issue.",
+                "Testing with participants who lack existing templates is recommended before concluding the gallery has a discoverability problem.",
+                "Adding usage instrumentation is recommended before concluding the gallery has a discoverability problem.",
+                "The finding about large-file uploads is characterized as tentative but worth acting on."
+              ]
+            }
+          }
+        },
+        "clarity-flow": {
+          "median": 0.703,
+          "additions_median": 2.0,
+          "pairs": {
+            "code-review-01": {
+              "facts": 28,
+              "survived": 19,
+              "fraction": 0.679,
+              "lost": [
+                "`roles.append(\"member\")` mutates the caller's list object in place.",
+                "Mutating the caller's list is a surprising side effect if the caller reuses that list elsewhere.",
+                "The function does not check whether `\"member\"` is already in `roles` before appending it.",
+                "If `roles` already contains `\"member\"`, it gets appended again, producing duplicates.",
+                "The function has no type hints and no docstring.",
+                "The missing type hints and docstring are a minor issue.",
+                "Without type hints or a docstring, the expected shape of `roles` (list of str) and the interface required of `db` (a `.insert` method) are unclear to callers.",
+                "The cleaner version appends `\"member\"` only if it is not already in `roles`.",
+                "Specific exceptions, such as `db`-related errors, can be caught at the call site instead."
+              ],
+              "styled_facts": 29,
+              "additions": 3,
+              "added": [
+                "The function has four real bugs.",
+                "The four bugs are listed in order of severity.",
+                "The corrected version builds roles as `(roles or []) + [\"member\"]`."
+              ]
+            },
+            "code-review-03": {
+              "facts": 30,
+              "survived": 20,
+              "fraction": 0.667,
+              "lost": [
+                "Any value containing a single quote character breaks out of the string literal in the query.",
+                "The unhandled exception provides no context for the caller.",
+                "The function has no type hints.",
+                "The function has no docstring.",
+                "Without type hints or a docstring, the expected shape of `cursor` is not documented.",
+                "Without type hints or a docstring, the expected shape of the return value is not documented.",
+                "The missing type hints and docstring are a minor issue.",
+                "Missing type hints and docstrings are worth noting for a public or reusable function.",
+                "The SQL injection is the only issue that actually matters in this code.",
+                "All the other issues identified are secondary polish."
+              ],
+              "styled_facts": 14,
+              "additions": 1,
+              "added": [
+                "`SELECT *` breaks silently if columns are added or reordered."
+              ]
+            },
+            "debugging-04": {
+              "facts": 11,
+              "survived": 8,
+              "fraction": 0.727,
+              "lost": [
+                "The byte 0xc3 is likely part of a UTF-8 multi-byte sequence, such as an accented character.",
+                "Passing errors=\"surrogateescape\" to open enables a byte-for-byte round trip.",
+                "charset-normalizer is a detection library that can determine a file's encoding before opening it."
+              ],
+              "styled_facts": 11,
+              "additions": 2,
+              "added": [
+                "Adding errors=\"replace\" or errors=\"ignore\" to open() avoids crashing on malformed bytes.",
+                "errors=\"replace\" and errors=\"ignore\" are useful when the file is not guaranteed to be valid UTF-8."
+              ]
+            },
+            "debugging-08": {
+              "facts": 43,
+              "survived": 10,
+              "fraction": 0.233,
+              "lost": [
+                "Failure to return to baseline overnight rules out normal cache eviction and GC working as intended.",
+                "If a bounded cache were behaving correctly, quiet periods with no new unique products would let old entries evict.",
+                "If GC were working as intended, it would reclaim short-lived garbage and the RSS/heap floor would flatten.",
+                "The bounded cache has not changed in a year.",
+                "A common failure mode of size-bounded caches is that the bound counts entries rather than bytes.",
+                "If product payloads grow larger, the same entry count holds more memory.",
+                "A common failure mode is cache keys including unbounded fields such as request ID, locale, or webhook payload variant.",
+                "If key cardinality is effectively infinite, eviction never catches up.",
+                "Cache key cardinality explosion is the most likely cause given the described profile.",
+                "Campaigns produce more distinct products and promotions, and therefore more unique cache keys.",
+                "The canary still serves some baseline product lookups.",
+                "Comparing cache entry count against cache memory bytes over the day distinguishes key-cardinality growth from entry-size growth.",
+                "If entry count is flat at the bound but memory climbs, the cause is unbounded entry size.",
+                "If entry count is not flat at the configured bound, keys are being evicted improperly or the bound is not wired to the intended value.",
+                "Sampling cache keys during a campaign versus a quiet week can reveal high-cardinality fields such as campaign ID, variant ID, or session ID in the key.",
+                "Products may now carry additional data such as reviews, embeddings, and related-item lists, increasing entry size.",
+                "Listener/handler leaks survive quiet periods.",
+                "A listener leak would explain why the canary grows slowly from other event sources while normal instances grow faster.",
+                "`jcmd GC.class_histogram` can count live objects on the JVM.",
+                "`/debug/pprof/heap` can be used to count live objects in Go.",
+                "`objgraph` can count live objects in Python.",
+                "Daily class histograms can reveal which class counts climb monotonically.",
+                "Connection pool metadata, open sockets, per-host retry/backoff state, and in-memory session/idempotency-key tracking can accumulate in memory.",
+                "Webhook idempotency keys often use a TTL cache that does not actually expire entries.",
+                "Memory that grows and does not return can be the allocator failing to return pages to the OS while live heap is fine.",
+                "Allocator fragmentation is a red herring rather than a real leak.",
+                "If live heap after a forced full GC stays elevated, the problem is a real leak.",
+                "If used heap drops back near baseline after a forced GC, the behavior is allocator fragmentation and lower priority.",
+                "No profiling tool currently exists for the service.",
+                "`jmap -histo` produces object-count dumps on the JVM.",
+                "Go supports `runtime.ReadMemStats` and pprof for object-count dumps.",
+                "Node supports heap snapshots via `--inspect`.",
+                "Python supports `tracemalloc` for memory tracking."
+              ],
+              "styled_facts": 24,
+              "additions": 8,
+              "added": [
+                "If the memory slope tracks webhook request volume, the webhook handler can be instrumented with allocation tracking to find what is retained.",
+                "Diffing heap snapshots before and after a burst of synthetic webhook calls can identify retained objects.",
+                "Disabling background timers and cron jobs one at a time on the canary can reveal which one causes the growth.",
+                "The bounded cache is probably not the main culprit.",
+                "A bound enforced by nominal byte size can undercount when values are large.",
+                "If RSS keeps climbing while reported cache size stays flat, the cache is not the source of the leak.",
+                "A heap snapshot is the fastest way to disambiguate all three hypotheses.",
+                "Disabling background jobs on the canary isolates the baseline leak from the webhook-triggered leak."
+              ]
+            },
+            "explanation-03": {
+              "facts": 29,
+              "survived": 19,
+              "fraction": 0.655,
+              "lost": [
+                "Packet drops from buffer overflow degrade throughput for all users sharing the path.",
+                "Historically, the initial cwnd was 1 segment.",
+                "The initial cwnd is now typically 10 segments.",
+                "RFC 6928 specifies the initial congestion window of 10 segments.",
+                "Each time the sender receives an ACK confirming successful delivery, it increases cwnd by roughly one segment's worth.",
+                "The slow start send pattern is approximately: send 10 segments, receive ACKs, send about 20, receive ACKs, send about 40, and so on.",
+                "Congestion avoidance grows cwnd linearly rather than exponentially.",
+                "Slow start is one piece of a broader system called congestion control.",
+                "Congestion control continuously adjusts the sending rate to match available network capacity.",
+                "Slow start handles the initial ramp-up and the re-ramp-up after a loss."
+              ],
+              "styled_facts": 17,
+              "additions": 2,
+              "added": [
+                "Each acknowledgment received roughly doubles the congestion window for the next round.",
+                "Each slow start round only doubles the risk rather than gambling everything at once."
+              ]
+            },
+            "explanation-04": {
+              "facts": 27,
+              "survived": 22,
+              "fraction": 0.815,
+              "lost": [
+                "Communication between processes requires explicit mechanisms such as pipes, sockets, shared memory, and message queues.",
+                "Threads can corrupt each other's data without careful synchronization such as locks and mutexes.",
+                "Processes eliminate categories of concurrency bugs such as race conditions and deadlocks from shared mutable state, because each process's memory is isolated by default.",
+                "Threads are preferred when work is I/O-bound.",
+                "A web server handling many concurrent connections whose handlers share a cache is an example where threads are preferred."
+              ],
+              "styled_facts": 23,
+              "additions": 0,
+              "added": []
+            },
+            "summarization-05": {
+              "facts": 9,
+              "survived": 9,
+              "fraction": 1.0,
+              "lost": [],
+              "styled_facts": 6,
+              "additions": 0,
+              "added": []
+            },
+            "summarization-08": {
+              "facts": 21,
+              "survived": 18,
+              "fraction": 0.857,
+              "lost": [
+                "The abandonment of imports is a firm, observed outcome.",
+                "Whether the progress bar issue is purely a perception/UI issue or something deeper is tentative.",
+                "The cause of the progress-bar-related abandonment needs more investigation."
+              ],
+              "styled_facts": 21,
+              "additions": 3,
+              "added": [
+                "The field-mapping redesign result is the strongest result of the study.",
+                "The finding that the progress bar stalls users on large files is rated as tentative.",
+                "The abandonment behavior, not just the perception, makes the progress bar issue worth prioritizing."
+              ]
+            }
+          }
+        },
+        "classic-concise": {
+          "median": 0.737,
+          "additions_median": 2.0,
+          "pairs": {
+            "code-review-01": {
+              "facts": 28,
+              "survived": 19,
+              "fraction": 0.679,
+              "lost": [
+                "The function has no type hints and no docstring.",
+                "The missing type hints and docstring are a minor issue.",
+                "Without type hints or a docstring, the expected shape of `roles` (list of str) and the interface required of `db` (a `.insert` method) are unclear to callers.",
+                "The cleaner version raises `ValueError(\"name is required\")` when `name` is falsy.",
+                "The cleaner version raises `ValueError(\"db is required\")` when `db` is `None`.",
+                "The cleaner version copies `roles` with `list(roles)` rather than mutating the caller's list.",
+                "The cleaner version appends `\"member\"` only if it is not already in `roles`.",
+                "The cleaner version calls `db.insert({\"name\": name, \"roles\": roles})` and returns `True`.",
+                "Specific exceptions, such as `db`-related errors, can be caught at the call site instead."
+              ],
+              "styled_facts": 20,
+              "additions": 1,
+              "added": [
+                "Using `roles = roles + [\"member\"]` builds a new list instead of mutating the caller's list."
+              ]
+            },
+            "code-review-03": {
+              "facts": 30,
+              "survived": 22,
+              "fraction": 0.733,
+              "lost": [
+                "Any value containing a single quote character breaks out of the string literal in the query.",
+                "`SELECT *` pulls unneeded columns.",
+                "Nothing prevents `customer_name` or `status` from being `None` before reaching the database.",
+                "Nothing prevents `customer_name` or `status` from being the wrong type before reaching the database.",
+                "The missing type hints and docstring are a minor issue.",
+                "Missing type hints and docstrings are worth noting for a public or reusable function.",
+                "The SQL injection is the only issue that actually matters in this code.",
+                "All the other issues identified are secondary polish."
+              ],
+              "styled_facts": 26,
+              "additions": 5,
+              "added": [
+                "An attacker could drop tables through the injection.",
+                "`SELECT *` breaks silently when columns are added, reordered, or renamed.",
+                "`status` presumably comes from a fixed set of values, such as \"pending\" or \"shipped\".",
+                "Nothing checks `status` against its allowed set of values before it reaches the query.",
+                "Causes of a raised exception include a bad connection, a lock timeout, or a syntax error."
+              ]
+            },
+            "debugging-04": {
+              "facts": 11,
+              "survived": 9,
+              "fraction": 0.818,
+              "lost": [
+                "Passing errors=\"replace\" to open allows decoding errors to be handled explicitly.",
+                "Passing errors=\"surrogateescape\" to open enables a byte-for-byte round trip."
+              ],
+              "styled_facts": 10,
+              "additions": 1,
+              "added": [
+                "A file's encoding can be detected with the chardet library."
+              ]
+            },
+            "debugging-08": {
+              "facts": 43,
+              "survived": 22,
+              "fraction": 0.512,
+              "lost": [
+                "If a bounded cache were behaving correctly, quiet periods with no new unique products would let old entries evict.",
+                "If GC were working as intended, it would reclaim short-lived garbage and the RSS/heap floor would flatten.",
+                "A common failure mode is cache keys including unbounded fields such as request ID, locale, or webhook payload variant.",
+                "If key cardinality is effectively infinite, eviction never catches up.",
+                "A common failure mode is a bug in the eviction policy, such as uncleaned wrappers/decorators or soft/weak reference configs that do not reclaim.",
+                "Cache key cardinality explosion is the most likely cause given the described profile.",
+                "Campaigns produce more distinct products and promotions, and therefore more unique cache keys.",
+                "The canary still serves some baseline product lookups.",
+                "Comparing cache entry count against cache memory bytes over the day distinguishes key-cardinality growth from entry-size growth.",
+                "If entry count is flat at the bound but memory climbs, the cause is unbounded entry size.",
+                "If entry count is not flat at the configured bound, keys are being evicted improperly or the bound is not wired to the intended value.",
+                "Sampling cache keys during a campaign versus a quiet week can reveal high-cardinality fields such as campaign ID, variant ID, or session ID in the key.",
+                "`jcmd GC.class_histogram` can count live objects on the JVM.",
+                "`objgraph` can count live objects in Python.",
+                "Webhook idempotency keys often use a TTL cache that does not actually expire entries.",
+                "Memory that grows and does not return can be the allocator failing to return pages to the OS while live heap is fine.",
+                "Allocator fragmentation is a red herring rather than a real leak.",
+                "If live heap after a forced full GC stays elevated, the problem is a real leak.",
+                "If used heap drops back near baseline after a forced GC, the behavior is allocator fragmentation and lower priority.",
+                "No profiling tool currently exists for the service.",
+                "Python supports `tracemalloc` for memory tracking."
+              ],
+              "styled_facts": 43,
+              "additions": 18,
+              "added": [
+                "The bounded cache is a secondary suspect.",
+                "Candidate causes of the baseline leak include thread-local accumulation.",
+                "Candidate causes of the baseline leak include metrics-library internal state.",
+                "jmap and JFR are heap dump tools for the JVM.",
+                "Candidate causes of the traffic-proportional leak include growing metric label cardinality.",
+                "Adding a campaign-ID label to a counter or histogram causes each new campaign to add permanent entries to the metrics registry.",
+                "A linear relationship between memory growth rate and webhook request rate would confirm the traffic-proportional leak.",
+                "The bounded cache is unlikely to be the primary driver of the leak.",
+                "Evicted cache entries can remain referenced elsewhere, such as by a longer-lived object or captured in a closure or callback.",
+                "Product payloads have grown over the year.",
+                "Logging cache eviction events allows confirming that the eviction rate matches the insertion rate.",
+                "Retained size, not shallow size, is the relevant measure when checking cached objects in a heap dump.",
+                "If evicted objects still appear reachable in a heap dump, another reference holder exists.",
+                "High webhook volume often means more HTTP client connections, TLS buffers, or compression buffers.",
+                "HTTP client connections, TLS buffers, and compression buffers can leak in native memory even when the managed heap looks fine.",
+                "Comparing process RSS to reported heap size can detect off-heap or native memory leaks.",
+                "If RSS grows faster than heap, the cause is likely direct or native allocations such as HTTP client libraries or JSON/gzip codecs.",
+                "Taking a heap dump is the fastest way to confirm which of the four hypotheses is correct."
+              ]
+            },
+            "explanation-03": {
+              "facts": 29,
+              "survived": 17,
+              "fraction": 0.586,
+              "lost": [
+                "Packet drops from buffer overflow degrade throughput for all users sharing the path.",
+                "The congestion window is the amount of unacknowledged data the sender is allowed to have in flight.",
+                "Historically, the initial cwnd was 1 segment.",
+                "The initial cwnd is now typically 10 segments.",
+                "RFC 6928 specifies the initial congestion window of 10 segments.",
+                "The slow start send pattern is approximately: send 10 segments, receive ACKs, send about 20, receive ACKs, send about 40, and so on.",
+                "Growing cwnd by one segment per RTT would be painfully slow for high-bandwidth links.",
+                "On detecting loss, the sender backs off significantly and switches to congestion avoidance.",
+                "Congestion avoidance grows cwnd linearly rather than exponentially.",
+                "ssthresh is often set based on a previous congestion event.",
+                "Congestion control continuously adjusts the sending rate to match available network capacity.",
+                "Slow start handles the initial ramp-up and the re-ramp-up after a loss."
+              ],
+              "styled_facts": 16,
+              "additions": 2,
+              "added": [
+                "The name \"slow start\" is a misnomer because the window grows exponentially fast, though it starts small.",
+                "Bandwidth, buffer sizes, and competing traffic on shared links are unknown to the sender."
+              ]
+            },
+            "explanation-04": {
+              "facts": 27,
+              "survived": 20,
+              "fraction": 0.741,
+              "lost": [
+                "Each thread has its own stack and register state.",
+                "Threads can corrupt each other's data without careful synchronization such as locks and mutexes.",
+                "Chrome runs each tab or worker as a separate process so one bad renderer doesn't kill the whole browser.",
+                "Processes eliminate categories of concurrency bugs such as race conditions and deadlocks from shared mutable state, because each process's memory is isolated by default.",
+                "Threads are preferred when work is I/O-bound.",
+                "A web server handling many concurrent connections whose handlers share a cache is an example where threads are preferred.",
+                "Parallel algorithms operating on the same large in-memory dataset are an example where threads are preferred."
+              ],
+              "styled_facts": 26,
+              "additions": 3,
+              "added": [
+                "Python and Ruby have a global interpreter lock.",
+                "Threads are preferable when the language runtime supports true parallel execution.",
+                "Go, Java, C++, and Rust support true parallel execution in threads."
+              ]
+            },
+            "summarization-05": {
+              "facts": 9,
+              "survived": 8,
+              "fraction": 0.889,
+              "lost": [
+                "Chen is assigned to continue search indexing work."
+              ],
+              "styled_facts": 9,
+              "additions": 0,
+              "added": []
+            },
+            "summarization-08": {
+              "facts": 21,
+              "survived": 19,
+              "fraction": 0.905,
+              "lost": [
+                "The abandonment of imports is a firm, observed outcome.",
+                "The cause of the progress-bar-related abandonment needs more investigation."
+              ],
+              "styled_facts": 20,
+              "additions": 2,
+              "added": [
+                "The progress bar issue is a matter of perception rather than actual failure.",
+                "The progress bar finding is rated as tentative but risky."
+              ]
+            }
+          }
+        },
+        "developer-docs": {
+          "median": 0.771,
+          "additions_median": 3.0,
+          "pairs": {
+            "code-review-01": {
+              "facts": 28,
+              "survived": 20,
+              "fraction": 0.714,
+              "lost": [
+                "The function does not check whether `\"member\"` is already in `roles` before appending it.",
+                "If `roles` already contains `\"member\"`, it gets appended again, producing duplicates.",
+                "The function has no type hints and no docstring.",
+                "The missing type hints and docstring are a minor issue.",
+                "The cleaner version raises `ValueError(\"name is required\")` when `name` is falsy.",
+                "The cleaner version appends `\"member\"` only if it is not already in `roles`.",
+                "The cleaner version lets exceptions propagate instead of masking failures as a plain `False`.",
+                "Specific exceptions, such as `db`-related errors, can be caught at the call site instead."
+              ],
+              "styled_facts": 29,
+              "additions": 3,
+              "added": [
+                "The corrected version has the signature `def add_user(name: str, roles: list[str] | None = None, db=None) -> bool`.",
+                "The corrected version calls `db.insert({\"name\": name, \"roles\": roles})` inside a `try` block and returns `True` on success.",
+                "The corrected version catches `Exception as e`, logs it with `logging.error(\"Failed to insert user %s: %s\", name, e)`, and returns `False`."
+              ]
+            },
+            "code-review-03": {
+              "facts": 30,
+              "survived": 20,
+              "fraction": 0.667,
+              "lost": [
+                "Any value containing a single quote character breaks out of the string literal in the query.",
+                "Breaking out of the string literal lets an attacker read arbitrary data.",
+                "Breaking out of the string literal lets an attacker modify arbitrary data.",
+                "The unhandled exception provides no context for the caller.",
+                "The function has no type hints.",
+                "The function has no docstring.",
+                "Without type hints or a docstring, the expected shape of `cursor` is not documented.",
+                "The missing type hints and docstring are a minor issue.",
+                "Missing type hints and docstrings are worth noting for a public or reusable function.",
+                "The SQL injection is the only issue that actually matters in this code."
+              ],
+              "styled_facts": 21,
+              "additions": 5,
+              "added": [
+                "An attacker can pass a value containing a semicolon to chain additional SQL statements.",
+                "psycopg2 and MySQLdb use `%s` as the parameter placeholder.",
+                "Naming the columns you need makes the query's intent clear.",
+                "The output of `cursor.fetchall()` varies by driver, and can be a list of tuples, dicts, or driver-specific row objects.",
+                "A caller cannot determine the function's return type without reading the driver's documentation."
+              ]
+            },
+            "debugging-04": {
+              "facts": 11,
+              "survived": 8,
+              "fraction": 0.727,
+              "lost": [
+                "The code opens the file with encoding forced to \"ascii\".",
+                "Passing errors=\"surrogateescape\" to open enables a byte-for-byte round trip.",
+                "charset-normalizer is a detection library that can determine a file's encoding before opening it."
+              ],
+              "styled_facts": 13,
+              "additions": 2,
+              "added": [
+                "The `ascii` codec only supports the first 128 Unicode code points.",
+                "`chardet` is a library that can detect a file's encoding."
+              ]
+            },
+            "debugging-08": {
+              "facts": 43,
+              "survived": 0,
+              "fraction": 0.0,
+              "lost": [
+                "The canary instance's memory still grows without webhooks, but more slowly than normal instances.",
+                "Memory growth that is traffic-correlated but not traffic-exclusive implies at least two contributors.",
+                "One contributor is baseline/time-driven, such as background jobs, scheduled tasks, connection pools, or internal timers.",
+                "One contributor is traffic-driven and amplified by campaigns.",
+                "Memory never returns to baseline overnight.",
+                "Failure to return to baseline overnight rules out normal cache eviction and GC working as intended.",
+                "If a bounded cache were behaving correctly, quiet periods with no new unique products would let old entries evict.",
+                "If GC were working as intended, it would reclaim short-lived garbage and the RSS/heap floor would flatten.",
+                "A rising memory floor indicates something unbounded or a bound that is not actually enforced.",
+                "The bounded cache has not changed in a year.",
+                "A cache being stable and trusted does not exclude it as a suspect.",
+                "A common failure mode of size-bounded caches is that the bound counts entries rather than bytes.",
+                "If product payloads grow larger, the same entry count holds more memory.",
+                "A common failure mode is cache keys including unbounded fields such as request ID, locale, or webhook payload variant.",
+                "If key cardinality is effectively infinite, eviction never catches up.",
+                "A common failure mode is a bug in the eviction policy, such as uncleaned wrappers/decorators or soft/weak reference configs that do not reclaim.",
+                "Cache key cardinality explosion is the most likely cause given the described profile.",
+                "Campaigns produce more distinct products and promotions, and therefore more unique cache keys.",
+                "The canary still serves some baseline product lookups.",
+                "Comparing cache entry count against cache memory bytes over the day distinguishes key-cardinality growth from entry-size growth.",
+                "If entry count is flat at the bound but memory climbs, the cause is unbounded entry size.",
+                "If entry count is not flat at the configured bound, keys are being evicted improperly or the bound is not wired to the intended value.",
+                "Sampling cache keys during a campaign versus a quiet week can reveal high-cardinality fields such as campaign ID, variant ID, or session ID in the key.",
+                "Products may now carry additional data such as reviews, embeddings, and related-item lists, increasing entry size.",
+                "Each webhook or background poll may register a callback, subscription, or timer that is never deregistered.",
+                "Listener/handler leaks survive quiet periods.",
+                "A listener leak would explain why the canary grows slowly from other event sources while normal instances grow faster.",
+                "`jcmd GC.class_histogram` can count live objects on the JVM.",
+                "`/debug/pprof/heap` can be used to count live objects in Go.",
+                "`objgraph` can count live objects in Python.",
+                "Daily class histograms can reveal which class counts climb monotonically.",
+                "Connection pool metadata, open sockets, per-host retry/backoff state, and in-memory session/idempotency-key tracking can accumulate in memory.",
+                "Webhook idempotency keys often use a TTL cache that does not actually expire entries.",
+                "Memory that grows and does not return can be the allocator failing to return pages to the OS while live heap is fine.",
+                "Allocator fragmentation is a red herring rather than a real leak.",
+                "If live heap after a forced full GC stays elevated, the problem is a real leak.",
+                "If used heap drops back near baseline after a forced GC, the behavior is allocator fragmentation and lower priority.",
+                "No profiling tool currently exists for the service.",
+                "`jmap -histo` produces object-count dumps on the JVM.",
+                "Go supports `runtime.ReadMemStats` and pprof for object-count dumps.",
+                "Node supports heap snapshots via `--inspect`.",
+                "Python supports `tracemalloc` for memory tracking.",
+                "Running instrumentation on both a normal instance and the canary across a campaign isolates traffic-driven from baseline-driven contributors."
+              ],
+              "styled_facts": 4,
+              "additions": 4,
+              "added": [
+                "The assistant is checking its memory for prior context about the service in question.",
+                "The assistant issues a file_glob tool call to search a memory directory.",
+                "The memory directory searched is /var/folders/tt/jh9lk8gs6_sfn5fhz4rp7pch0000gn/T/style-config-pairs-m13ks_z4/projects/-private-var-folders-tt-jh9lk8gs6-sfn5fhz4rp7pch0000gn-T-style-pairs-s98z926i/memory/.",
+                "The glob pattern used in the search is \"*\", matching all files."
+              ]
+            },
+            "explanation-03": {
+              "facts": 29,
+              "survived": 24,
+              "fraction": 0.828,
+              "lost": [
+                "RFC 6928 specifies the initial congestion window of 10 segments.",
+                "Growing cwnd by one segment per RTT would be painfully slow for high-bandwidth links.",
+                "On detecting loss, the sender backs off significantly and switches to congestion avoidance.",
+                "ssthresh is often set based on a previous congestion event.",
+                "Slow start handles the initial ramp-up and the re-ramp-up after a loss."
+              ],
+              "styled_facts": 26,
+              "additions": 5,
+              "added": [
+                "A network path may be a fast local link or a congested connection shared by thousands of other flows.",
+                "Filling router queues and dropping packets causes congestion collapse.",
+                "In congestion collapse, throughput drops for everyone even though the network carries plenty of traffic.",
+                "Slow start growth continues until the sender detects a sign of congestion, such as a packet loss or an explicit congestion signal.",
+                "Slow start trades a small amount of initial delay for protection against congestion collapse."
+              ]
+            },
+            "explanation-04": {
+              "facts": 27,
+              "survived": 22,
+              "fraction": 0.815,
+              "lost": [
+                "Each thread has its own stack and register state.",
+                "Threads can corrupt each other's data without careful synchronization such as locks and mutexes.",
+                "Processes eliminate categories of concurrency bugs such as race conditions and deadlocks from shared mutable state, because each process's memory is isolated by default.",
+                "A web server handling many concurrent connections whose handlers share a cache is an example where threads are preferred.",
+                "Parallel algorithms operating on the same large in-memory dataset are an example where threads are preferred."
+              ],
+              "styled_facts": 35,
+              "additions": 3,
+              "added": [
+                "Python and Ruby use a global interpreter lock.",
+                "Multiple processes bypass the global interpreter lock because each process gets its own interpreter and its own lock.",
+                "Supervisor patterns include systemd and Kubernetes pods."
+              ]
+            },
+            "summarization-05": {
+              "facts": 9,
+              "survived": 9,
+              "fraction": 1.0,
+              "lost": [],
+              "styled_facts": 11,
+              "additions": 1,
+              "added": [
+                "The speaker will check their memory directory for relevant context before responding."
+              ]
+            },
+            "summarization-08": {
+              "facts": 21,
+              "survived": 21,
+              "fraction": 1.0,
+              "lost": [],
+              "styled_facts": 21,
+              "additions": 1,
+              "added": [
+                "The finding about progress bar confusion is tentative."
+              ]
+            }
+          }
+        },
+        "plain-language": {
+          "median": 0.651,
+          "additions_median": 3.0,
+          "pairs": {
+            "code-review-01": {
+              "facts": 28,
+              "survived": 20,
+              "fraction": 0.714,
+              "lost": [
+                "`roles.append(\"member\")` mutates the caller's list object in place.",
+                "Mutating the caller's list is a surprising side effect if the caller reuses that list elsewhere.",
+                "The function does not check whether `\"member\"` is already in `roles` before appending it.",
+                "If `roles` already contains `\"member\"`, it gets appended again, producing duplicates.",
+                "The function has no type hints and no docstring.",
+                "The missing type hints and docstring are a minor issue.",
+                "Without type hints or a docstring, the expected shape of `roles` (list of str) and the interface required of `db` (a `.insert` method) are unclear to callers.",
+                "The cleaner version appends `\"member\"` only if it is not already in `roles`."
+              ],
+              "styled_facts": 20,
+              "additions": 3,
+              "added": [
+                "The function contains five problems.",
+                "The corrected version raises `ValueError` with the message \"name must not be empty\" when `name` is falsy.",
+                "The corrected version raises `ValueError` with the message \"db must be provided\" when `db` is `None`."
+              ]
+            },
+            "code-review-03": {
+              "facts": 30,
+              "survived": 20,
+              "fraction": 0.667,
+              "lost": [
+                "The SQL injection vulnerability is critical in severity.",
+                "Any value containing a single quote character breaks out of the string literal in the query.",
+                "The function has no type hints.",
+                "The function has no docstring.",
+                "Without type hints or a docstring, the expected shape of `cursor` is not documented.",
+                "Without type hints or a docstring, the expected shape of the return value is not documented.",
+                "The missing type hints and docstring are a minor issue.",
+                "Missing type hints and docstrings are worth noting for a public or reusable function.",
+                "The SQL injection is the only issue that actually matters in this code.",
+                "All the other issues identified are secondary polish."
+              ],
+              "styled_facts": 19,
+              "additions": 4,
+              "added": [
+                "Libraries such as psycopg2 and MySQLdb use `%s` as the parameter placeholder.",
+                "The function imposes no limit on the number of results returned.",
+                "Returning all orders for a customer at once can consume a lot of memory.",
+                "A `LIMIT` clause or pagination is advisable for large result sets."
+              ]
+            },
+            "debugging-04": {
+              "facts": 11,
+              "survived": 7,
+              "fraction": 0.636,
+              "lost": [
+                "Decoding fails as soon as it reaches the non-ASCII byte.",
+                "Passing errors=\"surrogateescape\" to open enables a byte-for-byte round trip.",
+                "Opening a file in binary mode (\"rb\") avoids decoding altogether.",
+                "Counting lines in binary mode sidesteps encoding issues because only line boundaries are needed, not the text content."
+              ],
+              "styled_facts": 17,
+              "additions": 7,
+              "added": [
+                "ASCII only covers characters 0-127.",
+                "The byte 0xc3 at position 512 is part of a non-ASCII character.",
+                "UTF-8 can read plain ASCII text.",
+                "Switching to UTF-8 will not break files that were already ASCII-only.",
+                "open() accepts an errors argument with values \"replace\" or \"ignore\".",
+                "Using errors=\"replace\" or errors=\"ignore\" lets the function keep running despite bad bytes.",
+                "Skipping bad bytes may miscount lines if the bad bytes include a line break."
+              ]
+            },
+            "debugging-08": {
+              "facts": 43,
+              "survived": 20,
+              "fraction": 0.465,
+              "lost": [
+                "Memory never returns to baseline overnight.",
+                "Failure to return to baseline overnight rules out normal cache eviction and GC working as intended.",
+                "If a bounded cache were behaving correctly, quiet periods with no new unique products would let old entries evict.",
+                "If GC were working as intended, it would reclaim short-lived garbage and the RSS/heap floor would flatten.",
+                "A rising memory floor indicates something unbounded or a bound that is not actually enforced.",
+                "A common failure mode is cache keys including unbounded fields such as request ID, locale, or webhook payload variant.",
+                "If key cardinality is effectively infinite, eviction never catches up.",
+                "A common failure mode is a bug in the eviction policy, such as uncleaned wrappers/decorators or soft/weak reference configs that do not reclaim.",
+                "Cache key cardinality explosion is the most likely cause given the described profile.",
+                "The canary still serves some baseline product lookups.",
+                "If entry count is not flat at the configured bound, keys are being evicted improperly or the bound is not wired to the intended value.",
+                "Sampling cache keys during a campaign versus a quiet week can reveal high-cardinality fields such as campaign ID, variant ID, or session ID in the key.",
+                "A listener leak would explain why the canary grows slowly from other event sources while normal instances grow faster.",
+                "`jcmd GC.class_histogram` can count live objects on the JVM.",
+                "`/debug/pprof/heap` can be used to count live objects in Go.",
+                "`objgraph` can count live objects in Python.",
+                "Connection pool metadata, open sockets, per-host retry/backoff state, and in-memory session/idempotency-key tracking can accumulate in memory.",
+                "Webhook idempotency keys often use a TTL cache that does not actually expire entries.",
+                "No profiling tool currently exists for the service.",
+                "`jmap -histo` produces object-count dumps on the JVM.",
+                "Go supports `runtime.ReadMemStats` and pprof for object-count dumps.",
+                "Node supports heap snapshots via `--inspect`.",
+                "Python supports `tracemalloc` for memory tracking."
+              ],
+              "styled_facts": 28,
+              "additions": 8,
+              "added": [
+                "Candidate sources of a request-independent leak include a scheduled job, a metrics collector, a connection pool, or a logger that buffers without limit.",
+                "If heap size climbs by roughly one unit per event and never comes back down after the instance goes idle, a per-webhook leak is confirmed.",
+                "Campaigns often add promotional fields or seasonal variants to product data.",
+                "A collection keyed by product ID that is not covered by the cache's size bound can grow with the number of unique products touched rather than with request count.",
+                "Examples of hidden per-product structures include a dedup set, a per-product counter, and a 'recently viewed' list.",
+                "A synthetic webhook burst test isolates the per-webhook leak cause.",
+                "Given that no heap profile exists, taking a heap dump on the canary is the highest-value first investigative step.",
+                "A heap dump will likely reveal whether the baseline leak consists of a few large objects or many small ones, narrowing the search."
+              ]
+            },
+            "explanation-03": {
+              "facts": 29,
+              "survived": 14,
+              "fraction": 0.483,
+              "lost": [
+                "Routers along a network path have limited buffer space.",
+                "Packet drops from buffer overflow degrade throughput for all users sharing the path.",
+                "The congestion window is the amount of unacknowledged data the sender is allowed to have in flight.",
+                "Historically, the initial cwnd was 1 segment.",
+                "The initial cwnd is now typically 10 segments.",
+                "RFC 6928 specifies the initial congestion window of 10 segments.",
+                "Each time the sender receives an ACK confirming successful delivery, it increases cwnd by roughly one segment's worth.",
+                "The slow start send pattern is approximately: send 10 segments, receive ACKs, send about 20, receive ACKs, send about 40, and so on.",
+                "Growing cwnd by one segment per RTT would be painfully slow for high-bandwidth links.",
+                "On detecting loss, the sender backs off significantly and switches to congestion avoidance.",
+                "Congestion avoidance grows cwnd linearly rather than exponentially.",
+                "ssthresh is often set based on a previous congestion event.",
+                "Slow start is one piece of a broader system called congestion control.",
+                "Congestion control continuously adjusts the sending rate to match available network capacity.",
+                "Slow start handles the initial ramp-up and the re-ramp-up after a loss."
+              ],
+              "styled_facts": 24,
+              "additions": 3,
+              "added": [
+                "Dropped packets force the sender to resend data, which slows everything down.",
+                "The name 'slow start' is misleading because the growth is actually fast.",
+                "The name 'slow start' comes from the fact that the connection starts small compared to sending everything at once."
+              ]
+            },
+            "explanation-04": {
+              "facts": 27,
+              "survived": 16,
+              "fraction": 0.593,
+              "lost": [
+                "A process is an independent execution unit with its own memory address space, file descriptors, and OS resources.",
+                "All threads in a process share the same address space, heap, and file descriptors.",
+                "Each thread has its own stack and register state.",
+                "Threads can corrupt each other's data without careful synchronization such as locks and mutexes.",
+                "Chrome runs each tab or worker as a separate process so one bad renderer doesn't kill the whole browser.",
+                "Separate processes make independent starting, stopping, and resource limiting (memory caps, CPU quotas via cgroups) natural.",
+                "The OS manages resource accounting per-process.",
+                "Processes eliminate categories of concurrency bugs such as race conditions and deadlocks from shared mutable state, because each process's memory is isolated by default.",
+                "Threads are preferred when work is I/O-bound.",
+                "A web server handling many concurrent connections whose handlers share a cache is an example where threads are preferred.",
+                "Parallel algorithms operating on the same large in-memory dataset are an example where threads are preferred."
+              ],
+              "styled_facts": 30,
+              "additions": 3,
+              "added": [
+                "The standard implementations of Python and Ruby let only one thread run interpreted code at a time, even on a multi-core machine.",
+                "Both processes and threads can use multiple cores.",
+                "Running several worker processes behind a load balancer is common in server setups."
+              ]
+            },
+            "summarization-05": {
+              "facts": 9,
+              "survived": 7,
+              "fraction": 0.778,
+              "lost": [
+                "The payments database migration dry run is due before Thursday.",
+                "Ada is assigned to check with the mobile team's lead about whether the mobile team was informed about the API deprecation."
+              ],
+              "styled_facts": 10,
+              "additions": 0,
+              "added": []
+            },
+            "summarization-08": {
+              "facts": 21,
+              "survived": 21,
+              "fraction": 1.0,
+              "lost": [],
+              "styled_facts": 23,
+              "additions": 1,
+              "added": [
+                "The customers already had templates."
+              ]
+            }
+          }
+        },
+        "technical-simplified": {
+          "median": 0.558,
+          "additions_median": 3.0,
+          "pairs": {
+            "code-review-01": {
+              "facts": 28,
+              "survived": 19,
+              "fraction": 0.679,
+              "lost": [
+                "The function does not check whether `\"member\"` is already in `roles` before appending it.",
+                "If `roles` already contains `\"member\"`, it gets appended again, producing duplicates.",
+                "The function has no type hints and no docstring.",
+                "The missing type hints and docstring are a minor issue.",
+                "Without type hints or a docstring, the expected shape of `roles` (list of str) and the interface required of `db` (a `.insert` method) are unclear to callers.",
+                "The cleaner version raises `ValueError(\"name is required\")` when `name` is falsy.",
+                "The cleaner version copies `roles` with `list(roles)` rather than mutating the caller's list.",
+                "The cleaner version appends `\"member\"` only if it is not already in `roles`.",
+                "Specific exceptions, such as `db`-related errors, can be caught at the call site instead."
+              ],
+              "styled_facts": 17,
+              "additions": 1,
+              "added": [
+                "The expression `roles = roles + [\"member\"]` creates a copy of `roles` instead of mutating the list the caller passed in."
+              ]
+            },
+            "code-review-03": {
+              "facts": 30,
+              "survived": 0,
+              "fraction": 0.0,
+              "lost": [
+                "The `customer_name` and `status` values are concatenated directly into the query string.",
+                "The code contains a SQL injection vulnerability.",
+                "The SQL injection vulnerability is critical in severity.",
+                "Any value containing a single quote character breaks out of the string literal in the query.",
+                "Breaking out of the string literal lets an attacker read arbitrary data.",
+                "Breaking out of the string literal lets an attacker modify arbitrary data.",
+                "Passing `status` the value `' OR '1'='1` is an example of an injection payload.",
+                "The fix for the SQL injection is to use parameterized queries.",
+                "In the parameterized version, the query string uses `%s` placeholders for the customer and status values.",
+                "In the parameterized version, the parameters are passed to `cursor.execute` as a tuple.",
+                "The `?` placeholder style should be used instead of `%s` for sqlite3.",
+                "Some DB-API drivers expect qmark placeholder style.",
+                "The query uses `SELECT *`.",
+                "`SELECT *` is fragile against schema changes.",
+                "`SELECT *` pulls unneeded columns.",
+                "Explicit column names are preferable to `SELECT *`.",
+                "The function has no input validation.",
+                "Nothing prevents `customer_name` or `status` from being `None` before reaching the database.",
+                "Nothing prevents `customer_name` or `status` from being the wrong type before reaching the database.",
+                "The function has no error handling.",
+                "A database error such as a bad connection will propagate as an unhandled exception.",
+                "The unhandled exception provides no context for the caller.",
+                "The function has no type hints.",
+                "The function has no docstring.",
+                "Without type hints or a docstring, the expected shape of `cursor` is not documented.",
+                "Without type hints or a docstring, the expected shape of the return value is not documented.",
+                "The missing type hints and docstring are a minor issue.",
+                "Missing type hints and docstrings are worth noting for a public or reusable function.",
+                "The SQL injection is the only issue that actually matters in this code.",
+                "All the other issues identified are secondary polish."
+              ],
+              "styled_facts": 7,
+              "additions": 7,
+              "added": [
+                "The speaker checks memory for relevant context before doing anything else.",
+                "The speaker invokes the bash tool.",
+                "The bash command runs `cat` on the file /var/folders/tt/jh9lk8gs6_sfn5fhz4rp7pch0000gn/T/style-config-pairs-m13ks_z4/projects/-private-var-folders-tt-jh9lk8gs6-sfn5fhz4rp7pch0000gn-T-style-pairs-s98z926i/memory/MEMORY.md",
+                "The memory index file is named MEMORY.md.",
+                "The command redirects stderr to /dev/null to suppress errors.",
+                "The command echoes 'No memory file' if the cat command fails.",
+                "The bash command's description is 'Check memory index'."
+              ]
+            },
+            "debugging-04": {
+              "facts": 11,
+              "survived": 7,
+              "fraction": 0.636,
+              "lost": [
+                "Passing errors=\"surrogateescape\" to open enables a byte-for-byte round trip.",
+                "charset-normalizer is a detection library that can determine a file's encoding before opening it.",
+                "Opening a file in binary mode (\"rb\") avoids decoding altogether.",
+                "Counting lines in binary mode sidesteps encoding issues because only line boundaries are needed, not the text content."
+              ],
+              "styled_facts": 14,
+              "additions": 4,
+              "added": [
+                "Python raises UnicodeDecodeError when decoding a byte above 127 as ascii.",
+                "errors=\"replace\" keeps the line count correct.",
+                "errors=\"replace\" does not remove line breaks.",
+                "errors=\"replace\" replaces bad bytes with a placeholder character."
+              ]
+            },
+            "debugging-08": {
+              "facts": 43,
+              "survived": 0,
+              "fraction": 0.0,
+              "lost": [
+                "The canary instance's memory still grows without webhooks, but more slowly than normal instances.",
+                "Memory growth that is traffic-correlated but not traffic-exclusive implies at least two contributors.",
+                "One contributor is baseline/time-driven, such as background jobs, scheduled tasks, connection pools, or internal timers.",
+                "One contributor is traffic-driven and amplified by campaigns.",
+                "Memory never returns to baseline overnight.",
+                "Failure to return to baseline overnight rules out normal cache eviction and GC working as intended.",
+                "If a bounded cache were behaving correctly, quiet periods with no new unique products would let old entries evict.",
+                "If GC were working as intended, it would reclaim short-lived garbage and the RSS/heap floor would flatten.",
+                "A rising memory floor indicates something unbounded or a bound that is not actually enforced.",
+                "The bounded cache has not changed in a year.",
+                "A cache being stable and trusted does not exclude it as a suspect.",
+                "A common failure mode of size-bounded caches is that the bound counts entries rather than bytes.",
+                "If product payloads grow larger, the same entry count holds more memory.",
+                "A common failure mode is cache keys including unbounded fields such as request ID, locale, or webhook payload variant.",
+                "If key cardinality is effectively infinite, eviction never catches up.",
+                "A common failure mode is a bug in the eviction policy, such as uncleaned wrappers/decorators or soft/weak reference configs that do not reclaim.",
+                "Cache key cardinality explosion is the most likely cause given the described profile.",
+                "Campaigns produce more distinct products and promotions, and therefore more unique cache keys.",
+                "The canary still serves some baseline product lookups.",
+                "Comparing cache entry count against cache memory bytes over the day distinguishes key-cardinality growth from entry-size growth.",
+                "If entry count is flat at the bound but memory climbs, the cause is unbounded entry size.",
+                "If entry count is not flat at the configured bound, keys are being evicted improperly or the bound is not wired to the intended value.",
+                "Sampling cache keys during a campaign versus a quiet week can reveal high-cardinality fields such as campaign ID, variant ID, or session ID in the key.",
+                "Products may now carry additional data such as reviews, embeddings, and related-item lists, increasing entry size.",
+                "Each webhook or background poll may register a callback, subscription, or timer that is never deregistered.",
+                "Listener/handler leaks survive quiet periods.",
+                "A listener leak would explain why the canary grows slowly from other event sources while normal instances grow faster.",
+                "`jcmd GC.class_histogram` can count live objects on the JVM.",
+                "`/debug/pprof/heap` can be used to count live objects in Go.",
+                "`objgraph` can count live objects in Python.",
+                "Daily class histograms can reveal which class counts climb monotonically.",
+                "Connection pool metadata, open sockets, per-host retry/backoff state, and in-memory session/idempotency-key tracking can accumulate in memory.",
+                "Webhook idempotency keys often use a TTL cache that does not actually expire entries.",
+                "Memory that grows and does not return can be the allocator failing to return pages to the OS while live heap is fine.",
+                "Allocator fragmentation is a red herring rather than a real leak.",
+                "If live heap after a forced full GC stays elevated, the problem is a real leak.",
+                "If used heap drops back near baseline after a forced GC, the behavior is allocator fragmentation and lower priority.",
+                "No profiling tool currently exists for the service.",
+                "`jmap -histo` produces object-count dumps on the JVM.",
+                "Go supports `runtime.ReadMemStats` and pprof for object-count dumps.",
+                "Node supports heap snapshots via `--inspect`.",
+                "Python supports `tracemalloc` for memory tracking.",
+                "Running instrumentation on both a normal instance and the canary across a campaign isolates traffic-driven from baseline-driven contributors."
+              ],
+              "styled_facts": 8,
+              "additions": 8,
+              "added": [
+                "The assistant will check memory for prior context before answering.",
+                "The prior context being sought concerns an order service.",
+                "A bash tool call is issued.",
+                "The command runs `cat` on a MEMORY.md file.",
+                "The MEMORY.md file is located at /var/folders/tt/jh9lk8gs6_sfn5fhz4rp7pch0000gn/T/style-config-pairs-m13ks_z4/projects/-private-var-folders-tt-jh9lk8gs6-sfn5fhz4rp7pch0000gn-T-style-pairs-s98z926i/memory/MEMORY.md",
+                "The command suppresses error output by redirecting stderr to /dev/null.",
+                "The command echoes \"NO_MEMORY_FILE\" if the cat command fails.",
+                "The stated description of the command is to check the memory index for prior context."
+              ]
+            },
+            "explanation-04": {
+              "facts": 27,
+              "survived": 13,
+              "fraction": 0.481,
+              "lost": [
+                "A process is an independent execution unit with its own memory address space, file descriptors, and OS resources.",
+                "Communication between processes requires explicit mechanisms such as pipes, sockets, shared memory, and message queues.",
+                "All threads in a process share the same address space, heap, and file descriptors.",
+                "Each thread has its own stack and register state.",
+                "Threads can corrupt each other's data without careful synchronization such as locks and mutexes.",
+                "Chrome runs each tab or worker as a separate process so one bad renderer doesn't kill the whole browser.",
+                "Separate processes allow use of OS-level protections such as memory isolation, separate permissions, and seccomp/capabilities.",
+                "Threads cannot provide OS-level security protections because threads share everything.",
+                "Separate processes make independent starting, stopping, and resource limiting (memory caps, CPU quotas via cgroups) natural.",
+                "The OS manages resource accounting per-process.",
+                "Processes eliminate categories of concurrency bugs such as race conditions and deadlocks from shared mutable state, because each process's memory is isolated by default.",
+                "Threads are preferred when work is I/O-bound.",
+                "A web server handling many concurrent connections whose handlers share a cache is an example where threads are preferred.",
+                "Parallel algorithms operating on the same large in-memory dataset are an example where threads are preferred."
+              ],
+              "styled_facts": 28,
+              "additions": 2,
+              "added": [
+                "A crashed thread can bring down the whole process because threads share memory.",
+                "In old versions of Ruby, only one thread runs code at a time, even on many cores."
+              ]
+            },
+            "summarization-05": {
+              "facts": 9,
+              "survived": 8,
+              "fraction": 0.889,
+              "lost": [
+                "Ada is assigned to check with the mobile team's lead about whether the mobile team was informed about the API deprecation."
+              ],
+              "styled_facts": 9,
+              "additions": 1,
+              "added": [
+                "The text lists action items from a meeting."
+              ]
+            }
+          }
+        }
+      }
+    },
+    "hedging": {
+      "judged": true,
+      "per_style": {
+        "actionable-clarity": {
+          "median": 1.0,
+          "totals": {
+            "claims": 16,
+            "hedged": 8,
+            "certain": 2,
+            "absent": 6
+          },
+          "pairs": {
+            "code-review-01": {
+              "claims": 2,
+              "hedged": 0,
+              "certain": 2,
+              "absent": 0,
+              "survival": 0.0,
+              "lost": [
+                "The expected shape of `roles` is unclear \u2014 possibly a list of str.",
+                "The interface expected of `db` is unclear \u2014 possibly something providing `.insert`."
+              ]
+            },
+            "code-review-03": {
+              "claims": 0,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 0,
+              "survival": null,
+              "lost": []
+            },
+            "debugging-04": {
+              "claims": 2,
+              "hedged": 2,
+              "certain": 0,
+              "absent": 0,
+              "survival": 1.0,
+              "lost": []
+            },
+            "debugging-08": {
+              "claims": 9,
+              "hedged": 3,
+              "certain": 0,
+              "absent": 6,
+              "survival": 1.0,
+              "lost": []
+            },
+            "explanation-03": {
+              "claims": 0,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 0,
+              "survival": null,
+              "lost": []
+            },
+            "explanation-04": {
+              "claims": 0,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 0,
+              "survival": null,
+              "lost": []
+            },
+            "summarization-05": {
+              "claims": 0,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 0,
+              "survival": null,
+              "lost": []
+            },
+            "summarization-08": {
+              "claims": 3,
+              "hedged": 3,
+              "certain": 0,
+              "absent": 0,
+              "survival": 1.0,
+              "lost": []
+            }
+          }
+        },
+        "clarity-flow": {
+          "median": 1.0,
+          "totals": {
+            "claims": 16,
+            "hedged": 6,
+            "certain": 2,
+            "absent": 8
+          },
+          "pairs": {
+            "code-review-01": {
+              "claims": 2,
+              "hedged": 0,
+              "certain": 2,
+              "absent": 0,
+              "survival": 0.0,
+              "lost": [
+                "The expected shape of `roles` is unclear \u2014 possibly a list of str.",
+                "The interface expected of `db` is unclear \u2014 possibly something providing `.insert`."
+              ]
+            },
+            "code-review-03": {
+              "claims": 0,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 0,
+              "survival": null,
+              "lost": []
+            },
+            "debugging-04": {
+              "claims": 2,
+              "hedged": 2,
+              "certain": 0,
+              "absent": 0,
+              "survival": 1.0,
+              "lost": []
+            },
+            "debugging-08": {
+              "claims": 9,
+              "hedged": 2,
+              "certain": 0,
+              "absent": 7,
+              "survival": 1.0,
+              "lost": []
+            },
+            "explanation-03": {
+              "claims": 0,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 0,
+              "survival": null,
+              "lost": []
+            },
+            "explanation-04": {
+              "claims": 0,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 0,
+              "survival": null,
+              "lost": []
+            },
+            "summarization-05": {
+              "claims": 0,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 0,
+              "survival": null,
+              "lost": []
+            },
+            "summarization-08": {
+              "claims": 3,
+              "hedged": 2,
+              "certain": 0,
+              "absent": 1,
+              "survival": 1.0,
+              "lost": []
+            }
+          }
+        },
+        "classic-concise": {
+          "median": 1.0,
+          "totals": {
+            "claims": 16,
+            "hedged": 7,
+            "certain": 1,
+            "absent": 8
+          },
+          "pairs": {
+            "code-review-01": {
+              "claims": 2,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 2,
+              "survival": null,
+              "lost": []
+            },
+            "code-review-03": {
+              "claims": 0,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 0,
+              "survival": null,
+              "lost": []
+            },
+            "debugging-04": {
+              "claims": 2,
+              "hedged": 2,
+              "certain": 0,
+              "absent": 0,
+              "survival": 1.0,
+              "lost": []
+            },
+            "debugging-08": {
+              "claims": 9,
+              "hedged": 2,
+              "certain": 1,
+              "absent": 6,
+              "survival": 0.667,
+              "lost": [
+                "A rising memory floor points to something unbounded, or to a bound that isn't actually being enforced."
+              ]
+            },
+            "explanation-03": {
+              "claims": 0,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 0,
+              "survival": null,
+              "lost": []
+            },
+            "explanation-04": {
+              "claims": 0,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 0,
+              "survival": null,
+              "lost": []
+            },
+            "summarization-05": {
+              "claims": 0,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 0,
+              "survival": null,
+              "lost": []
+            },
+            "summarization-08": {
+              "claims": 3,
+              "hedged": 3,
+              "certain": 0,
+              "absent": 0,
+              "survival": 1.0,
+              "lost": []
+            }
+          }
+        },
+        "developer-docs": {
+          "median": 1.0,
+          "totals": {
+            "claims": 16,
+            "hedged": 5,
+            "certain": 2,
+            "absent": 9
+          },
+          "pairs": {
+            "code-review-01": {
+              "claims": 2,
+              "hedged": 0,
+              "certain": 2,
+              "absent": 0,
+              "survival": 0.0,
+              "lost": [
+                "The expected shape of `roles` is unclear \u2014 possibly a list of str.",
+                "The interface expected of `db` is unclear \u2014 possibly something providing `.insert`."
+              ]
+            },
+            "code-review-03": {
+              "claims": 0,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 0,
+              "survival": null,
+              "lost": []
+            },
+            "debugging-04": {
+              "claims": 2,
+              "hedged": 2,
+              "certain": 0,
+              "absent": 0,
+              "survival": 1.0,
+              "lost": []
+            },
+            "debugging-08": {
+              "claims": 9,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 9,
+              "survival": null,
+              "lost": []
+            },
+            "explanation-03": {
+              "claims": 0,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 0,
+              "survival": null,
+              "lost": []
+            },
+            "explanation-04": {
+              "claims": 0,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 0,
+              "survival": null,
+              "lost": []
+            },
+            "summarization-05": {
+              "claims": 0,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 0,
+              "survival": null,
+              "lost": []
+            },
+            "summarization-08": {
+              "claims": 3,
+              "hedged": 3,
+              "certain": 0,
+              "absent": 0,
+              "survival": 1.0,
+              "lost": []
+            }
+          }
+        },
+        "plain-language": {
+          "median": 1.0,
+          "totals": {
+            "claims": 16,
+            "hedged": 7,
+            "certain": 1,
+            "absent": 8
+          },
+          "pairs": {
+            "code-review-01": {
+              "claims": 2,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 2,
+              "survival": null,
+              "lost": []
+            },
+            "code-review-03": {
+              "claims": 0,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 0,
+              "survival": null,
+              "lost": []
+            },
+            "debugging-04": {
+              "claims": 2,
+              "hedged": 2,
+              "certain": 0,
+              "absent": 0,
+              "survival": 1.0,
+              "lost": []
+            },
+            "debugging-08": {
+              "claims": 9,
+              "hedged": 2,
+              "certain": 1,
+              "absent": 6,
+              "survival": 0.667,
+              "lost": [
+                "The five listed items are plausible causes of the memory growth."
+              ]
+            },
+            "explanation-03": {
+              "claims": 0,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 0,
+              "survival": null,
+              "lost": []
+            },
+            "explanation-04": {
+              "claims": 0,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 0,
+              "survival": null,
+              "lost": []
+            },
+            "summarization-05": {
+              "claims": 0,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 0,
+              "survival": null,
+              "lost": []
+            },
+            "summarization-08": {
+              "claims": 3,
+              "hedged": 3,
+              "certain": 0,
+              "absent": 0,
+              "survival": 1.0,
+              "lost": []
+            }
+          }
+        },
+        "technical-simplified": {
+          "median": 0.5,
+          "totals": {
+            "claims": 13,
+            "hedged": 1,
+            "certain": 1,
+            "absent": 11
+          },
+          "pairs": {
+            "code-review-01": {
+              "claims": 2,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 2,
+              "survival": null,
+              "lost": []
+            },
+            "code-review-03": {
+              "claims": 0,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 0,
+              "survival": null,
+              "lost": []
+            },
+            "debugging-04": {
+              "claims": 2,
+              "hedged": 1,
+              "certain": 1,
+              "absent": 0,
+              "survival": 0.5,
+              "lost": [
+                "The non-ASCII byte 0xc3 is likely part of a UTF-8 multi-byte sequence, e.g. an accented character."
+              ]
+            },
+            "debugging-08": {
+              "claims": 9,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 9,
+              "survival": null,
+              "lost": []
+            },
+            "explanation-04": {
+              "claims": 0,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 0,
+              "survival": null,
+              "lost": []
+            },
+            "summarization-05": {
+              "claims": 0,
+              "hedged": 0,
+              "certain": 0,
+              "absent": 0,
+              "survival": null,
+              "lost": []
+            }
+          }
+        }
+      }
+    }
+  },
+  "warnings": [
+    "technical-simplified/explanation-03: the pair failed the gate, excluded",
+    "technical-simplified/summarization-08: the pair failed the gate, excluded",
+    "reuse freshness: completeness:check:1560dfb57ee1e072d32af55fea03ce27b8f96e7e040215f8c4af25539499351c: the live verdict differs from the reused one",
+    "reuse freshness: hedging:check:185ab151c0e1c167c58525579b4adf5373d05d5da8eda7c65ee9fc76ad299310: the live verdict differs from the reused one"
+  ],
+  "reuse": {
+    "source": "2026-08-10b-screening",
+    "reused_rows": 143,
+    "live_calls": 34,
+    "freshness": {
+      "sampled": 6,
+      "agreements": 4,
+      "comparisons": [
+        {
+          "key": "completeness:check:11088b79a2fc569a1707eb7d7c9ef81cca8c9458e40f4923f425e07fec4a3366",
+          "check": "completeness",
+          "role": "check",
+          "reused": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "live": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "agree": true
+        },
+        {
+          "key": "completeness:check:1560dfb57ee1e072d32af55fea03ce27b8f96e7e040215f8c4af25539499351c",
+          "check": "completeness",
+          "role": "check",
+          "reused": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            false,
+            false
+          ],
+          "live": [
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            false,
+            true,
+            false,
+            false
+          ],
+          "agree": false
+        },
+        {
+          "key": "completeness:reverse:11088b79a2fc569a1707eb7d7c9ef81cca8c9458e40f4923f425e07fec4a3366",
+          "check": "completeness",
+          "role": "reverse",
+          "reused": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "live": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "agree": true
+        },
+        {
+          "key": "completeness:reverse:1560dfb57ee1e072d32af55fea03ce27b8f96e7e040215f8c4af25539499351c",
+          "check": "completeness",
+          "role": "reverse",
+          "reused": [
+            true,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            true
+          ],
+          "live": [
+            true,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            true
+          ],
+          "agree": true
+        },
+        {
+          "key": "hedging:check:1560dfb57ee1e072d32af55fea03ce27b8f96e7e040215f8c4af25539499351c",
+          "check": "hedging",
+          "role": "check",
+          "reused": [
+            "hedged",
+            "hedged"
+          ],
+          "live": [
+            "hedged",
+            "hedged"
+          ],
+          "agree": true
+        },
+        {
+          "key": "hedging:check:185ab151c0e1c167c58525579b4adf5373d05d5da8eda7c65ee9fc76ad299310",
+          "check": "hedging",
+          "role": "check",
+          "reused": [
+            "hedged",
+            "hedged"
+          ],
+          "live": [
+            "certain",
+            "hedged"
+          ],
+          "agree": false
+        }
+      ]
+    }
+  }
+}

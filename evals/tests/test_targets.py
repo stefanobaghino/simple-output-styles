@@ -103,12 +103,27 @@ def test_targets_config_loads_bounds_per_style():
     assert config.styles["plain-language"].min_hedge_survival > 0
 
 
+# The frozen field of #79. A candidate style has a rule file but no
+# targets row: it runs under defaults.max_token_ratio until acceptance
+# calibrates its row, so the covered set is the field, not the rule-file
+# glob. An acceptance that adds a row re-opens the field on purpose and
+# extends this constant in the same change.
+FIELD_STYLES = {
+    "clarity-flow",
+    "classic-concise",
+    "developer-docs",
+    "plain-language",
+    "technical-simplified",
+}
+
+
 def test_the_shipped_targets_file_covers_every_field_style():
     config = load_targets_config(TARGETS_CONFIG)
-    field_styles = {
+    rule_file_styles = {
         path.name.removesuffix(".rules.yaml") for path in RULES_DIR.glob("*.rules.yaml")
     }
-    assert set(config.styles) == field_styles
+    assert FIELD_STYLES <= rule_file_styles
+    assert set(config.styles) == FIELD_STYLES
     for style, targets in config.styles.items():
         assert targets.max_token_ratio is not None, style
         assert targets.min_fact_survival is not None, style

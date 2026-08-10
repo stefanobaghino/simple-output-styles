@@ -1,0 +1,110 @@
+{
+  "date": "2026-08-10T10:54:38+00:00",
+  "prompt_set": {
+    "path": "prompts/prompts.yaml",
+    "sha256": "b61b430684a75f4155ce1bb796a9b264df6e85a892fc1b53df35e3d0d7385284"
+  },
+  "conditions": {
+    "model_requested": "sonnet",
+    "model_pin": "claude-sonnet-5",
+    "claude_version": "2.1.226 (Claude Code)",
+    "workdir": "temp",
+    "config": "hermetic",
+    "config_manifest_sha256": "e3ef87bafe5a44a4929464925e932ad3a0ede1accc791d84f511e706c8d9abab",
+    "claude_binary": "/Users/ste/.local/share/style-evals/cli/2.1.226/claude",
+    "binary_source": "managed",
+    "credential_source": "token",
+    "env_passed": [
+      "HOME",
+      "PATH",
+      "TERM",
+      "USER",
+      "CLAUDE_CONFIG_DIR",
+      "ANTHROPIC_API_KEY",
+      "CLAUDE_CODE_OAUTH_TOKEN",
+      "FORCE_PROMPT_CACHING_5M"
+    ],
+    "flags": [
+      "--output-format",
+      "stream-json",
+      "--verbose",
+      "--no-session-persistence",
+      "--max-turns",
+      "1",
+      "--disallowedTools",
+      "*",
+      "--exclude-dynamic-system-prompt-sections",
+      "--strict-mcp-config"
+    ],
+    "settings": {
+      "base": {
+        "disableAllHooks": true
+      },
+      "unstyled_arm": {
+        "outputStyle": "default"
+      },
+      "styled_arm": {
+        "outputStyle": "<style>",
+        "extra_flag": "--plugin-dir"
+      }
+    }
+  },
+  "repo": {
+    "commit": "02d838e14770abbf41a526d1515f210adbcae608",
+    "dirty": false
+  },
+  "styles": {
+    "actionable-clarity": {
+      "file": "/Users/ste/Projects/github.com/stefanobaghino/simple-claude-output-style/plugin/output-styles/actionable-clarity.md",
+      "sha256": "7e89219ea8bb541b391dc1fe55cdf77c153f8e3d8745c75e63dd5896a4ca4c07"
+    },
+    "clarity-flow": {
+      "file": "/Users/ste/Projects/github.com/stefanobaghino/simple-claude-output-style/plugin/output-styles/clarity-flow.md",
+      "sha256": "b96eb83b01ad11b18ec5cf46dbb7203aad77de54ebafff10a6476b84cac19a06"
+    },
+    "classic-concise": {
+      "file": "/Users/ste/Projects/github.com/stefanobaghino/simple-claude-output-style/plugin/output-styles/classic-concise.md",
+      "sha256": "6adc8c4fb691900266f0cbceb873767423d623824387d8f14ef85d552ef06d44"
+    },
+    "developer-docs": {
+      "file": "/Users/ste/Projects/github.com/stefanobaghino/simple-claude-output-style/plugin/output-styles/developer-docs.md",
+      "sha256": "c62b6bf0a91ce36fe15d5318816eca56d318f5aa8e54fc5f9520e82bf46b9efc"
+    },
+    "plain-complete": {
+      "file": "/Users/ste/Projects/github.com/stefanobaghino/simple-claude-output-style/plugin/output-styles/plain-complete.md",
+      "sha256": "9ac41c3fff30a173ed3b076396865102e6dbd7ed3903c9960a23415951243b3f"
+    },
+    "plain-language": {
+      "file": "/Users/ste/Projects/github.com/stefanobaghino/simple-claude-output-style/plugin/output-styles/plain-language.md",
+      "sha256": "d9acbffcfb85937603524c3defc7491f91e86f24fcc679ec1247313b80bcbc04"
+    },
+    "technical-simplified": {
+      "file": "/Users/ste/Projects/github.com/stefanobaghino/simple-claude-output-style/plugin/output-styles/technical-simplified.md",
+      "sha256": "69bf572f15b1b570bd8ace5e93960150ec5f0096f0b71b9f42f8833ccaa4f089"
+    }
+  },
+  "linter_toolchain": {
+    "spacy": "3.8.14",
+    "en-core-web-sm": "3.8.0",
+    "markdown-it-py": "4.2.0"
+  },
+  "screening": {
+    "prompts_per_type": 2,
+    "seed": 0,
+    "prompt_ids": [
+      "code-review-01",
+      "code-review-03",
+      "debugging-04",
+      "debugging-08",
+      "explanation-03",
+      "explanation-04",
+      "summarization-05",
+      "summarization-08"
+    ],
+    "hedge_rich_prompt_ids": [
+      "debugging-08",
+      "summarization-08"
+    ],
+    "full_prompt_count": 32
+  }
+}

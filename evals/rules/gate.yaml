@@ -43,6 +43,14 @@
 #   baseline rates started at 2.6, with 11 of 20 nonzero rates at
 #   11.1 or above. The threshold 10.0 passes the observed styled
 #   rate with headroom and fails that upper half of the baseline.
+#
+# actionable-clarity: the candidate style of the #83 design loop.
+#   Calibrated against runs/2026-08-10-screening, which carries the
+#   one-time asterisk. The styled rates were 8 zeros and the baseline
+#   rate was 10.22, so the threshold 5.0 mirrors plain-language:
+#   strict, with slack for one violation in an answer of 20 or more
+#   sentences. The screening sample is 8 pairs, so the confirmation
+#   campaign re-checks this calibration.
 thresholds:
   technical-simplified:
     max_rate: 15.0
@@ -54,3 +62,5 @@ thresholds:
     max_rate: 5.0
   developer-docs:
     max_rate: 10.0
+  actionable-clarity:
+    max_rate: 5.0
