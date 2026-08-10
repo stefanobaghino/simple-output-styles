@@ -18,7 +18,19 @@ Each style keeps the default coding instructions of Claude Code.
    /plugin install simple-output-styles
    ```
 
-3. Open `/config`, then select **Output style** and pick a style.
+3. If the installer asks for it, reload the plugins:
+
+   ```
+   /reload-plugins
+   ```
+
+4. Let Claude help you pick a style:
+
+   ```
+   /simple-output-styles:pick
+   ```
+
+   The skill recommends a style, shows the alternatives on request, and sets your choice in your global settings, so it applies in every project. You can also pick a style yourself in `/config`, under **Output style** — that choice applies to the current project only.
 
 ## How to give feedback
 
