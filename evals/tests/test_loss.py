@@ -12,7 +12,7 @@ import pytest
 
 from loss import cli, parse_string_list, parse_verdicts, report, score_checks
 from loss.judges import JUDGE_PROMPTS_SHA256, run_judges
-from runner.provenance import sha256_of
+from runner.provenance import CLI_VERSION_PIN, sha256_of
 
 STYLED_TEXT = "The quick brown fox jumps."
 UNSTYLED_TEXT = "The slow green turtle crawls."
@@ -831,3 +831,15 @@ def test_cli_reuse_freshness_disagreement_warns(tmp_path):
     disagreeing = [entry for entry in freshness["comparisons"] if entry["agree"] is False]
     assert [entry["key"] for entry in disagreeing] == [f"hedging:check:{sha(STYLED_TEXT)}"]
     assert any("the live verdict differs from the reused one" in w for w in summary["warnings"])
+
+
+def test_the_judge_pass_stops_when_the_cli_version_differs(project, monkeypatch, capsys):
+    monkeypatch.setattr(cli, "claude_version", lambda *args: "9.9.9 (test)")
+    runner = FakeLossRunner()
+    with pytest.raises(SystemExit) as error:
+        run_cli(project, "--judge", run=runner)
+    assert error.value.code == 2
+    assert runner.calls == []
+    stderr = capsys.readouterr().err
+    assert CLI_VERSION_PIN in stderr
+    assert "9.9.9 (test)" in stderr

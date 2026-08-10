@@ -112,6 +112,8 @@ def build_stages(
             argv.append("--screening")
         if args.reuse_from:
             argv += ["--reuse-from", args.reuse_from]
+        if args.accept_cli_version:
+            argv.append("--accept-cli-version")
         return runner_cli.main(argv, run=run)
 
     def gate_action(index: int, _run: Runner, workers: int) -> int:
@@ -135,6 +137,8 @@ def build_stages(
         ]
         if args.reuse_from:
             argv += ["--reuse-from", args.reuse_from]
+        if args.accept_cli_version:
+            argv.append("--accept-cli-version")
         return cost_cli.main(argv, run=run)
 
     def loss_action(index: int, run: Runner, workers: int) -> int:
@@ -148,6 +152,8 @@ def build_stages(
         ]
         if args.reuse_from:
             argv += ["--reuse-from", args.reuse_from]
+        if args.accept_cli_version:
+            argv.append("--accept-cli-version")
         return loss_cli.main(argv, run=run)
 
     def value_action(index: int, run: Runner, workers: int, *, checks: str) -> int:
@@ -165,6 +171,8 @@ def build_stages(
         ]
         if args.reuse_from:
             argv += ["--reuse-from", args.reuse_from]
+        if args.accept_cli_version:
+            argv.append("--accept-cli-version")
         return value_cli.main(argv, run=run)
 
     def rank_action(index: int, run: Runner, workers: int) -> int:
@@ -178,6 +186,8 @@ def build_stages(
         ]
         if args.reuse_from:
             argv += ["--reuse-from", args.reuse_from]
+        if args.accept_cli_version:
+            argv.append("--accept-cli-version")
         return rank_cli.main(argv, run=run)
 
     pairs_threads = max(1, args.budget // 2)
@@ -335,6 +345,14 @@ def main(argv: list[str] | None = None, run: Runner = subprocess_runner) -> int:
             "import the stored rows of another run in every stage; only "
             "the fresh work runs live (implies --runs 1, because an "
             "imported repetition measures no variance)"
+        ),
+    )
+    parser.add_argument(
+        "--accept-cli-version",
+        action="store_true",
+        help=(
+            "run under a CLI version other than the pin: an intentional "
+            "upgrade, forwarded to every live stage"
         ),
     )
     args = parser.parse_args(argv)

@@ -15,7 +15,7 @@ from pathlib import Path
 from gate.cli import load_answers
 from runner.generate import GenerationError, Runner, subprocess_runner
 from runner.hermetic import hermetic_call
-from runner.provenance import claude_version
+from runner.provenance import check_cli_version, claude_version
 from runner.screening import screening_section
 from runner.spend import spend_summary
 
@@ -37,9 +37,17 @@ def _provenance(run_dir: Path) -> dict | None:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def _run_probe(styles: list[str], model: str, plugin_dir: Path, run: Runner, repeats: int) -> dict:
+def _run_probe(
+    styles: list[str], model: str, plugin_dir: Path, run: Runner, repeats: int, accept: bool
+) -> dict:
     try:
         with hermetic_call("probe") as hermetic:
+            # The version check runs before the first billed call,
+            # inside the live hermetic directory; the same value lands
+            # in the probe data.
+            cli_version = check_cli_version(
+                claude_version(hermetic.binary, hermetic.env), accept=accept
+            )
             return probe_overhead(
                 styles=styles,
                 model=model,
@@ -48,7 +56,7 @@ def _run_probe(styles: list[str], model: str, plugin_dir: Path, run: Runner, rep
                 run=run,
                 repeats=repeats,
                 env=hermetic.env,
-                cli_version=claude_version(hermetic.binary, hermetic.env),
+                cli_version=cli_version,
             )
     except GenerationError as error:
         raise _fail(f"the probe failed: {error}") from error
@@ -101,6 +109,15 @@ def main(argv: list[str] | None = None, run: Runner = subprocess_runner) -> int:
             "whose text matches; probe live only the rest"
         ),
     )
+    parser.add_argument(
+        "--accept-cli-version",
+        action="store_true",
+        help=(
+            "probe under a CLI version other than the pin: an "
+            "intentional upgrade; the probe data records the found "
+            "version"
+        ),
+    )
     args = parser.parse_args(argv)
     if args.repeats < 1:
         raise _fail("--repeats must be at least 1")
@@ -130,7 +147,11 @@ def main(argv: list[str] | None = None, run: Runner = subprocess_runner) -> int:
                 source_probe, model=model, repeats=args.repeats, source_dir=source_dir
             )
             imported_styles, fresh = select_imported_styles(source_probe, plugin_dir, styles)
-            live = _run_probe(fresh, model, plugin_dir, run, args.repeats) if fresh else None
+            live = (
+                _run_probe(fresh, model, plugin_dir, run, args.repeats, args.accept_cli_version)
+                if fresh
+                else None
+            )
             probe = merge_probe(
                 source_probe=source_probe,
                 source_name=source_dir.name,
@@ -142,7 +163,9 @@ def main(argv: list[str] | None = None, run: Runner = subprocess_runner) -> int:
                 plugin_dir=plugin_dir,
             )
         else:
-            probe = _run_probe(styles, model, plugin_dir, run, args.repeats)
+            probe = _run_probe(
+                styles, model, plugin_dir, run, args.repeats, args.accept_cli_version
+            )
         probe_path.write_text(json.dumps(probe, indent=2) + "\n", encoding="utf-8")
     elif probe_path.exists():
         probe = json.loads(probe_path.read_text(encoding="utf-8"))

@@ -217,15 +217,15 @@ The harness uses [uv](https://docs.astral.sh/uv/). From this directory:
 ```
 uv run pytest
 uv run style-lint FILE.md --rules rules/technical-simplified.rules.yaml
-uv run style-pairs [--parallel N] [--screening] [--holdout] [--reuse-from RUN]
+uv run style-pairs [--parallel N] [--screening] [--holdout] [--reuse-from RUN] [--accept-cli-version]
 uv run style-gate runs/<date>
-uv run style-cost runs/<date> [--probe] [--repeats N] [--reuse-from RUN]
-uv run style-value runs/<date> [--judge] [--parallel N] [--reuse-from RUN]
-uv run style-loss runs/<date> [--judge] [--parallel N] [--reuse-from RUN]
-uv run style-rank runs/<date> [--judge] [--parallel N] [--reuse-from RUN]
-uv run style-agreement runs/<date> [--judge] [--model M] [--sample N] [--parallel N]
-uv run style-campaign [--runs N] [--budget W] [--probe-repeats N] [--screening] [--holdout] [--reuse-from RUN]
-uv run style-drift [--generate] [--scripts prompts/sessions/*.yaml] [--estimate] [--context-window N] [--depth-target F] [--out runs/<date>-drift]
+uv run style-cost runs/<date> [--probe] [--repeats N] [--reuse-from RUN] [--accept-cli-version]
+uv run style-value runs/<date> [--judge] [--parallel N] [--reuse-from RUN] [--accept-cli-version]
+uv run style-loss runs/<date> [--judge] [--parallel N] [--reuse-from RUN] [--accept-cli-version]
+uv run style-rank runs/<date> [--judge] [--parallel N] [--reuse-from RUN] [--accept-cli-version]
+uv run style-agreement runs/<date> [--judge] [--model M] [--sample N] [--parallel N] [--accept-cli-version]
+uv run style-campaign [--runs N] [--budget W] [--probe-repeats N] [--screening] [--holdout] [--reuse-from RUN] [--accept-cli-version]
+uv run style-drift [--generate] [--scripts prompts/sessions/*.yaml] [--estimate] [--context-window N] [--depth-target F] [--out runs/<date>-drift] [--accept-cli-version]
 uv run style-compare runs/<a> runs/<b> [...] [--out runs/<date>-compare]
 uv run style-targets runs/<date> [--targets rules/targets.yaml] [--drift runs/<date>-drift]
 ```
@@ -288,6 +288,19 @@ models. The stored rows stay valid and the run resumes once the
 resolution is fixed. The provenance records the pin (`model_pin`)
 next to the requested alias, and a pin change opens a comparability
 era: the comparison warns when two runs store different pins.
+The Claude CLI version is pinned as well (`CLI_VERSION_PIN` in
+`src/runner/provenance.py`), because the CLI auto-updates and the
+version fixes the CLI-composed system prompt of every call. Every
+live invocation — the pair runner, the probe, the judge passes,
+and the drift generation — checks the installed version against
+the pin before its first billed call, and a mismatch stops the
+invocation with exit code 2, naming both versions. Offline scoring
+is version-free, so every stored run rescores under any installed
+CLI. `--accept-cli-version` documents an intentional upgrade: the
+run proceeds, the provenance records the found version, and the
+comparison warns across the boundary. The upgrade procedure is the
+pin procedure: edit the constant, land it by PR, and accept the
+new era.
 The generation calls run several at a time (8 by default), and
 `--parallel` sets the count (1 runs one call at a time). The calls do
 not interact, so the concurrency changes no condition of a run. The
@@ -332,7 +345,8 @@ the default directory already holds a complete run, a repeat without
 and so on) and tells the choice, because a silent reuse of a complete
 run produces no new sample. The
 runner exits with code 1 when the pair set is incomplete, and with
-code 2 when the writer pin stops a call.
+code 2 when the writer pin stops a call or the CLI-version pin
+stops the run.
 Reuse across runs exists, but only as an explicit flag, never as a
 default: `--reuse-from RUN` imports the stored answers of another
 run for the arms whose conditions match, and generates only the

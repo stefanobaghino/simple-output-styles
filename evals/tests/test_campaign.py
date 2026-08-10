@@ -18,8 +18,12 @@ from test_value import FakeJudgeRunner
 
 from campaign import Scheduler, StageSpec, WorkerGate
 from campaign import cli as campaign_cli
+from cost import cli as cost_cli
+from loss import cli as loss_cli
+from rank import cli as rank_cli
 from runner import cli as runner_cli
 from runner.generate import GenerationError
+from value import cli as value_cli
 
 PROBE_PROMPT = "Reply with the word OK."
 
@@ -145,7 +149,6 @@ def project(tmp_path, monkeypatch):
     (rules / "alpha.rules.yaml").write_text("style: alpha\n")
     (rules / "gate.yaml").write_text(yaml.safe_dump({"thresholds": {"alpha": {"max_rate": 100}}}))
     make_plugin(tmp_path / "plugin")
-    monkeypatch.setattr(runner_cli, "claude_version", lambda *args: "0.0.0 (test)")
     monkeypatch.chdir(tmp_path)
     return tmp_path
 
@@ -677,3 +680,18 @@ def test_scheduler_skips_needs_dependents_and_keeps_after_dependents():
     assert results[("dependent", 0)].state == "skipped"
     assert results[("follower", 0)].state == "done"
     assert recorder.span("follower")
+
+
+def test_a_cli_version_mismatch_stops_the_campaign(project, monkeypatch):
+    monkeypatch.setattr(runner_cli, "claude_version", lambda *args: "9.9.9 (test)")
+    runner = CampaignRunner()
+    assert run_campaign(project, runner, "--runs", "1", "--budget", "8") == 2
+    assert runner.events == []
+
+
+def test_accept_cli_version_forwards_to_every_live_stage(project, monkeypatch):
+    for module in (runner_cli, cost_cli, loss_cli, value_cli, rank_cli):
+        monkeypatch.setattr(module, "claude_version", lambda *args: "9.9.9 (test)")
+    runner = CampaignRunner()
+    args = ("--runs", "1", "--budget", "8", "--accept-cli-version")
+    assert run_campaign(project, runner, *args) == 0

@@ -15,3 +15,34 @@ def isolated_environment(tmp_path_factory, monkeypatch):
     monkeypatch.delenv("CLAUDE_CONFIG_DIR", raising=False)
     monkeypatch.delenv("CLAUDE_CODE_OAUTH_TOKEN", raising=False)
     return home
+
+
+@pytest.fixture(autouse=True)
+def pinned_cli_version(monkeypatch):
+    """Every CLI sees the pinned version.
+
+    No test runs the real claude --version or depends on the CLI of
+    the developer machine. Each CLI module binds claude_version at
+    import, so the patch goes per module. A mismatch test overrides
+    the patch in its own scope.
+    """
+    import agreement.cli
+    import cost.cli
+    import drift.cli
+    import loss.cli
+    import rank.cli
+    import runner.cli
+    import value.cli
+    from runner.provenance import CLI_VERSION_PIN
+
+    modules = (
+        agreement.cli,
+        cost.cli,
+        drift.cli,
+        loss.cli,
+        rank.cli,
+        runner.cli,
+        value.cli,
+    )
+    for module in modules:
+        monkeypatch.setattr(module, "claude_version", lambda *args, **kwargs: CLI_VERSION_PIN)

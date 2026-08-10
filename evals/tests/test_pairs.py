@@ -25,7 +25,7 @@ from runner import (
     manifest_sha256,
     style_reference,
 )
-from runner.provenance import build_provenance
+from runner.provenance import CLI_VERSION_PIN, build_provenance, check_cli_version
 from runner.report import build_report
 from runner.screening import (
     HEDGE_RICH_IDS,
@@ -257,7 +257,6 @@ def make_pairs_project(tmp_path, monkeypatch, prompts):
     rules.mkdir()
     (rules / "alpha.rules.yaml").write_text("style: alpha\n")
     make_plugin(tmp_path / "plugin")
-    monkeypatch.setattr(cli, "claude_version", lambda *args: "0.0.0 (test)")
     return tmp_path
 
 
@@ -439,6 +438,48 @@ def test_cli_an_exact_writer_id_passes_and_an_unpinned_alias_fails(project):
     with pytest.raises(SystemExit) as error:
         run_cli(project, FakeRunner(model="claude-opus-5"), "aliased", "--model", "opus")
     assert error.value.code == 2
+
+
+def test_check_cli_version_accepts_the_pinned_version():
+    assert check_cli_version(CLI_VERSION_PIN) == CLI_VERSION_PIN
+
+
+def test_check_cli_version_stops_on_a_mismatch_naming_both_versions(capsys):
+    with pytest.raises(SystemExit) as error:
+        check_cli_version("9.9.9 (test)")
+    assert error.value.code == 2
+    stderr = capsys.readouterr().err
+    assert CLI_VERSION_PIN in stderr
+    assert "9.9.9 (test)" in stderr
+
+
+def test_check_cli_version_accept_lets_a_mismatch_pass():
+    assert check_cli_version("9.9.9 (test)", accept=True) == "9.9.9 (test)"
+
+
+def test_check_cli_version_rejects_a_missing_version_even_with_accept():
+    with pytest.raises(SystemExit) as error:
+        check_cli_version(None, accept=True)
+    assert error.value.code == 2
+
+
+def test_the_run_stops_before_any_call_when_the_cli_version_differs(project, monkeypatch, capsys):
+    monkeypatch.setattr(cli, "claude_version", lambda *args: "9.9.9 (test)")
+    runner = FakeRunner()
+    with pytest.raises(SystemExit) as error:
+        run_cli(project, runner)
+    assert error.value.code == 2
+    assert runner.calls == []
+    stderr = capsys.readouterr().err
+    assert CLI_VERSION_PIN in stderr
+    assert "9.9.9 (test)" in stderr
+
+
+def test_accept_cli_version_records_the_found_version_in_the_provenance(project, monkeypatch):
+    monkeypatch.setattr(cli, "claude_version", lambda *args: "9.9.9 (test)")
+    assert run_cli(project, FakeRunner(), "run", "--accept-cli-version") == 0
+    provenance = json.loads((project / "run" / "provenance.json").read_text())
+    assert provenance["conditions"]["claude_version"] == "9.9.9 (test)"
 
 
 def test_cli_rejects_a_parallel_below_one(project):

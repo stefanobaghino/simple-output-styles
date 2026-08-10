@@ -9,6 +9,7 @@ import threading
 import pytest
 
 from agreement import ANCHOR, arm_raw_name, build_units, cli, sample_keys, score_arm
+from runner.provenance import CLI_VERSION_PIN
 from value.judges import JUDGE_MODEL_PINS
 
 UNSTYLED_TEXT = "The turtle statement holds three facts and one hedge."
@@ -563,3 +564,15 @@ def test_score_arm_reads_the_sample_spec_of_the_meta_row(project):
     assert warnings == []
     assert all(stats["not_judged"] == 0 for stats in arm["axes"].values())
     assert arm["axes"]["clarity"]["rows"] == 1
+
+
+def test_the_judge_pass_stops_when_the_cli_version_differs(project, monkeypatch, capsys):
+    monkeypatch.setattr(cli, "claude_version", lambda *args: "9.9.9 (test)")
+    runner = EchoRunner()
+    with pytest.raises(SystemExit) as error:
+        run_cli(project, "--judge", run=runner)
+    assert error.value.code == 2
+    assert runner.calls == []
+    stderr = capsys.readouterr().err
+    assert CLI_VERSION_PIN in stderr
+    assert "9.9.9 (test)" in stderr

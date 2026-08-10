@@ -23,6 +23,7 @@ from drift import (
 from linter import Linter, load_rules
 from runner.cli import load_prompts
 from runner.generate import GenerationError, PluginLeakError
+from runner.provenance import CLI_VERSION_PIN
 
 HERE = Path(__file__).parent
 PROMPTS = HERE.parent / "prompts" / "prompts.yaml"
@@ -242,7 +243,6 @@ def project(tmp_path, monkeypatch):
     rules.mkdir()
     (rules / "alpha.rules.yaml").write_text("style: alpha\ncontractions:\n  banned: true\n")
     make_plugin(tmp_path / "plugin")
-    monkeypatch.setattr(cli, "claude_version", lambda *args: "0.0.0 (test)")
     return tmp_path
 
 
@@ -935,3 +935,25 @@ def test_cli_estimate_requires_scripts(project):
     with pytest.raises(SystemExit) as excinfo:
         run_cli(project, FakeSessionRunner(), "--estimate", generate=False)
     assert excinfo.value.code == 2
+
+
+def test_generate_stops_before_any_call_when_the_cli_version_differs(project, monkeypatch, capsys):
+    monkeypatch.setattr(cli, "claude_version", lambda *args: "9.9.9 (test)")
+    runner = FakeSessionRunner()
+    with pytest.raises(SystemExit) as error:
+        run_cli(project, runner)
+    assert error.value.code == 2
+    assert runner.calls == []
+    stderr = capsys.readouterr().err
+    assert CLI_VERSION_PIN in stderr
+    assert "9.9.9 (test)" in stderr
+
+
+def test_a_rescore_without_generate_ignores_the_installed_cli_version(project, monkeypatch):
+    assert run_cli(project, FakeSessionRunner()) == 0
+
+    def boom(*args):
+        raise AssertionError("the offline path must not read the CLI version")
+
+    monkeypatch.setattr(cli, "claude_version", boom)
+    assert run_cli(project, FakeSessionRunner(), generate=False) == 0
