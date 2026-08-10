@@ -16,10 +16,12 @@ from runner.hermetic import (
     CONFIG_DIR_VAR,
     CREDENTIALS_FILE,
     ENV_WHITELIST,
+    MANAGED_STORE,
     TOKEN_VAR,
     hermetic_call,
     manifest_sha256,
 )
+from runner.pin import CLI_VERSION_BARE
 
 STUB_BODY = """
 import json, os
@@ -58,6 +60,16 @@ def make_stub(tmp_path):
     stub.write_text(f"#!{sys.executable}\n{STUB_BODY}")
     stub.chmod(0o755)
     return bin_dir
+
+
+def make_managed_store(home, body=STUB_BODY):
+    """A fake managed binary of the pinned version under a HOME."""
+    managed_dir = Path(home) / MANAGED_STORE / CLI_VERSION_BARE
+    managed_dir.mkdir(parents=True)
+    stub = managed_dir / "claude"
+    stub.write_text(f"#!{sys.executable}\n{body}")
+    stub.chmod(0o755)
+    return stub
 
 
 def base_environ(tmp_path, **extra):
@@ -191,12 +203,40 @@ def test_hermetic_call_resolves_the_binary_on_the_whitelisted_path(tmp_path):
     with_stub = base_environ(tmp_path, PATH=str(bin_dir))
     with hermetic_call("test", environ=with_stub) as h:
         assert h.binary == str(bin_dir / "claude")
+        assert h.binary_source == "path"
 
     empty = tmp_path / "empty"
     empty.mkdir()
     without = base_environ(tmp_path, PATH=str(empty))
     with hermetic_call("test", environ=without) as h:
         assert h.binary is None
+        assert h.binary_source == "none"
+
+
+def test_hermetic_call_prefers_the_managed_binary_over_the_path(tmp_path):
+    bin_dir = make_stub(tmp_path)
+    environ = base_environ(tmp_path, PATH=str(bin_dir))
+    managed = make_managed_store(environ["HOME"])
+    with hermetic_call("test", environ=environ) as h:
+        assert h.binary == str(managed)
+        assert h.binary_source == "managed"
+        assert h.env["PATH"].startswith(f"{managed.parent}:")
+
+
+def test_the_managed_binary_is_the_one_the_call_executes(tmp_path):
+    # The argv of every call names the bare "claude", and the
+    # subprocess resolves it against the call PATH, so the managed
+    # binary must be the one that answers: recorded, checked, and
+    # executed must be the same file. Measured, not assumed.
+    bin_dir = make_stub(tmp_path)
+    environ = base_environ(tmp_path, PATH=str(bin_dir))
+    make_managed_store(
+        environ["HOME"], body=STUB_BODY.replace('"result": "OK"', '"result": "MANAGED"')
+    )
+    with hermetic_call("test", environ=environ) as h:
+        stdout = subprocess_runner(["claude", "-p", "x"], h.workdir, h.env)
+        result = json.loads(stdout.splitlines()[1])
+        assert result["result"] == "MANAGED"
 
 
 def test_subprocess_runner_rejects_a_missing_env(tmp_path):

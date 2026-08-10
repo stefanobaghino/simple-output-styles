@@ -287,6 +287,7 @@ def test_cli_generates_complete_sessions(project):
     provenance = json.loads((project / "run" / "provenance.json").read_text())
     assert "--no-session-persistence" not in provenance["conditions"]["flags"]
     assert "--max-turns" in provenance["conditions"]["flags"]
+    assert provenance["conditions"]["binary_source"] in {"managed", "path", "none"}
     assert provenance["drift"]["turns"] == 3
     assert provenance["drift"]["repeats"] == 2
     script = provenance["drift"]["script"]
