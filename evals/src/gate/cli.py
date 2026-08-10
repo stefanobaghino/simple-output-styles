@@ -81,7 +81,13 @@ def main(argv: list[str] | None = None) -> int:
     toolchain = linter_toolchain()
     provenance = run_provenance(run_dir)
     run_toolchain = (provenance or {}).get("linter_toolchain")
-    if run_toolchain is not None and run_toolchain != toolchain:
+    # A package recorded by the gate but absent from the stored run
+    # joined the recorded set after the run was stored, so it is
+    # tolerated, like a resume backfill. A version the run does hold
+    # must match the gate.
+    if run_toolchain is not None and any(
+        toolchain.get(package) != version for package, version in run_toolchain.items()
+    ):
         result.warnings.append(
             f"the linter toolchain differs from the run: gate {toolchain}, run {run_toolchain}"
         )

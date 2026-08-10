@@ -25,7 +25,10 @@ from .hermetic import (
 )
 from .pin import CLI_VERSION_PIN
 
-LINTER_PACKAGES = ("spacy", "en-core-web-sm")
+# The packages whose versions can move a linter verdict: the
+# sentence segmenter, its model, and the Markdown parser that
+# decides which spans are lintable at all.
+LINTER_PACKAGES = ("spacy", "en-core-web-sm", "markdown-it-py")
 
 
 def sha256_of(path: Path) -> str:

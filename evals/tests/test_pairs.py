@@ -745,6 +745,7 @@ def test_provenance_holds_the_linter_toolchain(project):
     toolchain = provenance["linter_toolchain"]
     assert toolchain["spacy"] == metadata.version("spacy")
     assert toolchain["en-core-web-sm"] == metadata.version("en-core-web-sm")
+    assert toolchain["markdown-it-py"] == metadata.version("markdown-it-py")
     assert provenance["prompt_set"]["sha256"]
     assert provenance["conditions"]["model_requested"] == "sonnet"
     assert provenance["conditions"]["workdir"] == "temp"

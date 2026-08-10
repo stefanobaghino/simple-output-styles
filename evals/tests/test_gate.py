@@ -177,6 +177,21 @@ def test_cli_warns_on_a_toolchain_mismatch(tmp_path):
     assert any("toolchain differs" in warning for warning in summary["warnings"])
 
 
+def test_cli_tolerates_a_run_from_before_a_recorded_package(tmp_path):
+    # A package added to LINTER_PACKAGES after a run was stored is
+    # absent from the stored toolchain, and the versions the run does
+    # hold all match, so a re-gate must not warn.
+    toolchain = {
+        package: version
+        for package, version in linter_toolchain().items()
+        if package != "markdown-it-py"
+    }
+    run_dir = make_run(tmp_path, COMPLETE_ANSWERS, toolchain=toolchain)
+    assert run_gate(run_dir) == 0
+    summary = json.loads((run_dir / "fidelity.json").read_text())
+    assert not any("toolchain differs" in warning for warning in summary["warnings"])
+
+
 def test_cli_is_idempotent(tmp_path):
     run_dir = make_run(tmp_path, COMPLETE_ANSWERS)
     run_gate(run_dir)
