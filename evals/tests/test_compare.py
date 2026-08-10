@@ -38,6 +38,7 @@ def write_run(
     rank_prompts_sha: str | None = "k" * 8,
     loss_fact_mine: str | None = "two-way",
     screening: dict | None = None,
+    toolchain: dict | None = None,
     skip: tuple[str, ...] = (),
 ) -> Path:
     run_dir = runs_dir / name
@@ -56,7 +57,7 @@ def write_run(
             "prompt_set": {"path": "prompts/prompts.yaml", "sha256": "p" * 8},
             "conditions": conditions,
             "styles": {"alpha": {"file": "alpha.md", "sha256": style_sha}},
-            "linter_toolchain": {"spacy": "1.0"},
+            "linter_toolchain": toolchain or {"spacy": "1.0"},
         },
         "fidelity": {
             "summary": {
@@ -351,6 +352,28 @@ def test_a_run_without_a_writer_pin_stays_silent(tmp_path):
     code, summary, _ = run_cli(tmp_path, "run-a", "run-b")
     assert code == 0
     assert summary["warnings"] == []
+
+
+def test_a_run_without_a_recorded_linter_package_stays_silent(tmp_path):
+    # A package added to the recorded set after a run was stored is
+    # absent from that run, so old-versus-new must not warn on it.
+    runs = tmp_path / "runs"
+    write_run(runs, "run-a", toolchain={"spacy": "1.0", "markdown-it-py": "4.2.0"})
+    write_run(runs, "run-b", toolchain={"spacy": "1.0"})
+    code, summary, _ = run_cli(tmp_path, "run-a", "run-b")
+    assert code == 0
+    assert summary["warnings"] == []
+
+
+def test_a_recorded_linter_package_mismatch_warns(tmp_path):
+    runs = tmp_path / "runs"
+    write_run(runs, "run-a", toolchain={"spacy": "1.0", "markdown-it-py": "3.0.0"})
+    write_run(runs, "run-b", toolchain={"spacy": "1.0", "markdown-it-py": "4.2.0"})
+    code, summary, _ = run_cli(tmp_path, "run-a", "run-b")
+    assert code == 1
+    assert summary["warnings"] == [
+        "condition mismatch on linter toolchain (markdown-it-py): run-a 3.0.0, run-b 4.2.0",
+    ]
 
 
 def test_a_condition_mismatch_warns(tmp_path):

@@ -77,7 +77,13 @@ def _condition_entries(run: dict) -> dict[str, object]:
     # it: managed or PATH is a machine fact, not a run condition.
     entries["config"] = conditions.get("config")
     entries["config manifest hash"] = conditions.get("config_manifest_sha256")
-    entries["linter toolchain"] = provenance.get("linter_toolchain")
+    # One entry per recorded linter package, with the inverted era
+    # semantics of the judge-prompt hashes below: a package added to
+    # the recorded set after a run was stored is absent there, so
+    # old-versus-new stays silent for it, and two recorded versions
+    # that differ warn.
+    for package, version in (provenance.get("linter_toolchain") or {}).items():
+        entries[f"linter toolchain ({package})"] = version
     # A full run and an old run both read None here, so the entry
     # stays silent for them. The CLI already rejects a mix of
     # screening and full runs; this entry makes two screening runs
