@@ -881,6 +881,71 @@ def test_cli_reuse_pairs_on_both_shas(tmp_path):
     assert summary["reuse"]["freshness"]["agreements"] == 2
 
 
+def make_source_with_edited_sample(tmp_path, edit, count):
+    """A judged two-prompt source whose first sampled keys are edited.
+
+    The freshness sample of a later reuse is the first 6 sorted
+    imported keys, so the edit lands on the sorted keys at runtime,
+    never on hardcoded shas.
+    """
+    src = tmp_path / "src"
+    src.mkdir()
+    make_project(src, prompt_ids=("explanation-01", "explanation-02"))
+    assert run_cli(src, "--judge") == 0
+    raw = src / "run" / "rank-raw.jsonl"
+    rows = [json.loads(line) for line in raw.read_text().splitlines()]
+    sampled = sorted(row["key"] for row in rows if row.get("type") == "call")[:6]
+    targets = set(sampled[:count])
+    for row in rows:
+        if row.get("key") in targets:
+            row["output"] = edit(row["output"])
+    write_jsonl(raw, rows)
+    dst = tmp_path / "dst"
+    dst.mkdir()
+    make_project(dst, prompt_ids=("explanation-01", "explanation-02"))
+    return src, dst
+
+
+def flip_pick(output):
+    return "2" if output == "1" else "1"
+
+
+def test_cli_reuse_clarity_disagreements_under_the_tolerance_exit_0(tmp_path):
+    src, dst = make_source_with_edited_sample(tmp_path, flip_pick, 4)
+    assert run_cli(dst, "--judge", "--reuse-from", str(src / "run")) == 0
+    summary = json.loads((dst / "run" / "rank.json").read_text())
+    assert summary["warnings"] == []
+    assert summary["reuse"]["freshness"]["clarity"] == {
+        "compared": 6,
+        "disagreements": 4,
+        "tolerance": 5,
+        "disagree_rate": 0.4,
+        "alpha": 0.05,
+        "source": "runs/2026-08-08",
+        "stale": False,
+    }
+    assert "Clarity picks: 4 of 6 disagree" in (dst / "run" / "rank.md").read_text()
+
+
+def test_cli_reuse_clarity_disagreements_at_the_tolerance_exit_1(tmp_path):
+    src, dst = make_source_with_edited_sample(tmp_path, flip_pick, 5)
+    assert run_cli(dst, "--judge", "--reuse-from", str(src / "run")) == 1
+    summary = json.loads((dst / "run" / "rank.json").read_text())
+    assert summary["reuse"]["freshness"]["clarity"]["stale"] is True
+    assert any("5 of 6 clarity picks" in w for w in summary["warnings"])
+    assert not any("the live verdict differs" in w for w in summary["warnings"])
+
+
+def test_cli_reuse_an_unusable_clarity_pick_still_warns(tmp_path):
+    src, dst = make_source_with_edited_sample(tmp_path, lambda output: "maybe", 1)
+    assert run_cli(dst, "--judge", "--reuse-from", str(src / "run")) == 1
+    summary = json.loads((dst / "run" / "rank.json").read_text())
+    assert any("a side gave no usable verdict" in w for w in summary["warnings"])
+    clarity = summary["reuse"]["freshness"]["clarity"]
+    assert clarity["compared"] == 5
+    assert clarity["disagreements"] == 0
+
+
 def test_the_judge_pass_stops_when_the_cli_version_differs(project, monkeypatch, capsys):
     monkeypatch.setattr(cli, "claude_version", lambda *args: "9.9.9 (test)")
     runner = FakeRankRunner()
