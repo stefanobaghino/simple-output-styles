@@ -10,7 +10,7 @@ dependencies = [
     # spacy imports click through typer, but new typer versions do not depend on click
     "click>=8,<9",
     "en-core-web-sm",
-    "markdown-it-py>=3,<4",
+    "markdown-it-py>=4,<5",
     "pyyaml>=6,<7",
 ]
 
