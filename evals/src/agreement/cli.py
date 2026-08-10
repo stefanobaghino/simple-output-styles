@@ -53,7 +53,7 @@ from rank.analysis import UNSTYLED
 from rank.judges import CLARITY_PROMPT, parse_pick
 from runner.generate import ISOLATION_FLAGS, GenerationError, Runner, subprocess_runner
 from runner.hermetic import CONFIG_MODE, hermetic_call, manifest_sha256
-from runner.provenance import claude_version, sha256_of
+from runner.provenance import check_cli_version, claude_version, sha256_of
 from runner.screening import screening_section
 from runner.spend import spend_section, spend_summary
 from runner.timing import timing_section, timing_summary
@@ -382,12 +382,17 @@ def _judge(
     raw_path = run_dir / arm_raw_name(args.model)
     meta_stored, rows = load_raw(raw_path)
     with hermetic_call("judge-agreement") as hermetic:
+        # The version check runs before the first billed call, inside
+        # the live hermetic directory; the same value lands in the meta.
+        cli_version = check_cli_version(
+            claude_version(hermetic.binary, hermetic.env), accept=args.accept_cli_version
+        )
         meta = build_meta(
             model=args.model,
             sample=args.sample,
             answers_sha256=sha256_of(run_dir / "answers.jsonl"),
             source_sha256s={name: sha256_of(run_dir / name) for name in SOURCE_FILES},
-            cli_version=claude_version(hermetic.binary, hermetic.env),
+            cli_version=cli_version,
         )
         if meta_stored is not None:
             meta, _ = reconcile_meta(
@@ -620,6 +625,14 @@ def main(argv: list[str] | None = None, run: Runner = subprocess_runner) -> int:
     parser.add_argument("run_dir", help="the run directory with the stored judge raw files")
     parser.add_argument(
         "--judge", action="store_true", help="run the live second-judge calls first"
+    )
+    parser.add_argument(
+        "--accept-cli-version",
+        action="store_true",
+        help=(
+            "judge under a CLI version other than the pin: an "
+            "intentional upgrade; the meta records the found version"
+        ),
     )
     parser.add_argument(
         "--model",

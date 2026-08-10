@@ -24,7 +24,7 @@ from .generate import (
     subprocess_runner,
 )
 from .hermetic import hermetic_call
-from .provenance import build_provenance, claude_version, sha256_of
+from .provenance import build_provenance, check_cli_version, claude_version, sha256_of
 from .report import arm_name, build_report
 from .reuse import check_answer_conditions, import_answers, importable_arms, load_source_provenance
 from .screening import screening_provenance, select_screening_prompts
@@ -144,6 +144,15 @@ def main(argv: list[str] | None = None, run: Runner = subprocess_runner) -> int:
             "style text, prompt set, and model match; generate only the rest"
         ),
     )
+    parser.add_argument(
+        "--accept-cli-version",
+        action="store_true",
+        help=(
+            "run under a CLI version other than the pin: an intentional "
+            "upgrade; the provenance records the found version, and the "
+            "comparison warns across the boundary"
+        ),
+    )
     args = parser.parse_args(argv)
     if args.parallel < 1:
         raise SystemExit(f"--parallel must be 1 or more, not {args.parallel}")
@@ -257,6 +266,13 @@ def main(argv: list[str] | None = None, run: Runner = subprocess_runner) -> int:
         answers_path.open("a", encoding="utf-8") as answers_file,
         hermetic_call("pairs") as hermetic,
     ):
+        # The version check runs before the first billed call, inside
+        # the live hermetic directory; the same value lands in the
+        # provenance.
+        cli_version = check_cli_version(
+            claude_version(hermetic.binary, hermetic.env), accept=args.accept_cli_version
+        )
+
         # The calls do not interact: each call is an isolated
         # subprocess, and the workdir stays read-only for the CLI. The
         # lock serializes the append, the progress line, and the
@@ -322,9 +338,6 @@ def main(argv: list[str] | None = None, run: Runner = subprocess_runner) -> int:
             # resolution is fixed; only the exit code says "stopped".
             print(f"the run stopped: {error}", file=sys.stderr)
             raise SystemExit(2) from error
-        # The version call needs the live hermetic directory, so it
-        # runs before the context closes.
-        cli_version = claude_version(hermetic.binary, hermetic.env)
 
     provenance = build_provenance(
         model=args.model,

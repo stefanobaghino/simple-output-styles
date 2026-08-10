@@ -16,7 +16,7 @@ from pathlib import Path
 from gate.cli import load_answers, run_provenance
 from runner.generate import GenerationError, Runner, subprocess_runner
 from runner.hermetic import hermetic_call
-from runner.provenance import claude_version, sha256_of
+from runner.provenance import check_cli_version, claude_version, sha256_of
 from runner.screening import screening_section
 from runner.spend import spend_summary
 from runner.timing import timing_summary
@@ -73,10 +73,15 @@ def _judge(
 
     raw_path = run_dir / "rank-raw.jsonl"
     with hermetic_call("judge-rank") as hermetic:
+        # The version check runs before the first billed call, inside
+        # the live hermetic directory; the same value lands in the meta.
+        cli_version = check_cli_version(
+            claude_version(hermetic.binary, hermetic.env), accept=args.accept_cli_version
+        )
         meta = build_meta(
             model=args.model,
             answers_sha256=sha256_of(run_dir / "answers.jsonl"),
-            cli_version=claude_version(hermetic.binary, hermetic.env),
+            cli_version=cli_version,
         )
         meta_upgraded = False
         if meta_stored is not None:
@@ -180,6 +185,14 @@ def main(argv: list[str] | None = None, run: Runner = subprocess_runner) -> int:
     )
     parser.add_argument("run_dir", help="the run directory with answers.jsonl and fidelity.jsonl")
     parser.add_argument("--judge", action="store_true", help="run the live judge calls first")
+    parser.add_argument(
+        "--accept-cli-version",
+        action="store_true",
+        help=(
+            "judge under a CLI version other than the pin: an "
+            "intentional upgrade; the meta records the found version"
+        ),
+    )
     parser.add_argument("--model", default="opus", help="the contest judge model")
     parser.add_argument(
         "--parallel",

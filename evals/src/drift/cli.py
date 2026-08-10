@@ -18,7 +18,13 @@ from linter import Linter, load_rules
 from runner.cli import discover_styles, load_prompts
 from runner.generate import GenerationError, Runner, subprocess_runner
 from runner.hermetic import hermetic_call
-from runner.provenance import build_provenance, claude_version, linter_toolchain, sha256_of
+from runner.provenance import (
+    build_provenance,
+    check_cli_version,
+    claude_version,
+    linter_toolchain,
+    sha256_of,
+)
 from runner.spend import spend_summary
 
 from .analysis import CONTEXT_WINDOW, DEPTH_TARGET, load_sessions, score_sessions
@@ -68,6 +74,12 @@ def _generate(
         sessions_path.open("a", encoding="utf-8") as sessions_file,
         hermetic_call("drift") as hermetic,
     ):
+        # The version check runs before the first billed call, inside
+        # the live hermetic directory; the same value lands in the
+        # provenance.
+        cli_version = check_cli_version(
+            claude_version(hermetic.binary, hermetic.env), accept=args.accept_cli_version
+        )
         for style in styles:
             for repeat in range(1, args.repeats + 1):
                 present = {turn for (s, r, turn) in existing if s == style and r == repeat}
@@ -124,9 +136,6 @@ def _generate(
                 except GenerationError as error:
                     failures.append(f"{style}: session {repeat} failed: {error}")
                     print(f"  failed: {error}", file=sys.stderr)
-        # The version call needs the live hermetic directory, so it
-        # runs before the context closes.
-        cli_version = claude_version(hermetic.binary, hermetic.env)
 
     provenance = build_provenance(
         model=args.model,
@@ -211,6 +220,15 @@ def main(argv: list[str] | None = None, run: Runner = subprocess_runner) -> int:
         ),
     )
     parser.add_argument("--generate", action="store_true", help="run the missing sessions first")
+    parser.add_argument(
+        "--accept-cli-version",
+        action="store_true",
+        help=(
+            "generate under a CLI version other than the pin: an "
+            "intentional upgrade; the provenance records the found "
+            "version, and the comparison warns across the boundary"
+        ),
+    )
     parser.add_argument("--prompts", default="prompts/prompts.yaml", help="the prompt set")
     parser.add_argument(
         "--scripts",

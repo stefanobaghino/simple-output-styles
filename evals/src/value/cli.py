@@ -18,7 +18,7 @@ from gate.cli import load_answers
 from loss.judges import FACT_MINE, parse_string_list
 from runner.generate import GenerationError, Runner, subprocess_runner
 from runner.hermetic import hermetic_call
-from runner.provenance import claude_version, sha256_of
+from runner.provenance import check_cli_version, claude_version, sha256_of
 from runner.screening import screening_section
 from runner.spend import spend_summary
 from runner.timing import timing_summary
@@ -219,6 +219,11 @@ def _judge(args, run_dir: Path, pairs, index, meta_stored, rows, run: Runner) ->
 
     raw_path = run_dir / "value-raw.jsonl"
     with hermetic_call("judge-value") as hermetic:
+        # The version check runs before the first billed call, inside
+        # the live hermetic directory; the same value lands in the meta.
+        cli_version = check_cli_version(
+            claude_version(hermetic.binary, hermetic.env), accept=args.accept_cli_version
+        )
         meta = build_meta(
             reader_model=args.model_reader,
             grader_model=args.model_grader,
@@ -227,7 +232,7 @@ def _judge(args, run_dir: Path, pairs, index, meta_stored, rows, run: Runner) ->
             replicates=args.replicates,
             language=args.language,
             answers_sha256=answers_sha256,
-            cli_version=claude_version(hermetic.binary, hermetic.env),
+            cli_version=cli_version,
         )
         meta_upgraded = False
         if meta_stored is not None:
@@ -409,6 +414,14 @@ def main(argv: list[str] | None = None, run: Runner = subprocess_runner) -> int:
     )
     parser.add_argument("run_dir", help="the run directory with answers.jsonl and fidelity.jsonl")
     parser.add_argument("--judge", action="store_true", help="run the live judge calls first")
+    parser.add_argument(
+        "--accept-cli-version",
+        action="store_true",
+        help=(
+            "judge under a CLI version other than the pin: an "
+            "intentional upgrade; the meta records the found version"
+        ),
+    )
     parser.add_argument("--model-reader", default="haiku", help="the weak-reader model")
     parser.add_argument("--model-grader", default="opus", help="the question and grading model")
     parser.add_argument(

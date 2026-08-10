@@ -13,7 +13,7 @@ from pathlib import Path
 import pytest
 
 from runner.generate import GenerationError
-from runner.provenance import sha256_of
+from runner.provenance import CLI_VERSION_PIN, sha256_of
 from value import cli, extract_json, judge_argv, score_checks, select_pairs
 from value.analysis import shared_facts
 from value.judges import (
@@ -1613,3 +1613,25 @@ def test_cli_reuse_design_mismatch_exits_2(tmp_path):
     with pytest.raises(SystemExit) as error:
         run_cli(dst, "--judge", "--checks", "comprehension", "--reuse-from", str(source))
     assert error.value.code == 2
+
+
+def test_the_judge_pass_stops_when_the_cli_version_differs(project, monkeypatch, capsys):
+    monkeypatch.setattr(cli, "claude_version", lambda *args: "9.9.9 (test)")
+    runner = FakeJudgeRunner()
+    with pytest.raises(SystemExit) as error:
+        run_cli(project, "--judge", run=runner)
+    assert error.value.code == 2
+    assert runner.calls == []
+    stderr = capsys.readouterr().err
+    assert CLI_VERSION_PIN in stderr
+    assert "9.9.9 (test)" in stderr
+
+
+def test_an_offline_rescore_ignores_the_installed_cli_version(project, monkeypatch):
+    assert run_cli(project, "--judge") == 0
+
+    def boom(*args):
+        raise AssertionError("the offline path must not read the CLI version")
+
+    monkeypatch.setattr(cli, "claude_version", boom)
+    assert run_cli(project) == 0

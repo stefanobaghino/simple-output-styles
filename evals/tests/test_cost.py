@@ -11,7 +11,7 @@ from cost.analysis import distribution
 from cost.probe import overhead_stats
 from cost.report import SHORTNESS_WARNING
 from runner import GenerationError, PluginLeakError
-from runner.provenance import sha256_of
+from runner.provenance import CLI_VERSION_PIN, sha256_of
 
 
 def answer(prompt_id, style, output_tokens):
@@ -622,3 +622,25 @@ def test_cli_reuse_probe_rejects_another_model(project):
     with pytest.raises(SystemExit) as error:
         cli.main(argv, run=FakeProbeRunner())
     assert error.value.code == 2
+
+
+def test_the_probe_stops_before_any_call_when_the_cli_version_differs(project, monkeypatch, capsys):
+    monkeypatch.setattr(cli, "claude_version", lambda *args: "9.9.9 (test)")
+    runner = FakeProbeRunner()
+    with pytest.raises(SystemExit) as error:
+        run_cli(project, "--probe", run=runner)
+    assert error.value.code == 2
+    assert runner.calls == []
+    stderr = capsys.readouterr().err
+    assert CLI_VERSION_PIN in stderr
+    assert "9.9.9 (test)" in stderr
+
+
+def test_a_report_without_probe_ignores_the_installed_cli_version(project, monkeypatch):
+    assert run_cli(project, "--probe") == 0
+
+    def boom(*args):
+        raise AssertionError("the offline path must not read the CLI version")
+
+    monkeypatch.setattr(cli, "claude_version", boom)
+    assert run_cli(project) == 0

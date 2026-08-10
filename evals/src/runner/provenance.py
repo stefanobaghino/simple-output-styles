@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import hashlib
 import subprocess
+import sys
 from datetime import UTC, datetime
 from importlib import metadata
 from pathlib import Path
@@ -76,6 +77,43 @@ def claude_version(binary: str | None = "claude", env: dict[str, str] | None = N
     except (OSError, subprocess.CalledProcessError):
         return None
     return completed.stdout.strip()
+
+
+CLI_VERSION_PIN = "2.1.226 (Claude Code)"
+"""The Claude CLI version that every live invocation must run under.
+
+The CLI auto-updates, so the installed version drifts silently; the
+pin turns the drift into a stop before the first billed call. A pin
+move is a deliberate PR, and it opens a comparability era: the
+comparison warns when two runs store different versions.
+"""
+
+
+def check_cli_version(found: str | None, *, accept: bool = False) -> str:
+    """Stop a live invocation whose CLI differs from the pin.
+
+    Offline scoring never calls this, so every stored run rescores
+    under any installed CLI. A missing version fails even with
+    accept, because a live run without a readable version cannot be
+    attributed.
+    """
+    if found is None:
+        print(
+            f"the Claude CLI version must be {CLI_VERSION_PIN!r}, "
+            "but no CLI version is readable — is claude on the PATH?",
+            file=sys.stderr,
+        )
+        raise SystemExit(2)
+    if found != CLI_VERSION_PIN and not accept:
+        print(
+            f"the Claude CLI version must be {CLI_VERSION_PIN!r}, "
+            f"but the installed CLI reports {found!r}; pass "
+            "--accept-cli-version for an intentional upgrade, and move "
+            "the pin by PR",
+            file=sys.stderr,
+        )
+        raise SystemExit(2)
+    return found
 
 
 def build_provenance(

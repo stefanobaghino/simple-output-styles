@@ -12,6 +12,7 @@ import pytest
 
 from rank import build_schedule, cli, contest_key, fit_bradley_terry, parse_pick, score_contests
 from rank.judges import JUDGE_PROMPTS_SHA256
+from runner.provenance import CLI_VERSION_PIN
 
 ALPHA_TEXT = "The quick brown fox jumps."
 BETA_TEXT = "The big red bear sleeps."
@@ -878,3 +879,15 @@ def test_cli_reuse_pairs_on_both_shas(tmp_path):
     assert summary["reuse"]["live_calls"] == 6
     assert summary["reuse"]["freshness"]["sampled"] == 2
     assert summary["reuse"]["freshness"]["agreements"] == 2
+
+
+def test_the_judge_pass_stops_when_the_cli_version_differs(project, monkeypatch, capsys):
+    monkeypatch.setattr(cli, "claude_version", lambda *args: "9.9.9 (test)")
+    runner = FakeRankRunner()
+    with pytest.raises(SystemExit) as error:
+        run_cli(project, "--judge", run=runner)
+    assert error.value.code == 2
+    assert runner.calls == []
+    stderr = capsys.readouterr().err
+    assert CLI_VERSION_PIN in stderr
+    assert "9.9.9 (test)" in stderr
