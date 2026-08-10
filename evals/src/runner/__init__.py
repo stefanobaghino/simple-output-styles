@@ -6,9 +6,11 @@ with their provenance.
 """
 
 from .generate import (
+    WRITER_MODEL_PINS,
     Generation,
     GenerationError,
     PluginLeakError,
+    WriterPinError,
     build_argv,
     generate,
     parse_events,
@@ -19,10 +21,12 @@ from .hermetic import CONFIG_MODE, Hermetic, hermetic_call, manifest_sha256
 
 __all__ = [
     "CONFIG_MODE",
+    "WRITER_MODEL_PINS",
     "Generation",
     "GenerationError",
     "Hermetic",
     "PluginLeakError",
+    "WriterPinError",
     "build_argv",
     "generate",
     "hermetic_call",

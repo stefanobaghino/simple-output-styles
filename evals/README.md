@@ -277,6 +277,17 @@ and the names of the passed variables. The
 config mode marks a comparability era: a run from before the
 hermetic directory saw the user plugins, so old runs and new runs
 warn in a comparison.
+The writer model is pinned, like the judge models: the requested
+alias must resolve to one exact model ID (`sonnet` to
+`claude-sonnet-5`, the resolution of the stored baseline), and the
+runner checks the resolution of every generation call against the
+init event. A call that resolves elsewhere stops the whole run with
+exit code 2, without a retry, because the mismatch is not transient
+and a run that continued would split its answers across writer
+models. The stored rows stay valid and the run resumes once the
+resolution is fixed. The provenance records the pin (`model_pin`)
+next to the requested alias, and a pin change opens a comparability
+era: the comparison warns when two runs store different pins.
 The generation calls run several at a time (8 by default), and
 `--parallel` sets the count (1 runs one call at a time). The calls do
 not interact, so the concurrency changes no condition of a run. The
@@ -320,12 +331,15 @@ the default directory already holds a complete run, a repeat without
 `--out` starts the next free letter suffix (`runs/<date>b`, then `c`,
 and so on) and tells the choice, because a silent reuse of a complete
 run produces no new sample. The
-runner exits with code 1 when the pair set is incomplete.
+runner exits with code 1 when the pair set is incomplete, and with
+code 2 when the writer pin stops a call.
 Reuse across runs exists, but only as an explicit flag, never as a
 default: `--reuse-from RUN` imports the stored answers of another
 run for the arms whose conditions match, and generates only the
 rest. The conditions are the prompt-set hash, the writer model, the
-screening mode, and the style text hash per styled arm. An imported
+screening mode, and the style text hash per styled arm; the source
+answers must also obey the current writer pin, because rows from
+another resolution belong to another era. An imported
 row is the source row plus a `reused_from` marker, so the report
 and the provenance state the counts. Reuse opens no era, because a
 reused row and a live row are the same row. The section "Reuse
@@ -596,9 +610,9 @@ hedge survival medians, the Bradley-Terry strength, and the net
 wins against the unstyled competitor. The unstyled anchor gets no
 section of its own, because its strength is 1.0 by construction. The comparison is offline and makes no
 judge calls. The runs must share their conditions: the tool checks
-the prompt-set hash, the style and rule hashes, the writer model,
-the Claude CLI version, the workdir mode, the config mode and its
-manifest hash, the judge parameters,
+the prompt-set hash, the style and rule hashes, the writer model
+and its pin, the Claude CLI version, the workdir mode, the config
+mode and its manifest hash, the judge parameters,
 the resolved judge models, the judge-prompt hashes, and the
 fact-mine design, and a mismatch
 becomes a warning, because the reader must see how far apart the
@@ -606,7 +620,9 @@ conditions are. The binary path stays out of the check, because an
 absolute path is machine-local; the CLI version is the
 cross-machine invariant. A run from before the judge-prompt hash
 states no hash, and that entry stays silent for it, because the
-prompt text did not differ across that boundary. A missing artifact drops the axes of that artifact
+prompt text did not differ across that boundary. The writer pin
+entry stays silent for an old run in the same way, because the pin
+equals the resolution of the stored baseline. A missing artifact drops the axes of that artifact
 for that run, and n states the run count per axis. Exit codes: 0
 when no warnings exist, 1 when warnings exist, 2 when the
 comparison cannot run.
@@ -643,8 +659,8 @@ The reuse works in two chained layers, because a fresh generation
 of the same style and prompt yields a different text, and a stored
 judge row speaks about the stored answer. First the pair runner
 imports the answers whose conditions match: the prompt-set hash,
-the writer model, the screening mode, and the style text hash per
-styled arm. Then each judge tool imports the stored rows that
+the writer model and its pin, the screening mode, and the style
+text hash per styled arm. Then each judge tool imports the stored rows that
 reference the answers of the current run. The judge keys carry the
 answer hashes, so a key hit is a content hit. The comprehension
 keys carry the style and the prompt id instead, so those rows
@@ -895,7 +911,7 @@ pair runner picks the suffix on a same-day repeat:
 
 ```
 runs/<YYYY-MM-DD>/
-  provenance.json   # prompt-set hash, conditions (workdir and config modes), style hashes, linter toolchain
+  provenance.json   # prompt-set hash, conditions (writer pin, workdir and config modes), style hashes, linter toolchain
   answers.jsonl     # one line per answer; style null marks the unstyled answer
   report.md         # completeness, volume, call timing, environment, warnings
   fidelity.jsonl    # one line per (answer, rule set), with the pass or fail mark

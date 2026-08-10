@@ -27,6 +27,7 @@ def write_run(
     net: int = 4,
     rank_model: str = "opus",
     rank_resolved: str | None = None,
+    writer_pin: str | None = None,
     style_sha: str = "s" * 8,
     claude_version: str = "2.0.0 (Claude Code)",
     workdir: str | None = "temp",
@@ -42,6 +43,8 @@ def write_run(
     run_dir = runs_dir / name
     run_dir.mkdir(parents=True)
     conditions = {"model_requested": "sonnet", "claude_version": claude_version}
+    if writer_pin is not None:
+        conditions["model_pin"] = writer_pin
     if workdir is not None:
         conditions["workdir"] = workdir
     if config is not None:
@@ -328,6 +331,26 @@ def test_a_resolved_judge_model_mismatch_warns(tmp_path):
     assert summary["warnings"] == [
         "condition mismatch on rank judge model_resolved: run-a claude-opus-5, run-b claude-opus-6",
     ]
+
+
+def test_a_writer_pin_mismatch_warns(tmp_path):
+    runs = tmp_path / "runs"
+    write_run(runs, "run-a", writer_pin="claude-sonnet-5")
+    write_run(runs, "run-b", writer_pin="claude-sonnet-6")
+    code, summary, _ = run_cli(tmp_path, "run-a", "run-b")
+    assert code == 1
+    assert summary["warnings"] == [
+        "condition mismatch on writer model pin: run-a claude-sonnet-5, run-b claude-sonnet-6",
+    ]
+
+
+def test_a_run_without_a_writer_pin_stays_silent(tmp_path):
+    runs = tmp_path / "runs"
+    write_run(runs, "run-a", writer_pin="claude-sonnet-5")
+    write_run(runs, "run-b")
+    code, summary, _ = run_cli(tmp_path, "run-a", "run-b")
+    assert code == 0
+    assert summary["warnings"] == []
 
 
 def test_a_condition_mismatch_warns(tmp_path):

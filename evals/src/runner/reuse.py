@@ -95,13 +95,17 @@ def import_answers(
     arms: list[str | None],
     prompt_ids: list[str],
     source_name: str,
+    expected_model: str,
 ) -> int:
     """Append the missing source answers, marked; returns the count.
 
     Only a key that the current run does not hold imports, so a
     resumed reuse invocation appends nothing. A source without a row
     for a key leaves that key to the live generation. A chained
-    marker is overwritten with the direct source.
+    marker is overwritten with the direct source. A source row whose
+    resolved model differs from the current writer pin comes from
+    another writer era and stops the import, like the judge-side
+    check_source_pins.
     """
     source_path = source_dir / "answers.jsonl"
     if not source_path.exists():
@@ -112,16 +116,26 @@ def import_answers(
             continue
         answer = json.loads(line)
         source[(answer["prompt_id"], arm_name(answer.get("style")))] = answer
+    todo: list[tuple[tuple[str, str], dict]] = []
+    for style in arms:
+        for prompt_id in prompt_ids:
+            key = (prompt_id, arm_name(style))
+            row = source.get(key)
+            if key in existing or row is None:
+                continue
+            # The check runs before any append, so a cross-era source
+            # never leaves a partial import behind.
+            if row.get("model") != expected_model:
+                raise SystemExit(
+                    f"{source_dir}: the source answers resolved the writer to "
+                    f"{row.get('model')!r}, not {expected_model!r} — another writer era"
+                )
+            todo.append((key, row))
     imported = 0
     with answers_path.open("a", encoding="utf-8") as answers_file:
-        for style in arms:
-            for prompt_id in prompt_ids:
-                key = (prompt_id, arm_name(style))
-                row = source.get(key)
-                if key in existing or row is None:
-                    continue
-                marked = {**row, "reused_from": source_name}
-                answers_file.write(json.dumps(marked, ensure_ascii=False) + "\n")
-                existing[key] = marked
-                imported += 1
+        for key, row in todo:
+            marked = {**row, "reused_from": source_name}
+            answers_file.write(json.dumps(marked, ensure_ascii=False) + "\n")
+            existing[key] = marked
+            imported += 1
     return imported

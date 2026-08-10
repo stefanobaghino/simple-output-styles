@@ -48,6 +48,16 @@ TIMEOUT_SECONDS = 600
 # repo tree leaks workspace context into every call.
 WORKDIR_MODE = "temp"
 
+WRITER_MODEL_PINS = {
+    "sonnet": "claude-sonnet-5",
+}
+"""The exact model ID that a writer alias must resolve to.
+
+An alias outside the table must resolve to itself, so an exact ID
+passes and an unpinned alias fails loudly. A pin change opens a new
+comparability era for the generation calls, like WORKDIR_MODE does.
+"""
+
 
 @contextmanager
 def isolated_workdir(tool: str) -> Iterator[Path]:
@@ -66,6 +76,15 @@ class PluginLeakError(GenerationError):
     The leak is deterministic within an invocation, so a retry burns
     a call without a chance of success. The callers never retry this
     error.
+    """
+
+
+class WriterPinError(GenerationError):
+    """The writer model resolved outside its pin.
+
+    The mismatch is deterministic, so a retry cannot succeed, and a
+    run that continued would split its answers across writer models.
+    The run stops with exit code 2.
     """
 
 
@@ -203,12 +222,19 @@ def generate(
         )
     if result.get("is_error"):
         raise GenerationError(f"claude reported an error: {str(result.get('result', ''))[:500]}")
+    expected_model = WRITER_MODEL_PINS.get(model, model)
+    resolved_model = str(init.get("model", ""))
+    if resolved_model != expected_model:
+        raise WriterPinError(
+            f"the writer model {model!r} must resolve to {expected_model!r}, "
+            f"but the CLI resolved it to {resolved_model!r}"
+        )
 
     usage = result.get("usage") or {}
     return Generation(
         answer=str(result.get("result", "")),
         output_style=active_style,
-        resolved_model=str(init.get("model", "")),
+        resolved_model=resolved_model,
         models_used=tuple(sorted((result.get("modelUsage") or {}).keys())),
         plugins=tuple(sorted(p["name"] for p in init.get("plugins", []))),
         claude_code_version=str(init.get("claude_code_version", "")),

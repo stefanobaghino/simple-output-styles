@@ -56,6 +56,14 @@ def _condition_entries(run: dict) -> dict[str, object]:
         entries[f"style hash ({style})"] = info.get("sha256")
     conditions = provenance.get("conditions", {})
     entries["writer model"] = conditions.get("model_requested")
+    # The pin entry follows the inverted era semantics of the value
+    # judge prompts below: a run from before the writer pin stores
+    # none, and the pin equals the resolution of the stored baseline,
+    # so old-versus-new stays silent and two stored pins that differ
+    # warn. The pin is enforced per call, so it is the resolved
+    # writer of every complete run.
+    if conditions.get("model_pin") is not None:
+        entries["writer model pin"] = conditions["model_pin"]
     entries["claude version"] = conditions.get("claude_version")
     # A run before the temp-workdir change has no key here, so the
     # entry is None there, and an old-versus-new comparison warns:
