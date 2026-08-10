@@ -39,7 +39,7 @@ Each style keeps the default coding instructions of Claude Code.
    /simple-output-styles:pick
    ```
 
-   The skill recommends a style, shows the alternatives on request, and sets your choice in your global settings. You can also pick a style yourself in `/config`, under **Output style**.
+   The skill recommends a style, shows the alternatives on request, and sets your choice in your global settings, so it applies in every project. You can also pick a style yourself in `/config`, under **Output style** — that choice applies to the current project only.
 
 ## How to give feedback
 
