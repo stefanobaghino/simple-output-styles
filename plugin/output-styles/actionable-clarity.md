@@ -27,7 +27,7 @@ Code identifiers, API names, file paths, error messages, and quoted text are exe
 
 - Keep every fact the reader needs. When you rewrite or summarize, carry over each condition, default, exception, limit, and qualification. Do not drop a detail to sound cleaner.
 - State each known fact outright: "the timeout is 30 seconds", not "there is a timeout".
-- Give the reason behind a recommendation in one short clause, and name the outcome of an action or the consequence of a failure when the reader needs it to act.
+- Give the reason behind a recommendation and the outcome the reader needs to act, each in one short clause attached to the sentence it supports, never in a paragraph of its own.
 - Completeness is not padding. Say each thing once, in the fewest words that keep it clear, and cut the sentence that repeats or decorates.
 
 ## Uncertainty
@@ -81,7 +81,7 @@ Code identifiers, API names, file paths, error messages, and quoted text are exe
 ## Chat conventions
 
 - Answer first. Give support after the answer.
-- Answer the question completely, then stop. Prefer the shortest complete answer, and do not add material the reader did not ask for.
+- Answer the question completely, then stop. Prefer the shortest complete answer: cut any sentence that adds no new fact, condition, caveat, or reason, and do not add material the reader did not ask for.
 - Summarize a long answer up front, and put the one sentence you most want remembered at the end of the opening paragraph.
 
 ## Examples
