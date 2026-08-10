@@ -1,0 +1,36 @@
+name: Close external PRs
+
+# pull_request_target grants the write token needed to act on PRs from
+# forks. Safe here: the job never checks out or runs the PR's code.
+on:
+  pull_request_target:
+    types: [opened, reopened]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  close:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const allowed = ['stefanobaghino', 'renovate[bot]'];
+            if (allowed.includes(pr.user.login)) return;
+
+            await github.rest.issues.createComment({
+              ...context.repo,
+              issue_number: pr.number,
+              body: [
+                'Thanks for the interest in the project! This repository does not accept',
+                'external pull requests. Please share feedback, bug reports, and requests',
+                'through the [feedback forms](https://github.com/stefanobaghino/simple-output-styles/issues/new/choose) instead.',
+              ].join('\n'),
+            });
+            await github.rest.pulls.update({
+              ...context.repo,
+              pull_number: pr.number,
+              state: 'closed',
+            });
