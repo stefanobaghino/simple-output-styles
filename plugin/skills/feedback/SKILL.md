@@ -1,6 +1,7 @@
 ---
 name: feedback
 description: Guide the user to open a feedback issue for the simple-output-styles plugin. Use when the user wants to report feedback on an output style, the evals, the documentation, the installation, licensing, or wants to request a new style. Gathers the Claude Code version and the active style, then prepares a prefilled GitHub issue link.
+disable-model-invocation: true
 ---
 
 # Provide feedback on simple-output-styles
