@@ -1,0 +1,473 @@
+{
+  "date": "2026-08-10T16:33:26+00:00",
+  "run": "2026-08-10h",
+  "answer_ratio": {
+    "per_style": {
+      "actionable-clarity": {
+        "pairs": 32,
+        "styled_output_tokens_total": 33883,
+        "unstyled_output_tokens_total": 33620,
+        "ratio_of_totals": 1.01,
+        "distribution": {
+          "n": 32,
+          "min": 0.27,
+          "p25": 0.89,
+          "median": 1.02,
+          "p75": 1.27,
+          "max": 3.17,
+          "mean": 1.17
+        },
+        "by_task_type": {
+          "code-review": {
+            "n": 8,
+            "min": 0.76,
+            "median": 1.01,
+            "mean": 1.17,
+            "max": 2.04
+          },
+          "debugging": {
+            "n": 8,
+            "min": 0.27,
+            "median": 1.1,
+            "mean": 1.11,
+            "max": 2.16
+          },
+          "explanation": {
+            "n": 8,
+            "min": 0.58,
+            "median": 1.09,
+            "mean": 1.41,
+            "max": 3.17
+          },
+          "summarization": {
+            "n": 8,
+            "min": 0.72,
+            "median": 1.03,
+            "mean": 1.0,
+            "max": 1.12
+          }
+        }
+      },
+      "clarity-flow": {
+        "pairs": 32,
+        "styled_output_tokens_total": 20021,
+        "unstyled_output_tokens_total": 33620,
+        "ratio_of_totals": 0.6,
+        "distribution": {
+          "n": 32,
+          "min": 0.24,
+          "p25": 0.54,
+          "median": 0.79,
+          "p75": 1.0,
+          "max": 1.71,
+          "mean": 0.83
+        },
+        "by_task_type": {
+          "code-review": {
+            "n": 8,
+            "min": 0.32,
+            "median": 0.67,
+            "mean": 0.69,
+            "max": 1.39
+          },
+          "debugging": {
+            "n": 8,
+            "min": 0.24,
+            "median": 0.94,
+            "mean": 0.76,
+            "max": 1.37
+          },
+          "explanation": {
+            "n": 8,
+            "min": 0.47,
+            "median": 0.68,
+            "mean": 0.89,
+            "max": 1.71
+          },
+          "summarization": {
+            "n": 8,
+            "min": 0.71,
+            "median": 0.87,
+            "mean": 0.98,
+            "max": 1.5
+          }
+        }
+      },
+      "classic-concise": {
+        "pairs": 32,
+        "styled_output_tokens_total": 23123,
+        "unstyled_output_tokens_total": 33620,
+        "ratio_of_totals": 0.69,
+        "distribution": {
+          "n": 32,
+          "min": 0.33,
+          "p25": 0.57,
+          "median": 0.71,
+          "p75": 0.88,
+          "max": 1.58,
+          "mean": 0.75
+        },
+        "by_task_type": {
+          "code-review": {
+            "n": 8,
+            "min": 0.39,
+            "median": 0.78,
+            "mean": 0.76,
+            "max": 1.13
+          },
+          "debugging": {
+            "n": 8,
+            "min": 0.33,
+            "median": 0.62,
+            "mean": 0.69,
+            "max": 1.02
+          },
+          "explanation": {
+            "n": 8,
+            "min": 0.41,
+            "median": 0.68,
+            "mean": 0.79,
+            "max": 1.58
+          },
+          "summarization": {
+            "n": 8,
+            "min": 0.6,
+            "median": 0.73,
+            "mean": 0.75,
+            "max": 1.02
+          }
+        }
+      },
+      "developer-docs": {
+        "pairs": 32,
+        "styled_output_tokens_total": 30965,
+        "unstyled_output_tokens_total": 33620,
+        "ratio_of_totals": 0.92,
+        "distribution": {
+          "n": 32,
+          "min": 0.28,
+          "p25": 0.79,
+          "median": 0.99,
+          "p75": 1.2,
+          "max": 4.55,
+          "mean": 1.18
+        },
+        "by_task_type": {
+          "code-review": {
+            "n": 8,
+            "min": 0.37,
+            "median": 1.04,
+            "mean": 1.06,
+            "max": 2.09
+          },
+          "debugging": {
+            "n": 8,
+            "min": 0.28,
+            "median": 0.87,
+            "mean": 1.09,
+            "max": 2.76
+          },
+          "explanation": {
+            "n": 8,
+            "min": 0.75,
+            "median": 0.96,
+            "mean": 1.55,
+            "max": 4.55
+          },
+          "summarization": {
+            "n": 8,
+            "min": 0.78,
+            "median": 1.07,
+            "mean": 1.03,
+            "max": 1.2
+          }
+        }
+      },
+      "plain-language": {
+        "pairs": 32,
+        "styled_output_tokens_total": 27687,
+        "unstyled_output_tokens_total": 33620,
+        "ratio_of_totals": 0.82,
+        "distribution": {
+          "n": 32,
+          "min": 0.05,
+          "p25": 0.62,
+          "median": 1.0,
+          "p75": 1.31,
+          "max": 3.37,
+          "mean": 1.07
+        },
+        "by_task_type": {
+          "code-review": {
+            "n": 8,
+            "min": 0.31,
+            "median": 0.49,
+            "mean": 0.68,
+            "max": 1.17
+          },
+          "debugging": {
+            "n": 8,
+            "min": 0.42,
+            "median": 1.07,
+            "mean": 1.15,
+            "max": 2.03
+          },
+          "explanation": {
+            "n": 8,
+            "min": 0.05,
+            "median": 0.91,
+            "mean": 1.25,
+            "max": 3.37
+          },
+          "summarization": {
+            "n": 8,
+            "min": 0.77,
+            "median": 1.2,
+            "mean": 1.21,
+            "max": 2.14
+          }
+        }
+      },
+      "technical-simplified": {
+        "pairs": 32,
+        "styled_output_tokens_total": 36702,
+        "unstyled_output_tokens_total": 33620,
+        "ratio_of_totals": 1.09,
+        "distribution": {
+          "n": 32,
+          "min": 0.26,
+          "p25": 0.75,
+          "median": 0.95,
+          "p75": 1.37,
+          "max": 2.79,
+          "mean": 1.17
+        },
+        "by_task_type": {
+          "code-review": {
+            "n": 8,
+            "min": 0.65,
+            "median": 1.01,
+            "mean": 1.11,
+            "max": 1.79
+          },
+          "debugging": {
+            "n": 8,
+            "min": 0.26,
+            "median": 1.02,
+            "mean": 1.06,
+            "max": 2.08
+          },
+          "explanation": {
+            "n": 8,
+            "min": 0.55,
+            "median": 0.86,
+            "mean": 1.37,
+            "max": 2.79
+          },
+          "summarization": {
+            "n": 8,
+            "min": 0.78,
+            "median": 0.94,
+            "mean": 1.14,
+            "max": 2.63
+          }
+        }
+      }
+    }
+  },
+  "input_overhead": {
+    "measured": true,
+    "per_style": {
+      "actionable-clarity": {
+        "tokens": {
+          "n": 3,
+          "per_repeat": [
+            2061,
+            2061,
+            2061
+          ],
+          "min": 2061,
+          "mean": 2061.0,
+          "max": 2061,
+          "stdev": 0.0
+        },
+        "weighted": {
+          "n": 3,
+          "per_repeat": [
+            206.1,
+            206.1,
+            206.1
+          ],
+          "min": 206.1,
+          "mean": 206.1,
+          "max": 206.1,
+          "stdev": 0.0
+        },
+        "styled_input_total_mean": 10515.0,
+        "unstyled_input_total_mean": 8454.0
+      },
+      "clarity-flow": {
+        "tokens": {
+          "n": 3,
+          "per_repeat": [
+            1238,
+            1238,
+            1238
+          ],
+          "min": 1238,
+          "mean": 1238.0,
+          "max": 1238,
+          "stdev": 0.0
+        },
+        "weighted": {
+          "n": 3,
+          "per_repeat": [
+            9864.3,
+            123.8,
+            123.8
+          ],
+          "min": 123.8,
+          "mean": 3370.633,
+          "max": 9864.3,
+          "stdev": 5623.68
+        },
+        "styled_input_total_mean": 9692.0,
+        "unstyled_input_total_mean": 8454.0
+      },
+      "classic-concise": {
+        "tokens": {
+          "n": 3,
+          "per_repeat": [
+            1302,
+            1302,
+            1302
+          ],
+          "min": 1302,
+          "mean": 1302.0,
+          "max": 1302,
+          "stdev": 0.0
+        },
+        "weighted": {
+          "n": 3,
+          "per_repeat": [
+            1610.25,
+            130.2,
+            130.2
+          ],
+          "min": 130.2,
+          "mean": 623.55,
+          "max": 1610.25,
+          "stdev": 854.507
+        },
+        "styled_input_total_mean": 9756.0,
+        "unstyled_input_total_mean": 8454.0
+      },
+      "developer-docs": {
+        "tokens": {
+          "n": 3,
+          "per_repeat": [
+            1241,
+            1241,
+            1241
+          ],
+          "min": 1241,
+          "mean": 1241.0,
+          "max": 1241,
+          "stdev": 0.0
+        },
+        "weighted": {
+          "n": 3,
+          "per_repeat": [
+            1534.0,
+            124.1,
+            124.1
+          ],
+          "min": 124.1,
+          "mean": 594.067,
+          "max": 1534.0,
+          "stdev": 814.006
+        },
+        "styled_input_total_mean": 9695.0,
+        "unstyled_input_total_mean": 8454.0
+      },
+      "plain-language": {
+        "tokens": {
+          "n": 3,
+          "per_repeat": [
+            1460,
+            1460,
+            1460
+          ],
+          "min": 1460,
+          "mean": 1460.0,
+          "max": 1460,
+          "stdev": 0.0
+        },
+        "weighted": {
+          "n": 3,
+          "per_repeat": [
+            1807.75,
+            146.0,
+            146.0
+          ],
+          "min": 146.0,
+          "mean": 699.917,
+          "max": 1807.75,
+          "stdev": 959.412
+        },
+        "styled_input_total_mean": 9914.0,
+        "unstyled_input_total_mean": 8454.0
+      },
+      "technical-simplified": {
+        "tokens": {
+          "n": 3,
+          "per_repeat": [
+            1988,
+            1988,
+            1988
+          ],
+          "min": 1988,
+          "mean": 1988.0,
+          "max": 1988,
+          "stdev": 0.0
+        },
+        "weighted": {
+          "n": 3,
+          "per_repeat": [
+            2467.75,
+            198.8,
+            198.8
+          ],
+          "min": 198.8,
+          "mean": 955.117,
+          "max": 2467.75,
+          "stdev": 1309.979
+        },
+        "styled_input_total_mean": 10442.0,
+        "unstyled_input_total_mean": 8454.0
+      }
+    },
+    "probe_date": "2026-08-10T16:33:26+00:00",
+    "probe_model": "sonnet",
+    "repeats": 3,
+    "price_weights": {
+      "input_tokens": 1.0,
+      "cache_creation_input_tokens": 1.25,
+      "cache_read_input_tokens": 0.1
+    }
+  },
+  "warnings": [],
+  "reuse": {
+    "source": "2026-08-08",
+    "source_date": "2026-08-08T20:39:50+00:00",
+    "styles": [
+      "clarity-flow",
+      "classic-concise",
+      "developer-docs",
+      "plain-language",
+      "technical-simplified"
+    ],
+    "reused_arms": 18,
+    "live_arms": 6
+  }
+}

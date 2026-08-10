@@ -1,0 +1,593 @@
+{
+  "date": "2026-08-10T16:33:26+00:00",
+  "claude_version": "2.1.226 (Claude Code)",
+  "model_requested": "sonnet",
+  "probe_prompt": "Reply with the word OK.",
+  "flags": [
+    "--output-format",
+    "stream-json",
+    "--verbose",
+    "--no-session-persistence",
+    "--max-turns",
+    "1",
+    "--disallowedTools",
+    "*",
+    "--exclude-dynamic-system-prompt-sections",
+    "--strict-mcp-config"
+  ],
+  "config": "hermetic",
+  "config_manifest_sha256": "e3ef87bafe5a44a4929464925e932ad3a0ede1accc791d84f511e706c8d9abab",
+  "note": "Both probe arms load the plugin through --plugin-dir, unlike the unstyled arm of the runner. Thus the difference between a styled arm and the unstyled arm isolates the style block.",
+  "plugin": {
+    "dir": "/Users/ste/Projects/github.com/stefanobaghino/simple-claude-output-style/plugin",
+    "name": "simple-output-styles"
+  },
+  "styles": {
+    "actionable-clarity": {
+      "file": "/Users/ste/Projects/github.com/stefanobaghino/simple-claude-output-style/plugin/output-styles/actionable-clarity.md",
+      "sha256": "fe058081a440cc286d10415652808fb21992a638c66d1c4729d730807503a693"
+    },
+    "clarity-flow": {
+      "file": "/Users/ste/Projects/github.com/stefanobaghino/simple-claude-output-style/plugin/output-styles/clarity-flow.md",
+      "sha256": "b96eb83b01ad11b18ec5cf46dbb7203aad77de54ebafff10a6476b84cac19a06"
+    },
+    "classic-concise": {
+      "file": "/Users/ste/Projects/github.com/stefanobaghino/simple-claude-output-style/plugin/output-styles/classic-concise.md",
+      "sha256": "6adc8c4fb691900266f0cbceb873767423d623824387d8f14ef85d552ef06d44"
+    },
+    "developer-docs": {
+      "file": "/Users/ste/Projects/github.com/stefanobaghino/simple-claude-output-style/plugin/output-styles/developer-docs.md",
+      "sha256": "c62b6bf0a91ce36fe15d5318816eca56d318f5aa8e54fc5f9520e82bf46b9efc"
+    },
+    "plain-language": {
+      "file": "/Users/ste/Projects/github.com/stefanobaghino/simple-claude-output-style/plugin/output-styles/plain-language.md",
+      "sha256": "d9acbffcfb85937603524c3defc7491f91e86f24fcc679ec1247313b80bcbc04"
+    },
+    "technical-simplified": {
+      "file": "/Users/ste/Projects/github.com/stefanobaghino/simple-claude-output-style/plugin/output-styles/technical-simplified.md",
+      "sha256": "69bf572f15b1b570bd8ace5e93960150ec5f0096f0b71b9f42f8833ccaa4f089"
+    }
+  },
+  "repeats": 3,
+  "price_weights": {
+    "input_tokens": 1.0,
+    "cache_creation_input_tokens": 1.25,
+    "cache_read_input_tokens": 0.1
+  },
+  "arms": [
+    {
+      "arm": "unstyled",
+      "repeat": 0,
+      "output_style_active": "default",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 1220,
+      "cache_read_input_tokens": 7232,
+      "total_input_tokens": 8454,
+      "output_tokens": 4,
+      "duration_ms": 1753,
+      "wall_ms": 32232441,
+      "reused_from": "2026-08-08"
+    },
+    {
+      "arm": "clarity-flow",
+      "repeat": 0,
+      "output_style_active": "simple-output-styles:clarity-flow",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 9690,
+      "cache_read_input_tokens": 0,
+      "total_input_tokens": 9692,
+      "output_tokens": 4,
+      "duration_ms": 2181,
+      "wall_ms": 8779,
+      "reused_from": "2026-08-08"
+    },
+    {
+      "arm": "classic-concise",
+      "repeat": 0,
+      "output_style_active": "simple-output-styles:classic-concise",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2507,
+      "cache_read_input_tokens": 7247,
+      "total_input_tokens": 9756,
+      "output_tokens": 4,
+      "duration_ms": 2017,
+      "wall_ms": 9945,
+      "reused_from": "2026-08-08"
+    },
+    {
+      "arm": "developer-docs",
+      "repeat": 0,
+      "output_style_active": "simple-output-styles:developer-docs",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2446,
+      "cache_read_input_tokens": 7247,
+      "total_input_tokens": 9695,
+      "output_tokens": 4,
+      "duration_ms": 2342,
+      "wall_ms": 12103,
+      "reused_from": "2026-08-08"
+    },
+    {
+      "arm": "plain-language",
+      "repeat": 0,
+      "output_style_active": "simple-output-styles:plain-language",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2665,
+      "cache_read_input_tokens": 7247,
+      "total_input_tokens": 9914,
+      "output_tokens": 4,
+      "duration_ms": 2198,
+      "wall_ms": 8390,
+      "reused_from": "2026-08-08"
+    },
+    {
+      "arm": "technical-simplified",
+      "repeat": 0,
+      "output_style_active": "simple-output-styles:technical-simplified",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 3193,
+      "cache_read_input_tokens": 7247,
+      "total_input_tokens": 10442,
+      "output_tokens": 4,
+      "duration_ms": 2358,
+      "wall_ms": 8680,
+      "reused_from": "2026-08-08"
+    },
+    {
+      "arm": "unstyled",
+      "repeat": 1,
+      "output_style_active": "default",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 8452,
+      "total_input_tokens": 8454,
+      "output_tokens": 4,
+      "duration_ms": 2655,
+      "wall_ms": 5586,
+      "reused_from": "2026-08-08"
+    },
+    {
+      "arm": "clarity-flow",
+      "repeat": 1,
+      "output_style_active": "simple-output-styles:clarity-flow",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 9690,
+      "total_input_tokens": 9692,
+      "output_tokens": 4,
+      "duration_ms": 2033,
+      "wall_ms": 2958,
+      "reused_from": "2026-08-08"
+    },
+    {
+      "arm": "classic-concise",
+      "repeat": 1,
+      "output_style_active": "simple-output-styles:classic-concise",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 9754,
+      "total_input_tokens": 9756,
+      "output_tokens": 4,
+      "duration_ms": 1838,
+      "wall_ms": 2703,
+      "reused_from": "2026-08-08"
+    },
+    {
+      "arm": "developer-docs",
+      "repeat": 1,
+      "output_style_active": "simple-output-styles:developer-docs",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 9693,
+      "total_input_tokens": 9695,
+      "output_tokens": 4,
+      "duration_ms": 1795,
+      "wall_ms": 2614,
+      "reused_from": "2026-08-08"
+    },
+    {
+      "arm": "plain-language",
+      "repeat": 1,
+      "output_style_active": "simple-output-styles:plain-language",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 9912,
+      "total_input_tokens": 9914,
+      "output_tokens": 4,
+      "duration_ms": 1677,
+      "wall_ms": 2552,
+      "reused_from": "2026-08-08"
+    },
+    {
+      "arm": "technical-simplified",
+      "repeat": 1,
+      "output_style_active": "simple-output-styles:technical-simplified",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 10440,
+      "total_input_tokens": 10442,
+      "output_tokens": 4,
+      "duration_ms": 3041,
+      "wall_ms": 3924,
+      "reused_from": "2026-08-08"
+    },
+    {
+      "arm": "unstyled",
+      "repeat": 2,
+      "output_style_active": "default",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 8452,
+      "total_input_tokens": 8454,
+      "output_tokens": 4,
+      "duration_ms": 2821,
+      "wall_ms": 3651,
+      "reused_from": "2026-08-08"
+    },
+    {
+      "arm": "clarity-flow",
+      "repeat": 2,
+      "output_style_active": "simple-output-styles:clarity-flow",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 9690,
+      "total_input_tokens": 9692,
+      "output_tokens": 4,
+      "duration_ms": 1559,
+      "wall_ms": 2402,
+      "reused_from": "2026-08-08"
+    },
+    {
+      "arm": "classic-concise",
+      "repeat": 2,
+      "output_style_active": "simple-output-styles:classic-concise",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 9754,
+      "total_input_tokens": 9756,
+      "output_tokens": 4,
+      "duration_ms": 1615,
+      "wall_ms": 2530,
+      "reused_from": "2026-08-08"
+    },
+    {
+      "arm": "developer-docs",
+      "repeat": 2,
+      "output_style_active": "simple-output-styles:developer-docs",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 9693,
+      "total_input_tokens": 9695,
+      "output_tokens": 4,
+      "duration_ms": 1952,
+      "wall_ms": 2885,
+      "reused_from": "2026-08-08"
+    },
+    {
+      "arm": "plain-language",
+      "repeat": 2,
+      "output_style_active": "simple-output-styles:plain-language",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 9912,
+      "total_input_tokens": 9914,
+      "output_tokens": 4,
+      "duration_ms": 1589,
+      "wall_ms": 2458,
+      "reused_from": "2026-08-08"
+    },
+    {
+      "arm": "technical-simplified",
+      "repeat": 2,
+      "output_style_active": "simple-output-styles:technical-simplified",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 10440,
+      "total_input_tokens": 10442,
+      "output_tokens": 4,
+      "duration_ms": 1699,
+      "wall_ms": 2627,
+      "reused_from": "2026-08-08"
+    },
+    {
+      "arm": "unstyled",
+      "repeat": 0,
+      "output_style_active": "default",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 371,
+      "cache_read_input_tokens": 8081,
+      "total_input_tokens": 8454,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 371,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 1708,
+      "wall_ms": 8589
+    },
+    {
+      "arm": "actionable-clarity",
+      "repeat": 0,
+      "output_style_active": "simple-output-styles:actionable-clarity",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 371,
+      "cache_read_input_tokens": 10142,
+      "total_input_tokens": 10515,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 371,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 1812,
+      "wall_ms": 148168
+    },
+    {
+      "arm": "unstyled",
+      "repeat": 1,
+      "output_style_active": "default",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 8452,
+      "total_input_tokens": 8454,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 0,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 3140,
+      "wall_ms": 3927
+    },
+    {
+      "arm": "actionable-clarity",
+      "repeat": 1,
+      "output_style_active": "simple-output-styles:actionable-clarity",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 10513,
+      "total_input_tokens": 10515,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 0,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 2747,
+      "wall_ms": 3564
+    },
+    {
+      "arm": "unstyled",
+      "repeat": 2,
+      "output_style_active": "default",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 8452,
+      "total_input_tokens": 8454,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 0,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 1760,
+      "wall_ms": 2582
+    },
+    {
+      "arm": "actionable-clarity",
+      "repeat": 2,
+      "output_style_active": "simple-output-styles:actionable-clarity",
+      "model": "claude-sonnet-5",
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 10513,
+      "total_input_tokens": 10515,
+      "output_tokens": 4,
+      "cache_creation": {
+        "ephemeral_5m_input_tokens": 0,
+        "ephemeral_1h_input_tokens": 0
+      },
+      "duration_ms": 2097,
+      "wall_ms": 2910
+    }
+  ],
+  "unstyled_totals": [
+    8454,
+    8454,
+    8454,
+    8454,
+    8454,
+    8454
+  ],
+  "overhead": {
+    "actionable-clarity": {
+      "tokens": {
+        "n": 3,
+        "per_repeat": [
+          2061,
+          2061,
+          2061
+        ],
+        "min": 2061,
+        "mean": 2061.0,
+        "max": 2061,
+        "stdev": 0.0
+      },
+      "weighted": {
+        "n": 3,
+        "per_repeat": [
+          206.1,
+          206.1,
+          206.1
+        ],
+        "min": 206.1,
+        "mean": 206.1,
+        "max": 206.1,
+        "stdev": 0.0
+      }
+    },
+    "clarity-flow": {
+      "tokens": {
+        "n": 3,
+        "per_repeat": [
+          1238,
+          1238,
+          1238
+        ],
+        "min": 1238,
+        "mean": 1238.0,
+        "max": 1238,
+        "stdev": 0.0
+      },
+      "weighted": {
+        "n": 3,
+        "per_repeat": [
+          9864.3,
+          123.8,
+          123.8
+        ],
+        "min": 123.8,
+        "mean": 3370.633,
+        "max": 9864.3,
+        "stdev": 5623.68
+      }
+    },
+    "classic-concise": {
+      "tokens": {
+        "n": 3,
+        "per_repeat": [
+          1302,
+          1302,
+          1302
+        ],
+        "min": 1302,
+        "mean": 1302.0,
+        "max": 1302,
+        "stdev": 0.0
+      },
+      "weighted": {
+        "n": 3,
+        "per_repeat": [
+          1610.25,
+          130.2,
+          130.2
+        ],
+        "min": 130.2,
+        "mean": 623.55,
+        "max": 1610.25,
+        "stdev": 854.507
+      }
+    },
+    "developer-docs": {
+      "tokens": {
+        "n": 3,
+        "per_repeat": [
+          1241,
+          1241,
+          1241
+        ],
+        "min": 1241,
+        "mean": 1241.0,
+        "max": 1241,
+        "stdev": 0.0
+      },
+      "weighted": {
+        "n": 3,
+        "per_repeat": [
+          1534.0,
+          124.1,
+          124.1
+        ],
+        "min": 124.1,
+        "mean": 594.067,
+        "max": 1534.0,
+        "stdev": 814.006
+      }
+    },
+    "plain-language": {
+      "tokens": {
+        "n": 3,
+        "per_repeat": [
+          1460,
+          1460,
+          1460
+        ],
+        "min": 1460,
+        "mean": 1460.0,
+        "max": 1460,
+        "stdev": 0.0
+      },
+      "weighted": {
+        "n": 3,
+        "per_repeat": [
+          1807.75,
+          146.0,
+          146.0
+        ],
+        "min": 146.0,
+        "mean": 699.917,
+        "max": 1807.75,
+        "stdev": 959.412
+      }
+    },
+    "technical-simplified": {
+      "tokens": {
+        "n": 3,
+        "per_repeat": [
+          1988,
+          1988,
+          1988
+        ],
+        "min": 1988,
+        "mean": 1988.0,
+        "max": 1988,
+        "stdev": 0.0
+      },
+      "weighted": {
+        "n": 3,
+        "per_repeat": [
+          2467.75,
+          198.8,
+          198.8
+        ],
+        "min": 198.8,
+        "mean": 955.117,
+        "max": 2467.75,
+        "stdev": 1309.979
+      }
+    }
+  },
+  "warnings": [],
+  "reuse": {
+    "source": "2026-08-08",
+    "source_date": "2026-08-08T20:39:50+00:00",
+    "styles": [
+      "clarity-flow",
+      "classic-concise",
+      "developer-docs",
+      "plain-language",
+      "technical-simplified"
+    ],
+    "reused_arms": 18,
+    "live_arms": 6
+  }
+}
