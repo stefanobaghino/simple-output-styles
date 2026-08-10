@@ -103,9 +103,12 @@ the harness. The members:
   loop: a synthesis of plain-language organization, developer-docs
   directness, and clarity-flow information flow, with
   content-preservation and uncertainty rules of its own. Unlike the
-  other members, its human validation is downstream of the harness —
-  the spot check of its acceptance — because the wording was tuned
-  against the harness itself.
+  other members, it carries no independent human validation: the
+  wording was tuned against the harness itself, and the human spot
+  check of its acceptance measured a 0.50 agreement with the clarity
+  judge, below the 0.7 anchor. The maintainer accepted the style by
+  explicit overrule, recorded in the spot-check file of
+  `runs/2026-08-10d` and in the acceptance PR.
 
 The first five members were frozen as the field of #79: they are the
 competitor set of the baseline, and `runs/2026-08-07` is the

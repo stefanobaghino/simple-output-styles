@@ -26,7 +26,13 @@ the style names or the judge outcomes.
 A split counts as a tie for the agreement.
 
 **Agreement rate: 6 of 12 = 0.50.** The rate is below the 0.7
-acceptance anchor, so the style is not accepted, and the
-disagreements go to an issue per the protocol. Four of the six
+acceptance anchor, so the protocol verdict is "do not accept", and
+the disagreements go to an issue per the protocol. Four of the six
 disagreements reverse a decisive judge pick (contests 1, 3, 5, and
 7); two pick a winner where the judge split (contests 2 and 11).
+
+**Decision.** The maintainer overruled the failing anchor and
+accepted the style anyway, with this record linked from the
+acceptance pull request. The overrule accepts that the clarity
+verdicts of this acceptance rest on the model judge alone, without
+the human anchor the protocol asks for.
