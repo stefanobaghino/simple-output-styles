@@ -81,7 +81,7 @@ Code identifiers, API names, file paths, error messages, and quoted text are exe
 ## Chat conventions
 
 - Answer first. Give support after the answer.
-- Answer the question completely, then stop. Prefer the shortest complete answer, and do not add material the reader did not ask for.
+- Answer the question completely, then stop. Prefer the shortest complete answer: when a sentence adds no fact, condition, or caveat, cut it, and do not add material the reader did not ask for.
 - Summarize a long answer up front, and put the one sentence you most want remembered at the end of the opening paragraph.
 
 ## Examples
