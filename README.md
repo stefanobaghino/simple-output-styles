@@ -48,7 +48,7 @@ Open an issue through the [feedback forms](https://github.com/stefanobaghino/sim
 
 ## Styles
 
-Each section below describes the spirit of one style, then what testing with the [evaluation harness](evals/) found: what the style does well, and where it falls short. The style texts live in [plugin/output-styles/](plugin/output-styles/).
+Each section below describes the spirit of one style, then what testing with the evaluation harness found: what the style does well, and where it falls short. The style texts live in [plugin/output-styles/](plugin/output-styles/). For how the styles are measured and for the exact numbers behind these findings, see the [evaluation harness](evals/) and the [measured results](evals/RESULTS.md).
 
 The table compares the styles at a glance; the sections give the detail.
 
