@@ -26,9 +26,10 @@ from runner.generate import (
     Runner,
     assert_declared_plugins,
     cache_creation_split,
+    is_builtin,
+    output_style_value,
     parse_events,
     plugin_name,
-    style_reference,
     subprocess_runner,
 )
 
@@ -64,10 +65,13 @@ def build_session_argv(
     """Build the claude invocation for one session turn.
 
     Every turn is styled; the drift measurement has no unstyled arm.
+    A built-in styled turn loads no plugin, like its runner arm.
     The first turn of a session passes no --resume flag.
     """
-    settings = {"disableAllHooks": True, "outputStyle": style_reference(plugin_dir, style)}
-    argv = ["claude", "-p", prompt, "--model", model, "--plugin-dir", str(plugin_dir)]
+    settings = {"disableAllHooks": True, "outputStyle": output_style_value(plugin_dir, style)}
+    argv = ["claude", "-p", prompt, "--model", model]
+    if not is_builtin(style):
+        argv += ["--plugin-dir", str(plugin_dir)]
     argv += ["--settings", json.dumps(settings)]
     argv += list(SESSION_FLAGS)
     if resume_id is not None:
@@ -92,8 +96,9 @@ def generate_turn(
     wall_ms = round((time.monotonic() - start) * 1000)
     init, result = parse_events(stdout)
 
-    assert_declared_plugins(init, (plugin_name(plugin_dir),), f"turn after {resume_id or 'start'}")
-    expected_style = style_reference(plugin_dir, style)
+    declared = () if is_builtin(style) else (plugin_name(plugin_dir),)
+    assert_declared_plugins(init, declared, f"turn after {resume_id or 'start'}")
+    expected_style = output_style_value(plugin_dir, style)
     active_style = init.get("output_style")
     if active_style != expected_style:
         raise GenerationError(

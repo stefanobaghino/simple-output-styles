@@ -63,13 +63,17 @@ def check_answer_conditions(
 
 
 def importable_arms(
-    provenance: dict, styles: list[str], style_shas: dict[str, str]
+    provenance: dict, styles: list[str], style_ids: dict[str, str]
 ) -> tuple[list[str | None], list[str]]:
     """The arms whose source answers can import, and one note per skip.
 
     The unstyled arm rests on the run-level conditions alone. A styled
-    arm needs the same style text: the sha in the source provenance
-    must equal the sha of the current style file.
+    arm needs the same style text. The identity of the text depends on
+    the kind of the style: a plugin style is its file, so the sha in
+    the source provenance must equal the sha of the current style
+    file; a built-in style ships inside the CLI, so the CLI version in
+    the source provenance must equal the CLI version pin that the live
+    calls of this run enforce.
     """
     arms: list[str | None] = [None]
     notes: list[str] = []
@@ -80,8 +84,15 @@ def importable_arms(
             notes.append(
                 f"reuse: {style}: the source run does not hold this style; generating live"
             )
-        elif entry.get("sha256") != style_shas[style]:
-            notes.append(f"reuse: {style}: the style text differs from the source; generating live")
+            continue
+        stored = entry.get("cli_version") if entry.get("builtin") else entry.get("sha256")
+        if stored != style_ids[style]:
+            reason = (
+                "the source CLI version differs"
+                if entry.get("builtin")
+                else "the style text differs from the source"
+            )
+            notes.append(f"reuse: {style}: {reason}; generating live")
         else:
             arms.append(style)
     return arms, notes

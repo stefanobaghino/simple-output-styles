@@ -19,8 +19,9 @@ import sys
 from datetime import UTC, datetime
 from pathlib import Path
 
-from runner.generate import ISOLATION_FLAGS, plugin_name
+from runner.generate import ISOLATION_FLAGS, is_builtin, plugin_name
 from runner.hermetic import CONFIG_MODE, manifest_sha256
+from runner.pin import CLI_VERSION_PIN
 from runner.provenance import sha256_of
 
 from .probe import PRICE_WEIGHTS, PROBE_NOTE, PROBE_PROMPT, overhead_stats
@@ -64,16 +65,25 @@ def select_imported_styles(
 
     A source arm substitutes for a fresh probe call only when the
     source probe measured the same style text that a fresh probe
-    would measure now: the sha in the source probe must equal the
-    sha of the current style file.
+    would measure now: for a plugin style, the sha in the source
+    probe must equal the sha of the current style file; for a
+    built-in style, the CLI version in the source probe must equal
+    the CLI version pin that a fresh probe would enforce.
     """
     imported: list[str] = []
     fresh: list[str] = []
     source_styles = source_probe.get("styles") or {}
     for style in styles:
         entry = source_styles.get(style)
-        current = plugin_dir / "output-styles" / f"{style}.md"
-        if entry is not None and current.exists() and entry.get("sha256") == sha256_of(current):
+        if entry is None:
+            fresh.append(style)
+            continue
+        if is_builtin(style):
+            same = bool(entry.get("builtin")) and entry.get("cli_version") == CLI_VERSION_PIN
+        else:
+            current = plugin_dir / "output-styles" / f"{style}.md"
+            same = current.exists() and entry.get("sha256") == sha256_of(current)
+        if same:
             imported.append(style)
         else:
             fresh.append(style)

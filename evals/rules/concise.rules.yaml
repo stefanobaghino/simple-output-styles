@@ -1,0 +1,51 @@
+# Rule data for the Concise output style, built into the Claude Code CLI.
+#
+# No style file exists under plugin/output-styles/: the style text ships
+# inside the CLI binary (Claude Code 2.1.237 and later), and the CLI
+# version pin in src/runner/pin.py pins the text. The harness activates
+# the style through the bare outputStyle value "Concise" and loads no
+# plugin on its arm.
+#
+# Documented exclusions. These rules of the style need judgment, so the
+# linter does not check them, and the fidelity score does not cover them:
+# lead with the result, cut narration while keeping substance, the 1-3
+# sentence norm for simple questions, structure only where it carries
+# real weight, full detail on request, and the correctness carve-outs
+# for error reports, failing tests, and warnings.
+#
+# The style bans preamble, closing recaps, and hedging boilerplate, and
+# those leave lintable phrase traces: the patterns below. The style
+# permits contractions and semicolons and bans no modal verb, so those
+# toggles stay off. The source states no numeric sentence limit, so the
+# sentence-length check stays off. This rule set conflicts with the
+# technical-simplified rule set on purpose.
+#
+# Format: see rules/technical-simplified.rules.yaml.
+
+style: concise
+
+patterns:
+  - id: preamble
+    regex: '\b(let me|i[''’]ll|i will) (start|begin) by\b'
+    message: 'Cut the preamble. Lead with the result.'
+  - id: preamble
+    regex: '\bgreat question\b'
+    message: 'Cut the opener. Lead with the result.'
+  - id: recap
+    regex: '\b(in summary|to summarize|to recap)\b'
+    message: 'Cut the closing recap of what the answer already said.'
+  - id: recap
+    regex: '\bas (previously mentioned|mentioned (above|earlier))\b'
+    message: 'Cut the recap. State the point once.'
+  - id: hedging-boilerplate
+    regex: '\bit([''’]s| is) worth noting\b'
+    message: 'Cut the hedging boilerplate. State the point directly.'
+  - id: hedging-boilerplate
+    regex: '\bit should be noted\b'
+    message: 'Cut the hedging boilerplate. State the point directly.'
+  - id: hedging-boilerplate
+    regex: '\bit([''’]s| is) important to (note|remember|understand)\b'
+    message: 'Cut the hedging boilerplate. State the point directly.'
+  - id: hedging-boilerplate
+    regex: '\bkeep in mind that\b'
+    message: 'Cut the boilerplate. State the caveat only when it changes the next step.'

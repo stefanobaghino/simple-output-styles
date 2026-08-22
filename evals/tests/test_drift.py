@@ -164,6 +164,25 @@ def test_build_session_argv_resumed_turn(tmp_path):
     assert argv[argv.index("--max-turns") + 1] == "1"
 
 
+def test_build_session_argv_builtin_style_uses_the_bare_name_and_no_plugin(tmp_path):
+    plugin = make_plugin(tmp_path / "plugin")
+    argv = build_session_argv("prompt", "sonnet", "concise", plugin, None)
+    assert "--plugin-dir" not in argv
+    settings = json.loads(argv[argv.index("--settings") + 1])
+    assert settings == {"disableAllHooks": True, "outputStyle": "Concise"}
+
+
+def test_generate_turn_builtin_style_accepts_no_plugins(tmp_path):
+    plugin = make_plugin(tmp_path / "plugin")
+
+    def run(argv, cwd, env=None):
+        return stream_output(output_style="Concise", plugins=(), session_id="sid-1")
+
+    turn = generate_turn("prompt", "sonnet", "concise", plugin, tmp_path, None, run=run)
+    assert turn.output_style == "Concise"
+    assert turn.session_id == "sid-1"
+
+
 def test_generate_turn_captures_session_id(tmp_path):
     plugin = make_plugin(tmp_path / "plugin")
 

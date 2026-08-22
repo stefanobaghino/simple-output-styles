@@ -14,7 +14,13 @@ from datetime import UTC, datetime
 from importlib import metadata
 from pathlib import Path
 
-from .generate import ISOLATION_FLAGS, WORKDIR_MODE, WRITER_MODEL_PINS
+from .generate import (
+    BUILTIN_STYLES,
+    ISOLATION_FLAGS,
+    WORKDIR_MODE,
+    WRITER_MODEL_PINS,
+    is_builtin,
+)
 from .hermetic import (
     API_KEY_VAR,
     CACHE_TTL_VAR,
@@ -110,6 +116,25 @@ def check_cli_version(found: str | None, *, accept: bool = False) -> str:
     return found
 
 
+def style_provenance_entry(style: str, plugin_dir: Path, cli_version: str | None) -> dict:
+    """The identity of one style text.
+
+    A plugin style is its file, so the entry carries the file sha256.
+    A built-in style ships inside the CLI binary, so the entry carries
+    the CLI version of the run: the CLI version pin is the pin of the
+    style text, and a reuse of the arm needs the same version.
+    """
+    if is_builtin(style):
+        return {
+            "builtin": True,
+            "output_style": BUILTIN_STYLES[style],
+            "source": "claude-code-cli",
+            "cli_version": cli_version,
+        }
+    path = plugin_dir / "output-styles" / f"{style}.md"
+    return {"file": str(path), "sha256": sha256_of(path)}
+
+
 def build_provenance(
     *,
     model: str,
@@ -122,7 +147,6 @@ def build_provenance(
     config_manifest_sha256: str | None = None,
     credential_source: str | None = None,
 ) -> dict:
-    style_files = {style: plugin_dir / "output-styles" / f"{style}.md" for style in sorted(styles)}
     # A deep drift run reads no prompt file: its inputs are the session
     # scripts, hashed in the drift block of the provenance.
     prompt_set = (
@@ -163,12 +187,13 @@ def build_provenance(
                 "base": {"disableAllHooks": True},
                 "unstyled_arm": {"outputStyle": "default"},
                 "styled_arm": {"outputStyle": "<style>", "extra_flag": "--plugin-dir"},
+                "builtin_styled_arm": {"outputStyle": "<bare CLI style name>"},
             },
         },
         "repo": repo_state(plugin_dir),
         "styles": {
-            style: {"file": str(path), "sha256": sha256_of(path)}
-            for style, path in style_files.items()
+            style: style_provenance_entry(style, plugin_dir, cli_version)
+            for style in sorted(styles)
         },
         "linter_toolchain": linter_toolchain(),
     }

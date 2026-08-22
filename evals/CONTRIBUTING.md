@@ -66,6 +66,23 @@ style adds the samples `tests/samples/<style>/{clean,dirty,traps}.md`,
 its expected violations in `tests/test_lint.py`, and one designed
 conflict pair in the conflict map of that file.
 
+### Add a built-in style
+
+A style built into the Claude Code CLI (such as `concise`) follows
+the same procedure with two differences:
+
+- Skip step 1: the style has no file under `plugin/output-styles/`.
+  Register the style in `BUILTIN_STYLES` in `src/runner/generate.py`
+  instead, mapping the harness style name to the bare CLI style
+  name. The harness then activates the bare name, loads no plugin on
+  that arm, and the provenance records the CLI version in place of a
+  file sha256.
+- The CLI version pin is the pin of the style text, so make sure the
+  pin points at a CLI version that ships the style; move the pin
+  first when it does not, as [Update a pin](#update-a-pin)
+  describes. A reuse of a built-in arm needs the same CLI version in
+  the source run.
+
 ## Add a prompt
 
 The prompt set in `prompts/prompts.yaml` is shared: every axis reads
