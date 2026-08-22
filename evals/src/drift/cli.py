@@ -16,7 +16,7 @@ from pathlib import Path
 
 from linter import Linter, load_rules
 from runner.cli import discover_styles, load_prompts
-from runner.generate import GenerationError, Runner, subprocess_runner
+from runner.generate import GenerationError, Runner, is_builtin, subprocess_runner
 from runner.hermetic import hermetic_call
 from runner.provenance import (
     build_provenance,
@@ -61,6 +61,9 @@ def _generate(
             )
     plugin_dir = Path(args.plugin_dir).resolve()
     for style in styles:
+        # A built-in style ships inside the pinned CLI and has no file.
+        if is_builtin(style):
+            continue
         style_file = plugin_dir / "output-styles" / f"{style}.md"
         if not style_file.exists():
             raise _fail(f"{style_file}: the style file does not exist")

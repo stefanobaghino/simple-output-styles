@@ -173,6 +173,15 @@ outside the harness. The members:
   style by explicit overrule, recorded in the spot-check file of
   `runs/2026-08-10d` and in the acceptance PR.
 
+The field also carries one reference competitor from outside the
+plugin: **concise**, the output style built into the Claude Code CLI
+(2.1.237 and later). Its text ships inside the pinned CLI binary,
+not under `plugin/output-styles/`, so the harness activates it
+through the bare `outputStyle` value `Concise`, loads no plugin on
+its arm, and pins its text through the CLI version pin instead of a
+file hash. The provenance of a run records that identity as a
+`builtin` entry with the CLI version in place of a file sha256.
+
 The first five members were frozen as the field of #79: they are the
 competitor set of the baseline, and `runs/2026-08-07` is the
 calibration run of the field. The acceptance of actionable-clarity
@@ -262,7 +271,8 @@ without a retry, because the mismatch is not transient and a run
 that continued would split its answers across writer models. Every
 live invocation checks the installed CLI version against the pin
 before its first billed call and stops with exit code 2 on a
-mismatch. Offline scoring is version-free, so every stored run
+mismatch. The CLI version pin also pins the text of a built-in
+style, because that text ships inside the CLI binary. Offline scoring is version-free, so every stored run
 rescores under any installed CLI. `--accept-cli-version` documents
 an intentional upgrade; the pin-update procedure lives in
 [CONTRIBUTING.md](CONTRIBUTING.md#update-a-pin).
@@ -283,7 +293,7 @@ What opens a comparability era, and what stays outside:
 | The prompt-set hash (`prompts.yaml`, `holdout.yaml`, drift session scripts) | The credential route |
 | The style text hashes and rule-file hashes | The binary source (managed store or `PATH`) |
 | The writer model pin | The cache lifetime |
-| The CLI version | The probe repeat count |
+| The CLI version (also the text pin of a built-in style) | The probe repeat count |
 | The workdir mode, and the config mode with its manifest hash | The worker counts (`--parallel`, `--budget`) |
 | The resolved judge models and the judge-prompt template hashes | Reuse (`--reuse-from`) |
 | The fact-mine design | The timing and token-count fields |

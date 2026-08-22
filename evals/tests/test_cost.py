@@ -10,6 +10,7 @@ from cost import analyze_ratios, cli, probe_argv, probe_overhead
 from cost.analysis import distribution
 from cost.probe import overhead_stats
 from cost.report import SHORTNESS_WARNING
+from cost.reuse import select_imported_styles
 from runner import GenerationError, PluginLeakError
 from runner.provenance import CLI_VERSION_PIN, sha256_of
 
@@ -203,6 +204,33 @@ def test_probe_argv_loads_the_plugin_on_both_arms(tmp_path):
     assert style_of(styled) == "test-plugin:alpha"
     assert "--disallowedTools" in styled
     assert "--exclude-dynamic-system-prompt-sections" in styled
+
+
+def test_probe_argv_builtin_style_keeps_the_plugin_with_the_bare_name(tmp_path):
+    plugin = make_plugin(tmp_path / "plugin")
+    argv = probe_argv("prompt", "sonnet", "concise", plugin)
+    assert argv[argv.index("--plugin-dir") + 1] == str(plugin)
+    assert style_of(argv) == "Concise"
+
+
+def test_probe_records_a_builtin_style_entry(tmp_path):
+    plugin = make_plugin(tmp_path / "plugin")
+    probe = probe_overhead(
+        styles=["concise"],
+        model="sonnet",
+        plugin_dir=plugin,
+        workdir=tmp_path,
+        run=FakeProbeRunner(),
+        cli_version=CLI_VERSION_PIN,
+    )
+    entry = probe["styles"]["concise"]
+    assert entry == {
+        "builtin": True,
+        "output_style": "Concise",
+        "source": "claude-code-cli",
+        "cli_version": CLI_VERSION_PIN,
+    }
+    assert probe["overhead"]["concise"]["tokens"]["n"] == 3
 
 
 def test_probe_measures_the_overhead(tmp_path):
@@ -545,6 +573,19 @@ def make_second_run(tmp_path, name, styles=("alpha",)):
     provenance = {"conditions": {"model_requested": "sonnet"}, "styles": style_shas}
     (run_dir / "provenance.json").write_text(json.dumps(provenance))
     return run_dir
+
+
+def test_select_imported_styles_builtin_matches_on_the_cli_pin(tmp_path):
+    plugin = make_plugin(tmp_path / "plugin")
+    source = {"styles": {"concise": {"builtin": True, "cli_version": CLI_VERSION_PIN}}}
+    imported, fresh = select_imported_styles(source, plugin, ["concise"])
+    assert imported == ["concise"]
+    assert fresh == []
+
+    source["styles"]["concise"]["cli_version"] = "0.0.0 (test)"
+    imported, fresh = select_imported_styles(source, plugin, ["concise"])
+    assert imported == []
+    assert fresh == ["concise"]
 
 
 def test_cli_reuse_probe_implies_probe(project):

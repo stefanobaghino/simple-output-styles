@@ -21,9 +21,11 @@ from .generate import (
     Runner,
     WriterPinError,
     generate,
+    is_builtin,
     subprocess_runner,
 )
 from .hermetic import hermetic_call
+from .pin import CLI_VERSION_PIN
 from .provenance import build_provenance, check_cli_version, claude_version, sha256_of
 from .report import arm_name, build_report
 from .reuse import check_answer_conditions, import_answers, importable_arms, load_source_provenance
@@ -172,6 +174,9 @@ def main(argv: list[str] | None = None, run: Runner = subprocess_runner) -> int:
     if not styles:
         raise SystemExit(f"{args.rules_dir}: no rule files found")
     for style in styles:
+        # A built-in style ships inside the pinned CLI and has no file.
+        if is_builtin(style):
+            continue
         style_file = plugin_dir / "output-styles" / f"{style}.md"
         if not style_file.exists():
             raise SystemExit(f"{style_file}: the style file does not exist")
@@ -232,10 +237,16 @@ def main(argv: list[str] | None = None, run: Runner = subprocess_runner) -> int:
             model=args.model,
             screening=args.screening,
         )
-        style_shas = {
-            style: sha256_of(plugin_dir / "output-styles" / f"{style}.md") for style in styles
+        # The identity of a style text: the file sha for a plugin
+        # style, the CLI version pin for a built-in style, because the
+        # pin is what the live calls of this run enforce.
+        style_ids = {
+            style: CLI_VERSION_PIN
+            if is_builtin(style)
+            else sha256_of(plugin_dir / "output-styles" / f"{style}.md")
+            for style in styles
         }
-        qualifying, notes = importable_arms(source_provenance, styles, style_shas)
+        qualifying, notes = importable_arms(source_provenance, styles, style_ids)
         for note in notes:
             print(note, file=sys.stderr)
         imported = import_answers(

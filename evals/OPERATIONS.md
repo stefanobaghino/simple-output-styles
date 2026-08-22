@@ -150,7 +150,10 @@ Reads the prompt set in `prompts/prompts.yaml`, or another prompt
 file through `--prompts`, and calls the `claude` CLI once per
 answer: one answer per style and one shared unstyled answer per
 prompt. Every call runs inside the isolation layer that
-[ARCHITECTURE.md](ARCHITECTURE.md#hermetic-isolation) describes.
+[ARCHITECTURE.md](ARCHITECTURE.md#hermetic-isolation) describes. A
+plugin-styled arm activates the plugin-qualified style name and
+loads the plugin; the arm of a built-in style (`concise`) activates
+the bare CLI style name and loads no plugin, like the unstyled arm.
 
 > [!WARNING]
 > Do not run two `style-pairs` invocations at the same time.
@@ -181,8 +184,9 @@ refused; see
 
 `--reuse-from RUN` imports the stored answers of another run for the
 arms whose conditions match — the prompt-set hash, the writer model
-and its pin, the screening mode, and the style text hash per styled
-arm — and generates only the rest, as
+and its pin, the screening mode, and the style text identity per
+styled arm (the file hash of a plugin style, the CLI version of a
+built-in style) — and generates only the rest, as
 [Reuse across runs](#reuse-across-runs) describes.
 
 Exit codes: 1 when the pair set is incomplete, 2 when the writer pin
@@ -221,8 +225,8 @@ The input-overhead part needs a live measurement, because a stored
 run holds no input-token data for it. `--probe` runs one minimal
 call per arm and repeat, and takes the difference in input context
 tokens between the styled call and the unstyled call of the same
-repeat. Both probe arms load the plugin, so the difference isolates
-the style block. `--repeats` sets the repeat count (3 by default),
+repeat. Both probe arms load the plugin — also on the arm of a
+built-in style — so the difference isolates the style block. `--repeats` sets the repeat count (3 by default),
 and the report states the mean and the spread per style. The repeat
 count changes no call condition, so old runs stay comparable, and a
 stored probe in the old single-call format reads as one repeat.
@@ -672,9 +676,11 @@ judge row speaks about the stored answer:
 
 1. The pair runner imports the answers whose conditions match: the
    prompt-set hash, the writer model and its pin, the screening
-   mode, and the style text hash per styled arm. The source answers
-   must also obey the current writer pin, because rows from another
-   resolution belong to another era.
+   mode, and the style text identity per styled arm — the file hash
+   of a plugin style, or the CLI version of a built-in style,
+   because a built-in text ships inside the CLI binary. The source
+   answers must also obey the current writer pin, because rows from
+   another resolution belong to another era.
 2. Each judge tool imports the stored rows that reference the
    answers of the current run. The judge keys carry the answer
    hashes, so a key hit is a content hit. The comprehension keys

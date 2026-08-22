@@ -5,7 +5,7 @@ the provenance layer both need the pin, and the provenance imports
 the hermetic module, so the pin cannot live in either.
 """
 
-CLI_VERSION_PIN = "2.1.226 (Claude Code)"
+CLI_VERSION_PIN = "2.1.239 (Claude Code)"
 """The Claude CLI version that every live invocation must run under.
 
 The CLI auto-updates, so the installed version drifts silently; the

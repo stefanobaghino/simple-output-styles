@@ -56,6 +56,13 @@
 #   5.0. One pair per run failed the gate in two of those runs — a
 #   single violation in a short answer clears 5.0 per pair — and the
 #   exclusions are the gate working, not a calibration miss.
+# concise: the Claude Code built-in style, added with the CLI pin move
+#   to 2.1.239. No measured rates exist yet. The rule set is a small
+#   strict pattern set like plain-language, so the provisional
+#   threshold 5.0 mirrors it: strict, with slack for one violation in
+#   an answer of 20 or more sentences. Calibrate against the first
+#   campaign run of the 2.1.239 era and update this note; that run
+#   carries the one-time asterisk.
 thresholds:
   technical-simplified:
     max_rate: 15.0
@@ -68,4 +75,6 @@ thresholds:
   developer-docs:
     max_rate: 10.0
   actionable-clarity:
+    max_rate: 5.0
+  concise:
     max_rate: 5.0

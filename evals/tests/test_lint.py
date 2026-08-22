@@ -84,6 +84,16 @@ EXPECTED_DIRTY = {
         ("banned-word", "make a decision"),
         ("click-here", "click here"),
     ],
+    "concise": [
+        ("preamble", "great question"),
+        ("preamble", "let me start by"),
+        ("recap", "in summary"),
+        ("recap", "as previously mentioned"),
+        ("hedging-boilerplate", "it's worth noting"),
+        ("hedging-boilerplate", "it should be noted"),
+        ("hedging-boilerplate", "it is important to note"),
+        ("hedging-boilerplate", "keep in mind that"),
+    ],
 }
 
 # Violations in the dirty samples beyond the pairs above: the dirty sample of
@@ -95,6 +105,7 @@ EXTRA_DIRTY = {
     "clarity-flow": 0,
     "developer-docs": 0,
     "actionable-clarity": 0,
+    "concise": 0,
 }
 
 STYLES = sorted(EXPECTED_DIRTY)
@@ -105,6 +116,7 @@ STYLES = sorted(EXPECTED_DIRTY)
 CONFLICTS = {
     "actionable-clarity": "technical-simplified",
     "classic-concise": "technical-simplified",
+    "concise": "technical-simplified",
     "clarity-flow": "technical-simplified",
     "developer-docs": "technical-simplified",
     "plain-language": "technical-simplified",

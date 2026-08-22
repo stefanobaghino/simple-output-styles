@@ -156,21 +156,51 @@ def style_reference(plugin_dir: Path, style: str) -> str:
     return f"{plugin_name(plugin_dir)}:{style}"
 
 
+BUILTIN_STYLES = {"concise": "Concise"}
+"""The measured styles that ship inside the Claude Code CLI.
+
+The key is the harness style name (the rules-file name); the value is
+the bare outputStyle value that activates the style. A built-in style
+has no file under plugin/output-styles/: its text ships with the
+pinned CLI binary, so the CLI version pin is the pin of the style
+text, and the provenance records the CLI version where a plugin style
+records a file sha256.
+"""
+
+
+def is_builtin(style: str | None) -> bool:
+    return style in BUILTIN_STYLES
+
+
+def output_style_value(plugin_dir: Path | None, style: str) -> str:
+    """The outputStyle value that activates a style.
+
+    A built-in style activates through its bare CLI name; a plugin
+    style needs the plugin-qualified form.
+    """
+    if style in BUILTIN_STYLES:
+        return BUILTIN_STYLES[style]
+    if plugin_dir is None:
+        raise ValueError("a plugin-styled answer needs the plugin directory")
+    return style_reference(plugin_dir, style)
+
+
 def build_argv(prompt: str, model: str, style: str | None, plugin_dir: Path | None) -> list[str]:
     """Build the claude invocation for one answer.
 
-    A styled answer activates the output style through --settings and
-    loads the plugin through --plugin-dir. The unstyled answer forces
-    the default style instead, because the user configuration can hold
-    an active output style of its own. Everything else is identical.
+    A plugin-styled answer activates the output style through
+    --settings and loads the plugin through --plugin-dir. A built-in
+    styled answer activates the bare style name and loads no plugin.
+    The unstyled answer forces the default style instead, because the
+    user configuration can hold an active output style of its own.
+    Everything else is identical.
     """
     settings: dict[str, object] = {"disableAllHooks": True, "outputStyle": "default"}
     argv = ["claude", "-p", prompt, "--model", model]
     if style is not None:
-        if plugin_dir is None:
-            raise ValueError("a styled answer needs the plugin directory")
-        settings["outputStyle"] = style_reference(plugin_dir, style)
-        argv += ["--plugin-dir", str(plugin_dir)]
+        settings["outputStyle"] = output_style_value(plugin_dir, style)
+        if not is_builtin(style):
+            argv += ["--plugin-dir", str(plugin_dir)]
     argv += ["--settings", json.dumps(settings)]
     argv += list(ISOLATION_FLAGS)
     return argv
@@ -212,9 +242,11 @@ def generate(
     wall_ms = round((time.monotonic() - start) * 1000)
     init, result = parse_events(stdout)
 
-    declared = (plugin_name(plugin_dir),) if style is not None and plugin_dir else ()
+    declared: tuple[str, ...] = ()
+    if style is not None and not is_builtin(style) and plugin_dir is not None:
+        declared = (plugin_name(plugin_dir),)
     assert_declared_plugins(init, declared, f"the {style or 'unstyled'} answer")
-    expected_style = style_reference(plugin_dir, style) if style is not None else "default"
+    expected_style = output_style_value(plugin_dir, style) if style is not None else "default"
     active_style = init.get("output_style")
     if active_style != expected_style:
         raise GenerationError(

@@ -25,13 +25,13 @@ from runner.generate import (
     Runner,
     assert_declared_plugins,
     cache_creation_split,
+    output_style_value,
     parse_events,
     plugin_name,
-    style_reference,
     subprocess_runner,
 )
 from runner.hermetic import CONFIG_MODE, manifest_sha256
-from runner.provenance import sha256_of
+from runner.provenance import style_provenance_entry
 
 PROBE_PROMPT = "Reply with the word OK."
 
@@ -57,10 +57,15 @@ PROBE_NOTE = (
 
 
 def probe_argv(prompt: str, model: str, style: str | None, plugin_dir: Path) -> list[str]:
-    """The claude invocation for one probe arm. Every arm loads the plugin."""
+    """The claude invocation for one probe arm. Every arm loads the plugin.
+
+    A built-in styled arm also loads the plugin, unlike its runner
+    arm: the same-repeat subtraction then isolates the style block
+    against identical plugin loading, whatever the kind of the style.
+    """
     settings = {
         "disableAllHooks": True,
-        "outputStyle": style_reference(plugin_dir, style) if style is not None else "default",
+        "outputStyle": output_style_value(plugin_dir, style) if style is not None else "default",
     }
     argv = ["claude", "-p", prompt, "--model", model]
     argv += ["--plugin-dir", str(plugin_dir)]
@@ -86,7 +91,7 @@ def _run_arm(
 
     # Every probe arm loads the plugin, so every arm declares it.
     assert_declared_plugins(init, (plugin_name(plugin_dir),), name)
-    expected = style_reference(plugin_dir, style) if style is not None else "default"
+    expected = output_style_value(plugin_dir, style) if style is not None else "default"
     active = init.get("output_style")
     if active != expected:
         raise GenerationError(
@@ -203,7 +208,6 @@ def probe_overhead(
             "each overhead uses the unstyled arm of its own repeat"
         )
 
-    style_files = {style: plugin_dir / "output-styles" / f"{style}.md" for style in sorted(styles)}
     return {
         "date": datetime.now(UTC).isoformat(timespec="seconds"),
         "claude_version": cli_version,
@@ -215,8 +219,8 @@ def probe_overhead(
         "note": PROBE_NOTE,
         "plugin": {"dir": str(plugin_dir), "name": plugin_name(plugin_dir)},
         "styles": {
-            style: {"file": str(path), "sha256": sha256_of(path)}
-            for style, path in style_files.items()
+            style: style_provenance_entry(style, plugin_dir, cli_version)
+            for style in sorted(styles)
         },
         "repeats": repeats,
         "price_weights": dict(PRICE_WEIGHTS),

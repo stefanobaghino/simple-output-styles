@@ -251,6 +251,36 @@ def test_generate_unstyled_rejects_any_plugin(tmp_path):
         generate("prompt", "sonnet", None, None, tmp_path, run=run)
 
 
+def test_build_argv_builtin_style_uses_the_bare_name_and_no_plugin(tmp_path):
+    plugin = make_plugin(tmp_path / "plugin")
+    argv = build_argv("prompt", "sonnet", "concise", plugin)
+    assert "--plugin-dir" not in argv
+    settings = json.loads(argv[argv.index("--settings") + 1])
+    assert settings == {"disableAllHooks": True, "outputStyle": "Concise"}
+
+
+def test_generate_builtin_style_accepts_no_plugins_and_the_bare_name(tmp_path):
+    plugin = make_plugin(tmp_path / "plugin")
+
+    def run(argv, cwd, env=None):
+        return stream_output(output_style="Concise", answer="the answer", plugins=())
+
+    result = generate("prompt", "sonnet", "concise", plugin, tmp_path, run=run)
+    assert result.answer == "the answer"
+    assert result.output_style == "Concise"
+    assert result.plugins == ()
+
+
+def test_generate_builtin_style_rejects_any_plugin(tmp_path):
+    plugin = make_plugin(tmp_path / "plugin")
+
+    def run(argv, cwd, env=None):
+        return stream_output(output_style="Concise", plugins=("test-plugin",))
+
+    with pytest.raises(PluginLeakError, match="test-plugin"):
+        generate("prompt", "sonnet", "concise", plugin, tmp_path, run=run)
+
+
 def make_pairs_project(tmp_path, monkeypatch, prompts):
     (tmp_path / "prompts.yaml").write_text(yaml.safe_dump({"prompts": prompts}))
     rules = tmp_path / "rules"
@@ -774,6 +804,44 @@ def test_provenance_holds_the_config_fields(project):
     assert "ANTHROPIC_API_KEY" in conditions["env_passed"]
     # The names of the variables land here, never the values.
     assert all(isinstance(name, str) and "/" not in name for name in conditions["env_passed"])
+
+
+def test_cli_runs_a_builtin_style_without_a_style_file(project):
+    (project / "rules" / "concise.rules.yaml").write_text("style: concise\n")
+    runner = FakeRunner()
+    assert run_cli(project, runner) == 0
+    assert len(runner.calls) == 6  # 2 prompts x (unstyled + alpha + concise)
+    concise_calls = [argv for argv in runner.calls if style_of(argv) == "Concise"]
+    assert len(concise_calls) == 2
+    assert all("--plugin-dir" not in argv for argv in concise_calls)
+
+    provenance = json.loads((project / "run" / "provenance.json").read_text())
+    entry = provenance["styles"]["concise"]
+    assert entry == {
+        "builtin": True,
+        "output_style": "Concise",
+        "source": "claude-code-cli",
+        "cli_version": CLI_VERSION_PIN,
+    }
+    assert provenance["styles"]["alpha"]["sha256"]
+
+
+def test_cli_reuse_imports_a_builtin_arm_only_on_the_same_cli_version(project):
+    (project / "rules" / "concise.rules.yaml").write_text("style: concise\n")
+    run_cli(project, FakeRunner(), "source")
+
+    second = FakeRunner()
+    assert run_cli(project, second, "run", "--reuse-from", str(project / "source")) == 0
+    assert second.calls == []
+
+    provenance_path = project / "source" / "provenance.json"
+    provenance = json.loads(provenance_path.read_text())
+    provenance["styles"]["concise"]["cli_version"] = "0.0.0 (test)"
+    provenance_path.write_text(json.dumps(provenance))
+    third = FakeRunner()
+    assert run_cli(project, third, "other", "--reuse-from", str(project / "source")) == 0
+    assert len(third.calls) == 2
+    assert all(style_of(argv) == "Concise" for argv in third.calls)
 
 
 def test_cli_reuse_imports_the_source_answers(project):

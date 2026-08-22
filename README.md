@@ -50,6 +50,8 @@ Open an issue through the [feedback forms](https://github.com/stefanobaghino/sim
 
 Each section below describes the spirit of one style, then what testing with the evaluation harness found: what the style does well, and where it falls short. The style texts live in [plugin/output-styles/](plugin/output-styles/). For how the styles are measured and for the exact numbers behind these findings, see the [evaluation harness](evals/) and the [measured results](evals/RESULTS.md).
 
+The evaluation also measures **Concise**, the output style built into Claude Code itself (version 2.1.237 and later), as a reference point. Concise is not part of this plugin: Claude Code ships it, and you select it through `/config`. Its measured results appear in [evals/RESULTS.md](evals/RESULTS.md) next to the plugin styles.
+
 The table compares the styles at a glance; the sections give the detail.
 
 | Style | Strongest at | Weakest at |
