@@ -57,12 +57,13 @@
 #   single violation in a short answer clears 5.0 per pair — and the
 #   exclusions are the gate working, not a calibration miss.
 # concise: the Claude Code built-in style, added with the CLI pin move
-#   to 2.1.239. No measured rates exist yet. The rule set is a small
-#   strict pattern set like plain-language, so the provisional
-#   threshold 5.0 mirrors it: strict, with slack for one violation in
-#   an answer of 20 or more sentences. Calibrate against the first
-#   campaign run of the 2.1.239 era and update this note; that run
-#   carries the one-time asterisk.
+#   to 2.1.239. Calibrated against runs/2026-08-22, the first campaign
+#   run of the 2.1.239 era; that run carries the one-time asterisk.
+#   The styled rates were all zero across the 32 gated pairs, and so
+#   were the baseline rates: the rule set separated nothing in this
+#   run, the clarity-flow pattern. The sibling runs (2026-08-22b, c)
+#   measured the same zeros. The threshold 5.0 stays: strict, with
+#   slack for one violation in an answer of 20 or more sentences.
 thresholds:
   technical-simplified:
     max_rate: 15.0
