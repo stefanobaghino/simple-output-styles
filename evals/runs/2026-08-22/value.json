@@ -1,0 +1,5091 @@
+{
+  "date": "2026-08-23T08:56:55+00:00",
+  "run": "2026-08-22",
+  "judges": {
+    "models": {
+      "reader": "haiku",
+      "grader": "opus"
+    },
+    "models_resolved": {
+      "reader": "claude-haiku-4-5-20251001",
+      "grader": "claude-opus-5"
+    },
+    "questions": 6,
+    "paraphrases": 3,
+    "replicates": 3,
+    "comprehension_design": "balanced-facts-v3",
+    "language": "Italian",
+    "judge_prompts_sha256": "002406fda61ef06d2f88d0b15b54b96541722f66384fed4b3d74ce7ff7887e62",
+    "judged_date": "2026-08-22T09:32:02+00:00",
+    "claude_version": "2.1.239 (Claude Code)"
+  },
+  "pairs": {
+    "actionable-clarity": [
+      "code-review-01",
+      "code-review-02",
+      "code-review-03",
+      "code-review-04",
+      "code-review-05",
+      "code-review-06",
+      "code-review-07",
+      "code-review-08",
+      "debugging-01",
+      "debugging-02",
+      "debugging-03",
+      "debugging-04",
+      "debugging-05",
+      "debugging-06",
+      "debugging-07",
+      "debugging-08",
+      "explanation-01",
+      "explanation-02",
+      "explanation-03",
+      "explanation-04",
+      "explanation-05",
+      "explanation-06",
+      "explanation-07",
+      "explanation-08",
+      "summarization-01",
+      "summarization-02",
+      "summarization-03",
+      "summarization-04",
+      "summarization-05",
+      "summarization-06",
+      "summarization-07",
+      "summarization-08"
+    ],
+    "clarity-flow": [
+      "code-review-01",
+      "code-review-02",
+      "code-review-03",
+      "code-review-04",
+      "code-review-05",
+      "code-review-06",
+      "code-review-07",
+      "code-review-08",
+      "debugging-01",
+      "debugging-02",
+      "debugging-03",
+      "debugging-04",
+      "debugging-05",
+      "debugging-06",
+      "debugging-07",
+      "debugging-08",
+      "explanation-01",
+      "explanation-02",
+      "explanation-03",
+      "explanation-04",
+      "explanation-05",
+      "explanation-06",
+      "explanation-07",
+      "explanation-08",
+      "summarization-01",
+      "summarization-02",
+      "summarization-03",
+      "summarization-04",
+      "summarization-05",
+      "summarization-06",
+      "summarization-07",
+      "summarization-08"
+    ],
+    "classic-concise": [
+      "code-review-01",
+      "code-review-02",
+      "code-review-03",
+      "code-review-04",
+      "code-review-05",
+      "code-review-06",
+      "code-review-07",
+      "code-review-08",
+      "debugging-01",
+      "debugging-02",
+      "debugging-03",
+      "debugging-04",
+      "debugging-05",
+      "debugging-06",
+      "debugging-07",
+      "debugging-08",
+      "explanation-01",
+      "explanation-02",
+      "explanation-03",
+      "explanation-04",
+      "explanation-05",
+      "explanation-06",
+      "explanation-07",
+      "explanation-08",
+      "summarization-01",
+      "summarization-02",
+      "summarization-03",
+      "summarization-04",
+      "summarization-05",
+      "summarization-06",
+      "summarization-07",
+      "summarization-08"
+    ],
+    "concise": [
+      "code-review-01",
+      "code-review-02",
+      "code-review-03",
+      "code-review-04",
+      "code-review-05",
+      "code-review-06",
+      "code-review-07",
+      "code-review-08",
+      "debugging-01",
+      "debugging-02",
+      "debugging-03",
+      "debugging-04",
+      "debugging-05",
+      "debugging-06",
+      "debugging-07",
+      "debugging-08",
+      "explanation-01",
+      "explanation-02",
+      "explanation-03",
+      "explanation-04",
+      "explanation-05",
+      "explanation-06",
+      "explanation-07",
+      "explanation-08",
+      "summarization-01",
+      "summarization-02",
+      "summarization-03",
+      "summarization-04",
+      "summarization-05",
+      "summarization-06",
+      "summarization-07",
+      "summarization-08"
+    ],
+    "developer-docs": [
+      "code-review-01",
+      "code-review-02",
+      "code-review-03",
+      "code-review-04",
+      "code-review-05",
+      "code-review-06",
+      "code-review-07",
+      "code-review-08",
+      "debugging-01",
+      "debugging-02",
+      "debugging-03",
+      "debugging-04",
+      "debugging-05",
+      "debugging-06",
+      "debugging-07",
+      "debugging-08",
+      "explanation-01",
+      "explanation-02",
+      "explanation-03",
+      "explanation-04",
+      "explanation-05",
+      "explanation-06",
+      "explanation-07",
+      "explanation-08",
+      "summarization-01",
+      "summarization-02",
+      "summarization-03",
+      "summarization-04",
+      "summarization-05",
+      "summarization-06",
+      "summarization-07",
+      "summarization-08"
+    ],
+    "plain-language": [
+      "code-review-01",
+      "code-review-02",
+      "code-review-03",
+      "code-review-04",
+      "code-review-05",
+      "code-review-06",
+      "code-review-07",
+      "code-review-08",
+      "debugging-01",
+      "debugging-02",
+      "debugging-03",
+      "debugging-04",
+      "debugging-05",
+      "debugging-06",
+      "debugging-07",
+      "debugging-08",
+      "explanation-01",
+      "explanation-02",
+      "explanation-03",
+      "explanation-04",
+      "explanation-05",
+      "explanation-06",
+      "explanation-07",
+      "explanation-08",
+      "summarization-01",
+      "summarization-02",
+      "summarization-03",
+      "summarization-04",
+      "summarization-05",
+      "summarization-06",
+      "summarization-07",
+      "summarization-08"
+    ],
+    "technical-simplified": [
+      "code-review-01",
+      "code-review-02",
+      "code-review-03",
+      "code-review-04",
+      "code-review-05",
+      "code-review-06",
+      "code-review-08",
+      "debugging-01",
+      "debugging-02",
+      "debugging-03",
+      "debugging-04",
+      "debugging-05",
+      "debugging-06",
+      "debugging-08",
+      "explanation-01",
+      "explanation-02",
+      "explanation-03",
+      "explanation-04",
+      "explanation-05",
+      "explanation-06",
+      "explanation-07",
+      "summarization-01",
+      "summarization-02",
+      "summarization-03",
+      "summarization-04",
+      "summarization-05"
+    ]
+  },
+  "checks": {
+    "comprehension": {
+      "judged": true,
+      "design": "balanced-facts-v3",
+      "per_style": {
+        "actionable-clarity": {
+          "wins": 9,
+          "losses": 3,
+          "ties": 20,
+          "mean_delta": 0.024,
+          "mean_agreement": 0.858,
+          "buried_fact_rate": 0.026,
+          "buried_fact_rate_unstyled": 0.038,
+          "pairs": {
+            "code-review-01": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-02": {
+              "styled": 0.778,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-03": {
+              "styled": 0.833,
+              "unstyled": 0.667,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-04": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-05": {
+              "styled": 1.0,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-06": {
+              "styled": 1.0,
+              "unstyled": 0.667,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-07": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-08": {
+              "styled": 1.0,
+              "unstyled": 0.889,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-01": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-02": {
+              "styled": 1.0,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-03": {
+              "styled": 0.944,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-04": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-05": {
+              "styled": 0.944,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-06": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-07": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-08": {
+              "styled": 0.833,
+              "unstyled": 0.889,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-01": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-02": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-03": {
+              "styled": 0.833,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-04": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-05": {
+              "styled": 0.889,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-06": {
+              "styled": 0.944,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-07": {
+              "styled": 0.889,
+              "unstyled": 0.889,
+              "questions": 6,
+              "agreement": 0.444,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-08": {
+              "styled": 0.778,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-01": {
+              "styled": 1.0,
+              "unstyled": 0.778,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-02": {
+              "styled": 1.0,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-03": {
+              "styled": 1.0,
+              "unstyled": 0.889,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-04": {
+              "styled": 1.0,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-05": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-06": {
+              "styled": 0.833,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-07": {
+              "styled": 0.833,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-08": {
+              "styled": 1.0,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            }
+          }
+        },
+        "clarity-flow": {
+          "wins": 5,
+          "losses": 9,
+          "ties": 18,
+          "mean_delta": -0.017,
+          "mean_agreement": 0.868,
+          "buried_fact_rate": 0.036,
+          "buried_fact_rate_unstyled": 0.03,
+          "pairs": {
+            "code-review-01": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-02": {
+              "styled": 0.833,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-03": {
+              "styled": 0.833,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-04": {
+              "styled": 0.889,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-05": {
+              "styled": 0.944,
+              "unstyled": 0.722,
+              "questions": 6,
+              "agreement": 0.889,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-06": {
+              "styled": 0.833,
+              "unstyled": 0.889,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-07": {
+              "styled": 0.833,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-08": {
+              "styled": 0.833,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-01": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-02": {
+              "styled": 0.778,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-03": {
+              "styled": 1.0,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-04": {
+              "styled": 0.833,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-05": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-06": {
+              "styled": 0.667,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-07": {
+              "styled": 1.0,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-08": {
+              "styled": 0.889,
+              "unstyled": 0.889,
+              "questions": 6,
+              "agreement": 0.556,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-01": {
+              "styled": 0.944,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-02": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-03": {
+              "styled": 0.833,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-04": {
+              "styled": 0.833,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-05": {
+              "styled": 1.0,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-06": {
+              "styled": 1.0,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-07": {
+              "styled": 1.0,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-08": {
+              "styled": 0.944,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-01": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-02": {
+              "styled": 1.0,
+              "unstyled": 0.889,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-03": {
+              "styled": 0.833,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-04": {
+              "styled": 0.833,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-05": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-06": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-07": {
+              "styled": 0.833,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-08": {
+              "styled": 1.0,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            }
+          }
+        },
+        "classic-concise": {
+          "wins": 6,
+          "losses": 9,
+          "ties": 17,
+          "mean_delta": -0.021,
+          "mean_agreement": 0.851,
+          "buried_fact_rate": 0.033,
+          "buried_fact_rate_unstyled": 0.024,
+          "pairs": {
+            "code-review-01": {
+              "styled": 1.0,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-02": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-03": {
+              "styled": 1.0,
+              "unstyled": 0.889,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-04": {
+              "styled": 0.833,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-05": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-06": {
+              "styled": 1.0,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-07": {
+              "styled": 0.944,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-08": {
+              "styled": 1.0,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-01": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-02": {
+              "styled": 0.833,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-03": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-04": {
+              "styled": 0.889,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-05": {
+              "styled": 0.833,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-06": {
+              "styled": 0.778,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-07": {
+              "styled": 0.778,
+              "unstyled": 0.667,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-08": {
+              "styled": 0.833,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-01": {
+              "styled": 0.944,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-02": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-03": {
+              "styled": 0.833,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-04": {
+              "styled": 0.889,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-05": {
+              "styled": 0.556,
+              "unstyled": 0.778,
+              "questions": 6,
+              "agreement": 0.889,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-06": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-07": {
+              "styled": 0.778,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.778,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-08": {
+              "styled": 1.0,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-01": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-02": {
+              "styled": 0.944,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.556,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-03": {
+              "styled": 1.0,
+              "unstyled": 0.889,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-04": {
+              "styled": 1.0,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-05": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-06": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-07": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-08": {
+              "styled": 0.889,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            }
+          }
+        },
+        "concise": {
+          "wins": 3,
+          "losses": 5,
+          "ties": 24,
+          "mean_delta": -0.023,
+          "mean_agreement": 0.861,
+          "buried_fact_rate": 0.045,
+          "buried_fact_rate_unstyled": 0.014,
+          "pairs": {
+            "code-review-01": {
+              "styled": 0.944,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-02": {
+              "styled": 0.889,
+              "unstyled": 0.889,
+              "questions": 6,
+              "agreement": 0.556,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-03": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-04": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-05": {
+              "styled": 0.944,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-06": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-07": {
+              "styled": 1.0,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-08": {
+              "styled": 1.0,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-01": {
+              "styled": 0.833,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-02": {
+              "styled": 0.833,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-03": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-04": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-05": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-06": {
+              "styled": 0.833,
+              "unstyled": 0.778,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-07": {
+              "styled": 0.833,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 0.333,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-08": {
+              "styled": 1.0,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-01": {
+              "styled": 0.667,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-02": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-03": {
+              "styled": 0.778,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-04": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-05": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-06": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-07": {
+              "styled": 1.0,
+              "unstyled": 0.889,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-08": {
+              "styled": 0.944,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-01": {
+              "styled": 0.833,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-02": {
+              "styled": 1.0,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-03": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-04": {
+              "styled": 0.889,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-05": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-06": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-07": {
+              "styled": 0.833,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-08": {
+              "styled": 0.833,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            }
+          }
+        },
+        "developer-docs": {
+          "wins": 5,
+          "losses": 5,
+          "ties": 22,
+          "mean_delta": -0.002,
+          "mean_agreement": 0.833,
+          "buried_fact_rate": 0.038,
+          "buried_fact_rate_unstyled": 0.03,
+          "pairs": {
+            "code-review-01": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-02": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-03": {
+              "styled": 0.944,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-04": {
+              "styled": 0.889,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.444,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-05": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-06": {
+              "styled": 1.0,
+              "unstyled": 0.889,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-07": {
+              "styled": 1.0,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-08": {
+              "styled": 0.944,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-01": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-02": {
+              "styled": 0.889,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-03": {
+              "styled": 0.944,
+              "unstyled": 0.889,
+              "questions": 6,
+              "agreement": 0.444,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-04": {
+              "styled": 0.889,
+              "unstyled": 0.667,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-05": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-06": {
+              "styled": 0.778,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-07": {
+              "styled": 1.0,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-08": {
+              "styled": 0.889,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-01": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-02": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-03": {
+              "styled": 0.667,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-04": {
+              "styled": 0.889,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-05": {
+              "styled": 0.889,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-06": {
+              "styled": 1.0,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-07": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-08": {
+              "styled": 0.833,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-01": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-02": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-03": {
+              "styled": 0.944,
+              "unstyled": 0.889,
+              "questions": 6,
+              "agreement": 0.444,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-04": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-05": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-06": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-07": {
+              "styled": 0.833,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-08": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            }
+          }
+        },
+        "plain-language": {
+          "wins": 7,
+          "losses": 9,
+          "ties": 15,
+          "mean_delta": -0.009,
+          "mean_agreement": 0.871,
+          "buried_fact_rate": 0.054,
+          "buried_fact_rate_unstyled": 0.05,
+          "pairs": {
+            "code-review-01": {
+              "styled": 1.0,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-02": {
+              "styled": 0.944,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.556,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-03": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-04": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-05": {
+              "styled": 0.833,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-06": {
+              "styled": 1.0,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-07": {
+              "styled": 0.833,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-08": {
+              "styled": 1.0,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-01": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-02": {
+              "styled": 0.833,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-03": {
+              "styled": 1.0,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-04": {
+              "styled": 0.778,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.778,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-05": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-06": {
+              "styled": 0.833,
+              "unstyled": 0.667,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-07": {
+              "styled": 0.667,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-08": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-01": {
+              "styled": 0.833,
+              "unstyled": 0.889,
+              "questions": 6,
+              "agreement": 0.444,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-02": {
+              "styled": 1.0,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-03": {
+              "styled": 0.833,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-04": {
+              "styled": 1.0,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-05": {
+              "styled": 0.944,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-06": {
+              "styled": 0.778,
+              "unstyled": 0.556,
+              "questions": 6,
+              "agreement": 0.889,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-07": {
+              "styled": 1.0,
+              "unstyled": 0.778,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-08": {
+              "styled": 0.778,
+              "unstyled": 0.778,
+              "questions": 6,
+              "agreement": 0.556,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-01": {
+              "styled": 0.944,
+              "unstyled": 0.889,
+              "questions": 6,
+              "agreement": 0.444,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-02": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-03": {
+              "styled": 1.0,
+              "unstyled": 0.889,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-04": {
+              "styled": 0.5,
+              "unstyled": 0.778,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-05": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-07": {
+              "styled": 0.833,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-08": {
+              "styled": 0.833,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            }
+          }
+        },
+        "technical-simplified": {
+          "wins": 4,
+          "losses": 4,
+          "ties": 17,
+          "mean_delta": 0.011,
+          "mean_agreement": 0.92,
+          "buried_fact_rate": 0.04,
+          "buried_fact_rate_unstyled": 0.053,
+          "pairs": {
+            "code-review-01": {
+              "styled": 1.0,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-02": {
+              "styled": 0.889,
+              "unstyled": 0.667,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-04": {
+              "styled": 0.833,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-05": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-06": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "code-review-08": {
+              "styled": 1.0,
+              "unstyled": 0.944,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-01": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-02": {
+              "styled": 0.833,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-03": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-04": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-05": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-06": {
+              "styled": 0.889,
+              "unstyled": 0.5,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "debugging-08": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-01": {
+              "styled": 0.833,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-02": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-03": {
+              "styled": 0.833,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-04": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-05": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-06": {
+              "styled": 0.833,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "explanation-07": {
+              "styled": 0.889,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-01": {
+              "styled": 1.0,
+              "unstyled": 0.778,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-02": {
+              "styled": 0.833,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 0.333,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-03": {
+              "styled": 0.944,
+              "unstyled": 0.833,
+              "questions": 6,
+              "agreement": 0.667,
+              "result": "win",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-04": {
+              "styled": 0.667,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "loss",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            },
+            "summarization-05": {
+              "styled": 1.0,
+              "unstyled": 1.0,
+              "questions": 6,
+              "agreement": 1.0,
+              "result": "tie",
+              "sources": {
+                "unstyled": 3,
+                "styled": 3
+              }
+            }
+          }
+        }
+      }
+    },
+    "paraphrase": {
+      "judged": true,
+      "per_style": {
+        "actionable-clarity": {
+          "wins": 11,
+          "losses": 9,
+          "ties": 12,
+          "length_correlation": {
+            "n": 32,
+            "pearson": 0.084,
+            "spearman": 0.024
+          },
+          "pairs": {
+            "code-review-01": {
+              "styled": 0.709,
+              "unstyled": 0.7,
+              "result": "tie"
+            },
+            "code-review-02": {
+              "styled": 0.699,
+              "unstyled": 0.775,
+              "result": "loss"
+            },
+            "code-review-03": {
+              "styled": 0.677,
+              "unstyled": 0.664,
+              "result": "tie"
+            },
+            "code-review-04": {
+              "styled": 0.751,
+              "unstyled": 0.608,
+              "result": "win"
+            },
+            "code-review-05": {
+              "styled": 0.682,
+              "unstyled": 0.703,
+              "result": "loss"
+            },
+            "code-review-06": {
+              "styled": 0.693,
+              "unstyled": 0.654,
+              "result": "win"
+            },
+            "code-review-07": {
+              "styled": 0.66,
+              "unstyled": 0.687,
+              "result": "loss"
+            },
+            "code-review-08": {
+              "styled": 0.721,
+              "unstyled": 0.637,
+              "result": "win"
+            },
+            "debugging-01": {
+              "styled": 0.591,
+              "unstyled": 0.653,
+              "result": "loss"
+            },
+            "debugging-02": {
+              "styled": 0.705,
+              "unstyled": 0.796,
+              "result": "loss"
+            },
+            "debugging-03": {
+              "styled": 0.825,
+              "unstyled": 0.742,
+              "result": "win"
+            },
+            "debugging-04": {
+              "styled": 0.77,
+              "unstyled": 0.78,
+              "result": "tie"
+            },
+            "debugging-05": {
+              "styled": 0.751,
+              "unstyled": 0.725,
+              "result": "win"
+            },
+            "debugging-06": {
+              "styled": 0.697,
+              "unstyled": 0.666,
+              "result": "win"
+            },
+            "debugging-07": {
+              "styled": 0.696,
+              "unstyled": 0.675,
+              "result": "win"
+            },
+            "debugging-08": {
+              "styled": 0.648,
+              "unstyled": 0.628,
+              "result": "tie"
+            },
+            "explanation-01": {
+              "styled": 0.666,
+              "unstyled": 0.705,
+              "result": "loss"
+            },
+            "explanation-02": {
+              "styled": 0.706,
+              "unstyled": 0.71,
+              "result": "tie"
+            },
+            "explanation-03": {
+              "styled": 0.668,
+              "unstyled": 0.672,
+              "result": "tie"
+            },
+            "explanation-04": {
+              "styled": 0.703,
+              "unstyled": 0.705,
+              "result": "tie"
+            },
+            "explanation-05": {
+              "styled": 0.717,
+              "unstyled": 0.573,
+              "result": "win"
+            },
+            "explanation-06": {
+              "styled": 0.644,
+              "unstyled": 0.666,
+              "result": "loss"
+            },
+            "explanation-07": {
+              "styled": 0.59,
+              "unstyled": 0.574,
+              "result": "tie"
+            },
+            "explanation-08": {
+              "styled": 0.638,
+              "unstyled": 0.571,
+              "result": "win"
+            },
+            "summarization-01": {
+              "styled": 0.719,
+              "unstyled": 0.728,
+              "result": "tie"
+            },
+            "summarization-02": {
+              "styled": 0.634,
+              "unstyled": 0.686,
+              "result": "loss"
+            },
+            "summarization-03": {
+              "styled": 0.646,
+              "unstyled": 0.598,
+              "result": "win"
+            },
+            "summarization-04": {
+              "styled": 0.711,
+              "unstyled": 0.707,
+              "result": "tie"
+            },
+            "summarization-05": {
+              "styled": 0.679,
+              "unstyled": 0.716,
+              "result": "loss"
+            },
+            "summarization-06": {
+              "styled": 0.675,
+              "unstyled": 0.66,
+              "result": "tie"
+            },
+            "summarization-07": {
+              "styled": 0.674,
+              "unstyled": 0.645,
+              "result": "win"
+            },
+            "summarization-08": {
+              "styled": 0.623,
+              "unstyled": 0.611,
+              "result": "tie"
+            }
+          }
+        },
+        "clarity-flow": {
+          "wins": 8,
+          "losses": 14,
+          "ties": 10,
+          "length_correlation": {
+            "n": 32,
+            "pearson": 0.081,
+            "spearman": 0.095
+          },
+          "pairs": {
+            "code-review-01": {
+              "styled": 0.631,
+              "unstyled": 0.7,
+              "result": "loss"
+            },
+            "code-review-02": {
+              "styled": 0.652,
+              "unstyled": 0.775,
+              "result": "loss"
+            },
+            "code-review-03": {
+              "styled": 0.718,
+              "unstyled": 0.664,
+              "result": "win"
+            },
+            "code-review-04": {
+              "styled": 0.588,
+              "unstyled": 0.608,
+              "result": "tie"
+            },
+            "code-review-05": {
+              "styled": 0.709,
+              "unstyled": 0.703,
+              "result": "tie"
+            },
+            "code-review-06": {
+              "styled": 0.637,
+              "unstyled": 0.654,
+              "result": "tie"
+            },
+            "code-review-07": {
+              "styled": 0.667,
+              "unstyled": 0.687,
+              "result": "loss"
+            },
+            "code-review-08": {
+              "styled": 0.639,
+              "unstyled": 0.637,
+              "result": "tie"
+            },
+            "debugging-01": {
+              "styled": 0.691,
+              "unstyled": 0.653,
+              "result": "win"
+            },
+            "debugging-02": {
+              "styled": 0.736,
+              "unstyled": 0.796,
+              "result": "loss"
+            },
+            "debugging-03": {
+              "styled": 0.686,
+              "unstyled": 0.742,
+              "result": "loss"
+            },
+            "debugging-04": {
+              "styled": 0.691,
+              "unstyled": 0.78,
+              "result": "loss"
+            },
+            "debugging-05": {
+              "styled": 0.689,
+              "unstyled": 0.725,
+              "result": "loss"
+            },
+            "debugging-06": {
+              "styled": 0.622,
+              "unstyled": 0.666,
+              "result": "loss"
+            },
+            "debugging-07": {
+              "styled": 0.694,
+              "unstyled": 0.675,
+              "result": "tie"
+            },
+            "debugging-08": {
+              "styled": 0.621,
+              "unstyled": 0.628,
+              "result": "tie"
+            },
+            "explanation-01": {
+              "styled": 0.722,
+              "unstyled": 0.705,
+              "result": "tie"
+            },
+            "explanation-02": {
+              "styled": 0.644,
+              "unstyled": 0.71,
+              "result": "loss"
+            },
+            "explanation-03": {
+              "styled": 0.65,
+              "unstyled": 0.672,
+              "result": "loss"
+            },
+            "explanation-04": {
+              "styled": 0.648,
+              "unstyled": 0.705,
+              "result": "loss"
+            },
+            "explanation-05": {
+              "styled": 0.643,
+              "unstyled": 0.573,
+              "result": "win"
+            },
+            "explanation-06": {
+              "styled": 0.602,
+              "unstyled": 0.666,
+              "result": "loss"
+            },
+            "explanation-07": {
+              "styled": 0.613,
+              "unstyled": 0.574,
+              "result": "win"
+            },
+            "explanation-08": {
+              "styled": 0.637,
+              "unstyled": 0.571,
+              "result": "win"
+            },
+            "summarization-01": {
+              "styled": 0.667,
+              "unstyled": 0.728,
+              "result": "loss"
+            },
+            "summarization-02": {
+              "styled": 0.679,
+              "unstyled": 0.686,
+              "result": "tie"
+            },
+            "summarization-03": {
+              "styled": 0.563,
+              "unstyled": 0.598,
+              "result": "loss"
+            },
+            "summarization-04": {
+              "styled": 0.776,
+              "unstyled": 0.707,
+              "result": "win"
+            },
+            "summarization-05": {
+              "styled": 0.761,
+              "unstyled": 0.716,
+              "result": "win"
+            },
+            "summarization-06": {
+              "styled": 0.645,
+              "unstyled": 0.66,
+              "result": "tie"
+            },
+            "summarization-07": {
+              "styled": 0.703,
+              "unstyled": 0.645,
+              "result": "win"
+            },
+            "summarization-08": {
+              "styled": 0.615,
+              "unstyled": 0.611,
+              "result": "tie"
+            }
+          }
+        },
+        "classic-concise": {
+          "wins": 6,
+          "losses": 17,
+          "ties": 9,
+          "length_correlation": {
+            "n": 32,
+            "pearson": -0.021,
+            "spearman": -0.026
+          },
+          "pairs": {
+            "code-review-01": {
+              "styled": 0.625,
+              "unstyled": 0.7,
+              "result": "loss"
+            },
+            "code-review-02": {
+              "styled": 0.641,
+              "unstyled": 0.775,
+              "result": "loss"
+            },
+            "code-review-03": {
+              "styled": 0.577,
+              "unstyled": 0.664,
+              "result": "loss"
+            },
+            "code-review-04": {
+              "styled": 0.587,
+              "unstyled": 0.608,
+              "result": "loss"
+            },
+            "code-review-05": {
+              "styled": 0.707,
+              "unstyled": 0.703,
+              "result": "tie"
+            },
+            "code-review-06": {
+              "styled": 0.68,
+              "unstyled": 0.654,
+              "result": "win"
+            },
+            "code-review-07": {
+              "styled": 0.66,
+              "unstyled": 0.687,
+              "result": "loss"
+            },
+            "code-review-08": {
+              "styled": 0.665,
+              "unstyled": 0.637,
+              "result": "win"
+            },
+            "debugging-01": {
+              "styled": 0.638,
+              "unstyled": 0.653,
+              "result": "tie"
+            },
+            "debugging-02": {
+              "styled": 0.81,
+              "unstyled": 0.796,
+              "result": "tie"
+            },
+            "debugging-03": {
+              "styled": 0.759,
+              "unstyled": 0.742,
+              "result": "tie"
+            },
+            "debugging-04": {
+              "styled": 0.77,
+              "unstyled": 0.78,
+              "result": "tie"
+            },
+            "debugging-05": {
+              "styled": 0.644,
+              "unstyled": 0.725,
+              "result": "loss"
+            },
+            "debugging-06": {
+              "styled": 0.641,
+              "unstyled": 0.666,
+              "result": "loss"
+            },
+            "debugging-07": {
+              "styled": 0.65,
+              "unstyled": 0.675,
+              "result": "loss"
+            },
+            "debugging-08": {
+              "styled": 0.597,
+              "unstyled": 0.628,
+              "result": "loss"
+            },
+            "explanation-01": {
+              "styled": 0.655,
+              "unstyled": 0.705,
+              "result": "loss"
+            },
+            "explanation-02": {
+              "styled": 0.62,
+              "unstyled": 0.71,
+              "result": "loss"
+            },
+            "explanation-03": {
+              "styled": 0.706,
+              "unstyled": 0.672,
+              "result": "win"
+            },
+            "explanation-04": {
+              "styled": 0.67,
+              "unstyled": 0.705,
+              "result": "loss"
+            },
+            "explanation-05": {
+              "styled": 0.671,
+              "unstyled": 0.573,
+              "result": "win"
+            },
+            "explanation-06": {
+              "styled": 0.539,
+              "unstyled": 0.666,
+              "result": "loss"
+            },
+            "explanation-07": {
+              "styled": 0.582,
+              "unstyled": 0.574,
+              "result": "tie"
+            },
+            "explanation-08": {
+              "styled": 0.565,
+              "unstyled": 0.571,
+              "result": "tie"
+            },
+            "summarization-01": {
+              "styled": 0.608,
+              "unstyled": 0.728,
+              "result": "loss"
+            },
+            "summarization-02": {
+              "styled": 0.564,
+              "unstyled": 0.686,
+              "result": "loss"
+            },
+            "summarization-03": {
+              "styled": 0.594,
+              "unstyled": 0.598,
+              "result": "tie"
+            },
+            "summarization-04": {
+              "styled": 0.619,
+              "unstyled": 0.707,
+              "result": "loss"
+            },
+            "summarization-05": {
+              "styled": 0.637,
+              "unstyled": 0.716,
+              "result": "loss"
+            },
+            "summarization-06": {
+              "styled": 0.65,
+              "unstyled": 0.66,
+              "result": "tie"
+            },
+            "summarization-07": {
+              "styled": 0.695,
+              "unstyled": 0.645,
+              "result": "win"
+            },
+            "summarization-08": {
+              "styled": 0.634,
+              "unstyled": 0.611,
+              "result": "win"
+            }
+          }
+        },
+        "concise": {
+          "wins": 7,
+          "losses": 15,
+          "ties": 10,
+          "length_correlation": {
+            "n": 32,
+            "pearson": 0.023,
+            "spearman": 0.062
+          },
+          "pairs": {
+            "code-review-01": {
+              "styled": 0.634,
+              "unstyled": 0.7,
+              "result": "loss"
+            },
+            "code-review-02": {
+              "styled": 0.743,
+              "unstyled": 0.775,
+              "result": "loss"
+            },
+            "code-review-03": {
+              "styled": 0.646,
+              "unstyled": 0.664,
+              "result": "tie"
+            },
+            "code-review-04": {
+              "styled": 0.643,
+              "unstyled": 0.608,
+              "result": "win"
+            },
+            "code-review-05": {
+              "styled": 0.64,
+              "unstyled": 0.703,
+              "result": "loss"
+            },
+            "code-review-06": {
+              "styled": 0.615,
+              "unstyled": 0.654,
+              "result": "loss"
+            },
+            "code-review-07": {
+              "styled": 0.65,
+              "unstyled": 0.687,
+              "result": "loss"
+            },
+            "code-review-08": {
+              "styled": 0.664,
+              "unstyled": 0.637,
+              "result": "win"
+            },
+            "debugging-01": {
+              "styled": 0.635,
+              "unstyled": 0.653,
+              "result": "tie"
+            },
+            "debugging-02": {
+              "styled": 0.747,
+              "unstyled": 0.796,
+              "result": "loss"
+            },
+            "debugging-03": {
+              "styled": 0.727,
+              "unstyled": 0.742,
+              "result": "tie"
+            },
+            "debugging-04": {
+              "styled": 0.705,
+              "unstyled": 0.78,
+              "result": "loss"
+            },
+            "debugging-05": {
+              "styled": 0.604,
+              "unstyled": 0.725,
+              "result": "loss"
+            },
+            "debugging-06": {
+              "styled": 0.67,
+              "unstyled": 0.666,
+              "result": "tie"
+            },
+            "debugging-07": {
+              "styled": 0.704,
+              "unstyled": 0.675,
+              "result": "win"
+            },
+            "debugging-08": {
+              "styled": 0.621,
+              "unstyled": 0.628,
+              "result": "tie"
+            },
+            "explanation-01": {
+              "styled": 0.711,
+              "unstyled": 0.705,
+              "result": "tie"
+            },
+            "explanation-02": {
+              "styled": 0.629,
+              "unstyled": 0.71,
+              "result": "loss"
+            },
+            "explanation-03": {
+              "styled": 0.636,
+              "unstyled": 0.672,
+              "result": "loss"
+            },
+            "explanation-04": {
+              "styled": 0.631,
+              "unstyled": 0.705,
+              "result": "loss"
+            },
+            "explanation-05": {
+              "styled": 0.61,
+              "unstyled": 0.573,
+              "result": "win"
+            },
+            "explanation-06": {
+              "styled": 0.566,
+              "unstyled": 0.666,
+              "result": "loss"
+            },
+            "explanation-07": {
+              "styled": 0.588,
+              "unstyled": 0.574,
+              "result": "tie"
+            },
+            "explanation-08": {
+              "styled": 0.571,
+              "unstyled": 0.571,
+              "result": "tie"
+            },
+            "summarization-01": {
+              "styled": 0.61,
+              "unstyled": 0.728,
+              "result": "loss"
+            },
+            "summarization-02": {
+              "styled": 0.61,
+              "unstyled": 0.686,
+              "result": "loss"
+            },
+            "summarization-03": {
+              "styled": 0.629,
+              "unstyled": 0.598,
+              "result": "win"
+            },
+            "summarization-04": {
+              "styled": 0.768,
+              "unstyled": 0.707,
+              "result": "win"
+            },
+            "summarization-05": {
+              "styled": 0.743,
+              "unstyled": 0.716,
+              "result": "win"
+            },
+            "summarization-06": {
+              "styled": 0.659,
+              "unstyled": 0.66,
+              "result": "tie"
+            },
+            "summarization-07": {
+              "styled": 0.636,
+              "unstyled": 0.645,
+              "result": "tie"
+            },
+            "summarization-08": {
+              "styled": 0.59,
+              "unstyled": 0.611,
+              "result": "loss"
+            }
+          }
+        },
+        "developer-docs": {
+          "wins": 13,
+          "losses": 9,
+          "ties": 10,
+          "length_correlation": {
+            "n": 32,
+            "pearson": 0.452,
+            "spearman": 0.35
+          },
+          "pairs": {
+            "code-review-01": {
+              "styled": 0.612,
+              "unstyled": 0.7,
+              "result": "loss"
+            },
+            "code-review-02": {
+              "styled": 0.653,
+              "unstyled": 0.775,
+              "result": "loss"
+            },
+            "code-review-03": {
+              "styled": 0.729,
+              "unstyled": 0.664,
+              "result": "win"
+            },
+            "code-review-04": {
+              "styled": 0.66,
+              "unstyled": 0.608,
+              "result": "win"
+            },
+            "code-review-05": {
+              "styled": 0.696,
+              "unstyled": 0.703,
+              "result": "tie"
+            },
+            "code-review-06": {
+              "styled": 0.692,
+              "unstyled": 0.654,
+              "result": "win"
+            },
+            "code-review-07": {
+              "styled": 0.665,
+              "unstyled": 0.687,
+              "result": "loss"
+            },
+            "code-review-08": {
+              "styled": 0.687,
+              "unstyled": 0.637,
+              "result": "win"
+            },
+            "debugging-01": {
+              "styled": 0.692,
+              "unstyled": 0.653,
+              "result": "win"
+            },
+            "debugging-02": {
+              "styled": 0.722,
+              "unstyled": 0.796,
+              "result": "loss"
+            },
+            "debugging-03": {
+              "styled": 0.851,
+              "unstyled": 0.742,
+              "result": "win"
+            },
+            "debugging-04": {
+              "styled": 0.781,
+              "unstyled": 0.78,
+              "result": "tie"
+            },
+            "debugging-05": {
+              "styled": 0.72,
+              "unstyled": 0.725,
+              "result": "tie"
+            },
+            "debugging-06": {
+              "styled": 0.655,
+              "unstyled": 0.666,
+              "result": "tie"
+            },
+            "debugging-07": {
+              "styled": 0.679,
+              "unstyled": 0.675,
+              "result": "tie"
+            },
+            "debugging-08": {
+              "styled": 0.62,
+              "unstyled": 0.628,
+              "result": "tie"
+            },
+            "explanation-01": {
+              "styled": 0.705,
+              "unstyled": 0.705,
+              "result": "tie"
+            },
+            "explanation-02": {
+              "styled": 0.69,
+              "unstyled": 0.71,
+              "result": "tie"
+            },
+            "explanation-03": {
+              "styled": 0.72,
+              "unstyled": 0.672,
+              "result": "win"
+            },
+            "explanation-04": {
+              "styled": 0.67,
+              "unstyled": 0.705,
+              "result": "loss"
+            },
+            "explanation-05": {
+              "styled": 0.662,
+              "unstyled": 0.573,
+              "result": "win"
+            },
+            "explanation-06": {
+              "styled": 0.659,
+              "unstyled": 0.666,
+              "result": "tie"
+            },
+            "explanation-07": {
+              "styled": 0.503,
+              "unstyled": 0.574,
+              "result": "loss"
+            },
+            "explanation-08": {
+              "styled": 0.663,
+              "unstyled": 0.571,
+              "result": "win"
+            },
+            "summarization-01": {
+              "styled": 0.768,
+              "unstyled": 0.728,
+              "result": "win"
+            },
+            "summarization-02": {
+              "styled": 0.655,
+              "unstyled": 0.686,
+              "result": "loss"
+            },
+            "summarization-03": {
+              "styled": 0.662,
+              "unstyled": 0.598,
+              "result": "win"
+            },
+            "summarization-04": {
+              "styled": 0.566,
+              "unstyled": 0.707,
+              "result": "loss"
+            },
+            "summarization-05": {
+              "styled": 0.752,
+              "unstyled": 0.716,
+              "result": "win"
+            },
+            "summarization-06": {
+              "styled": 0.644,
+              "unstyled": 0.66,
+              "result": "tie"
+            },
+            "summarization-07": {
+              "styled": 0.735,
+              "unstyled": 0.645,
+              "result": "win"
+            },
+            "summarization-08": {
+              "styled": 0.58,
+              "unstyled": 0.611,
+              "result": "loss"
+            }
+          }
+        },
+        "plain-language": {
+          "wins": 14,
+          "losses": 10,
+          "ties": 8,
+          "length_correlation": {
+            "n": 32,
+            "pearson": 0.381,
+            "spearman": 0.294
+          },
+          "pairs": {
+            "code-review-01": {
+              "styled": 0.741,
+              "unstyled": 0.7,
+              "result": "win"
+            },
+            "code-review-02": {
+              "styled": 0.656,
+              "unstyled": 0.775,
+              "result": "loss"
+            },
+            "code-review-03": {
+              "styled": 0.759,
+              "unstyled": 0.664,
+              "result": "win"
+            },
+            "code-review-04": {
+              "styled": 0.552,
+              "unstyled": 0.608,
+              "result": "loss"
+            },
+            "code-review-05": {
+              "styled": 0.704,
+              "unstyled": 0.703,
+              "result": "tie"
+            },
+            "code-review-06": {
+              "styled": 0.617,
+              "unstyled": 0.654,
+              "result": "loss"
+            },
+            "code-review-07": {
+              "styled": 0.629,
+              "unstyled": 0.687,
+              "result": "loss"
+            },
+            "code-review-08": {
+              "styled": 0.685,
+              "unstyled": 0.637,
+              "result": "win"
+            },
+            "debugging-01": {
+              "styled": 0.742,
+              "unstyled": 0.653,
+              "result": "win"
+            },
+            "debugging-02": {
+              "styled": 0.883,
+              "unstyled": 0.796,
+              "result": "win"
+            },
+            "debugging-03": {
+              "styled": 0.826,
+              "unstyled": 0.742,
+              "result": "win"
+            },
+            "debugging-04": {
+              "styled": 0.746,
+              "unstyled": 0.78,
+              "result": "loss"
+            },
+            "debugging-05": {
+              "styled": 0.779,
+              "unstyled": 0.725,
+              "result": "win"
+            },
+            "debugging-06": {
+              "styled": 0.657,
+              "unstyled": 0.666,
+              "result": "tie"
+            },
+            "debugging-07": {
+              "styled": 0.674,
+              "unstyled": 0.675,
+              "result": "tie"
+            },
+            "debugging-08": {
+              "styled": 0.667,
+              "unstyled": 0.628,
+              "result": "win"
+            },
+            "explanation-01": {
+              "styled": 0.692,
+              "unstyled": 0.705,
+              "result": "tie"
+            },
+            "explanation-02": {
+              "styled": 0.701,
+              "unstyled": 0.71,
+              "result": "tie"
+            },
+            "explanation-03": {
+              "styled": 0.71,
+              "unstyled": 0.672,
+              "result": "win"
+            },
+            "explanation-04": {
+              "styled": 0.675,
+              "unstyled": 0.705,
+              "result": "loss"
+            },
+            "explanation-05": {
+              "styled": 0.651,
+              "unstyled": 0.573,
+              "result": "win"
+            },
+            "explanation-06": {
+              "styled": 0.662,
+              "unstyled": 0.666,
+              "result": "tie"
+            },
+            "explanation-07": {
+              "styled": 0.624,
+              "unstyled": 0.574,
+              "result": "win"
+            },
+            "explanation-08": {
+              "styled": 0.663,
+              "unstyled": 0.571,
+              "result": "win"
+            },
+            "summarization-01": {
+              "styled": 0.726,
+              "unstyled": 0.728,
+              "result": "tie"
+            },
+            "summarization-02": {
+              "styled": 0.666,
+              "unstyled": 0.686,
+              "result": "loss"
+            },
+            "summarization-03": {
+              "styled": 0.661,
+              "unstyled": 0.598,
+              "result": "win"
+            },
+            "summarization-04": {
+              "styled": 0.676,
+              "unstyled": 0.707,
+              "result": "loss"
+            },
+            "summarization-05": {
+              "styled": 0.632,
+              "unstyled": 0.716,
+              "result": "loss"
+            },
+            "summarization-06": {
+              "styled": 0.397,
+              "unstyled": 0.66,
+              "result": "loss"
+            },
+            "summarization-07": {
+              "styled": 0.675,
+              "unstyled": 0.645,
+              "result": "win"
+            },
+            "summarization-08": {
+              "styled": 0.606,
+              "unstyled": 0.611,
+              "result": "tie"
+            }
+          }
+        },
+        "technical-simplified": {
+          "wins": 13,
+          "losses": 7,
+          "ties": 6,
+          "length_correlation": {
+            "n": 26,
+            "pearson": 0.102,
+            "spearman": -0.003
+          },
+          "pairs": {
+            "code-review-01": {
+              "styled": 0.683,
+              "unstyled": 0.7,
+              "result": "tie"
+            },
+            "code-review-02": {
+              "styled": 0.621,
+              "unstyled": 0.775,
+              "result": "loss"
+            },
+            "code-review-03": {
+              "styled": 0.657,
+              "unstyled": 0.664,
+              "result": "tie"
+            },
+            "code-review-04": {
+              "styled": 0.699,
+              "unstyled": 0.608,
+              "result": "win"
+            },
+            "code-review-05": {
+              "styled": 0.671,
+              "unstyled": 0.703,
+              "result": "loss"
+            },
+            "code-review-06": {
+              "styled": 0.697,
+              "unstyled": 0.654,
+              "result": "win"
+            },
+            "code-review-08": {
+              "styled": 0.696,
+              "unstyled": 0.637,
+              "result": "win"
+            },
+            "debugging-01": {
+              "styled": 0.665,
+              "unstyled": 0.653,
+              "result": "tie"
+            },
+            "debugging-02": {
+              "styled": 0.876,
+              "unstyled": 0.796,
+              "result": "win"
+            },
+            "debugging-03": {
+              "styled": 0.809,
+              "unstyled": 0.742,
+              "result": "win"
+            },
+            "debugging-04": {
+              "styled": 0.824,
+              "unstyled": 0.78,
+              "result": "win"
+            },
+            "debugging-05": {
+              "styled": 0.76,
+              "unstyled": 0.725,
+              "result": "win"
+            },
+            "debugging-06": {
+              "styled": 0.697,
+              "unstyled": 0.666,
+              "result": "win"
+            },
+            "debugging-08": {
+              "styled": 0.666,
+              "unstyled": 0.628,
+              "result": "win"
+            },
+            "explanation-01": {
+              "styled": 0.692,
+              "unstyled": 0.705,
+              "result": "tie"
+            },
+            "explanation-02": {
+              "styled": 0.638,
+              "unstyled": 0.71,
+              "result": "loss"
+            },
+            "explanation-03": {
+              "styled": 0.773,
+              "unstyled": 0.672,
+              "result": "win"
+            },
+            "explanation-04": {
+              "styled": 0.712,
+              "unstyled": 0.705,
+              "result": "tie"
+            },
+            "explanation-05": {
+              "styled": 0.773,
+              "unstyled": 0.573,
+              "result": "win"
+            },
+            "explanation-06": {
+              "styled": 0.621,
+              "unstyled": 0.666,
+              "result": "loss"
+            },
+            "explanation-07": {
+              "styled": 0.641,
+              "unstyled": 0.574,
+              "result": "win"
+            },
+            "summarization-01": {
+              "styled": 0.703,
+              "unstyled": 0.728,
+              "result": "loss"
+            },
+            "summarization-02": {
+              "styled": 0.59,
+              "unstyled": 0.686,
+              "result": "loss"
+            },
+            "summarization-03": {
+              "styled": 0.665,
+              "unstyled": 0.598,
+              "result": "win"
+            },
+            "summarization-04": {
+              "styled": 0.616,
+              "unstyled": 0.707,
+              "result": "loss"
+            },
+            "summarization-05": {
+              "styled": 0.698,
+              "unstyled": 0.716,
+              "result": "tie"
+            }
+          }
+        }
+      }
+    },
+    "roundtrip": {
+      "judged": true,
+      "per_style": {
+        "actionable-clarity": {
+          "wins": 9,
+          "losses": 6,
+          "ties": 17,
+          "length_correlation": {
+            "n": 32,
+            "pearson": 0.07,
+            "spearman": 0.201
+          },
+          "pairs": {
+            "code-review-01": {
+              "styled": 0.091,
+              "unstyled": 0.07,
+              "result": "loss"
+            },
+            "code-review-02": {
+              "styled": 0.106,
+              "unstyled": 0.041,
+              "result": "loss"
+            },
+            "code-review-03": {
+              "styled": 0.076,
+              "unstyled": 0.079,
+              "result": "tie"
+            },
+            "code-review-04": {
+              "styled": 0.047,
+              "unstyled": 0.11,
+              "result": "win"
+            },
+            "code-review-05": {
+              "styled": 0.077,
+              "unstyled": 0.092,
+              "result": "tie"
+            },
+            "code-review-06": {
+              "styled": 0.083,
+              "unstyled": 0.069,
+              "result": "tie"
+            },
+            "code-review-07": {
+              "styled": 0.087,
+              "unstyled": 0.083,
+              "result": "tie"
+            },
+            "code-review-08": {
+              "styled": 0.134,
+              "unstyled": 0.115,
+              "result": "tie"
+            },
+            "debugging-01": {
+              "styled": 0.047,
+              "unstyled": 0.169,
+              "result": "win"
+            },
+            "debugging-02": {
+              "styled": 0.091,
+              "unstyled": 0.057,
+              "result": "loss"
+            },
+            "debugging-03": {
+              "styled": 0.018,
+              "unstyled": 0.084,
+              "result": "win"
+            },
+            "debugging-04": {
+              "styled": 0.076,
+              "unstyled": 0.062,
+              "result": "tie"
+            },
+            "debugging-05": {
+              "styled": 0.082,
+              "unstyled": 0.102,
+              "result": "tie"
+            },
+            "debugging-06": {
+              "styled": 0.071,
+              "unstyled": 0.112,
+              "result": "win"
+            },
+            "debugging-07": {
+              "styled": 0.061,
+              "unstyled": 0.068,
+              "result": "tie"
+            },
+            "debugging-08": {
+              "styled": 0.084,
+              "unstyled": 0.087,
+              "result": "tie"
+            },
+            "explanation-01": {
+              "styled": 0.111,
+              "unstyled": 0.101,
+              "result": "tie"
+            },
+            "explanation-02": {
+              "styled": 0.086,
+              "unstyled": 0.097,
+              "result": "tie"
+            },
+            "explanation-03": {
+              "styled": 0.106,
+              "unstyled": 0.135,
+              "result": "win"
+            },
+            "explanation-04": {
+              "styled": 0.075,
+              "unstyled": 0.094,
+              "result": "tie"
+            },
+            "explanation-05": {
+              "styled": 0.079,
+              "unstyled": 0.13,
+              "result": "win"
+            },
+            "explanation-06": {
+              "styled": 0.065,
+              "unstyled": 0.065,
+              "result": "tie"
+            },
+            "explanation-07": {
+              "styled": 0.11,
+              "unstyled": 0.116,
+              "result": "tie"
+            },
+            "explanation-08": {
+              "styled": 0.139,
+              "unstyled": 0.128,
+              "result": "tie"
+            },
+            "summarization-01": {
+              "styled": 0.1,
+              "unstyled": 0.032,
+              "result": "loss"
+            },
+            "summarization-02": {
+              "styled": 0.164,
+              "unstyled": 0.175,
+              "result": "tie"
+            },
+            "summarization-03": {
+              "styled": 0.169,
+              "unstyled": 0.11,
+              "result": "loss"
+            },
+            "summarization-04": {
+              "styled": 0.109,
+              "unstyled": 0.07,
+              "result": "loss"
+            },
+            "summarization-05": {
+              "styled": 0.073,
+              "unstyled": 0.159,
+              "result": "win"
+            },
+            "summarization-06": {
+              "styled": 0.097,
+              "unstyled": 0.2,
+              "result": "win"
+            },
+            "summarization-07": {
+              "styled": 0.115,
+              "unstyled": 0.246,
+              "result": "win"
+            },
+            "summarization-08": {
+              "styled": 0.165,
+              "unstyled": 0.162,
+              "result": "tie"
+            }
+          }
+        },
+        "clarity-flow": {
+          "wins": 10,
+          "losses": 8,
+          "ties": 14,
+          "length_correlation": {
+            "n": 32,
+            "pearson": 0.433,
+            "spearman": 0.441
+          },
+          "pairs": {
+            "code-review-01": {
+              "styled": 0.05,
+              "unstyled": 0.07,
+              "result": "tie"
+            },
+            "code-review-02": {
+              "styled": 0.101,
+              "unstyled": 0.041,
+              "result": "loss"
+            },
+            "code-review-03": {
+              "styled": 0.08,
+              "unstyled": 0.079,
+              "result": "tie"
+            },
+            "code-review-04": {
+              "styled": 0.072,
+              "unstyled": 0.11,
+              "result": "win"
+            },
+            "code-review-05": {
+              "styled": 0.082,
+              "unstyled": 0.092,
+              "result": "tie"
+            },
+            "code-review-06": {
+              "styled": 0.063,
+              "unstyled": 0.069,
+              "result": "tie"
+            },
+            "code-review-07": {
+              "styled": 0.106,
+              "unstyled": 0.083,
+              "result": "loss"
+            },
+            "code-review-08": {
+              "styled": 0.185,
+              "unstyled": 0.115,
+              "result": "loss"
+            },
+            "debugging-01": {
+              "styled": 0.101,
+              "unstyled": 0.169,
+              "result": "win"
+            },
+            "debugging-02": {
+              "styled": 0.0,
+              "unstyled": 0.057,
+              "result": "win"
+            },
+            "debugging-03": {
+              "styled": 0.037,
+              "unstyled": 0.084,
+              "result": "win"
+            },
+            "debugging-04": {
+              "styled": 0.051,
+              "unstyled": 0.062,
+              "result": "tie"
+            },
+            "debugging-05": {
+              "styled": 0.118,
+              "unstyled": 0.102,
+              "result": "tie"
+            },
+            "debugging-06": {
+              "styled": 0.117,
+              "unstyled": 0.112,
+              "result": "tie"
+            },
+            "debugging-07": {
+              "styled": 0.123,
+              "unstyled": 0.068,
+              "result": "loss"
+            },
+            "debugging-08": {
+              "styled": 0.116,
+              "unstyled": 0.087,
+              "result": "loss"
+            },
+            "explanation-01": {
+              "styled": 0.112,
+              "unstyled": 0.101,
+              "result": "tie"
+            },
+            "explanation-02": {
+              "styled": 0.167,
+              "unstyled": 0.097,
+              "result": "loss"
+            },
+            "explanation-03": {
+              "styled": 0.144,
+              "unstyled": 0.135,
+              "result": "tie"
+            },
+            "explanation-04": {
+              "styled": 0.094,
+              "unstyled": 0.094,
+              "result": "tie"
+            },
+            "explanation-05": {
+              "styled": 0.099,
+              "unstyled": 0.13,
+              "result": "win"
+            },
+            "explanation-06": {
+              "styled": 0.062,
+              "unstyled": 0.065,
+              "result": "tie"
+            },
+            "explanation-07": {
+              "styled": 0.082,
+              "unstyled": 0.116,
+              "result": "win"
+            },
+            "explanation-08": {
+              "styled": 0.127,
+              "unstyled": 0.128,
+              "result": "tie"
+            },
+            "summarization-01": {
+              "styled": 0.029,
+              "unstyled": 0.032,
+              "result": "tie"
+            },
+            "summarization-02": {
+              "styled": 0.2,
+              "unstyled": 0.175,
+              "result": "loss"
+            },
+            "summarization-03": {
+              "styled": 0.113,
+              "unstyled": 0.11,
+              "result": "tie"
+            },
+            "summarization-04": {
+              "styled": 0.048,
+              "unstyled": 0.07,
+              "result": "win"
+            },
+            "summarization-05": {
+              "styled": 0.058,
+              "unstyled": 0.159,
+              "result": "win"
+            },
+            "summarization-06": {
+              "styled": 0.118,
+              "unstyled": 0.2,
+              "result": "win"
+            },
+            "summarization-07": {
+              "styled": 0.165,
+              "unstyled": 0.246,
+              "result": "win"
+            },
+            "summarization-08": {
+              "styled": 0.223,
+              "unstyled": 0.162,
+              "result": "loss"
+            }
+          }
+        },
+        "classic-concise": {
+          "wins": 6,
+          "losses": 16,
+          "ties": 10,
+          "length_correlation": {
+            "n": 32,
+            "pearson": -0.028,
+            "spearman": -0.02
+          },
+          "pairs": {
+            "code-review-01": {
+              "styled": 0.071,
+              "unstyled": 0.07,
+              "result": "tie"
+            },
+            "code-review-02": {
+              "styled": 0.088,
+              "unstyled": 0.041,
+              "result": "loss"
+            },
+            "code-review-03": {
+              "styled": 0.125,
+              "unstyled": 0.079,
+              "result": "loss"
+            },
+            "code-review-04": {
+              "styled": 0.073,
+              "unstyled": 0.11,
+              "result": "win"
+            },
+            "code-review-05": {
+              "styled": 0.069,
+              "unstyled": 0.092,
+              "result": "win"
+            },
+            "code-review-06": {
+              "styled": 0.113,
+              "unstyled": 0.069,
+              "result": "loss"
+            },
+            "code-review-07": {
+              "styled": 0.125,
+              "unstyled": 0.083,
+              "result": "loss"
+            },
+            "code-review-08": {
+              "styled": 0.168,
+              "unstyled": 0.115,
+              "result": "loss"
+            },
+            "debugging-01": {
+              "styled": 0.237,
+              "unstyled": 0.169,
+              "result": "loss"
+            },
+            "debugging-02": {
+              "styled": 0.019,
+              "unstyled": 0.057,
+              "result": "win"
+            },
+            "debugging-03": {
+              "styled": 0.065,
+              "unstyled": 0.084,
+              "result": "tie"
+            },
+            "debugging-04": {
+              "styled": 0.076,
+              "unstyled": 0.062,
+              "result": "tie"
+            },
+            "debugging-05": {
+              "styled": 0.108,
+              "unstyled": 0.102,
+              "result": "tie"
+            },
+            "debugging-06": {
+              "styled": 0.097,
+              "unstyled": 0.112,
+              "result": "tie"
+            },
+            "debugging-07": {
+              "styled": 0.093,
+              "unstyled": 0.068,
+              "result": "loss"
+            },
+            "debugging-08": {
+              "styled": 0.188,
+              "unstyled": 0.087,
+              "result": "loss"
+            },
+            "explanation-01": {
+              "styled": 0.136,
+              "unstyled": 0.101,
+              "result": "loss"
+            },
+            "explanation-02": {
+              "styled": 0.207,
+              "unstyled": 0.097,
+              "result": "loss"
+            },
+            "explanation-03": {
+              "styled": 0.098,
+              "unstyled": 0.135,
+              "result": "win"
+            },
+            "explanation-04": {
+              "styled": 0.084,
+              "unstyled": 0.094,
+              "result": "tie"
+            },
+            "explanation-05": {
+              "styled": 0.113,
+              "unstyled": 0.13,
+              "result": "tie"
+            },
+            "explanation-06": {
+              "styled": 0.087,
+              "unstyled": 0.065,
+              "result": "loss"
+            },
+            "explanation-07": {
+              "styled": 0.138,
+              "unstyled": 0.116,
+              "result": "loss"
+            },
+            "explanation-08": {
+              "styled": 0.11,
+              "unstyled": 0.128,
+              "result": "tie"
+            },
+            "summarization-01": {
+              "styled": 0.121,
+              "unstyled": 0.032,
+              "result": "loss"
+            },
+            "summarization-02": {
+              "styled": 0.138,
+              "unstyled": 0.175,
+              "result": "win"
+            },
+            "summarization-03": {
+              "styled": 0.118,
+              "unstyled": 0.11,
+              "result": "tie"
+            },
+            "summarization-04": {
+              "styled": 0.109,
+              "unstyled": 0.07,
+              "result": "loss"
+            },
+            "summarization-05": {
+              "styled": 0.162,
+              "unstyled": 0.159,
+              "result": "tie"
+            },
+            "summarization-06": {
+              "styled": 0.272,
+              "unstyled": 0.2,
+              "result": "loss"
+            },
+            "summarization-07": {
+              "styled": 0.202,
+              "unstyled": 0.246,
+              "result": "win"
+            },
+            "summarization-08": {
+              "styled": 0.258,
+              "unstyled": 0.162,
+              "result": "loss"
+            }
+          }
+        },
+        "concise": {
+          "wins": 8,
+          "losses": 14,
+          "ties": 10,
+          "length_correlation": {
+            "n": 32,
+            "pearson": 0.028,
+            "spearman": 0.108
+          },
+          "pairs": {
+            "code-review-01": {
+              "styled": 0.077,
+              "unstyled": 0.07,
+              "result": "tie"
+            },
+            "code-review-02": {
+              "styled": 0.056,
+              "unstyled": 0.041,
+              "result": "tie"
+            },
+            "code-review-03": {
+              "styled": 0.149,
+              "unstyled": 0.079,
+              "result": "loss"
+            },
+            "code-review-04": {
+              "styled": 0.126,
+              "unstyled": 0.11,
+              "result": "tie"
+            },
+            "code-review-05": {
+              "styled": 0.114,
+              "unstyled": 0.092,
+              "result": "loss"
+            },
+            "code-review-06": {
+              "styled": 0.123,
+              "unstyled": 0.069,
+              "result": "loss"
+            },
+            "code-review-07": {
+              "styled": 0.057,
+              "unstyled": 0.083,
+              "result": "win"
+            },
+            "code-review-08": {
+              "styled": 0.158,
+              "unstyled": 0.115,
+              "result": "loss"
+            },
+            "debugging-01": {
+              "styled": 0.148,
+              "unstyled": 0.169,
+              "result": "win"
+            },
+            "debugging-02": {
+              "styled": 0.021,
+              "unstyled": 0.057,
+              "result": "win"
+            },
+            "debugging-03": {
+              "styled": 0.032,
+              "unstyled": 0.084,
+              "result": "win"
+            },
+            "debugging-04": {
+              "styled": 0.078,
+              "unstyled": 0.062,
+              "result": "tie"
+            },
+            "debugging-05": {
+              "styled": 0.108,
+              "unstyled": 0.102,
+              "result": "tie"
+            },
+            "debugging-06": {
+              "styled": 0.115,
+              "unstyled": 0.112,
+              "result": "tie"
+            },
+            "debugging-07": {
+              "styled": 0.068,
+              "unstyled": 0.068,
+              "result": "tie"
+            },
+            "debugging-08": {
+              "styled": 0.143,
+              "unstyled": 0.087,
+              "result": "loss"
+            },
+            "explanation-01": {
+              "styled": 0.154,
+              "unstyled": 0.101,
+              "result": "loss"
+            },
+            "explanation-02": {
+              "styled": 0.107,
+              "unstyled": 0.097,
+              "result": "tie"
+            },
+            "explanation-03": {
+              "styled": 0.138,
+              "unstyled": 0.135,
+              "result": "tie"
+            },
+            "explanation-04": {
+              "styled": 0.12,
+              "unstyled": 0.094,
+              "result": "loss"
+            },
+            "explanation-05": {
+              "styled": 0.147,
+              "unstyled": 0.13,
+              "result": "tie"
+            },
+            "explanation-06": {
+              "styled": 0.125,
+              "unstyled": 0.065,
+              "result": "loss"
+            },
+            "explanation-07": {
+              "styled": 0.095,
+              "unstyled": 0.116,
+              "result": "win"
+            },
+            "explanation-08": {
+              "styled": 0.179,
+              "unstyled": 0.128,
+              "result": "loss"
+            },
+            "summarization-01": {
+              "styled": 0.085,
+              "unstyled": 0.032,
+              "result": "loss"
+            },
+            "summarization-02": {
+              "styled": 0.289,
+              "unstyled": 0.175,
+              "result": "loss"
+            },
+            "summarization-03": {
+              "styled": 0.075,
+              "unstyled": 0.11,
+              "result": "win"
+            },
+            "summarization-04": {
+              "styled": 0.091,
+              "unstyled": 0.07,
+              "result": "loss"
+            },
+            "summarization-05": {
+              "styled": 0.295,
+              "unstyled": 0.159,
+              "result": "loss"
+            },
+            "summarization-06": {
+              "styled": 0.141,
+              "unstyled": 0.2,
+              "result": "win"
+            },
+            "summarization-07": {
+              "styled": 0.216,
+              "unstyled": 0.246,
+              "result": "win"
+            },
+            "summarization-08": {
+              "styled": 0.23,
+              "unstyled": 0.162,
+              "result": "loss"
+            }
+          }
+        },
+        "developer-docs": {
+          "wins": 10,
+          "losses": 7,
+          "ties": 15,
+          "length_correlation": {
+            "n": 32,
+            "pearson": 0.371,
+            "spearman": 0.441
+          },
+          "pairs": {
+            "code-review-01": {
+              "styled": 0.074,
+              "unstyled": 0.07,
+              "result": "tie"
+            },
+            "code-review-02": {
+              "styled": 0.09,
+              "unstyled": 0.041,
+              "result": "loss"
+            },
+            "code-review-03": {
+              "styled": 0.095,
+              "unstyled": 0.079,
+              "result": "tie"
+            },
+            "code-review-04": {
+              "styled": 0.096,
+              "unstyled": 0.11,
+              "result": "tie"
+            },
+            "code-review-05": {
+              "styled": 0.132,
+              "unstyled": 0.092,
+              "result": "loss"
+            },
+            "code-review-06": {
+              "styled": 0.117,
+              "unstyled": 0.069,
+              "result": "loss"
+            },
+            "code-review-07": {
+              "styled": 0.091,
+              "unstyled": 0.083,
+              "result": "tie"
+            },
+            "code-review-08": {
+              "styled": 0.096,
+              "unstyled": 0.115,
+              "result": "tie"
+            },
+            "debugging-01": {
+              "styled": 0.043,
+              "unstyled": 0.169,
+              "result": "win"
+            },
+            "debugging-02": {
+              "styled": 0.074,
+              "unstyled": 0.057,
+              "result": "tie"
+            },
+            "debugging-03": {
+              "styled": 0.052,
+              "unstyled": 0.084,
+              "result": "win"
+            },
+            "debugging-04": {
+              "styled": 0.052,
+              "unstyled": 0.062,
+              "result": "tie"
+            },
+            "debugging-05": {
+              "styled": 0.08,
+              "unstyled": 0.102,
+              "result": "win"
+            },
+            "debugging-06": {
+              "styled": 0.102,
+              "unstyled": 0.112,
+              "result": "tie"
+            },
+            "debugging-07": {
+              "styled": 0.138,
+              "unstyled": 0.068,
+              "result": "loss"
+            },
+            "debugging-08": {
+              "styled": 0.147,
+              "unstyled": 0.087,
+              "result": "loss"
+            },
+            "explanation-01": {
+              "styled": 0.103,
+              "unstyled": 0.101,
+              "result": "tie"
+            },
+            "explanation-02": {
+              "styled": 0.09,
+              "unstyled": 0.097,
+              "result": "tie"
+            },
+            "explanation-03": {
+              "styled": 0.092,
+              "unstyled": 0.135,
+              "result": "win"
+            },
+            "explanation-04": {
+              "styled": 0.139,
+              "unstyled": 0.094,
+              "result": "loss"
+            },
+            "explanation-05": {
+              "styled": 0.081,
+              "unstyled": 0.13,
+              "result": "win"
+            },
+            "explanation-06": {
+              "styled": 0.063,
+              "unstyled": 0.065,
+              "result": "tie"
+            },
+            "explanation-07": {
+              "styled": 0.098,
+              "unstyled": 0.116,
+              "result": "tie"
+            },
+            "explanation-08": {
+              "styled": 0.095,
+              "unstyled": 0.128,
+              "result": "win"
+            },
+            "summarization-01": {
+              "styled": 0.175,
+              "unstyled": 0.032,
+              "result": "loss"
+            },
+            "summarization-02": {
+              "styled": 0.121,
+              "unstyled": 0.175,
+              "result": "win"
+            },
+            "summarization-03": {
+              "styled": 0.1,
+              "unstyled": 0.11,
+              "result": "tie"
+            },
+            "summarization-04": {
+              "styled": 0.085,
+              "unstyled": 0.07,
+              "result": "tie"
+            },
+            "summarization-05": {
+              "styled": 0.067,
+              "unstyled": 0.159,
+              "result": "win"
+            },
+            "summarization-06": {
+              "styled": 0.167,
+              "unstyled": 0.2,
+              "result": "win"
+            },
+            "summarization-07": {
+              "styled": 0.196,
+              "unstyled": 0.246,
+              "result": "win"
+            },
+            "summarization-08": {
+              "styled": 0.153,
+              "unstyled": 0.162,
+              "result": "tie"
+            }
+          }
+        },
+        "plain-language": {
+          "wins": 12,
+          "losses": 9,
+          "ties": 11,
+          "length_correlation": {
+            "n": 32,
+            "pearson": 0.372,
+            "spearman": 0.452
+          },
+          "pairs": {
+            "code-review-01": {
+              "styled": 0.035,
+              "unstyled": 0.07,
+              "result": "win"
+            },
+            "code-review-02": {
+              "styled": 0.074,
+              "unstyled": 0.041,
+              "result": "loss"
+            },
+            "code-review-03": {
+              "styled": 0.06,
+              "unstyled": 0.079,
+              "result": "tie"
+            },
+            "code-review-04": {
+              "styled": 0.061,
+              "unstyled": 0.11,
+              "result": "win"
+            },
+            "code-review-05": {
+              "styled": 0.083,
+              "unstyled": 0.092,
+              "result": "tie"
+            },
+            "code-review-06": {
+              "styled": 0.092,
+              "unstyled": 0.069,
+              "result": "loss"
+            },
+            "code-review-07": {
+              "styled": 0.155,
+              "unstyled": 0.083,
+              "result": "loss"
+            },
+            "code-review-08": {
+              "styled": 0.101,
+              "unstyled": 0.115,
+              "result": "tie"
+            },
+            "debugging-01": {
+              "styled": 0.02,
+              "unstyled": 0.169,
+              "result": "win"
+            },
+            "debugging-02": {
+              "styled": 0.036,
+              "unstyled": 0.057,
+              "result": "win"
+            },
+            "debugging-03": {
+              "styled": 0.045,
+              "unstyled": 0.084,
+              "result": "win"
+            },
+            "debugging-04": {
+              "styled": 0.059,
+              "unstyled": 0.062,
+              "result": "tie"
+            },
+            "debugging-05": {
+              "styled": 0.048,
+              "unstyled": 0.102,
+              "result": "win"
+            },
+            "debugging-06": {
+              "styled": 0.099,
+              "unstyled": 0.112,
+              "result": "tie"
+            },
+            "debugging-07": {
+              "styled": 0.092,
+              "unstyled": 0.068,
+              "result": "loss"
+            },
+            "debugging-08": {
+              "styled": 0.119,
+              "unstyled": 0.087,
+              "result": "loss"
+            },
+            "explanation-01": {
+              "styled": 0.105,
+              "unstyled": 0.101,
+              "result": "tie"
+            },
+            "explanation-02": {
+              "styled": 0.074,
+              "unstyled": 0.097,
+              "result": "win"
+            },
+            "explanation-03": {
+              "styled": 0.084,
+              "unstyled": 0.135,
+              "result": "win"
+            },
+            "explanation-04": {
+              "styled": 0.099,
+              "unstyled": 0.094,
+              "result": "tie"
+            },
+            "explanation-05": {
+              "styled": 0.124,
+              "unstyled": 0.13,
+              "result": "tie"
+            },
+            "explanation-06": {
+              "styled": 0.085,
+              "unstyled": 0.065,
+              "result": "loss"
+            },
+            "explanation-07": {
+              "styled": 0.092,
+              "unstyled": 0.116,
+              "result": "win"
+            },
+            "explanation-08": {
+              "styled": 0.136,
+              "unstyled": 0.128,
+              "result": "tie"
+            },
+            "summarization-01": {
+              "styled": 0.088,
+              "unstyled": 0.032,
+              "result": "loss"
+            },
+            "summarization-02": {
+              "styled": 0.085,
+              "unstyled": 0.175,
+              "result": "win"
+            },
+            "summarization-03": {
+              "styled": 0.126,
+              "unstyled": 0.11,
+              "result": "tie"
+            },
+            "summarization-04": {
+              "styled": 0.067,
+              "unstyled": 0.07,
+              "result": "tie"
+            },
+            "summarization-05": {
+              "styled": 0.132,
+              "unstyled": 0.159,
+              "result": "win"
+            },
+            "summarization-06": {
+              "styled": 0.926,
+              "unstyled": 0.2,
+              "result": "loss"
+            },
+            "summarization-07": {
+              "styled": 0.134,
+              "unstyled": 0.246,
+              "result": "win"
+            },
+            "summarization-08": {
+              "styled": 0.235,
+              "unstyled": 0.162,
+              "result": "loss"
+            }
+          }
+        },
+        "technical-simplified": {
+          "wins": 9,
+          "losses": 9,
+          "ties": 8,
+          "length_correlation": {
+            "n": 26,
+            "pearson": 0.516,
+            "spearman": 0.389
+          },
+          "pairs": {
+            "code-review-01": {
+              "styled": 0.063,
+              "unstyled": 0.07,
+              "result": "tie"
+            },
+            "code-review-02": {
+              "styled": 0.151,
+              "unstyled": 0.041,
+              "result": "loss"
+            },
+            "code-review-03": {
+              "styled": 0.6,
+              "unstyled": 0.079,
+              "result": "loss"
+            },
+            "code-review-04": {
+              "styled": 0.104,
+              "unstyled": 0.11,
+              "result": "tie"
+            },
+            "code-review-05": {
+              "styled": 0.057,
+              "unstyled": 0.092,
+              "result": "win"
+            },
+            "code-review-06": {
+              "styled": 0.11,
+              "unstyled": 0.069,
+              "result": "loss"
+            },
+            "code-review-08": {
+              "styled": 0.141,
+              "unstyled": 0.115,
+              "result": "loss"
+            },
+            "debugging-01": {
+              "styled": 0.043,
+              "unstyled": 0.169,
+              "result": "win"
+            },
+            "debugging-02": {
+              "styled": 0.069,
+              "unstyled": 0.057,
+              "result": "tie"
+            },
+            "debugging-03": {
+              "styled": 0.053,
+              "unstyled": 0.084,
+              "result": "win"
+            },
+            "debugging-04": {
+              "styled": 0.074,
+              "unstyled": 0.062,
+              "result": "tie"
+            },
+            "debugging-05": {
+              "styled": 0.102,
+              "unstyled": 0.102,
+              "result": "tie"
+            },
+            "debugging-06": {
+              "styled": 0.097,
+              "unstyled": 0.112,
+              "result": "tie"
+            },
+            "debugging-08": {
+              "styled": 0.139,
+              "unstyled": 0.087,
+              "result": "loss"
+            },
+            "explanation-01": {
+              "styled": 0.108,
+              "unstyled": 0.101,
+              "result": "tie"
+            },
+            "explanation-02": {
+              "styled": 0.105,
+              "unstyled": 0.097,
+              "result": "tie"
+            },
+            "explanation-03": {
+              "styled": 0.081,
+              "unstyled": 0.135,
+              "result": "win"
+            },
+            "explanation-04": {
+              "styled": 0.115,
+              "unstyled": 0.094,
+              "result": "loss"
+            },
+            "explanation-05": {
+              "styled": 0.099,
+              "unstyled": 0.13,
+              "result": "win"
+            },
+            "explanation-06": {
+              "styled": 0.119,
+              "unstyled": 0.065,
+              "result": "loss"
+            },
+            "explanation-07": {
+              "styled": 0.089,
+              "unstyled": 0.116,
+              "result": "win"
+            },
+            "summarization-01": {
+              "styled": 0.105,
+              "unstyled": 0.032,
+              "result": "loss"
+            },
+            "summarization-02": {
+              "styled": 0.117,
+              "unstyled": 0.175,
+              "result": "win"
+            },
+            "summarization-03": {
+              "styled": 0.086,
+              "unstyled": 0.11,
+              "result": "win"
+            },
+            "summarization-04": {
+              "styled": 0.134,
+              "unstyled": 0.07,
+              "result": "loss"
+            },
+            "summarization-05": {
+              "styled": 0.097,
+              "unstyled": 0.159,
+              "result": "win"
+            }
+          }
+        }
+      }
+    }
+  },
+  "warnings": [
+    "technical-simplified/explanation-08: the pair failed the gate, excluded",
+    "technical-simplified/code-review-07: the pair failed the gate, excluded",
+    "technical-simplified/summarization-06: the pair failed the gate, excluded",
+    "technical-simplified/summarization-07: the pair failed the gate, excluded",
+    "technical-simplified/summarization-08: the pair failed the gate, excluded",
+    "technical-simplified/debugging-07: the pair failed the gate, excluded",
+    "plain-language/summarization-06: the pair has 0 shared facts, fewer than the floor of 3, so comprehension skips the pair",
+    "technical-simplified/code-review-03: the pair has 0 shared facts, fewer than the floor of 3, so comprehension skips the pair",
+    "plain-language/summarization-06: the comprehension check has no usable questions for the pair, so the pair is unscored",
+    "technical-simplified/code-review-03: the comprehension check has no usable questions for the pair, so the pair is unscored",
+    "clarity-flow: the styled answer scores worse than the unstyled answer on comprehension (5 wins, 9 losses)",
+    "classic-concise: the styled answer scores worse than the unstyled answer on comprehension (6 wins, 9 losses)",
+    "concise: the styled answer scores worse than the unstyled answer on comprehension (3 wins, 5 losses)",
+    "plain-language: the styled answer scores worse than the unstyled answer on comprehension (7 wins, 9 losses)"
+  ]
+}

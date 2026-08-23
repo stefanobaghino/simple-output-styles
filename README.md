@@ -50,7 +50,7 @@ Open an issue through the [feedback forms](https://github.com/stefanobaghino/sim
 
 Each section below describes the spirit of one style, then what testing with the evaluation harness found: what the style does well, and where it falls short. The style texts live in [plugin/output-styles/](plugin/output-styles/). For how the styles are measured and for the exact numbers behind these findings, see the [evaluation harness](evals/) and the [measured results](evals/RESULTS.md).
 
-The evaluation also measures **Concise**, the output style built into Claude Code itself (version 2.1.237 and later), as a reference point. Concise is not part of this plugin: Claude Code ships it, and you select it through `/config`. Its measured results appear in [evals/RESULTS.md](evals/RESULTS.md) next to the plugin styles.
+The evaluation also measures **Concise**, the output style built into Claude Code itself (version 2.1.237 and later), as a reference point. Concise is not part of this plugin: Claude Code ships it, and you select it through `/config`. In testing, it was the cheapest arm by far — the smallest prompt overhead and the shortest answers, tied with classic-concise — and it kept details well, but its answers were the hardest to understand of the whole field by the harness's clarity judge. Its measured results appear in [evals/RESULTS.md](evals/RESULTS.md) next to the plugin styles.
 
 The table compares the styles at a glance; the sections give the detail.
 
@@ -58,7 +58,7 @@ The table compares the styles at a glance; the sections give the detail.
 |---|---|---|
 | [actionable-clarity](#actionable-clarity) | Clarity; keeps the most details | Longer answers; sometimes too confident |
 | [classic-concise](#classic-concise) | The shortest answers | Harder to understand |
-| [clarity-flow](#clarity-flow) | Keeps details in shorter answers | Middling clarity; drops some "maybes" |
+| [clarity-flow](#clarity-flow) | Keeps details in shorter answers | Low clarity; drops some "maybes" |
 | [developer-docs](#developer-docs) | Clarity at normal length | Drops some "maybes"; wordier in long sessions |
 | [plain-language](#plain-language) | Clarity, brevity, and keeping "maybes" | Can cut details you need |
 | [technical-simplified](#technical-simplified) | Procedure documents, not chat | Every measure of chat quality |
@@ -87,7 +87,7 @@ The style adapts the composition principles of The Elements of Style (William St
 
 The style pursues reader-centered clarity grounded in reading psychology: make the actors of a sentence its subjects, put the actions in verbs, and place old information before new.
 
-In testing, it was second only to actionable-clarity at keeping details, and it makes answers shorter on average. But it ranked in the middle on clarity. It sometimes drops the "maybe" from a claim that deserves one, and its answer length varies a lot from one test to the next.
+In testing, it was among the best at keeping details, and it makes answers shorter on average. But it ranked low on clarity in the latest campaign, below Claude's unstyled answers. It sometimes drops the "maybe" from a claim that deserves one, and its answer length varies a lot from one test to the next.
 
 #### Source and disclaimers
 
@@ -107,7 +107,7 @@ The style adapts the [Google developer documentation style guide](https://develo
 
 The style follows government plain language: familiar words, active voice, short sentences, and the reader addressed directly.
 
-In testing, only actionable-clarity read as clearer, and on a fresh set of questions plain-language scored highest of all. It makes answers shorter, and it is the best of all the styles at keeping "maybe" where it belongs. Its one weakness: the push to shorten can cut details you need.
+In testing, only actionable-clarity and developer-docs read as clearer, and on a fresh set of questions plain-language scored highest of all. It makes answers shorter, and it is the best of all the styles at keeping "maybe" where it belongs. Its one weakness: the push to shorten can cut details you need.
 
 #### Source and disclaimers
 

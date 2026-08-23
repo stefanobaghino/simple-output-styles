@@ -103,6 +103,22 @@
 #   min_hedge_survival: 1.000, 1.000, 0.938 (sd 0.036) -> 0.90
 #   min_rank_strength: 2.933, 2.211, 2.158 (sd 0.433) -> 1.70
 #   max_drift_slope: 0.000 -> 0.05 (the floor)
+#
+# concise: the Claude Code built-in style, evaluated for comparison
+# since the CLI pin move to 2.1.239. Calibrated against the first
+# campaign of that era — runs/2026-08-22, runs/2026-08-22b, and
+# runs/2026-08-22c, plus the drift run runs/2026-08-23-drift. The
+# same derivation rules and the same one-time asterisk apply. The
+# other six style rows remain calibrated on 2.1.226-era runs; the
+# 2026-08-22 campaign recorded misses against them (the era-shift
+# section of RESULTS.md lists them), and their recalibration is a
+# separate decision.
+#
+#   max_token_ratio: 0.53, 0.55, 0.66 -> 0.75
+#   min_fact_survival: 0.756, 0.734, 0.750 (sd 0.011) -> 0.72
+#   min_hedge_survival: 0.725, 0.633, 0.834 (sd 0.101) -> 0.53
+#   min_rank_strength: 0.301, 0.379, 0.362 (sd 0.041) -> 0.25
+#   max_drift_slope: 0.000 -> 0.05 (the floor)
 defaults:
   max_token_ratio: 1.10
 styles:
@@ -117,6 +133,12 @@ styles:
     min_fact_survival: 0.75
     min_hedge_survival: 0.60
     min_rank_strength: 0.80
+    max_drift_slope: 0.05
+  concise:
+    max_token_ratio: 0.75
+    min_fact_survival: 0.72
+    min_hedge_survival: 0.53
+    min_rank_strength: 0.25
     max_drift_slope: 0.05
   classic-concise:
     max_token_ratio: 0.95

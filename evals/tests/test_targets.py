@@ -113,6 +113,7 @@ FIELD_STYLES = {
     "actionable-clarity",
     "clarity-flow",
     "classic-concise",
+    "concise",
     "developer-docs",
     "plain-language",
     "technical-simplified",
