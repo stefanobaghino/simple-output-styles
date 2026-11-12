@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Evaluation harness for the output styles in this repository"
 license = "Apache-2.0"
 license-files = ["LICENSE"]
-requires-python = ">=3.13,<3.15"
+requires-python = ">=3.15,<3.16"
 dependencies = [
     "spacy>=3.8,<3.9",
     # spacy imports click through typer, but new typer versions do not depend on click
